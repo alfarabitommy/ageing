@@ -20,6 +20,9 @@
 
     <style>
         /* Global Styles */
+        html {
+            scroll-behavior: smooth; /* Tambahan untuk efek scroll yang mulus */
+        }
         body {
             font-family: 'DM Sans', sans-serif;
             color: #333;
@@ -112,7 +115,9 @@
                 <li class="nav-item"><a class="nav-link" href="<?= base_url() ?>">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= base_url('about') ?>">About Us</a></li>
                 <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == 'speakers') ? 'active' : '' ?>" href="<?= base_url('speakers') ?>">Speakers</a></li>
-                <li class="nav-item"><a class="nav-link" href="<?= base_url('workshops') ?>">Breakout Workshops</a></li>
+                
+                <li class="nav-item"><a class="nav-link" href="<?= base_url('speakers#breakout-workshops') ?>">Breakout Workshops</a></li>
+                
                 <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == 'schedules') ? 'active' : '' ?>" href="<?= base_url('schedules') ?>">Event Schedule</a></li>
                 <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == 'getting-here') ? 'active' : '' ?>" href="<?= base_url('getting-here') ?>">Getting Here</a></li>
                 <li class="nav-item ms-lg-3 mt-3 mt-lg-0">

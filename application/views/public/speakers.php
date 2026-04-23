@@ -81,6 +81,7 @@
     .workshops-section {
         position: relative;
         padding: 60px 0;
+        scroll-margin-top: 80px; /* Mencegah judul tertutup navbar sticky saat di-scroll */
     }
     .shape-2 {
         position: absolute;
@@ -222,7 +223,7 @@
     </div>
 </section>
 
-<section class="workshops-section">
+<section class="workshops-section" id="breakout-workshops">
     <img src="<?= base_url('assets/public/images/bg-shape-2.png') ?>" alt="" class="shape-2">
     <div class="container">
         <h2 class="section-title">Breakout Workshops</h2>
