@@ -3656,10 +3656,131 @@ class Pages extends CI_Controller {
         border: none;
         align-self: center;
         text-decoration: none;
+        transition: 0.3s;
     }
     .btn-read-more:hover {
         background-color: #5156B8;
         color: white;
+    }
+
+    /* =========================================
+       MODAL WORKSHOP DETAIL (FROM HOME.PHP)
+       ========================================= */
+    .modal-workshop-detail .modal-content {
+        border-radius: 30px;
+        border: none;
+        background-color: #FFFFFF;
+        padding: 30px;
+    }
+    
+    .modal-workshop-detail .modal-header-custom {
+        padding: 40px;
+        color: #111;
+        border-radius: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .modal-workshop-detail .btn-go-back {
+        color: #111;
+        font-weight: 600;
+        text-decoration: none;
+        padding: 0;
+        background: none;
+        border: none;
+        margin-bottom: 20px;
+        font-size: 16px;
+        transition: 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .modal-workshop-detail .ws-title {
+        font-size: 42px;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 10px;
+        color: #111;
+    }
+    
+    .modal-workshop-detail .ws-subtitle {
+        font-size: 20px;
+        color: #111;
+        font-weight: 500;
+        margin-bottom: 0;
+    }
+
+    .modal-workshop-detail .modal-body-custom {
+        padding: 0;
+    }
+
+    .modal-workshop-detail .info-card {
+        background-color: #F4F4F6; 
+        border-radius: 20px;
+        padding: 40px;
+        height: 100%;
+    }
+
+    .modal-workshop-detail .ws-heading {
+        color: #111;
+        font-size: 18px;
+        font-weight: 800;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .modal-workshop-detail .ws-heading i {
+        color: #5156B8; 
+        font-size: 20px;
+    }
+    
+    .modal-workshop-detail .ws-text {
+        font-size: 16px;
+        color: #111;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    .modal-workshop-detail .fac-header-row {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .modal-workshop-detail .fac-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 12px;
+        object-fit: cover;
+    }
+    
+    .modal-workshop-detail .fac-name {
+        font-size: 20px;
+        font-weight: 800;
+        color: #111;
+        margin-bottom: 5px;
+    }
+    
+    .modal-workshop-detail .fac-role {
+        font-size: 16px;
+        color: #444;
+        font-weight: 500;
+    }
+
+    .modal-workshop-detail .ws-tag-pill {
+        border: 1px solid #5156B8;
+        color: #5156B8;
+        background-color: transparent;
+        padding: 8px 20px;
+        border-radius: 30px;
+        font-size: 14px;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0 10px 10px 0;
     }
 </style>
 
@@ -3759,11 +3880,107 @@ class Pages extends CI_Controller {
                         <p class="workshop-fac-org"><?= htmlspecialchars($w->primary_facilitator->designation) ?><br><?= htmlspecialchars($w->primary_facilitator->organization) ?></p>
                     <?php endif; ?>
 
-                    <a href="<?= base_url('workshop/'.$w->slug) ?>" class="btn-read-more mt-auto">Read More</a>
+                    <button type="button" class="btn-read-more mt-auto" data-bs-toggle="modal" data-bs-target="#modalWorkshop<?= $w->id ?>">Read More</button>
                 </div>
             </div>
             <?php endforeach; ?>
         </div>
     </div>
 </section>
+
+<?php 
+// Memanggil model secara dinamis di dalam view
+$CI =& get_instance();
+$CI->load->model('Tag_model');
+$CI->load->model('Workshop_model');
+
+// Array palet warna pastel
+$header_colors = ['#FDBA74', '#FCA5A5', '#A7F3D0', '#BAE6FD', '#C4B5FD', '#FBCFE8', '#FDE047', '#D9F99D'];
+
+foreach($workshops as $w): 
+    // Ambil warna header secara acak untuk setiap iterasi pop-up
+    $active_bg = $header_colors[array_rand($header_colors)];
+
+    // Ambil tag spesifik untuk workshop ini
+    $related_tag_ids = $CI->Workshop_model->get_related_tags($w->id);
+    $workshop_specific_tags = [];
+    foreach($related_tag_ids as $tid) {
+        $tag_obj = $CI->Tag_model->get_by_id($tid);
+        if($tag_obj) $workshop_specific_tags[] = $tag_obj->tag_name;
+    }
+?>
+<div class="modal fade modal-workshop-detail" id="modalWorkshop<?= $w->id ?>" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content shadow-lg">
+            
+            <div class="modal-header-custom" style="background-color: <?= $active_bg ?>;">
+                <button type="button" class="btn-go-back" data-bs-dismiss="modal">
+                    <i class="fas fa-chevron-left"></i> Go Back
+                </button>
+                <h2 class="ws-title"><?= htmlspecialchars($w->title) ?></h2>
+                <h5 class="ws-subtitle"><?= htmlspecialchars($w->subtitle) ?></h5>
+            </div>
+
+            <div class="modal-body-custom">
+                <div class="row g-4">
+                    
+                    <div class="col-lg-6">
+                        <div class="info-card">
+                            <h6 class="ws-heading"><i class="fas fa-clipboard-list"></i> Workshop Synopsis</h6>
+                            <p class="ws-text"><?= nl2br(htmlspecialchars($w->synopsis)) ?></p>
+                            
+                            <h6 class="ws-heading"><i class="fas fa-map-marker-alt"></i> Workshop Location</h6>
+                            <p class="ws-text"><?= htmlspecialchars($w->location_venue) ?><br><?= htmlspecialchars($w->location_room) ?></p>
+                            
+                            <h6 class="ws-heading"><i class="fas fa-check-double"></i> Best Suited for</h6>
+                            <p class="ws-text" style="margin-bottom: 25px;"><?= htmlspecialchars($w->best_suited_for) ?></p>
+                            
+                            <div>
+                                <?php foreach($workshop_specific_tags as $tag_name): ?>
+                                    <span class="ws-tag-pill">
+                                        <?= htmlspecialchars($tag_name) ?> <i class="fas fa-star" style="font-size: 12px; opacity: 0.7;"></i>
+                                    </span>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="info-card">
+                            <h6 class="ws-heading"><i class="far fa-id-badge"></i> Facilitator Profile</h6>
+                            
+                            <?php if($w->primary_facilitator): ?>
+                                <div class="fac-header-row mt-4">
+                                    <?php 
+                                        if($w->primary_facilitator && $w->primary_facilitator->image_path != 'default.png') { 
+                                            $fac_img_detail = base_url('uploads/facilitators/'.$w->primary_facilitator->image_path); 
+                                        } else { 
+                                            $fac_name_detail = $w->primary_facilitator ? $w->primary_facilitator->name : 'Facilitator'; 
+                                            $fac_img_detail = 'https://ui-avatars.com/api/?name='.urlencode($fac_name_detail).'&background=random&size=200'; 
+                                        }
+                                    ?>
+                                    <img src="<?= $fac_img_detail ?>" alt="Facilitator" class="fac-img shadow-sm">
+                                    
+                                    <div>
+                                        <div class="fac-name"><?= htmlspecialchars($w->primary_facilitator->name) ?></div>
+                                        <div class="fac-role">
+                                            <?= htmlspecialchars($w->primary_facilitator->designation) ?><br>
+                                            <?= htmlspecialchars($w->primary_facilitator->organization) ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="ws-text mt-3" style="margin-bottom: 0;">
+                                    <?= nl2br(htmlspecialchars($w->primary_facilitator->bio)) ?>
+                                </p>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<?php endforeach; ?>
 <!-- end file application/views/public/speakers.php -->
