@@ -56,7 +56,7 @@
         width: 120px;
         height: 120px;
         object-fit: cover;
-        border-radius: 15px; /* Sedikit membulat sesuai desain */
+        border-radius: 15px; 
         margin-bottom: 20px;
     }
     .speaker-name {
@@ -81,7 +81,7 @@
     .workshops-section {
         position: relative;
         padding: 60px 0;
-        scroll-margin-top: 80px; /* Mencegah judul tertutup navbar sticky saat di-scroll */
+        scroll-margin-top: 80px; 
     }
     .shape-2 {
         position: absolute;
@@ -90,6 +90,8 @@
         max-width: 300px;
         z-index: -1;
     }
+    
+    /* MODIFIKASI FILTER TAGS */
     .tag-pill {
         border: 1px solid #5156B8;
         color: #5156B8;
@@ -98,14 +100,19 @@
         font-size: 13px;
         display: inline-block;
         margin: 0 5px 10px 0;
-        background: white;
+        background: transparent;
         text-decoration: none;
         transition: all 0.2s;
     }
-    .tag-pill:hover {
+    .tag-pill:hover, .tag-pill.active {
         background-color: #5156B8;
         color: white;
     }
+    
+    /* PENAMBAHAN CSS ANIMASI JS */
+    .workshop-wrapper { transition: opacity 0.4s ease, transform 0.4s ease; opacity: 1; transform: scale(1); }
+    .workshop-wrapper.fade-out { opacity: 0; transform: scale(0.95); }
+
     .workshop-card {
         border: 1px solid #E0E0E0;
         border-radius: 15px;
@@ -133,7 +140,7 @@
         font-size: 13px;
         color: #555;
         margin-bottom: 20px;
-        flex-grow: 1; /* Mendorong tombol ke bawah */
+        flex-grow: 1;
     }
     .workshop-fac-name {
         color: #5156B8;
@@ -166,122 +173,21 @@
     /* =========================================
        MODAL WORKSHOP DETAIL (FROM HOME.PHP)
        ========================================= */
-    .modal-workshop-detail .modal-content {
-        border-radius: 30px;
-        border: none;
-        background-color: #FFFFFF;
-        padding: 30px;
-    }
-    
-    .modal-workshop-detail .modal-header-custom {
-        padding: 40px;
-        color: #111;
-        border-radius: 20px;
-        margin-bottom: 30px;
-    }
-    
-    .modal-workshop-detail .btn-go-back {
-        color: #111;
-        font-weight: 600;
-        text-decoration: none;
-        padding: 0;
-        background: none;
-        border: none;
-        margin-bottom: 20px;
-        font-size: 16px;
-        transition: 0.3s;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-    }
-    
-    .modal-workshop-detail .ws-title {
-        font-size: 42px;
-        font-weight: 800;
-        line-height: 1.2;
-        margin-bottom: 10px;
-        color: #111;
-    }
-    
-    .modal-workshop-detail .ws-subtitle {
-        font-size: 20px;
-        color: #111;
-        font-weight: 500;
-        margin-bottom: 0;
-    }
-
-    .modal-workshop-detail .modal-body-custom {
-        padding: 0;
-    }
-
-    .modal-workshop-detail .info-card {
-        background-color: #F4F4F6; 
-        border-radius: 20px;
-        padding: 40px;
-        height: 100%;
-    }
-
-    .modal-workshop-detail .ws-heading {
-        color: #111;
-        font-size: 18px;
-        font-weight: 800;
-        margin-bottom: 15px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    .modal-workshop-detail .ws-heading i {
-        color: #5156B8; 
-        font-size: 20px;
-    }
-    
-    .modal-workshop-detail .ws-text {
-        font-size: 16px;
-        color: #111;
-        line-height: 1.6;
-        margin-bottom: 30px;
-    }
-
-    .modal-workshop-detail .fac-header-row {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        margin-bottom: 20px;
-    }
-    
-    .modal-workshop-detail .fac-img {
-        width: 100px;
-        height: 100px;
-        border-radius: 12px;
-        object-fit: cover;
-    }
-    
-    .modal-workshop-detail .fac-name {
-        font-size: 20px;
-        font-weight: 800;
-        color: #111;
-        margin-bottom: 5px;
-    }
-    
-    .modal-workshop-detail .fac-role {
-        font-size: 16px;
-        color: #444;
-        font-weight: 500;
-    }
-
-    .modal-workshop-detail .ws-tag-pill {
-        border: 1px solid #5156B8;
-        color: #5156B8;
-        background-color: transparent;
-        padding: 8px 20px;
-        border-radius: 30px;
-        font-size: 14px;
-        font-weight: 500;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        margin: 0 10px 10px 0;
-    }
+    .modal-workshop-detail .modal-content { border-radius: 30px; border: none; background-color: #FFFFFF; padding: 30px; }
+    .modal-workshop-detail .modal-header-custom { padding: 40px; color: #111; border-radius: 20px; margin-bottom: 30px; }
+    .modal-workshop-detail .btn-go-back { color: #111; font-weight: 600; text-decoration: none; padding: 0; background: none; border: none; margin-bottom: 20px; font-size: 16px; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+    .modal-workshop-detail .ws-title { font-size: 42px; font-weight: 800; line-height: 1.2; margin-bottom: 10px; color: #111; }
+    .modal-workshop-detail .ws-subtitle { font-size: 20px; color: #111; font-weight: 500; margin-bottom: 0; }
+    .modal-workshop-detail .modal-body-custom { padding: 0; }
+    .modal-workshop-detail .info-card { background-color: #F4F4F6; border-radius: 20px; padding: 40px; height: 100%; }
+    .modal-workshop-detail .ws-heading { color: #111; font-size: 18px; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+    .modal-workshop-detail .ws-heading i { color: #5156B8; font-size: 20px; }
+    .modal-workshop-detail .ws-text { font-size: 16px; color: #111; line-height: 1.6; margin-bottom: 30px; }
+    .modal-workshop-detail .fac-header-row { display: flex; align-items: center; gap: 20px; margin-bottom: 20px; }
+    .modal-workshop-detail .fac-img { width: 100px; height: 100px; border-radius: 12px; object-fit: cover; }
+    .modal-workshop-detail .fac-name { font-size: 20px; font-weight: 800; color: #111; margin-bottom: 5px; }
+    .modal-workshop-detail .fac-role { font-size: 16px; color: #444; font-weight: 500; }
+    .modal-workshop-detail .ws-tag-pill { border: 1px solid #5156B8; color: #5156B8; background-color: transparent; padding: 8px 20px; border-radius: 30px; font-size: 14px; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; margin: 0 10px 10px 0; }
 </style>
 
 <section class="programme-hero">
@@ -354,13 +260,13 @@
 
         <div class="mb-5">
             <?php foreach($tags as $t): ?>
-                <a href="javascript:void(0)" class="tag-pill"><?= htmlspecialchars($t->tag_name) ?></a>
+                <a href="javascript:void(0)" class="tag-pill" data-tag="<?= htmlspecialchars($t->tag_name) ?>"><?= htmlspecialchars($t->tag_name) ?></a>
             <?php endforeach; ?>
         </div>
 
         <div class="row g-4">
             <?php foreach($workshops as $w): ?>
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-4 workshop-wrapper" data-tags="<?= htmlspecialchars(implode(',', $w->tag_names)) ?>">
                 <div class="workshop-card">
                     <?php 
                         if($w->primary_facilitator && $w->primary_facilitator->image_path != 'default.png') {
@@ -389,7 +295,7 @@
 </section>
 
 <?php 
-// Memanggil model secara dinamis di dalam view
+// Memanggil model secara dinamis di dalam view 
 $CI =& get_instance();
 $CI->load->model('Tag_model');
 $CI->load->model('Workshop_model');
@@ -483,3 +389,50 @@ foreach($workshops as $w):
     </div>
 </div>
 <?php endforeach; ?>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const tagPills = document.querySelectorAll('.tag-pill');
+    const workshopWrappers = document.querySelectorAll('.workshop-wrapper');
+    let activeTags = new Set();
+
+    tagPills.forEach(pill => {
+        pill.addEventListener('click', function(e) {
+            e.preventDefault();
+            const tag = this.getAttribute('data-tag');
+            if (activeTags.has(tag)) {
+                activeTags.delete(tag);
+                this.classList.remove('active');
+            } else {
+                activeTags.add(tag);
+                this.classList.add('active');
+            }
+            filterContent();
+        });
+    });
+
+    function filterContent() {
+        workshopWrappers.forEach(wrapper => {
+            const tagsAttr = wrapper.getAttribute('data-tags');
+            const cardTags = tagsAttr ? tagsAttr.split(',').map(t => t.trim()) : [];
+            let isMatch = true;
+
+            if (activeTags.size > 0) {
+                activeTags.forEach(t => { 
+                    if (!cardTags.includes(t)) isMatch = false; 
+                });
+            }
+
+            if (isMatch) {
+                wrapper.classList.remove('d-none');
+                setTimeout(() => wrapper.classList.remove('fade-out'), 10);
+            } else {
+                wrapper.classList.add('fade-out');
+                setTimeout(() => { 
+                    if(wrapper.classList.contains('fade-out')) wrapper.classList.add('d-none'); 
+                }, 400);
+            }
+        });
+    }
+});
+</script>

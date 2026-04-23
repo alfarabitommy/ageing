@@ -26,13 +26,24 @@ class Speakers extends CI_Controller {
         $data['tags'] = $this->Tag_model->get_all();
         $data['workshops'] = $this->Workshop_model->get_all();
 
-        // Looping untuk menyisipkan data fasilitator utama ke dalam masing-masing workshop
+        // Looping untuk menyisipkan data fasilitator utama dan data tags (untuk filter JS)
         foreach ($data['workshops'] as $w) {
+            // 1. Ambil Fasilitator
             $fac_ids = $this->Workshop_model->get_related_facilitators($w->id);
             if (!empty($fac_ids)) {
                 $w->primary_facilitator = $this->Facilitator_model->get_by_id($fac_ids[0]);
             } else {
                 $w->primary_facilitator = null;
+            }
+
+            // 2. Ambil Nama Tag (Hanya ditambahkan untuk kebutuhan filter JS Client-side)
+            $w->tag_names = [];
+            $related_tag_ids = $this->Workshop_model->get_related_tags($w->id);
+            foreach ($related_tag_ids as $tid) {
+                $tag_obj = $this->Tag_model->get_by_id($tid);
+                if ($tag_obj) {
+                    $w->tag_names[] = $tag_obj->tag_name;
+                }
             }
         }
 

@@ -115,8 +115,11 @@
     .stat-box { border-radius: 15px; padding: 25px; height: 100%; display: flex; flex-direction: column; justify-content: center; }
     .stat-box .display-4 { font-weight: 800; color: #111; }
     .stat-box h5 { color: #111; font-weight: 600; margin: 0; }
-    .tag-pill { border: 1px solid #5156B8; color: #5156B8; border-radius: 20px; padding: 5px 15px; font-size: 13px; display: inline-block; margin: 0 5px 10px 0; text-decoration: none; transition: 0.2s; }
-    .tag-pill:hover { background-color: #5156B8; color: white; }
+    
+    /* MODIFIKASI FILTER TAGS */
+    .tag-pill { border: 1px solid #5156B8; color: #5156B8; border-radius: 20px; padding: 5px 15px; font-size: 13px; display: inline-block; margin: 0 5px 10px 0; text-decoration: none; transition: 0.2s; background-color: transparent; }
+    .tag-pill:hover, .tag-pill.active { background-color: #5156B8; color: white; }
+    
     .workshop-card { border: 1px solid #E0E0E0; border-radius: 15px; padding: 25px; text-align: center; height: 100%; background-color: white; display: flex; flex-direction: column; }
     .workshop-img { width: 100px; height: 100px; object-fit: cover; border-radius: 15px; margin: 0 auto 20px; }
     .workshop-title { color: #5156B8; font-weight: 700; font-size: 18px; margin-bottom: 10px; }
@@ -126,21 +129,25 @@
     .btn-read-more { background-color: #7C83DB; color: white; border-radius: 20px; padding: 6px 25px; font-size: 13px; font-weight: 600; border: none; align-self: center; text-decoration: none; transition: 0.3s; }
     .btn-read-more:hover { background-color: #5156B8; color: white; }
 
+    /* PENAMBAHAN CSS ANIMASI JS */
+    .workshop-wrapper { transition: opacity 0.4s ease, transform 0.4s ease; opacity: 1; transform: scale(1); }
+    .workshop-wrapper.fade-out { opacity: 0; transform: scale(0.95); }
+
     /* =========================================
        MODAL WORKSHOP DETAIL (NEW 3-SECTION LAYOUT)
        ========================================= */
     .modal-workshop-detail .modal-content {
-        border-radius: 30px; /* Sudut frame utama lebih membulat */
+        border-radius: 30px; 
         border: none;
         background-color: #FFFFFF;
-        padding: 30px; /* Ini kunci agar headernya memiliki sela putih dan tidak mentok ke ujung */
+        padding: 30px; 
     }
     
     .modal-workshop-detail .modal-header-custom {
         padding: 40px;
         color: #111;
-        border-radius: 20px; /* Membuat sudut header berwarna ikut membulat */
-        margin-bottom: 30px; /* Jarak antara header berwarna dengan konten informasi di bawahnya */
+        border-radius: 20px; 
+        margin-bottom: 30px; 
     }
     
     .modal-workshop-detail .btn-go-back {
@@ -173,67 +180,17 @@
         margin-bottom: 0;
     }
 
-    .modal-workshop-detail .modal-body-custom {
-        padding: 0; /* Padding dihapus karena modal-content sudah memiliki padding 30px */
-    }
+    .modal-workshop-detail .modal-body-custom { padding: 0; }
+    .modal-workshop-detail .info-card { background-color: #F4F4F6; border-radius: 20px; padding: 40px; height: 100%; }
+    .modal-workshop-detail .ws-heading { color: #111; font-size: 18px; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+    .modal-workshop-detail .ws-heading i { color: #5156B8; font-size: 20px; }
+    .modal-workshop-detail .ws-text { font-size: 16px; color: #111; line-height: 1.6; margin-bottom: 30px; }
 
-    .modal-workshop-detail .info-card {
-        background-color: #F4F4F6; 
-        border-radius: 20px;
-        padding: 40px;
-        height: 100%;
-    }
+    .modal-workshop-detail .fac-header-row { display: flex; align-items: center; gap: 20px; margin-bottom: 20px; }
+    .modal-workshop-detail .fac-img { width: 100px; height: 100px; border-radius: 12px; object-fit: cover; }
+    .modal-workshop-detail .fac-name { font-size: 20px; font-weight: 800; color: #111; margin-bottom: 5px; }
+    .modal-workshop-detail .fac-role { font-size: 16px; color: #444; font-weight: 500; }
 
-    .modal-workshop-detail .ws-heading {
-        color: #111;
-        font-size: 18px;
-        font-weight: 800;
-        margin-bottom: 15px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    .modal-workshop-detail .ws-heading i {
-        color: #5156B8; 
-        font-size: 20px;
-    }
-    
-    .modal-workshop-detail .ws-text {
-        font-size: 16px;
-        color: #111;
-        line-height: 1.6;
-        margin-bottom: 30px;
-    }
-
-    /* Layout Fasilitator */
-    .modal-workshop-detail .fac-header-row {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        margin-bottom: 20px;
-    }
-    
-    .modal-workshop-detail .fac-img {
-        width: 100px;
-        height: 100px;
-        border-radius: 12px;
-        object-fit: cover;
-    }
-    
-    .modal-workshop-detail .fac-name {
-        font-size: 20px;
-        font-weight: 800;
-        color: #111;
-        margin-bottom: 5px;
-    }
-    
-    .modal-workshop-detail .fac-role {
-        font-size: 16px;
-        color: #444;
-        font-weight: 500;
-    }
-
-    /* Style Tags Outlined */
     .modal-workshop-detail .ws-tag-pill {
         border: 1px solid #5156B8;
         color: #5156B8;
@@ -348,12 +305,18 @@
             <div class="col-4"><div class="stat-box" style="background-color: #DDF2F8;"><div class="display-4">1 Day</div><h5>Full of<br>Lectures</h5></div></div>
         </div>
         <p class="mb-4" style="font-size: 18px; max-width: 700px;">Participants are invited to choose up to 4 workshops based on their interests and the needs of the seniors they work with.</p>
+        
         <div class="mb-5">
-            <?php foreach($tags as $t): ?><a href="javascript:void(0)" class="tag-pill"><?= htmlspecialchars($t->tag_name) ?> <i class="fas fa-tag ms-1 opacity-50"></i></a><?php endforeach; ?>
+            <?php foreach($tags as $t): ?>
+                <a href="javascript:void(0)" class="tag-pill" data-tag="<?= htmlspecialchars($t->tag_name) ?>">
+                    <?= htmlspecialchars($t->tag_name) ?> <i class="fas fa-tag ms-1 opacity-50"></i>
+                </a>
+            <?php endforeach; ?>
         </div>
+        
         <div class="row g-4">
             <?php foreach($workshops as $w): ?>
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-4 workshop-wrapper" data-tags="<?= htmlspecialchars(implode(',', $w->tag_names)) ?>">
                 <div class="workshop-card">
                     <?php 
                         if($w->primary_facilitator && $w->primary_facilitator->image_path != 'default.png') { $fac_img = base_url('uploads/facilitators/'.$w->primary_facilitator->image_path); } 
@@ -441,7 +404,7 @@
 </div>
 
 <?php 
-// Memanggil model secara dinamis di dalam view
+// Memanggil model secara dinamis di dalam view 
 $CI =& get_instance();
 $CI->load->model('Tag_model');
 $CI->load->model('Workshop_model');
@@ -535,3 +498,50 @@ foreach($workshops as $w):
     </div>
 </div>
 <?php endforeach; ?>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const tagPills = document.querySelectorAll('.tag-pill');
+    const workshopWrappers = document.querySelectorAll('.workshop-wrapper');
+    let activeTags = new Set();
+
+    tagPills.forEach(pill => {
+        pill.addEventListener('click', function(e) {
+            e.preventDefault();
+            const tag = this.getAttribute('data-tag');
+            if (activeTags.has(tag)) {
+                activeTags.delete(tag);
+                this.classList.remove('active');
+            } else {
+                activeTags.add(tag);
+                this.classList.add('active');
+            }
+            filterContent();
+        });
+    });
+
+    function filterContent() {
+        workshopWrappers.forEach(wrapper => {
+            const tagsAttr = wrapper.getAttribute('data-tags');
+            const cardTags = tagsAttr ? tagsAttr.split(',').map(t => t.trim()) : [];
+            let isMatch = true;
+
+            if (activeTags.size > 0) {
+                activeTags.forEach(t => { 
+                    if (!cardTags.includes(t)) isMatch = false; 
+                });
+            }
+
+            if (isMatch) {
+                wrapper.classList.remove('d-none');
+                setTimeout(() => wrapper.classList.remove('fade-out'), 10);
+            } else {
+                wrapper.classList.add('fade-out');
+                setTimeout(() => { 
+                    if(wrapper.classList.contains('fade-out')) wrapper.classList.add('d-none'); 
+                }, 400);
+            }
+        });
+    }
+});
+</script>

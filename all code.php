@@ -2237,13 +2237,24 @@ class Speakers extends CI_Controller {
         $data['tags'] = $this->Tag_model->get_all();
         $data['workshops'] = $this->Workshop_model->get_all();
 
-        // Looping untuk menyisipkan data fasilitator utama ke dalam masing-masing workshop
+        // Looping untuk menyisipkan data fasilitator utama dan data tags (untuk filter JS)
         foreach ($data['workshops'] as $w) {
+            // 1. Ambil Fasilitator
             $fac_ids = $this->Workshop_model->get_related_facilitators($w->id);
             if (!empty($fac_ids)) {
                 $w->primary_facilitator = $this->Facilitator_model->get_by_id($fac_ids[0]);
             } else {
                 $w->primary_facilitator = null;
+            }
+
+            // 2. Ambil Nama Tag (Hanya ditambahkan untuk kebutuhan filter JS Client-side)
+            $w->tag_names = [];
+            $related_tag_ids = $this->Workshop_model->get_related_tags($w->id);
+            foreach ($related_tag_ids as $tid) {
+                $tag_obj = $this->Tag_model->get_by_id($tid);
+                if ($tag_obj) {
+                    $w->tag_names[] = $tag_obj->tag_name;
+                }
             }
         }
 
@@ -2770,13 +2781,24 @@ class Home extends CI_Controller {
         $data['tags'] = $this->Tag_model->get_all();
         $data['workshops'] = $this->Workshop_model->get_all(); // Akan kita limit di View jika perlu
 
-        // Looping untuk menyisipkan data fasilitator utama
+        // Looping untuk menyisipkan data fasilitator utama dan data tags (untuk filter JS)
         foreach ($data['workshops'] as $w) {
+            // 1. Ambil Fasilitator
             $fac_ids = $this->Workshop_model->get_related_facilitators($w->id);
             if (!empty($fac_ids)) {
                 $w->primary_facilitator = $this->Facilitator_model->get_by_id($fac_ids[0]);
             } else {
                 $w->primary_facilitator = null;
+            }
+
+            // 2. Ambil Nama Tag (Hanya ditambahkan untuk kebutuhan filter JS Client-side)
+            $w->tag_names = [];
+            $related_tag_ids = $this->Workshop_model->get_related_tags($w->id);
+            foreach ($related_tag_ids as $tid) {
+                $tag_obj = $this->Tag_model->get_by_id($tid);
+                if ($tag_obj) {
+                    $w->tag_names[] = $tag_obj->tag_name;
+                }
             }
         }
 
@@ -2907,8 +2929,11 @@ class Home extends CI_Controller {
     .stat-box { border-radius: 15px; padding: 25px; height: 100%; display: flex; flex-direction: column; justify-content: center; }
     .stat-box .display-4 { font-weight: 800; color: #111; }
     .stat-box h5 { color: #111; font-weight: 600; margin: 0; }
-    .tag-pill { border: 1px solid #5156B8; color: #5156B8; border-radius: 20px; padding: 5px 15px; font-size: 13px; display: inline-block; margin: 0 5px 10px 0; text-decoration: none; transition: 0.2s; }
-    .tag-pill:hover { background-color: #5156B8; color: white; }
+    
+    /* MODIFIKASI FILTER TAGS */
+    .tag-pill { border: 1px solid #5156B8; color: #5156B8; border-radius: 20px; padding: 5px 15px; font-size: 13px; display: inline-block; margin: 0 5px 10px 0; text-decoration: none; transition: 0.2s; background-color: transparent; }
+    .tag-pill:hover, .tag-pill.active { background-color: #5156B8; color: white; }
+    
     .workshop-card { border: 1px solid #E0E0E0; border-radius: 15px; padding: 25px; text-align: center; height: 100%; background-color: white; display: flex; flex-direction: column; }
     .workshop-img { width: 100px; height: 100px; object-fit: cover; border-radius: 15px; margin: 0 auto 20px; }
     .workshop-title { color: #5156B8; font-weight: 700; font-size: 18px; margin-bottom: 10px; }
@@ -2918,21 +2943,25 @@ class Home extends CI_Controller {
     .btn-read-more { background-color: #7C83DB; color: white; border-radius: 20px; padding: 6px 25px; font-size: 13px; font-weight: 600; border: none; align-self: center; text-decoration: none; transition: 0.3s; }
     .btn-read-more:hover { background-color: #5156B8; color: white; }
 
+    /* PENAMBAHAN CSS ANIMASI JS */
+    .workshop-wrapper { transition: opacity 0.4s ease, transform 0.4s ease; opacity: 1; transform: scale(1); }
+    .workshop-wrapper.fade-out { opacity: 0; transform: scale(0.95); }
+
     /* =========================================
        MODAL WORKSHOP DETAIL (NEW 3-SECTION LAYOUT)
        ========================================= */
     .modal-workshop-detail .modal-content {
-        border-radius: 30px; /* Sudut frame utama lebih membulat */
+        border-radius: 30px; 
         border: none;
         background-color: #FFFFFF;
-        padding: 30px; /* Ini kunci agar headernya memiliki sela putih dan tidak mentok ke ujung */
+        padding: 30px; 
     }
     
     .modal-workshop-detail .modal-header-custom {
         padding: 40px;
         color: #111;
-        border-radius: 20px; /* Membuat sudut header berwarna ikut membulat */
-        margin-bottom: 30px; /* Jarak antara header berwarna dengan konten informasi di bawahnya */
+        border-radius: 20px; 
+        margin-bottom: 30px; 
     }
     
     .modal-workshop-detail .btn-go-back {
@@ -2965,67 +2994,17 @@ class Home extends CI_Controller {
         margin-bottom: 0;
     }
 
-    .modal-workshop-detail .modal-body-custom {
-        padding: 0; /* Padding dihapus karena modal-content sudah memiliki padding 30px */
-    }
+    .modal-workshop-detail .modal-body-custom { padding: 0; }
+    .modal-workshop-detail .info-card { background-color: #F4F4F6; border-radius: 20px; padding: 40px; height: 100%; }
+    .modal-workshop-detail .ws-heading { color: #111; font-size: 18px; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+    .modal-workshop-detail .ws-heading i { color: #5156B8; font-size: 20px; }
+    .modal-workshop-detail .ws-text { font-size: 16px; color: #111; line-height: 1.6; margin-bottom: 30px; }
 
-    .modal-workshop-detail .info-card {
-        background-color: #F4F4F6; 
-        border-radius: 20px;
-        padding: 40px;
-        height: 100%;
-    }
+    .modal-workshop-detail .fac-header-row { display: flex; align-items: center; gap: 20px; margin-bottom: 20px; }
+    .modal-workshop-detail .fac-img { width: 100px; height: 100px; border-radius: 12px; object-fit: cover; }
+    .modal-workshop-detail .fac-name { font-size: 20px; font-weight: 800; color: #111; margin-bottom: 5px; }
+    .modal-workshop-detail .fac-role { font-size: 16px; color: #444; font-weight: 500; }
 
-    .modal-workshop-detail .ws-heading {
-        color: #111;
-        font-size: 18px;
-        font-weight: 800;
-        margin-bottom: 15px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    .modal-workshop-detail .ws-heading i {
-        color: #5156B8; 
-        font-size: 20px;
-    }
-    
-    .modal-workshop-detail .ws-text {
-        font-size: 16px;
-        color: #111;
-        line-height: 1.6;
-        margin-bottom: 30px;
-    }
-
-    /* Layout Fasilitator */
-    .modal-workshop-detail .fac-header-row {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        margin-bottom: 20px;
-    }
-    
-    .modal-workshop-detail .fac-img {
-        width: 100px;
-        height: 100px;
-        border-radius: 12px;
-        object-fit: cover;
-    }
-    
-    .modal-workshop-detail .fac-name {
-        font-size: 20px;
-        font-weight: 800;
-        color: #111;
-        margin-bottom: 5px;
-    }
-    
-    .modal-workshop-detail .fac-role {
-        font-size: 16px;
-        color: #444;
-        font-weight: 500;
-    }
-
-    /* Style Tags Outlined */
     .modal-workshop-detail .ws-tag-pill {
         border: 1px solid #5156B8;
         color: #5156B8;
@@ -3140,12 +3119,18 @@ class Home extends CI_Controller {
             <div class="col-4"><div class="stat-box" style="background-color: #DDF2F8;"><div class="display-4">1 Day</div><h5>Full of<br>Lectures</h5></div></div>
         </div>
         <p class="mb-4" style="font-size: 18px; max-width: 700px;">Participants are invited to choose up to 4 workshops based on their interests and the needs of the seniors they work with.</p>
+        
         <div class="mb-5">
-            <?php foreach($tags as $t): ?><a href="javascript:void(0)" class="tag-pill"><?= htmlspecialchars($t->tag_name) ?> <i class="fas fa-tag ms-1 opacity-50"></i></a><?php endforeach; ?>
+            <?php foreach($tags as $t): ?>
+                <a href="javascript:void(0)" class="tag-pill" data-tag="<?= htmlspecialchars($t->tag_name) ?>">
+                    <?= htmlspecialchars($t->tag_name) ?> <i class="fas fa-tag ms-1 opacity-50"></i>
+                </a>
+            <?php endforeach; ?>
         </div>
+        
         <div class="row g-4">
             <?php foreach($workshops as $w): ?>
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-4 workshop-wrapper" data-tags="<?= htmlspecialchars(implode(',', $w->tag_names)) ?>">
                 <div class="workshop-card">
                     <?php 
                         if($w->primary_facilitator && $w->primary_facilitator->image_path != 'default.png') { $fac_img = base_url('uploads/facilitators/'.$w->primary_facilitator->image_path); } 
@@ -3233,7 +3218,7 @@ class Home extends CI_Controller {
 </div>
 
 <?php 
-// Memanggil model secara dinamis di dalam view
+// Memanggil model secara dinamis di dalam view (SAYA BIARKAN UTUH)
 $CI =& get_instance();
 $CI->load->model('Tag_model');
 $CI->load->model('Workshop_model');
@@ -3327,6 +3312,53 @@ foreach($workshops as $w):
     </div>
 </div>
 <?php endforeach; ?>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const tagPills = document.querySelectorAll('.tag-pill');
+    const workshopWrappers = document.querySelectorAll('.workshop-wrapper');
+    let activeTags = new Set();
+
+    tagPills.forEach(pill => {
+        pill.addEventListener('click', function(e) {
+            e.preventDefault();
+            const tag = this.getAttribute('data-tag');
+            if (activeTags.has(tag)) {
+                activeTags.delete(tag);
+                this.classList.remove('active');
+            } else {
+                activeTags.add(tag);
+                this.classList.add('active');
+            }
+            filterContent();
+        });
+    });
+
+    function filterContent() {
+        workshopWrappers.forEach(wrapper => {
+            const tagsAttr = wrapper.getAttribute('data-tags');
+            const cardTags = tagsAttr ? tagsAttr.split(',').map(t => t.trim()) : [];
+            let isMatch = true;
+
+            if (activeTags.size > 0) {
+                activeTags.forEach(t => { 
+                    if (!cardTags.includes(t)) isMatch = false; 
+                });
+            }
+
+            if (isMatch) {
+                wrapper.classList.remove('d-none');
+                setTimeout(() => wrapper.classList.remove('fade-out'), 10);
+            } else {
+                wrapper.classList.add('fade-out');
+                setTimeout(() => { 
+                    if(wrapper.classList.contains('fade-out')) wrapper.classList.add('d-none'); 
+                }, 400);
+            }
+        });
+    }
+});
+</script>
 <!-- end file application/views/public/home.php -->
 
 <!-- file application/controllers/Pages.php -->
@@ -3556,7 +3588,7 @@ class Pages extends CI_Controller {
         width: 120px;
         height: 120px;
         object-fit: cover;
-        border-radius: 15px; /* Sedikit membulat sesuai desain */
+        border-radius: 15px; 
         margin-bottom: 20px;
     }
     .speaker-name {
@@ -3581,7 +3613,7 @@ class Pages extends CI_Controller {
     .workshops-section {
         position: relative;
         padding: 60px 0;
-        scroll-margin-top: 80px; /* Mencegah judul tertutup navbar sticky saat di-scroll */
+        scroll-margin-top: 80px; 
     }
     .shape-2 {
         position: absolute;
@@ -3590,6 +3622,8 @@ class Pages extends CI_Controller {
         max-width: 300px;
         z-index: -1;
     }
+    
+    /* MODIFIKASI FILTER TAGS */
     .tag-pill {
         border: 1px solid #5156B8;
         color: #5156B8;
@@ -3598,14 +3632,19 @@ class Pages extends CI_Controller {
         font-size: 13px;
         display: inline-block;
         margin: 0 5px 10px 0;
-        background: white;
+        background: transparent;
         text-decoration: none;
         transition: all 0.2s;
     }
-    .tag-pill:hover {
+    .tag-pill:hover, .tag-pill.active {
         background-color: #5156B8;
         color: white;
     }
+    
+    /* PENAMBAHAN CSS ANIMASI JS */
+    .workshop-wrapper { transition: opacity 0.4s ease, transform 0.4s ease; opacity: 1; transform: scale(1); }
+    .workshop-wrapper.fade-out { opacity: 0; transform: scale(0.95); }
+
     .workshop-card {
         border: 1px solid #E0E0E0;
         border-radius: 15px;
@@ -3633,7 +3672,7 @@ class Pages extends CI_Controller {
         font-size: 13px;
         color: #555;
         margin-bottom: 20px;
-        flex-grow: 1; /* Mendorong tombol ke bawah */
+        flex-grow: 1;
     }
     .workshop-fac-name {
         color: #5156B8;
@@ -3666,122 +3705,21 @@ class Pages extends CI_Controller {
     /* =========================================
        MODAL WORKSHOP DETAIL (FROM HOME.PHP)
        ========================================= */
-    .modal-workshop-detail .modal-content {
-        border-radius: 30px;
-        border: none;
-        background-color: #FFFFFF;
-        padding: 30px;
-    }
-    
-    .modal-workshop-detail .modal-header-custom {
-        padding: 40px;
-        color: #111;
-        border-radius: 20px;
-        margin-bottom: 30px;
-    }
-    
-    .modal-workshop-detail .btn-go-back {
-        color: #111;
-        font-weight: 600;
-        text-decoration: none;
-        padding: 0;
-        background: none;
-        border: none;
-        margin-bottom: 20px;
-        font-size: 16px;
-        transition: 0.3s;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-    }
-    
-    .modal-workshop-detail .ws-title {
-        font-size: 42px;
-        font-weight: 800;
-        line-height: 1.2;
-        margin-bottom: 10px;
-        color: #111;
-    }
-    
-    .modal-workshop-detail .ws-subtitle {
-        font-size: 20px;
-        color: #111;
-        font-weight: 500;
-        margin-bottom: 0;
-    }
-
-    .modal-workshop-detail .modal-body-custom {
-        padding: 0;
-    }
-
-    .modal-workshop-detail .info-card {
-        background-color: #F4F4F6; 
-        border-radius: 20px;
-        padding: 40px;
-        height: 100%;
-    }
-
-    .modal-workshop-detail .ws-heading {
-        color: #111;
-        font-size: 18px;
-        font-weight: 800;
-        margin-bottom: 15px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    .modal-workshop-detail .ws-heading i {
-        color: #5156B8; 
-        font-size: 20px;
-    }
-    
-    .modal-workshop-detail .ws-text {
-        font-size: 16px;
-        color: #111;
-        line-height: 1.6;
-        margin-bottom: 30px;
-    }
-
-    .modal-workshop-detail .fac-header-row {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        margin-bottom: 20px;
-    }
-    
-    .modal-workshop-detail .fac-img {
-        width: 100px;
-        height: 100px;
-        border-radius: 12px;
-        object-fit: cover;
-    }
-    
-    .modal-workshop-detail .fac-name {
-        font-size: 20px;
-        font-weight: 800;
-        color: #111;
-        margin-bottom: 5px;
-    }
-    
-    .modal-workshop-detail .fac-role {
-        font-size: 16px;
-        color: #444;
-        font-weight: 500;
-    }
-
-    .modal-workshop-detail .ws-tag-pill {
-        border: 1px solid #5156B8;
-        color: #5156B8;
-        background-color: transparent;
-        padding: 8px 20px;
-        border-radius: 30px;
-        font-size: 14px;
-        font-weight: 500;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        margin: 0 10px 10px 0;
-    }
+    .modal-workshop-detail .modal-content { border-radius: 30px; border: none; background-color: #FFFFFF; padding: 30px; }
+    .modal-workshop-detail .modal-header-custom { padding: 40px; color: #111; border-radius: 20px; margin-bottom: 30px; }
+    .modal-workshop-detail .btn-go-back { color: #111; font-weight: 600; text-decoration: none; padding: 0; background: none; border: none; margin-bottom: 20px; font-size: 16px; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+    .modal-workshop-detail .ws-title { font-size: 42px; font-weight: 800; line-height: 1.2; margin-bottom: 10px; color: #111; }
+    .modal-workshop-detail .ws-subtitle { font-size: 20px; color: #111; font-weight: 500; margin-bottom: 0; }
+    .modal-workshop-detail .modal-body-custom { padding: 0; }
+    .modal-workshop-detail .info-card { background-color: #F4F4F6; border-radius: 20px; padding: 40px; height: 100%; }
+    .modal-workshop-detail .ws-heading { color: #111; font-size: 18px; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+    .modal-workshop-detail .ws-heading i { color: #5156B8; font-size: 20px; }
+    .modal-workshop-detail .ws-text { font-size: 16px; color: #111; line-height: 1.6; margin-bottom: 30px; }
+    .modal-workshop-detail .fac-header-row { display: flex; align-items: center; gap: 20px; margin-bottom: 20px; }
+    .modal-workshop-detail .fac-img { width: 100px; height: 100px; border-radius: 12px; object-fit: cover; }
+    .modal-workshop-detail .fac-name { font-size: 20px; font-weight: 800; color: #111; margin-bottom: 5px; }
+    .modal-workshop-detail .fac-role { font-size: 16px; color: #444; font-weight: 500; }
+    .modal-workshop-detail .ws-tag-pill { border: 1px solid #5156B8; color: #5156B8; background-color: transparent; padding: 8px 20px; border-radius: 30px; font-size: 14px; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; margin: 0 10px 10px 0; }
 </style>
 
 <section class="programme-hero">
@@ -3854,13 +3792,13 @@ class Pages extends CI_Controller {
 
         <div class="mb-5">
             <?php foreach($tags as $t): ?>
-                <a href="javascript:void(0)" class="tag-pill"><?= htmlspecialchars($t->tag_name) ?></a>
+                <a href="javascript:void(0)" class="tag-pill" data-tag="<?= htmlspecialchars($t->tag_name) ?>"><?= htmlspecialchars($t->tag_name) ?></a>
             <?php endforeach; ?>
         </div>
 
         <div class="row g-4">
             <?php foreach($workshops as $w): ?>
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-4 workshop-wrapper" data-tags="<?= htmlspecialchars(implode(',', $w->tag_names)) ?>">
                 <div class="workshop-card">
                     <?php 
                         if($w->primary_facilitator && $w->primary_facilitator->image_path != 'default.png') {
@@ -3889,7 +3827,7 @@ class Pages extends CI_Controller {
 </section>
 
 <?php 
-// Memanggil model secara dinamis di dalam view
+// Memanggil model secara dinamis di dalam view (SAYA BIARKAN UTUH)
 $CI =& get_instance();
 $CI->load->model('Tag_model');
 $CI->load->model('Workshop_model');
@@ -3983,4 +3921,51 @@ foreach($workshops as $w):
     </div>
 </div>
 <?php endforeach; ?>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const tagPills = document.querySelectorAll('.tag-pill');
+    const workshopWrappers = document.querySelectorAll('.workshop-wrapper');
+    let activeTags = new Set();
+
+    tagPills.forEach(pill => {
+        pill.addEventListener('click', function(e) {
+            e.preventDefault();
+            const tag = this.getAttribute('data-tag');
+            if (activeTags.has(tag)) {
+                activeTags.delete(tag);
+                this.classList.remove('active');
+            } else {
+                activeTags.add(tag);
+                this.classList.add('active');
+            }
+            filterContent();
+        });
+    });
+
+    function filterContent() {
+        workshopWrappers.forEach(wrapper => {
+            const tagsAttr = wrapper.getAttribute('data-tags');
+            const cardTags = tagsAttr ? tagsAttr.split(',').map(t => t.trim()) : [];
+            let isMatch = true;
+
+            if (activeTags.size > 0) {
+                activeTags.forEach(t => { 
+                    if (!cardTags.includes(t)) isMatch = false; 
+                });
+            }
+
+            if (isMatch) {
+                wrapper.classList.remove('d-none');
+                setTimeout(() => wrapper.classList.remove('fade-out'), 10);
+            } else {
+                wrapper.classList.add('fade-out');
+                setTimeout(() => { 
+                    if(wrapper.classList.contains('fade-out')) wrapper.classList.add('d-none'); 
+                }, 400);
+            }
+        });
+    }
+});
+</script>
 <!-- end file application/views/public/speakers.php -->
