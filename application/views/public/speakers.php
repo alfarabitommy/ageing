@@ -68,7 +68,7 @@
     .speaker-title {
         font-size: 14px;
         color: #333;
-        font-weight: 600;
+        font-weight: 400;
         margin-bottom: 15px;
     }
     .speaker-org {

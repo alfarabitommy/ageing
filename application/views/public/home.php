@@ -12,18 +12,18 @@
         text-align: center;
         overflow: hidden;
     }
-    .hero-pretitle { font-weight: 700; text-transform: uppercase; font-size: 14px; margin-bottom: 20px; letter-spacing: 1px; }
-    .hero-title-img { max-width: 600px; width: 100%; margin-bottom: 20px; }
-    .hero-subtitle { font-size: 24px; font-weight: 600; margin-bottom: 30px; }
-    .hero-date { font-size: 18px; font-weight: 500; margin-bottom: 40px; }
+    .hero-pretitle { position: relative; left: -21%; font-weight: 700; text-transform: uppercase; font-size: 14px; margin-bottom: 20px; letter-spacing: 1px; }
+    .hero-title-img { position: relative; left: -21%; max-width: 600px; width: 100%; margin-bottom: 20px; }
+    .hero-subtitle { position: relative; left: -21%; font-size: 24px; font-weight: 600; margin-bottom: 30px; }
+    .hero-date { position: relative; left: -21%; font-size: 18px; font-weight: 500; margin-bottom: 40px; }
     .btn-outline-white {
-        border: 2px solid white; color: white; border-radius: 30px; padding: 10px 30px; font-weight: 700; transition: 0.3s; text-decoration: none;
+        position: relative; left:-21%; border: 2px solid white; color: white; border-radius: 30px; padding: 10px 30px; font-weight: 700; transition: 0.3s; text-decoration: none;
     }
-    .btn-outline-white:hover { background-color: white; color: #5156B8; }
+    .btn-outline-white:hover {position: relative left: -21%; background-color: white; color: #5156B8; }
     
     /* Hero Ornaments */
-    .hero-shape { position: absolute; right: -5%; top: 10%; max-width: 400px; opacity: 0.8; z-index: 0; }
-    .hero-ballet { position: absolute; right: 15%; bottom: 10%; max-width: 80px; z-index: 1; }
+    .hero-shape { position: absolute; right: 0%; top: 500%; max-width: 550px; opacity: 0.8; z-index: 0; }
+    .hero-ballet { position: absolute; right: -10%; bottom: 10%; max-width: 550px; z-index: 1; }
 
     /* INTRO SECTION */
     .intro-section {
@@ -34,17 +34,17 @@
     }
     .intro-title { font-size: 52px; color: #111; line-height: 1.1; margin-bottom: 30px; }
     .intro-text { font-size: 18px; color: #333; margin-bottom: 20px; font-weight: 500; }
-    .intro-brush { position: absolute; top: 10%; left: 5%; max-width: 250px; }
-    .intro-mask { position: absolute; bottom: 10%; left: 10%; max-width: 150px; }
+    .intro-brush { position: absolute; top: -12%; left: -5%; max-width: 550px; }
+    .intro-mask { position: absolute; bottom: 87%; left: -5%; max-width: 550px; }
 
     /* MATTERS & CAROUSEL SECTION */
     .matters-section { padding: 100px 0; background-color: #FAFAFA; position: relative; }
     .matters-title { font-size: 48px; color: #5156B8; margin-bottom: 20px; }
-    .matters-mic { position: absolute; right: 15%; top: 50px; max-width: 200px; }
+    .matters-mic { position: absolute; right: 0%; top: -190px; max-width: 550px; }
     
     /* Carousel Styling (UPDATED TO MATCH ABOUT.PHP LANDSCAPE) */
     .carousel-inner { border-radius: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-    .carousel-item img { 
+    .carousel-item img { .reimagining-layer
         height: 400px; /* Diubah dari 600px menjadi 400px agar landscape */
         object-fit: cover; 
         border-radius: 30px; /* Mengikuti lekukan inner */
@@ -56,7 +56,7 @@
     /* REIMAGINING SECTION (PILLARS) */
     .reimagining-section { background-color: #5156B8; padding: 100px 0; position: relative; color: white; }
     .reimagining-title { font-size: 48px; line-height: 1.2; margin-bottom: 60px; }
-    .reimagining-layer { position: absolute; left: 5%; top: 10%; max-width: 300px; }
+    .reimagining-layer { position: absolute; left: 0%; top: 0%; max-width: 550px; }
 
     .pillar-card { border-radius: 20px; padding: 40px; height: 100%; color: #111; display: flex; flex-direction: column; align-items: flex-start; }
     .pillar-card i { font-size: 32px; margin-bottom: 20px; }
@@ -116,6 +116,10 @@
        WORKSHOPS SECTION
        ========================================= */
     .home-workshops { padding: 80px 0; }
+    .matters-workhsop { position: absolute; right: 0%; top: 0px; max-width: 80px; }
+
+    
+    
     .hw-title { font-size: 52px; color: #5156B8; line-height: 1.1; margin-bottom: 30px; }
     .stat-box { border-radius: 15px; padding: 25px; height: 100%; display: flex; flex-direction: column; justify-content: center; }
     .stat-box .display-4 { font-weight: 800; color: #111; }
@@ -219,11 +223,11 @@
 </style>
 
 <section class="home-hero">
-    <img src="<?= base_url('assets/public/images/home-hero-shape.png') ?>" alt="" class="hero-shape d-none d-md-block">
-    <img src="<?= base_url('assets/public/images/icon-ballet-white.png') ?>" alt="" class="hero-ballet d-none d-md-block">
-    <div class="container position-relative" style="z-index: 2;">
+        <img src="<?= base_url('assets/public/images/icon-ballet-white.png') ?>" alt="" class="hero-ballet d-none d-md-block">
+        <div class="container position-relative" style="z-index: 2;">
         <div class="hero-pretitle">SLEC × NAFA Present</div>
         <img src="<?= base_url('assets/public/images/footer-logo.png') ?>" alt="Ageing Artfully Conference 2026" class="hero-title-img">
+        
         <h2 class="hero-subtitle">Living Everyday Joys Through the Arts</h2>
         <div class="hero-date">Wednesday, 22 July 2026<br>9 AM - 5 PM</div>
         <a href="#intro" class="btn-outline-white">Explore More ></a>
@@ -232,7 +236,6 @@
 
 <section id="intro" class="intro-section">
     <img src="<?= base_url('assets/public/images/icon-brush.png') ?>" alt="" class="intro-brush d-none d-lg-block">
-    <img src="<?= base_url('assets/public/images/icon-mask.png') ?>" alt="" class="intro-mask d-none d-lg-block">
     <div class="container">
         <div class="row justify-content-end">
             <div class="col-lg-6 position-relative" style="z-index: 2;">
@@ -241,10 +244,12 @@
                 <p class="intro-text">Bringing together artists, academics, eldercare professionals, community partners, and older adults, this conference explores how creativity can be embedded into everyday life, beyond programmes and into lived experience.</p>
             </div>
         </div>
+
     </div>
 </section>
 
 <section class="matters-section">
+    <img src="<?= base_url('assets/public/images/icon-mask.png') ?>" alt="" class="intro-mask d-none d-lg-block">
     <img src="<?= base_url('assets/public/images/icon-mic.png') ?>" alt="" class="matters-mic d-none d-md-block">
     <div class="container">
         <div class="row mb-5">
@@ -308,6 +313,7 @@
 </section>
 
 <section class="home-workshops">
+    <img src="<?= base_url('assets/public/images/home-hero-shape.png') ?>" alt="" class="hero-shape d-none d-md-block">
     <div class="container">
         <p class="small text-muted fw-bold mb-2">SLEC x NAFA Ageing Artfully Conference 2026</p>
         <h2 class="hw-title">More Workshops<br>More Learning</h2>
