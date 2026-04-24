@@ -26,18 +26,26 @@
     .footer-link:hover {
         text-decoration: underline;
     }
-    .social-icons a {
+    
+    /* CATATAN FIX: Menambahkan display flex dan gap agar icon membungkus rapi ke bawah jika layar sempit */
+    .social-icons-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .social-icons-container a {
         color: white;
-        font-size: 20px;
-        margin-right: 15px;
+        font-size: 16px; /* Dikecilkan dari 20px agar lebih elegan */
         text-decoration: none;
         border: 1px solid rgba(255,255,255,0.5);
         border-radius: 8px;
-        padding: 8px 12px;
-        display: inline-block;
+        padding: 6px 10px; /* Dikecilkan menyesuaikan font */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         transition: all 0.3s;
     }
-    .social-icons a:hover {
+    .social-icons-container a:hover {
         background-color: white;
         color: #5156B8;
     }
@@ -64,7 +72,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <small class="d-block mb-2 text-white-50">@stlukeseldercare</small>
-                                <div class="social-icons">
+                                <div class="social-icons-container">
                                     <a href="#"><i class="fab fa-instagram"></i></a>
                                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                                     <a href="#"><i class="fab fa-tiktok"></i></a>
@@ -73,7 +81,7 @@
                             </div>
                             <div class="col-6">
                                 <small class="d-block mb-2 text-white-50">@nafa_sg</small>
-                                <div class="social-icons">
+                                <div class="social-icons-container">
                                     <a href="#"><i class="fab fa-instagram"></i></a>
                                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                                     <a href="#"><i class="fab fa-tiktok"></i></a>

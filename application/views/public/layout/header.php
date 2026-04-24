@@ -31,45 +31,44 @@
 
         /* Navbar Base Styles */
         .navbar {
-            padding: 12px 0;
+            padding: 10px 0; /* Diperkecil dari 12px */
             transition: all 0.3s ease;
         }
         .navbar-brand img {
-            max-height: 45px;
+            max-height: 35px; /* DIKECILKAN DARI 45px */
             transition: all 0.3s ease;
         }
         .nav-link {
-            font-size: 14px; 
+            font-size: 13px; /* TULISAN DIKECILKAN DARI 14px */
             font-weight: 500;
-            padding: 8px 15px !important;
+            padding: 8px 12px !important; /* Jarak antar menu dirapatkan */
             transition: color 0.3s;
         }
         .btn-register {
-            font-size: 14px;
+            font-size: 13px; /* TULISAN DIKECILKAN */
             font-weight: 700;
             border-radius: 25px;
-            padding: 8px 24px;
+            padding: 6px 20px; /* Tombol dibuat lebih proporsional */
             transition: all 0.3s;
         }
 
         /* Responsive Logo & Hamburger Fix */
         @media (max-width: 991px) {
-            /* Membagi ruang dengan persentase pasti agar tidak overlap/keluar layar */
             .navbar-brand {
-                width: 80%;
+                width: 75%; /* Sedikit dikurangi agar ikon hamburger aman */
                 margin-right: 0;
                 display: flex;
                 align-items: center;
             }
             .navbar-brand img {
-                max-width: 100%; /* Logo akan otomatis menyesuaikan ruang 80% layar */
+                max-width: 90%; /* Logo lebih kecil di mobile */
                 height: auto;
                 object-fit: contain;
             }
             .navbar-toggler {
-                width: 15%;
+                width: 20%;
                 display: flex;
-                justify-content: flex-end; /* Mendorong icon mentok ke kanan */
+                justify-content: flex-end; 
                 align-items: center;
                 padding: 0;
             }
@@ -92,8 +91,8 @@
             }
             .offcanvas .nav-link {
                 color: white !important;
-                font-size: 16px;
-                padding: 15px 20px !important;
+                font-size: 15px; /* Dikecilkan dari 16px untuk mobile */
+                padding: 12px 20px !important;
                 border-bottom: 1px solid rgba(255,255,255,0.05);
             }
             .offcanvas .nav-link:hover, 
@@ -157,14 +156,14 @@
 <?php $theme_class = (isset($is_dark_header) && $is_dark_header) ? 'navbar-dark-theme' : 'navbar-light-theme'; ?>
 
 <nav class="navbar navbar-expand-lg sticky-top <?= $theme_class ?>">
-    <div class="container-fluid px-3 px-lg-5 d-flex justify-content-between align-items-center flex-nowrap">
+    <div class="container-fluid px-3 px-lg-5 d-flex justify-content-between align-items-center">
         
         <a class="navbar-brand" href="<?= base_url() ?>">
             <img src="<?= base_url('assets/public/images/logos.png') ?>" alt="SLEC, NAFA, UAS Logos">
         </a>
         
         <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="<?= (isset($is_dark_header) && $is_dark_header) ? '#FFFFFF' : '#1B2A47' ?>" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="<?= (isset($is_dark_header) && $is_dark_header) ? '#FFFFFF' : '#1B2A47' ?>" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
             </svg>
         </button>

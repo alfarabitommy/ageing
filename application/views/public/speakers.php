@@ -188,6 +188,55 @@
     .modal-workshop-detail .fac-name { font-size: 20px; font-weight: 800; color: #111; margin-bottom: 5px; }
     .modal-workshop-detail .fac-role { font-size: 16px; color: #444; font-weight: 500; }
     .modal-workshop-detail .ws-tag-pill { border: 1px solid #5156B8; color: #5156B8; background-color: transparent; padding: 8px 20px; border-radius: 30px; font-size: 14px; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; margin: 0 10px 10px 0; }
+
+    /* =========================================
+       RESPONSIVE MOBILE ADJUSTMENTS (NEW)
+       ========================================= */
+    @media (max-width: 768px) {
+        /* 1. Pengecilan Gambar Hiasan (Shapes) */
+        .shape-1 { 
+            max-width: 150px; /* Dikecilkan drastis dari 400px */
+            opacity: 0.4; /* Sedikit diredupkan agar teks tetap terbaca jelas */
+        }
+        .shape-2 { 
+            max-width: 120px; /* Dikecilkan dari 300px */
+            opacity: 0.4; 
+        }
+
+        /* 2. Penyesuaian Ruang & Teks Hero Section */
+        .programme-hero { 
+            padding: 40px 0 60px; /* Mengurangi ruang kosong atas/bawah */
+        }
+        .programme-hero .display-3 { 
+            font-size: 2.2rem; /* Mengecilkan teks "The Programme" */
+        }
+        
+        /* 3. Penyesuaian Judul Section Global */
+        .section-title { 
+            font-size: 30px; /* Mengecilkan teks "The Speakers" dll */
+        }
+        .workshops-section {
+            padding: 40px 0;
+        }
+        
+        /* 4. Penyesuaian Pop-up Modal Detail Workshop */
+        .modal-workshop-detail .modal-header-custom { 
+            padding: 25px 20px; /* Merapatkan header modal */
+        }
+        .modal-workshop-detail .ws-title { 
+            font-size: 26px; /* Mengecilkan judul di dalam modal */
+        }
+        .modal-workshop-detail .info-card { 
+            padding: 25px 20px; /* Merapatkan konten dalam modal */
+        }
+        .modal-workshop-detail .fac-header-row { 
+            flex-direction: column; /* Membuat foto dan nama fasilitator turun ke bawah */
+            text-align: center; 
+        }
+        .modal-workshop-detail .fac-img { 
+            margin: 0 auto; /* Menengahkan foto fasilitator */
+        }
+    }
 </style>
 
 <section class="programme-hero">
