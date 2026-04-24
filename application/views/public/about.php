@@ -32,17 +32,16 @@
         padding: 50px 0;
     }
 
-    /* Animasi Masuk (Slide Up Fade) */
     @keyframes slideUpFade {
         from { opacity: 0; transform: translateY(30px); }
         to { opacity: 1; transform: translateY(0); }
     }
 
     /* =========================================
-       1. PROGRAMME HERO (STAR SLIDER BACKGROUND)
+       1. PROGRAMME HERO
        ========================================= */
     .programme-hero {
-        background-color: #5156B8; /* Navy Blue */
+        background-color: #5156B8; 
         color: white;
         padding: 80px 0 160px; 
         position: relative;
@@ -171,11 +170,10 @@
 
     /* =========================================
        4. NEWS / ABOUT ORGANISATIONS SECTION
-       (DIUBAH PERSIS SEPERTI GAMBAR REFERENSI)
        ========================================= */
     .news-section {
         padding: 80px 0;
-        background-color: #f4f7f6; /* Warna bg mengikuti desain body */
+        background-color: #f4f7f6; 
     }
     .news-grid {
         display: flex;
@@ -183,15 +181,14 @@
         flex-wrap: wrap; 
     }
     
-    /* Modifikasi Kartu */
     .news-item {
         background: #ffffff;
         flex: 1; 
         min-width: 300px; 
         border-radius: 20px;
-        border: 1px solid #E2E4E8; /* Border abu-abu tipis seperti digambar */
-        padding: 18px; /* Ruang putih antara gambar dan border kartu */
-        box-shadow: 0 4px 15px rgba(0,0,0,0.02); /* Bayangan sangat halus */
+        border: 1px solid #E2E4E8; 
+        padding: 18px; 
+        box-shadow: 0 4px 15px rgba(0,0,0,0.02); 
         display: flex;
         flex-direction: column;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -206,23 +203,22 @@
         box-shadow: 0 12px 30px rgba(0,0,0,0.08);
     }
     
-    /* Gambar membulat di dalam kartu */
     .news-item img {
         width: 100%;
         height: 260px;
         object-fit: cover;
-        border-radius: 12px; /* Melengkung di keempat sisi */
+        border-radius: 12px; 
     }
     
     .news-content {
-        padding: 25px 10px 10px 10px; /* Jarak dari gambar ke teks */
+        padding: 25px 10px 10px 10px; 
         display: flex;
         flex-direction: column;
         flex-grow: 1;
     }
     .news-content h3 {
         margin: 0 0 15px 0;
-        color: #5156B8; /* Warna teks judul keunguan */
+        color: #5156B8; 
         font-weight: 700;
         font-size: 26px;
         line-height: 1.3;
@@ -233,10 +229,9 @@
         margin-bottom: 25px;
         line-height: 1.6;
         font-weight: 400;
-        flex-grow: 1; /* Mendorong tombol ke bawah */
+        flex-grow: 1; 
     }
     
-    /* Modifikasi Tombol Read More (Outline Style) */
     .read-more-outline {
         align-self: flex-start;
         text-decoration: none;
@@ -246,8 +241,9 @@
         font-size: 15px;
         padding: 8px 24px;
         border: 1px solid #5156B8;
-        border-radius: 10px; /* Membulat lembut */
+        border-radius: 10px; 
         transition: all 0.3s ease;
+        cursor: pointer;
     }
     .read-more-outline:hover {
         background-color: #5156B8;
@@ -255,38 +251,132 @@
     }
 
     /* =========================================
+       5. MODAL POP-UP (ORGANISATION DETAILS)
+       ========================================= */
+    .about-modal .modal-content {
+        border-radius: 30px;
+        border: none;
+        padding: 50px;
+        background-color: #FFFFFF;
+    }
+    .about-modal .btn-go-back {
+        color: #5156B8;
+        font-weight: 600;
+        font-size: 15px;
+        background: none;
+        border: none;
+        padding: 0;
+        margin-bottom: 20px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        transition: opacity 0.3s;
+    }
+    .about-modal .btn-go-back:hover { opacity: 0.7; }
+    
+    .about-modal .modal-header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .about-modal .modal-title-custom {
+        font-size: 42px;
+        font-weight: 800;
+        color: #4B4CB0; /* Warna ungu navy persis seperti di desain */
+        line-height: 1.2;
+        letter-spacing: -1px;
+        margin: 0;
+        max-width: 600px;
+    }
+    .about-modal .modal-logos {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    .about-modal .modal-logos img {
+        max-height: 60px;
+        object-fit: contain;
+    }
+
+    .about-modal .hero-img {
+        width: 100%;
+        height: 450px;
+        object-fit: cover;
+        border-radius: 25px;
+        margin-bottom: 40px;
+    }
+
+    .about-modal .info-box {
+        background-color: #F4F4F6; /* Warna abu-abu halus dari referensi */
+        border-radius: 25px;
+        padding: 40px;
+        height: 100%;
+    }
+    .about-modal .info-box p {
+        font-size: 16px;
+        color: #111;
+        margin-bottom: 20px;
+        line-height: 1.6;
+    }
+    .about-modal .info-box p:last-child { margin-bottom: 0; }
+    
+    .about-modal .info-heading {
+        font-size: 18px;
+        font-weight: 800;
+        color: #111;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .about-modal .info-heading i {
+        color: #5156B8;
+        font-size: 20px;
+    }
+    
+    .about-modal .contact-group { margin-bottom: 30px; }
+    .about-modal .contact-group:last-child { margin-bottom: 0; }
+    .about-modal .contact-title { font-weight: 700; color: #111; margin-bottom: 5px; }
+    .about-modal .contact-link { color: #5156B8; text-decoration: none; display: block; margin-bottom: 8px; }
+    .about-modal .contact-link:hover { text-decoration: underline; }
+
+    /* =========================================
        RESPONSIVE MOBILE ADJUSTMENTS
        ========================================= */
-    @media (max-width: 768px) {
+    @media (max-width: 991px) {
         section { padding: 50px 0; }
         
         .programme-hero { padding: 40px 0 100px; }
         .hero-title { font-size: 2.2rem; }
         .programme-hero p.lead { font-size: 16px; margin-bottom: 30px !important; }
         
-        .slider-thumb img { 
-            max-width: 150px; 
-            opacity: 0.4; 
-        }
-
+        .slider-thumb img { max-width: 150px; opacity: 0.4; }
         .vision-container { margin-top: -60px; }
         .vision-overlay-box .carousel-item img { height: 250px; }
-        
         .transition-text-section { padding: 40px 0 10px; }
         .profile-text { font-size: 16px; padding: 0 15px; }
-
         .objectives-section { padding: 60px 0; }
         .section-title { font-size: 32px; }
         .objectives-subtitle { font-size: 18px; padding: 0 15px; margin-bottom: 30px; }
-        
         .obj-card { padding: 30px 20px; }
         .obj-card h4 { font-size: 18px; }
-        
         .news-grid { flex-direction: column; gap: 20px; }
         .news-item { padding: 15px; }
         .news-item img { height: 220px; }
         .news-content { padding: 20px 5px 5px 5px; }
         .news-content h3 { font-size: 22px; }
+
+        /* MODAL RESPONSIVE */
+        .about-modal .modal-content { padding: 30px 20px; }
+        .about-modal .modal-header-row { flex-direction: column; gap: 20px; margin-bottom: 20px; }
+        .about-modal .modal-title-custom { font-size: 32px; }
+        .about-modal .modal-logos img { max-height: 40px; }
+        .about-modal .hero-img { height: 250px; border-radius: 15px; margin-bottom: 25px; }
+        .about-modal .info-box { padding: 25px; }
     }
 </style>
 
@@ -405,7 +495,7 @@
                 <div class="news-content">
                     <h3>About St Luke’s ElderCare<br>(SLEC)</h3>
                     <p>SLEC was established in 19XX and together they revolutionized care industry in Singapore.</p>
-                    <a href="#" class="read-more-outline">Read More</a>
+                    <button type="button" class="read-more-outline" data-bs-toggle="modal" data-bs-target="#modalSLEC">Read More</button>
                 </div>
             </div>
 
@@ -414,9 +504,106 @@
                 <div class="news-content">
                     <h3>About Nanyang Academy<br>of Fine Arts (NAFA)</h3>
                     <p>NAFA is Singapore’s pioneer arts institution and a founding member of the University of the Arts Singapore (UAS).</p>
-                    <a href="#" class="read-more-outline">Read More</a>
+                    <button type="button" class="read-more-outline" data-bs-toggle="modal" data-bs-target="#modalNAFA">Read More</button>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<div class="modal fade about-modal" id="modalSLEC" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content shadow-lg">
+            
+            <button type="button" class="btn-go-back" data-bs-dismiss="modal">
+                <i class="fas fa-chevron-left"></i> Go Back
+            </button>
+            
+            <div class="modal-header-row">
+                <h2 class="modal-title-custom">About St Luke's<br>ElderCare (SLEC)</h2>
+                <div class="modal-logos">
+                    <img src="<?= base_url('assets/public/images/slec-logo.png') ?>" alt="SLEC Logo">
+                </div>
+            </div>
+
+            <img src="<?= base_url('assets/public/images/slec.png') ?>" alt="SLEC Hero" class="hero-img">
+
+            <div class="row g-4">
+                <div class="col-lg-7">
+                    <div class="info-box">
+                        <p>SLEC is a Christian healthcare provider dedicated to enriching the lives of seniors in Singapore, regardless of race, language and religion. Guided by our GRACE philosophy of care, we are committed to providing compassionate and holistic care that fosters autonomy and choice.</p>
+                        <p>To empower seniors of varying needs, from the fit to the frail, we offer a comprehensive suite of services island wide. These include community-based programmes that promote active ageing; centre-based offerings such as day care, rehabilitation and nursing; residential (nursing home) services for long-term care; and home-based services covering medical, nursing and therapy needs.</p>
+                        <p>Leveraging our legacy of over 25 years, we are on an unstoppable mission to transform the care challenges of Singapore's ageing population.</p>
+                        <p>Through innovation, collaboration and education, we seek to elevate the community care sector, where seniors thrive in their golden years and age with dignity, independence and joy.</p>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="info-box">
+                        <div class="contact-group">
+                            <h5 class="info-heading"><i class="far fa-building"></i> Office Location</h5>
+                            <div class="contact-title mt-3">St Luke's ElderCare<br>(SLEC) Headquarters</div>
+                            <p style="margin-top: 10px;">461 Clementi Road #04-11,<br>Block A, SIM Headquarters,<br>Singapore 599491</p>
+                        </div>
+                        
+                        <div class="contact-group mt-4 pt-2">
+                            <h5 class="info-heading"><i class="far fa-address-book"></i> Contact Us</h5>
+                            <div class="mt-3">
+                                <a href="mailto:secretariat.ageingartfully@slec.org.sg" class="contact-link">secretariat.ageingartfully@slec.org.sg</a>
+                                <a href="mailto:hq@slec.org.sg" class="contact-link">hq@slec.org.sg</a>
+                                <a href="tel:+6567172777" class="contact-link" style="margin-top: 15px;">6717 2777</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade about-modal" id="modalNAFA" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content shadow-lg">
+            
+            <button type="button" class="btn-go-back" data-bs-dismiss="modal">
+                <i class="fas fa-chevron-left"></i> Go Back
+            </button>
+            
+            <div class="modal-header-row">
+                <h2 class="modal-title-custom">About Nanyang Academy<br>of Fine Arts (NAFA)</h2>
+                <div class="modal-logos">
+                    <img src="<?= base_url('assets/public/images/nafa-logo.png') ?>" alt="NAFA UAS Logo">
+                </div>
+            </div>
+
+            <img src="<?= base_url('assets/public/images/nafa.png') ?>" alt="NAFA Hero" class="hero-img">
+
+            <div class="row g-4">
+                <div class="col-lg-7">
+                    <div class="info-box">
+                        <p>Established in 1938, NAFA is Singapore's pioneer arts institution and a founding member of the University of the Arts Singapore (UAS). Renowned for its strength in Southeast Asian arts, NAFA is also recognised for its rigorous, practice-led curriculum, interdisciplinary approach, and strong engagement with the creative community. This commitment is reflected in initiatives such as the Institute of Southeast Asian Arts (ISEAA), which advances artistic practice and research in the region.</p>
+                        <p>With 16 Cultural Medallion and 15 Young Artist Award alumni, NAFA has nurtured some of the nation's most celebrated artists and creative practitioners. Supporting learners at various stages of learning, from early arts education to diploma, degree, postgraduate, and continuing education programmes, NAFA offers educational pathways across art, design, performing arts, and interdisciplinary practices, guided by its mission of "inspiring learning and growth through the arts".</p>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="info-box">
+                        <div class="contact-group">
+                            <h5 class="info-heading"><i class="far fa-building"></i> Office Location</h5>
+                            <div class="contact-title mt-3">Nanyang Academy<br>of Fine Arts</div>
+                            <p style="margin-top: 10px;">80 Bencoolen Street<br>Singapore 189655</p>
+                        </div>
+                        
+                        <div class="contact-group mt-4 pt-2">
+                            <h5 class="info-heading"><i class="far fa-address-book"></i> Contact Us</h5>
+                            <div class="mt-3">
+                                <a href="mailto:cle@nafa.edu.sg" class="contact-link">cle@nafa.edu.sg</a>
+                                <a href="tel:+6565121388" class="contact-link" style="margin-top: 15px;">6512 1388</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
