@@ -44,7 +44,7 @@
     .programme-hero {
         background-color: #5156B8; /* Navy Blue */
         color: white;
-        padding: 80px 0 160px; /* Padding bawah diperbesar untuk memberi ruang carousel */
+        padding: 80px 0 160px; 
         position: relative;
         overflow: hidden;
     }
@@ -60,7 +60,7 @@
     .slider-thumb {
         position: absolute;
         bottom: 0;
-        right: 0; /* Disesuaikan agar tidak overflow keluar viewport */
+        right: 0; 
         z-index: 0;
     }
     .slider-thumb img {
@@ -79,14 +79,14 @@
     .vision-container {
         position: relative;
         z-index: 10;
-        margin-top: -120px; /* Overlapping yang proporsional */
+        margin-top: -120px; 
         padding: 0 15px;
     }
     .vision-overlay-box {
         background-color: #ffffff;
         border-radius: 30px;
         position: relative;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Bayangan diperhalus */
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); 
         overflow: hidden;
         animation: slideUpFade 0.6s ease forwards;
     }
@@ -115,7 +115,6 @@
         transform: scale(1.2);
     }
 
-    /* Teks Transisi Patahan */
     .transition-text-section {
         padding: 60px 0 20px;
         text-align: center;
@@ -124,7 +123,7 @@
         font-size: 18px; 
         color: #444; 
         line-height: 1.8; 
-        max-width: 800px; /* Menggantikan <br> paksa agar responsif */
+        max-width: 800px; 
         margin: 0 auto;
         font-weight: 500;
     }
@@ -172,23 +171,30 @@
 
     /* =========================================
        4. NEWS / ABOUT ORGANISATIONS SECTION
+       (DIUBAH PERSIS SEPERTI GAMBAR REFERENSI)
        ========================================= */
     .news-section {
         padding: 80px 0;
+        background-color: #f4f7f6; /* Warna bg mengikuti desain body */
     }
     .news-grid {
         display: flex;
         gap: 30px; 
         flex-wrap: wrap; 
     }
+    
+    /* Modifikasi Kartu */
     .news-item {
-        background: #fff;
+        background: #ffffff;
         flex: 1; 
         min-width: 300px; 
         border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-        transition: transform 0.3s ease, box-shadow 0.3s;
+        border: 1px solid #E2E4E8; /* Border abu-abu tipis seperti digambar */
+        padding: 18px; /* Ruang putih antara gambar dan border kartu */
+        box-shadow: 0 4px 15px rgba(0,0,0,0.02); /* Bayangan sangat halus */
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         opacity: 0;
         animation: slideUpFade 0.6s ease forwards;
     }
@@ -197,37 +203,55 @@
 
     .news-item:hover {
         transform: translateY(-5px); 
-        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.08);
     }
+    
+    /* Gambar membulat di dalam kartu */
     .news-item img {
         width: 100%;
-        height: 250px;
+        height: 260px;
         object-fit: cover;
+        border-radius: 12px; /* Melengkung di keempat sisi */
     }
+    
     .news-content {
-        padding: 30px;
+        padding: 25px 10px 10px 10px; /* Jarak dari gambar ke teks */
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
     }
     .news-content h3 {
         margin: 0 0 15px 0;
-        color: #111;
-        font-weight: 800;
-        font-size: 22px;
+        color: #5156B8; /* Warna teks judul keunguan */
+        font-weight: 700;
+        font-size: 26px;
+        line-height: 1.3;
     }
     .news-content p {
-        font-size: 15px;
-        color: #555;
-        margin-bottom: 20px;
+        font-size: 16px;
+        color: #111;
+        margin-bottom: 25px;
         line-height: 1.6;
+        font-weight: 400;
+        flex-grow: 1; /* Mendorong tombol ke bawah */
     }
-    .read-more {
+    
+    /* Modifikasi Tombol Read More (Outline Style) */
+    .read-more-outline {
+        align-self: flex-start;
         text-decoration: none;
         color: #5156B8;
-        font-weight: 700;
+        background-color: transparent;
+        font-weight: 500;
         font-size: 15px;
-        transition: opacity 0.3s;
+        padding: 8px 24px;
+        border: 1px solid #5156B8;
+        border-radius: 10px; /* Membulat lembut */
+        transition: all 0.3s ease;
     }
-    .read-more:hover {
-        opacity: 0.7;
+    .read-more-outline:hover {
+        background-color: #5156B8;
+        color: #ffffff;
     }
 
     /* =========================================
@@ -240,13 +264,11 @@
         .hero-title { font-size: 2.2rem; }
         .programme-hero p.lead { font-size: 16px; margin-bottom: 30px !important; }
         
-        /* Elemen hiasan dibuat estetik namun tidak mendominasi */
         .slider-thumb img { 
             max-width: 150px; 
             opacity: 0.4; 
         }
 
-        /* Penyesuaian Overlay Carousel agar tidak menabrak teks */
         .vision-container { margin-top: -60px; }
         .vision-overlay-box .carousel-item img { height: 250px; }
         
@@ -261,7 +283,10 @@
         .obj-card h4 { font-size: 18px; }
         
         .news-grid { flex-direction: column; gap: 20px; }
-        .news-content { padding: 20px; }
+        .news-item { padding: 15px; }
+        .news-item img { height: 220px; }
+        .news-content { padding: 20px 5px 5px 5px; }
+        .news-content h3 { font-size: 22px; }
     }
 </style>
 
@@ -372,24 +397,24 @@
     </div>
 </section>
 
-<section class="news-section bg-white">
+<section class="news-section">
     <div class="container">
         <div class="news-grid">
             <div class="news-item">
                 <img src="<?= base_url('assets/public/images/about-slec.png') ?>" alt="About SLEC">
                 <div class="news-content">
-                    <h3>About St Luke's ElderCare</h3>
-                    <p>SLEC was established in 1999 and together they revolutionized the care industry in Singapore.</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right ms-1"></i></a>
+                    <h3>About St Luke’s ElderCare<br>(SLEC)</h3>
+                    <p>SLEC was established in 19XX and together they revolutionized care industry in Singapore.</p>
+                    <a href="#" class="read-more-outline">Read More</a>
                 </div>
             </div>
 
             <div class="news-item">
                 <img src="<?= base_url('assets/public/images/about-nafa.png') ?>" alt="About NAFA">
                 <div class="news-content">
-                    <h3>About Nanyang Academy</h3>
-                    <p>NAFA is Singapore's pioneer arts institution and a founding member of the University of the Arts Singapore (UAS).</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right ms-1"></i></a>
+                    <h3>About Nanyang Academy<br>of Fine Arts (NAFA)</h3>
+                    <p>NAFA is Singapore’s pioneer arts institution and a founding member of the University of the Arts Singapore (UAS).</p>
+                    <a href="#" class="read-more-outline">Read More</a>
                 </div>
             </div>
         </div>
