@@ -5,7 +5,8 @@ class Schedule_model extends CI_Model {
 
     public function get_all()
     {
-        // Urutkan berdasarkan waktu mulai agar selalu berurutan sesuai timeline
+        // Diurutkan berdasarkan tanggal, lalu jam mulai agar timeline rapi
+        $this->db->order_by('event_date', 'ASC');
         $this->db->order_by('time_start', 'ASC');
         return $this->db->get('schedules')->result();
     }

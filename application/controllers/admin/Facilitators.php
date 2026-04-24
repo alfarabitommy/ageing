@@ -11,7 +11,7 @@ class Facilitators extends MY_Controller {
 
     public function index()
     {
-        $data['title'] = 'Fasilitator | Micro-CMS Ageing Artfully';
+        $data['title'] = 'Facilitator | Micro-CMS Ageing Artfully';
         $data['admin_username'] = $this->session->userdata('admin_username');
         $data['facilitators'] = $this->Facilitator_model->get_all();
         
@@ -22,7 +22,7 @@ class Facilitators extends MY_Controller {
 
     public function create()
     {
-        $data['title'] = 'Tambah Fasilitator | Micro-CMS Ageing Artfully';
+        $data['title'] = 'Add Facilitator | Micro-CMS Ageing Artfully';
         $data['admin_username'] = $this->session->userdata('admin_username');
         $data['action'] = base_url('admin/facilitators/store');
         $data['facilitator'] = null;
@@ -57,7 +57,7 @@ class Facilitators extends MY_Controller {
         }
 
         $this->Facilitator_model->insert($data);
-        $this->session->set_flashdata('success', 'Data fasilitator berhasil ditambahkan.');
+        $this->session->set_flashdata('success', 'The facilitator data has been successfully added.');
         redirect('admin/facilitators');
     }
 
@@ -108,7 +108,7 @@ class Facilitators extends MY_Controller {
         }
 
         $this->Facilitator_model->update($id, $data);
-        $this->session->set_flashdata('success', 'Data fasilitator berhasil diperbarui.');
+        $this->session->set_flashdata('success', 'The facilitator data has been successfully updated.');
         redirect('admin/facilitators');
     }
 
@@ -122,7 +122,7 @@ class Facilitators extends MY_Controller {
         }
 
         $this->Facilitator_model->delete($id);
-        $this->session->set_flashdata('success', 'Data fasilitator berhasil dihapus.');
+        $this->session->set_flashdata('success', 'The facilitator data has been successfully deleted.');
         redirect('admin/facilitators');
     }
 }

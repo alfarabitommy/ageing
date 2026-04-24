@@ -2,9 +2,9 @@
 
 <div class="card card-ceria bg-white">
     <div class="card-header bg-white border-0 pt-4 pb-0 px-4 d-flex justify-content-between align-items-center">
-        <h5 class="fw-bold mb-0" style="color: var(--primary-navy);"><i class="fas fa-calendar-alt me-2"></i> Kelola Jadwal (22 Juli 2026)</h5>
+        <h5 class="fw-bold mb-0" style="color: var(--primary-navy);"><i class="fas fa-calendar-alt me-2"></i> Manage Event Schedule</h5>
         <a href="<?= base_url('admin/schedules/create') ?>" class="btn btn-lime btn-sm shadow-sm rounded-pill px-3">
-            <i class="fas fa-plus"></i> Tambah Jadwal
+            <i class="fas fa-plus"></i> Add Schedule
         </a>
     </div>
     <div class="card-body p-4">
@@ -20,15 +20,17 @@
             <table id="schTable" class="table table-hover align-middle">
                 <thead class="table-light">
                     <tr>
-                        <th width="15%">Waktu</th>
-                        <th>Aktivitas</th>
-                        <th>Lokasi</th>
-                        <th width="15%" class="text-center">Aksi</th>
+                        <th width="15%">Date</th>
+                        <th width="15%">Time</th>
+                        <th>Activity</th>
+                        <th>Location</th>
+                        <th width="10%" class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($schedules as $s): ?>
                     <tr>
+                        <td class="small fw-bold"><?= date('d M Y', strtotime($s->event_date)) ?></td>
                         <td class="fw-bold text-nowrap">
                             <?= date('h:i A', strtotime($s->time_start)) ?>
                             <?= $s->time_end ? ' - ' . date('h:i A', strtotime($s->time_end)) : '' ?>
@@ -37,7 +39,7 @@
                         <td class="small text-muted"><i class="fas fa-map-marker-alt text-danger"></i> <?= $s->location ?></td>
                         <td class="text-center">
                             <a href="<?= base_url('admin/schedules/edit/'.$s->id) ?>" class="btn btn-sm btn-outline-primary rounded-pill"><i class="fas fa-edit"></i></a>
-                            <a href="<?= base_url('admin/schedules/delete/'.$s->id) ?>" class="btn btn-sm btn-outline-danger rounded-pill" onclick="return confirm('Yakin ingin menghapus jadwal ini?')"><i class="fas fa-trash"></i></a>
+                            <a href="<?= base_url('admin/schedules/delete/'.$s->id) ?>" class="btn btn-sm btn-outline-danger rounded-pill" onclick="return confirm('Are you sure you want to delete this schedule?')"><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
                     <?php endforeach; ?>
@@ -54,7 +56,7 @@
     $(document).ready(function() {
         $('#schTable').DataTable({
             language: { url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/id.json' },
-            ordering: false // Matikan sorting DataTables karena kueri SQL sudah mengurutkan berdasar time_start
+            ordering: false // Sorting dikontrol oleh kueri SQL di model
         });
     });
 </script>

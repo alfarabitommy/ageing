@@ -2,9 +2,9 @@
 
 <div class="card card-ceria bg-white">
     <div class="card-header bg-white border-0 pt-4 pb-0 px-4 d-flex justify-content-between align-items-center">
-        <h5 class="fw-bold mb-0" style="color: var(--primary-navy);"><i class="fas fa-tags me-2"></i> Kelola Kategori Tags</h5>
+        <h5 class="fw-bold mb-0" style="color: var(--primary-navy);"><i class="fas fa-tags me-2"></i> Manage Tags Categories</h5>
         <a href="<?= base_url('admin/tags/create') ?>" class="btn btn-lime btn-sm shadow-sm rounded-pill px-3">
-            <i class="fas fa-plus"></i> Tambah Tag
+            <i class="fas fa-plus"></i> Add Tag
         </a>
     </div>
     <div class="card-body p-4">
@@ -21,8 +21,8 @@
                 <thead class="table-light">
                     <tr>
                         <th width="5%">No</th>
-                        <th>Nama Tag</th>
-                        <th width="15%" class="text-center">Aksi</th>
+                        <th>Tag Name</th>
+                        <th width="15%" class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,7 +32,7 @@
                         <td class="fw-bold"><?= $t->tag_name ?></td>
                         <td class="text-center">
                             <a href="<?= base_url('admin/tags/edit/'.$t->id) ?>" class="btn btn-sm btn-outline-primary rounded-pill"><i class="fas fa-edit"></i></a>
-                            <a href="<?= base_url('admin/tags/delete/'.$t->id) ?>" class="btn btn-sm btn-outline-danger rounded-pill" onclick="return confirm('Yakin ingin menghapus tag ini?')"><i class="fas fa-trash"></i></a>
+                            <a href="<?= base_url('admin/tags/delete/'.$t->id) ?>" class="btn btn-sm btn-outline-danger rounded-pill" onclick="return confirm('Are you sure you want to delete this tag?')"><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
                     <?php endforeach; ?>

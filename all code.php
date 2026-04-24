@@ -352,13 +352,13 @@ class Dashboard extends MY_Controller {
             <div class="col-12">
                 <div class="card card-ceria bg-white">
                     <div class="card-body p-5 text-center">
-                        <h2 class="fw-bold mb-3" style="color: var(--primary-navy);">Selamat Datang di Micro-CMS!</h2>
+                        <h2 class="fw-bold mb-3" style="color: var(--primary-navy);">Welcome to Micro-CMS!!</h2>
                         <p class="text-muted fs-5 mb-4">
-                            Portal manajemen konten khusus untuk <strong>Ageing Artfully Conference 2026</strong>. 
-                            Gunakan menu di sebelah kiri untuk mengatur Jadwal, Pembicara, dan detail Breakout Workshops.
+                            Dedicated content management portal for <strong>Ageing Artfully Conference 2026</strong>. 
+                            Use the left menu to manage Schedules, Speakers, and Breakout Workshops details.
                         </p>
                         <a href="<?= base_url('admin/workshops') ?>" class="btn btn-lime btn-lg px-5 shadow-sm">
-                            <i class="fas fa-rocket me-2"></i> Kelola Workshops
+                            <i class="fas fa-rocket me-2"></i> Manage Workshops
                         </a>
                     </div>
                 </div>
@@ -368,9 +368,9 @@ class Dashboard extends MY_Controller {
                 <div class="card card-ceria text-center h-100">
                     <div class="card-body p-4">
                         <div class="display-4 mb-3" style="color: var(--accent-lime);"><i class="fas fa-calendar-check"></i></div>
-                        <h5 class="fw-bold text-dark">Jadwal Acara</h5>
-                        <p class="text-muted small">Atur timeline kegiatan tanggal 22 Juli 2026.</p>
-                        <a href="<?= base_url('admin/schedules') ?>" class="btn btn-outline-dark btn-sm rounded-pill mt-2">Atur Jadwal</a>
+                        <h5 class="fw-bold text-dark">Event Schedule</h5>
+                        <p class="text-muted small">Manage the activity timeline for July 22, 2026.</p>
+                        <a href="<?= base_url('admin/schedules') ?>" class="btn btn-outline-dark btn-sm rounded-pill mt-2">Manage Schedule</a>
                     </div>
                 </div>
             </div>
@@ -933,7 +933,7 @@ class Schedules extends MY_Controller {
 
     public function index()
     {
-        $data['title'] = 'Jadwal Acara | Micro-CMS Ageing Artfully';
+        $data['title'] = 'Event Schedule | Micro-CMS Ageing Artfully';
         $data['admin_username'] = $this->session->userdata('admin_username');
         $data['schedules'] = $this->Schedule_model->get_all();
         
@@ -967,7 +967,7 @@ class Schedules extends MY_Controller {
         ];
 
         $this->Schedule_model->insert($data);
-        $this->session->set_flashdata('success', 'Jadwal acara berhasil ditambahkan.');
+        $this->session->set_flashdata('success', 'Event Schedule berhasil ditambahkan.');
         redirect('admin/schedules');
     }
 
@@ -999,14 +999,14 @@ class Schedules extends MY_Controller {
         ];
 
         $this->Schedule_model->update($id, $data);
-        $this->session->set_flashdata('success', 'Jadwal acara berhasil diperbarui.');
+        $this->session->set_flashdata('success', 'Event Schedule berhasil diperbarui.');
         redirect('admin/schedules');
     }
 
     public function delete($id)
     {
         $this->Schedule_model->delete($id);
-        $this->session->set_flashdata('success', 'Jadwal acara berhasil dihapus.');
+        $this->session->set_flashdata('success', 'Event Schedule berhasil dihapus.');
         redirect('admin/schedules');
     }
 }

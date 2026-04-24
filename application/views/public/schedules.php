@@ -35,13 +35,15 @@
     }
 
     .event-card {
-        border-radius: 20px; /* Diperbesar agar lebih elegan seperti desain */
+        border-radius: 20px;
         padding: 35px 40px;
         margin-bottom: 25px;
         color: white;
         display: flex;
-        flex-direction: column; /* Mengubah flow menjadi vertikal */
-        gap: 15px; /* Jarak antar elemen di dalam card */
+        flex-direction: row; /* DIUBAH: Menjadi horizontal (kiri-kanan) */
+        justify-content: space-between; /* DIUBAH: Dorong info ke kiri, jam ke kanan */
+        align-items: center; /* DIUBAH: Rata tengah secara vertikal */
+        gap: 15px; 
         box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         
@@ -92,8 +94,9 @@
     .event-time {
         font-weight: 800;
         font-size: 32px;
-        margin-top: 15px;
         letter-spacing: -0.5px;
+        text-align: right;
+        flex-shrink: 0; /* Mencegah teks waktu menyusut/terlipat ke bawah jika judul terlalu panjang */
     }
 
     /* =========================================
@@ -110,28 +113,30 @@
             font-size: 20px; 
         }
         .event-card {
-            padding: 25px 25px 30px 25px; /* Menyesuaikan proporsi padding mobile */
+            padding: 25px 25px 30px 25px;
             border-radius: 16px;
             gap: 12px;
+            flex-direction: column; /* DIUBAH: Kembali tumpuk vertikal khusus di HP */
+            align-items: flex-start; /* DIUBAH: Rata kiri */
         }
         .event-title {
-            font-size: 26px; /* Mengecilkan sedikit tapi tetap dominan */
+            font-size: 26px; 
         }
         .event-location {
-            font-size: 14px; /* Teks lokasi sedikit disesuaikan */
+            font-size: 14px; 
             gap: 8px;
         }
         .event-time {
-            font-size: 28px; /* Waktu tetap besar sesuai hierarki visual */
-            margin-top: 10px;
+            font-size: 28px; 
+            margin-top: 10px; /* DIUBAH: Beri jarak atas agar tidak menempel dengan lokasi di versi HP */
+            text-align: left;
         }
     }
 </style>
 
 <div class="container pb-5">
-    <div class="schedule-header">
+    <div class="schedule-header" style="margin-bottom: 20px;">
         <h1 class="schedule-title">Event Schedule</h1>
-        <h2 class="schedule-date">Wednesday, 22 July 2026</h2>
     </div>
 
     <div class="schedule-list">
@@ -140,8 +145,21 @@
         $bg_colors = ['bg-dark-purple', 'bg-light-purple', 'bg-mid-purple'];
         $color_index = 0;
         $delay = 0; // Inisialisasi delay animasi
+        $current_date = ''; // Logika pembatas grup tanggal
 
         foreach($schedules as $s): 
+            
+            // Cek jika tanggal berbeda, buat sub-header tanggal baru
+            if ($current_date !== $s->event_date):
+                $current_date = $s->event_date;
+                $delay = 0; // Reset delay animasi per hari
+        ?>
+                <div class="schedule-header" style="margin-top: 30px; margin-bottom: 30px;">
+                    <h2 class="schedule-date"><?= date('l, d F Y', strtotime($s->event_date)) ?></h2>
+                </div>
+        <?php
+            endif;
+
             $current_bg = $bg_colors[$color_index % count($bg_colors)];
             $color_index++;
             

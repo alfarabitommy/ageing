@@ -11,7 +11,7 @@ class Tags extends MY_Controller {
 
     public function index()
     {
-        $data['title'] = 'Kategori Tags | Micro-CMS Ageing Artfully';
+        $data['title'] = 'Tags Categories | Micro-CMS Ageing Artfully';
         $data['admin_username'] = $this->session->userdata('admin_username');
         $data['tags'] = $this->Tag_model->get_all();
         
@@ -22,7 +22,7 @@ class Tags extends MY_Controller {
 
     public function create()
     {
-        $data['title'] = 'Tambah Tag | Micro-CMS Ageing Artfully';
+        $data['title'] = 'Add Tag | Micro-CMS Ageing Artfully';
         $data['admin_username'] = $this->session->userdata('admin_username');
         $data['action'] = base_url('admin/tags/store');
         $data['tag'] = null;
@@ -36,7 +36,7 @@ class Tags extends MY_Controller {
     {
         $data = ['tag_name' => $this->input->post('tag_name', TRUE)];
         $this->Tag_model->insert($data);
-        $this->session->set_flashdata('success', 'Data tag berhasil ditambahkan.');
+        $this->session->set_flashdata('success', 'The data tag has been successfully added.');
         redirect('admin/tags');
     }
 
@@ -59,14 +59,14 @@ class Tags extends MY_Controller {
     {
         $data = ['tag_name' => $this->input->post('tag_name', TRUE)];
         $this->Tag_model->update($id, $data);
-        $this->session->set_flashdata('success', 'Data tag berhasil diperbarui.');
+        $this->session->set_flashdata('success', 'The tag data has been successfully updated.');
         redirect('admin/tags');
     }
 
     public function delete($id)
     {
         $this->Tag_model->delete($id);
-        $this->session->set_flashdata('success', 'Data tag berhasil dihapus.');
+        $this->session->set_flashdata('success', 'The tag data has been successfully deleted.');
         redirect('admin/tags');
     }
 }

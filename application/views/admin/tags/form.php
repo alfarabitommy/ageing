@@ -7,12 +7,12 @@
     <div class="card-body p-4">
         <form action="<?= $action ?>" method="POST">
             <div class="mb-4">
-                <label for="tag_name" class="form-label fw-bold small text-muted">Nama Tag <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="tag_name" name="tag_name" value="<?= $tag ? $tag->tag_name : '' ?>" required placeholder="Contoh: Dementia Care">
+                <label for="tag_name" class="form-label fw-bold small text-muted">Tag Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="tag_name" name="tag_name" value="<?= $tag ? $tag->tag_name : '' ?>" required placeholder="Ex: Dementia Care">
             </div>
             <div class="d-flex justify-content-end gap-2">
-                <a href="<?= base_url('admin/tags') ?>" class="btn btn-light fw-bold rounded-pill px-4">Batal</a>
-                <button type="submit" class="btn btn-lime fw-bold rounded-pill px-4">Simpan Data</button>
+                <a href="<?= base_url('admin/tags') ?>" class="btn btn-light fw-bold rounded-pill px-4">Cancel</a>
+                <button type="submit" class="btn btn-lime fw-bold rounded-pill px-4">Save Data</button>
             </div>
         </form>
     </div>

@@ -24,7 +24,7 @@ class Workshops extends MY_Controller {
 
     public function create()
     {
-        $data['title'] = 'Tambah Workshop | Micro-CMS Ageing Artfully';
+        $data['title'] = 'Add Workshop | Micro-CMS Ageing Artfully';
         $data['admin_username'] = $this->session->userdata('admin_username');
         $data['action'] = base_url('admin/workshops/store');
         
@@ -63,9 +63,9 @@ class Workshops extends MY_Controller {
         $status = $this->Workshop_model->insert($data, $tag_ids, $facilitator_ids);
 
         if($status) {
-            $this->session->set_flashdata('success', 'Data workshop berhasil ditambahkan.');
+            $this->session->set_flashdata('success', 'The workshop data has been successfully added.');
         } else {
-            $this->session->set_flashdata('error', 'Terjadi kesalahan sistem saat menyimpan data relasi.');
+            $this->session->set_flashdata('error', 'A system error occurred while saving the relationship data.');
         }
         
         redirect('admin/workshops');
@@ -113,9 +113,9 @@ class Workshops extends MY_Controller {
         $status = $this->Workshop_model->update($id, $data, $tag_ids, $facilitator_ids);
 
         if($status) {
-            $this->session->set_flashdata('success', 'Data workshop berhasil diperbarui.');
+            $this->session->set_flashdata('success', 'The workshop data has been successfully updated.');
         } else {
-            $this->session->set_flashdata('error', 'Terjadi kesalahan sistem saat mengupdate data relasi.');
+            $this->session->set_flashdata('error', 'A system error occurred while updating relationship data.');
         }
 
         redirect('admin/workshops');
@@ -124,7 +124,7 @@ class Workshops extends MY_Controller {
     public function delete($id)
     {
         $this->Workshop_model->delete($id);
-        $this->session->set_flashdata('success', 'Data workshop berhasil dihapus.');
+        $this->session->set_flashdata('success', 'The workshop data has been successfully deleted.');
         redirect('admin/workshops');
     }
 }

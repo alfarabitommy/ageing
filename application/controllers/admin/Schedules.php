@@ -11,7 +11,7 @@ class Schedules extends MY_Controller {
 
     public function index()
     {
-        $data['title'] = 'Jadwal Acara | Micro-CMS Ageing Artfully';
+        $data['title'] = 'Event Schedule | Micro-CMS Ageing Artfully';
         $data['admin_username'] = $this->session->userdata('admin_username');
         $data['schedules'] = $this->Schedule_model->get_all();
         
@@ -22,7 +22,7 @@ class Schedules extends MY_Controller {
 
     public function create()
     {
-        $data['title'] = 'Tambah Jadwal | Micro-CMS Ageing Artfully';
+        $data['title'] = 'Add Schedule | Micro-CMS Ageing Artfully';
         $data['admin_username'] = $this->session->userdata('admin_username');
         $data['action'] = base_url('admin/schedules/store');
         $data['schedule'] = null;
@@ -37,6 +37,7 @@ class Schedules extends MY_Controller {
         $time_end = $this->input->post('time_end', TRUE);
         
         $data = [
+            'event_date' => $this->input->post('event_date', TRUE), // [PERBAIKAN]: Menangkap input tanggal
             'time_start' => $this->input->post('time_start', TRUE),
             'time_end' => empty($time_end) ? NULL : $time_end,
             'activity_title' => $this->input->post('activity_title', TRUE),
@@ -45,7 +46,7 @@ class Schedules extends MY_Controller {
         ];
 
         $this->Schedule_model->insert($data);
-        $this->session->set_flashdata('success', 'Jadwal acara berhasil ditambahkan.');
+        $this->session->set_flashdata('success', 'The event schedule has been successfully added.');
         redirect('admin/schedules');
     }
 
@@ -69,6 +70,7 @@ class Schedules extends MY_Controller {
         $time_end = $this->input->post('time_end', TRUE);
 
         $data = [
+            'event_date' => $this->input->post('event_date', TRUE), // [PERBAIKAN]: Menangkap input tanggal
             'time_start' => $this->input->post('time_start', TRUE),
             'time_end' => empty($time_end) ? NULL : $time_end,
             'activity_title' => $this->input->post('activity_title', TRUE),
@@ -77,14 +79,15 @@ class Schedules extends MY_Controller {
         ];
 
         $this->Schedule_model->update($id, $data);
-        $this->session->set_flashdata('success', 'Jadwal acara berhasil diperbarui.');
+        $this->session->set_flashdata('success', 'The event schedule has been successfully updated.');
         redirect('admin/schedules');
     }
 
     public function delete($id)
     {
         $this->Schedule_model->delete($id);
-        $this->session->set_flashdata('success', 'Jadwal acara berhasil dihapus.');
+        $this->session->set_flashdata('success', 'The event schedule has been successfully deleted.');
         redirect('admin/schedules');
     }
 }
+?>

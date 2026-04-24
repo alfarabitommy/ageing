@@ -150,7 +150,7 @@
             </h4>
             <div>
                 <span class="me-3 fw-bold" style="color: var(--primary-navy);">
-                    <i class="fas fa-user-circle"></i> Halo, <?= isset($admin_username) ? ucfirst($admin_username) : 'Admin' ?>!
+                    <i class="fas fa-user-circle"></i> Hello, <?= isset($admin_username) ? ucfirst($admin_username) : 'Admin' ?>!
                 </span>
                 <a href="<?= base_url('auth/logout') ?>" class="btn btn-sm btn-danger rounded-pill px-3">
                     <i class="fas fa-sign-out-alt"></i> Logout

@@ -22,7 +22,7 @@ class Speakers extends MY_Controller {
 
     public function create()
     {
-        $data['title'] = 'Tambah Pembicara | Micro-CMS Ageing Artfully';
+        $data['title'] = 'Add Speaker | Micro-CMS Ageing Artfully';
         $data['admin_username'] = $this->session->userdata('admin_username');
         $data['action'] = base_url('admin/speakers/store');
         $data['speaker'] = null;
@@ -56,13 +56,13 @@ class Speakers extends MY_Controller {
         }
 
         $this->Speaker_model->insert($data);
-        $this->session->set_flashdata('success', 'Data pembicara berhasil ditambahkan.');
+        $this->session->set_flashdata('success', 'The speaker information has been successfully added.');
         redirect('admin/speakers');
     }
 
     public function edit($id)
     {
-        $data['title'] = 'Edit Pembicara | Micro-CMS Ageing Artfully';
+        $data['title'] = 'Edit Speaker | Micro-CMS Ageing Artfully';
         $data['admin_username'] = $this->session->userdata('admin_username');
         $data['speaker'] = $this->Speaker_model->get_by_id($id);
         
@@ -105,7 +105,7 @@ class Speakers extends MY_Controller {
         }
 
         $this->Speaker_model->update($id, $data);
-        $this->session->set_flashdata('success', 'Data pembicara berhasil diperbarui.');
+        $this->session->set_flashdata('success', 'The speaker information has been successfully updated.');
         redirect('admin/speakers');
     }
 
@@ -118,7 +118,7 @@ class Speakers extends MY_Controller {
         }
 
         $this->Speaker_model->delete($id);
-        $this->session->set_flashdata('success', 'Data pembicara berhasil dihapus.');
+        $this->session->set_flashdata('success', 'The speaker data has been successfully deleted.');
         redirect('admin/speakers');
     }
 }
