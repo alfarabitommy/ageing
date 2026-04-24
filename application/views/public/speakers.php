@@ -91,6 +91,14 @@
         z-index: -1;
     }
     
+    /* CSS BARU UNTUK CONTAINER TAGS */
+    .tags-grid-container {
+        display: grid;
+        grid-template-columns: repeat(7, max-content); /* Kunci utamanya: Memaksa persis 7 kolom yang lebarnya menyesuaikan konten teks masing-masing */
+        gap: 10px 10px; /* Jarak baris (atas-bawah) dan kolom (kiri-kanan) */
+        justify-content: start; /* Memastikan grup tags merapat ke sebelah kiri */
+    }
+
     /* MODIFIKASI FILTER TAGS */
     .tag-pill {
         border: 1px solid #5156B8;
@@ -98,8 +106,9 @@
         border-radius: 20px;
         padding: 5px 15px;
         font-size: 13px;
-        display: inline-block;
-        margin: 0 5px 10px 0;
+        text-align: center;
+        /* margin: 0 5px 10px 0; <-- HAPUS BARIS INI, diganti oleh 'gap' di atas */
+        margin: 0; /* Pastikan margin 0 */
         background: transparent;
         text-decoration: none;
         transition: all 0.2s;
@@ -245,6 +254,11 @@
         .workshop-card {
             width: 85%; /* Dikecilkan ekstra untuk mobile */
         }
+        .tags-grid-container {
+            display: flex; /* Kembalikan ke flexbox untuk mobile */
+            flex-wrap: wrap; /* Biarkan turun baris secara natural */
+            gap: 8px; /* Jarak antar tag di mobile */
+        }
     }
 </style>
 
@@ -316,7 +330,7 @@
             Participants are invited to choose up to 4 workshops based on their interests and the needs of the seniors they work with.
         </p>
 
-        <div class="mb-5">
+        <div class="tags-grid-container mb-5">
             <?php foreach($tags as $t): ?>
                 <a href="javascript:void(0)" class="tag-pill" data-tag="<?= htmlspecialchars($t->tag_name) ?>"><?= htmlspecialchars($t->tag_name) ?></a>
             <?php endforeach; ?>
