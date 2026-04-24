@@ -114,6 +114,8 @@
     .workshop-wrapper.fade-out { opacity: 0; transform: scale(0.95); }
 
     .workshop-card {
+        width: 90%; /* BARU: Mengecilkan ukuran sekitar 10% dari lebar kolom */
+        margin: 0 auto; /* BARU: Memastikan card berada di tengah kolom */
         border: 1px solid #E0E0E0;
         border-radius: 15px;
         padding: 25px;
@@ -235,6 +237,13 @@
         }
         .modal-workshop-detail .fac-img { 
             margin: 0 auto; /* Menengahkan foto fasilitator */
+        }
+        .speaker-card {
+            margin: 0 auto; /* Menengahkan foto fasilitator */
+            width: 90%; /* Dikecilkan ekstra untuk mobile */
+        }
+        .workshop-card {
+            width: 85%; /* Dikecilkan ekstra untuk mobile */
         }
     }
 </style>
