@@ -42,10 +42,15 @@
     .matters-title { font-size: 48px; color: #5156B8; margin-bottom: 20px; }
     .matters-mic { position: absolute; right: 15%; top: 50px; max-width: 200px; }
     
-    /* Carousel Styling */
-    .carousel-inner { border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-    .carousel-item img { height: 600px; object-fit: cover; }
-    .carousel-indicators [data-bs-target] { width: 12px; height: 12px; border-radius: 50%; background-color: rgba(255,255,255,0.7); border: none; margin: 0 5px; }
+    /* Carousel Styling (UPDATED TO MATCH ABOUT.PHP LANDSCAPE) */
+    .carousel-inner { border-radius: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+    .carousel-item img { 
+        height: 400px; /* Diubah dari 600px menjadi 400px agar landscape */
+        object-fit: cover; 
+        border-radius: 30px; /* Mengikuti lekukan inner */
+    }
+    .carousel-indicators { bottom: 10px; }
+    .carousel-indicators [data-bs-target] { width: 10px; height: 10px; border-radius: 50%; background-color: rgba(255,255,255,0.6); border: none; margin: 0 5px; }
     .carousel-indicators .active { background-color: white; }
 
     /* REIMAGINING SECTION (PILLARS) */
@@ -203,6 +208,13 @@
         align-items: center;
         gap: 8px;
         margin: 0 10px 10px 0;
+    }
+
+    /* MEDIA QUERY UNTUK MOBILE */
+    @media (max-width: 768px) {
+        .carousel-item img {
+            height: 250px; /* Menyesuaikan proporsi landscape di layar kecil */
+        }
     }
 </style>
 

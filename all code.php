@@ -1858,7 +1858,7 @@ class Workshops extends MY_Controller {
     <style>
         /* Global Styles */
         html {
-            scroll-behavior: smooth; /* Tambahan untuk efek scroll yang mulus */
+            scroll-behavior: smooth;
         }
         body {
             font-family: 'DM Sans', sans-serif;
@@ -1873,7 +1873,7 @@ class Workshops extends MY_Controller {
         }
         .navbar-brand img {
             max-height: 45px;
-            transition: filter 0.3s;
+            transition: all 0.3s ease;
         }
         .nav-link {
             font-size: 14px; 
@@ -1889,7 +1889,65 @@ class Workshops extends MY_Controller {
             transition: all 0.3s;
         }
 
-        /* THEME 1: LIGHT THEME (Home, Schedules, Getting Here) */
+        /* Responsive Logo & Hamburger Fix */
+        @media (max-width: 991px) {
+            /* Membagi ruang dengan persentase pasti agar tidak overlap/keluar layar */
+            .navbar-brand {
+                width: 80%;
+                margin-right: 0;
+                display: flex;
+                align-items: center;
+            }
+            .navbar-brand img {
+                max-width: 100%; /* Logo akan otomatis menyesuaikan ruang 80% layar */
+                height: auto;
+                object-fit: contain;
+            }
+            .navbar-toggler {
+                width: 15%;
+                display: flex;
+                justify-content: flex-end; /* Mendorong icon mentok ke kanan */
+                align-items: center;
+                padding: 0;
+            }
+            
+            /* Styling Offcanvas Menu */
+            .offcanvas {
+                background-color: #5156B8; 
+                color: white;
+            }
+            .offcanvas-header {
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            .offcanvas-title {
+                color: white;
+                font-weight: 800;
+            }
+            .offcanvas .btn-close {
+                filter: invert(1); 
+                opacity: 1;
+            }
+            .offcanvas .nav-link {
+                color: white !important;
+                font-size: 16px;
+                padding: 15px 20px !important;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+            }
+            .offcanvas .nav-link:hover, 
+            .offcanvas .nav-link.active {
+                background-color: rgba(255,255,255,0.1);
+                color: #FCE170 !important; 
+            }
+            .offcanvas .btn-register {
+                width: 100%;
+                margin-top: 20px;
+                background-color: #FCE170;
+                color: #5156B8;
+                border: none;
+            }
+        }
+
+        /* THEME 1: LIGHT THEME */
         .navbar-light-theme {
             background-color: #FFFFFF;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -1908,15 +1966,14 @@ class Workshops extends MY_Controller {
             color: white;
         }
 
-        /* THEME 2: DARK THEME (Speakers, About) */
+        /* THEME 2: DARK THEME */
         .navbar-dark-theme {
-            background-color: #5156B8; /* Menyatu dengan hero section ungu */
+            background-color: #5156B8;
         }
         .navbar-dark-theme .nav-link { color: #FFFFFF; }
         .navbar-dark-theme .nav-link:hover, 
-        .navbar-dark-theme .nav-link.active { color: #1B2A47; } /* Hover menjadi Navy pekat */
+        .navbar-dark-theme .nav-link.active { color: #1B2A47; }
         
-        /* Trik CSS: Ubah logo gelap jadi putih otomatis */
         .navbar-dark-theme .navbar-brand img {
             filter: brightness(0) invert(1);
         }
@@ -1937,30 +1994,38 @@ class Workshops extends MY_Controller {
 <?php $theme_class = (isset($is_dark_header) && $is_dark_header) ? 'navbar-dark-theme' : 'navbar-light-theme'; ?>
 
 <nav class="navbar navbar-expand-lg sticky-top <?= $theme_class ?>">
-    <div class="container-fluid px-4 px-lg-5">
+    <div class="container-fluid px-3 px-lg-5 d-flex justify-content-between align-items-center flex-nowrap">
         
         <a class="navbar-brand" href="<?= base_url() ?>">
             <img src="<?= base_url('assets/public/images/logos.png') ?>" alt="SLEC, NAFA, UAS Logos">
         </a>
         
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon" style="<?= (isset($is_dark_header) && $is_dark_header) ? 'filter: invert(1);' : '' ?>"></span>
+        <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="<?= (isset($is_dark_header) && $is_dark_header) ? '#FFFFFF' : '#1B2A47' ?>" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+            </svg>
         </button>
         
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav align-items-center">
-                <li class="nav-item"><a class="nav-link" href="<?= base_url() ?>">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="<?= base_url('about') ?>">About Us</a></li>
-                <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == 'speakers') ? 'active' : '' ?>" href="<?= base_url('speakers') ?>">Speakers</a></li>
-                
-                <li class="nav-item"><a class="nav-link" href="<?= base_url('speakers#breakout-workshops') ?>">Breakout Workshops</a></li>
-                
-                <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == 'schedules') ? 'active' : '' ?>" href="<?= base_url('schedules') ?>">Event Schedule</a></li>
-                <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == 'getting-here') ? 'active' : '' ?>" href="<?= base_url('getting-here') ?>">Getting Here</a></li>
-                <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
-                    <a class="btn btn-register" href="https://www.eventbrite.com/" target="_blank">Register Now</a>
-                </li>
-            </ul>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="<?= base_url() ?>">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= base_url('about') ?>">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == 'speakers') ? 'active' : '' ?>" href="<?= base_url('speakers') ?>">Speakers</a></li>
+                    
+                    <li class="nav-item"><a class="nav-link" href="<?= base_url('speakers#breakout-workshops') ?>">Breakout Workshops</a></li>
+                    
+                    <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == 'schedules') ? 'active' : '' ?>" href="<?= base_url('schedules') ?>">Event Schedule</a></li>
+                    <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == 'getting-here') ? 'active' : '' ?>" href="<?= base_url('getting-here') ?>">Getting Here</a></li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a class="btn btn-register" href="https://www.eventbrite.com/" target="_blank">Register Now</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>
@@ -2585,10 +2650,31 @@ class About extends CI_Controller {
 
 <!-- file application/views/public/about.php -->
 <style>
-    /* Global Section Spacing */
+    /* Global Section Spacing & Typography */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'DM Sans', sans-serif; /* Update font sesuai Blueprint */
+    }
+
+    body {
+        background-color: #f4f7f6;
+        color: #333;
+        line-height: 1.6;
+    }
+
     section { padding: 80px 0; }
-    .section-title { color: #fff; font-size: 42px; font-weight: 800; margin-bottom: 30px; letter-spacing: -0.5px; }
+    .section-title { color: #fff; font-size: 42px; font-weight: 800; margin-bottom: 30px; letter-spacing: -0.5px; text-align: center;}
     .text-purple { color: #5156B8; }
+
+    /* Container untuk membatasi lebar konten */
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 50px 0;
+    }
 
     /* 1. Carousel Top */
     .about-carousel { margin-top: -70px; /* Offset agar masuk ke bawah header yang tembus pandang */ }
@@ -2608,11 +2694,37 @@ class About extends CI_Controller {
         box-shadow: 0 5px 10px rgba(81, 86, 184, 0.2);
         overflow: hidden;
         margin-top: 5%;
-       
     }
-    .vision-overlay-box h3 { font-size: 20px; font-weight: 700; margin-bottom: 20px; color: #92B9FA; } /* Light blue text */
+    .vision-overlay-box h3 { font-size: 20px; font-weight: 700; margin-bottom: 20px; color: #92B9FA; }
     .vision-overlay-box p { font-size: 24px; font-weight: 500; line-height: 1.5; margin-bottom: 20px; }
     .icon-pen { position: absolute; right: -5%; top: -10%; max-width: 350px; opacity: 0.9; pointer-events: none; }
+
+    /* Styling khusus untuk Carousel di About Page */
+    .vision-overlay-box .carousel-inner {
+        border-radius: 30px; 
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1); 
+    }
+
+    .vision-overlay-box .carousel-item img {
+        height: 400px; 
+        object-fit: cover;
+        border-radius: 30px;
+    }
+
+    .vision-overlay-box .carousel-indicators {
+        bottom: 10px;
+    }
+    .vision-overlay-box .carousel-indicators [data-bs-target] {
+        width: 10px; 
+        height: 10px; 
+        border-radius: 50%; 
+        background-color: rgba(255,255,255,0.6); 
+        border: none; 
+        margin: 0 5px;
+    }
+    .vision-overlay-box .carousel-indicators .active { 
+        background-color: white; 
+    }
 
     /* 3. Conference Objectives (White Theme) */
     .objectives-section { background-color: #998CFF; padding-top: 120px; /* Ekstra padding atas karena ada overlay box */ }
@@ -2660,8 +2772,6 @@ class About extends CI_Controller {
         transition: transform 0.3s ease;
     }
 
-
-
     .obj-card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(81, 86, 184, 0.15); }
     .obj-card i { font-size: 32px; margin-bottom: 20px; display: block; }
     .obj-card h4 { font-size: 18px; font-weight: 700; margin-bottom: 0; line-height: 1.4; }
@@ -2680,7 +2790,6 @@ class About extends CI_Controller {
     .icon-brush { position: absolute; left: -2%; top: -5%; max-width: 250px; pointer-events: none; }
     .icon-mask { position: absolute; right: -5%; top: 10%; max-width: 250px; pointer-events: none; }
 
-
     /* star slider background biru */
     .programme-hero {
         background-color: #5156B8; /* Navy Blue */
@@ -2689,201 +2798,169 @@ class About extends CI_Controller {
         position: relative;
         overflow: hidden;
     }
-    /* slider backgroud end */
-
-
-    /* star slide */
 
     .slider-thumb {
-    position: absolute;
-    bottom: 0;
-    right: -10%;
-    z-index: 3;
-    padding-bottom: 10%;
-}
-    /* star slide */
-
-    /* star slide */
+        position: absolute;
+        bottom: 0;
+        right: -10%;
+        z-index: 3;
+        padding-bottom: 10%;
+    }
 
     .slider-icon {
-    position: absolute;
-    bottom: -120%;
-    left: -10%;
-    z-index: 3;
-    width: 20%;
-    
-    /* padding-bottom: 50%; */
-}
-    /* end slide */
-
-  /* berita */
-
-  /* Reset CSS Dasar */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    background-color: #f4f7f6;
-    color: #333;
-    line-height: 1.6;
-}
-
-/* Container untuk membatasi lebar konten */
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 50px 0;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2.5rem;
-    color: #2c3e50;
-}
-
-/* Flexbox untuk 2 Kolom */
-.news-grid {
-    display: flex;
-    gap: 30px; /* Jarak antar kolom */
-    flex-wrap: wrap; /* Agar responsif ke bawah jika layar kecil */
-}
-
-.news-item {
-    background: #fff;
-    flex: 1; /* Membuat kolom sama rata */
-    min-width: 300px; /* Lebar minimum sebelum turun ke bawah */
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-}
-
-.news-item:hover {
-    transform: translateY(-5px); /* Efek angkat saat hover */
-}
-
-.news-item img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-}
-
-.news-content {
-    padding: 20px;
-}
-
-.date {
-    font-size: 0.85rem;
-    color: #888;
-}
-
-.news-content h3 {
-    margin: 10px 0;
-    color: #2c3e50;
-}
-
-.news-content p {
-    font-size: 0.95rem;
-    color: #666;
-    margin-bottom: 20px;
-}
-
-.read-more {
-    text-decoration: none;
-    color: #3498db;
-    font-weight: bold;
-    font-size: 0.9rem;
-}
-
-.read-more:hover {
-    color: #2c3e50;
-}
-
-/* Media Query untuk Mobile (Layar Kecil) */
-@media (max-width: 768px) {
-    .news-grid {
-        flex-direction: column; /* Mengubah kolom menjadi baris */
+        position: absolute;
+        bottom: -120%;
+        left: -10%;
+        z-index: 3;
+        width: 20%;
     }
-}
 
-  */  
-   
-    
+    /* berita */
+    .news-grid {
+        display: flex;
+        gap: 30px; 
+        flex-wrap: wrap; 
+    }
 
+    .news-item {
+        background: #fff;
+        flex: 1; 
+        min-width: 300px; 
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
 
-    
+    .news-item:hover {
+        transform: translateY(-5px); 
+    }
 
+    .news-item img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
 
+    .news-content {
+        padding: 20px;
+    }
+
+    .date {
+        font-size: 0.85rem;
+        color: #888;
+    }
+
+    .news-content h3 {
+        margin: 10px 0;
+        color: #2c3e50;
+    }
+
+    .news-content p {
+        font-size: 0.95rem;
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    .read-more {
+        text-decoration: none;
+        color: #3498db;
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+
+    .read-more:hover {
+        color: #2c3e50;
+    }
+
+    /* Media Query untuk Mobile (Layar Kecil) */
+    @media (max-width: 768px) {
+        .vision-container {
+            margin-top: -80px; 
+        }
+        .vision-overlay-box .carousel-item img {
+            height: 250px; 
+        }
+        .news-grid {
+            flex-direction: column; 
+        }
+    }
 </style>
 
 
 <section class="programme-hero">
-    <!-- <img src=('assets/public/images/bg-shape-1.png') alt="" class="shape-1"> -->
     <div class="slider-thumb">
         <img src="assets/public/images/bg-shape-1.png">
     </div>
 
     <div class="container">
         <p class="small fw-bold mb-3">> SLEC x NAFA Ageing Artfully Conference 2026</p>
-        <h1 class="display-3 fw-bold mb-4">Reimagining Ageing</br>
-        through the Power of</br>
+        <h1 class="display-3 fw-bold mb-4">Reimagining Ageing<br>
+        through the Power of<br>
         the Arts Together
-
-    </h1>
+        </h1>
         <p class="lead mb-5" style="max-width: 600px;">
-             St Luke's ElderCare (SLEC) and Nanyang Academy of FIne Arts</br>
-             (NAFA),University of the Arts Singapore (UAS) have been</br>
-             collaborating to bring together arts education and community care</br>
-             to promote innovative approaches in enaging seniors and</br>
+             St Luke's ElderCare (SLEC) and Nanyang Academy of FIne Arts<br>
+             (NAFA),University of the Arts Singapore (UAS) have been<br>
+             collaborating to bring together arts education and community care<br>
+             to promote innovative approaches in enaging seniors and<br>
              supporting their well-being
         </p>
     </div>
 </section>
 
-
-<!--image slide start-->
-
 <div class="container vision-container">
     <div class="vision-overlay-box">
-        <div class="row">
-              <img src="assets/public/images/Rectangle 11.png">
+        <div id="aboutCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#aboutCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#aboutCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#aboutCarousel" data-bs-slide-to="2"></button>
+            </div>
+            
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="assets/public/images/carousel-1.jpg" class="d-block w-100" alt="Slide 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/public/images/carousel-2.jpg" class="d-block w-100" alt="Slide 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/public/images/carousel-3.jpg" class="d-block w-100" alt="Slide 3">
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#aboutCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#aboutCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </div>
 </div>
-<!--image slide end-->
-
-
-
 <section class="position-relative bg-white pb-5">
     <div class="container position-relative">
         <div class="row align-items-center">
             <div class="col-lg-6 ps-lg-5 order-1 order-lg-2 position-relative" style="z-index: 2;">
                 <p class="profile-text">The two Organisastions formalised their partnership with the.
-                </br>signing of Memorandum of Understanding in August 2025,
-                </br> and the Ageing Artfully Conference is one of the
-                </br> partnership highlights.
+                <br>signing of Memorandum of Understanding in August 2025,
+                <br> and the Ageing Artfully Conference is one of the
+                <br> partnership highlights.
                 </p>
             </div>
             <div class="col-lg-6 mb-5 mb-lg-0 order-2 order-lg-1"></div>
-            <!-- <div class="slider-icon">
-                <img src="assets/public/images/bg-shape-1.png">
-            </div> -->
         </div>
     </div>
 </section>
 
-
 <section class="objectives-section">
     <div class="container">
         <h2 class="section-title text-right mb-5">Conference Objectives</h2>
-        <P style="color: white; font-size: 32px; font-style:DM Sans;">Through interdisciplinary dialogue among artists, academics, 
-          </br>eldercare professionals,community partners,and older adults themselves,</br>
+        <p style="color: white; font-size: 32px; font-style:DM Sans;">Through interdisciplinary dialogue among artists, academics, 
+          <br>eldercare professionals,community partners,and older adults themselves,<br>
             the conference aims to:
        </p>
         <div class="row g-4">
@@ -2891,64 +2968,60 @@ body {
                 <div class="obj-card-1">
                     <i class="fas fa-sync-alt"></i>
                     <h4>Shift the narrative</h4>
-                    <p>from arts as therapy to arts<br>as living practice</P>
+                    <p>from arts as therapy to arts<br>as living practice</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
                 <div class="obj-card-2">
                     <i class="fas fa-sync-alt"></i>
                     <h4>Deepen dignity</h4>
-                    <p>and agency-centerd</br>approaches in ageing</p>
+                    <p>and agency-centerd<br>approaches in ageing</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
                 <div class="obj-card-3">
                     <i class="fas fa-seedling"></i>
                     <h4>Inspire sustainable</h4>
-                    <p>community-integrated</br>creative ecosystem</p>
+                    <p>community-integrated<br>creative ecosystem</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
                 <div class="obj-card-4">
                     <i class="fas fa-level-up-alt"></i>
                     <h4>Elevate older adults</h4>
-                    <p>as active contributors</br>to cultural life</p>
+                    <p>as active contributors<br>to cultural life</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-
-<!--blog section start-->
-     <section class="news-section">
-        <div class="container">
-            <div class="news-grid">
-                <!-- Kolom 1 -->
-                <div class="news-item">
-                    <img src="assets/public/images/about-slec.png">
-                    <div class="news-content">
-                        <h3>About St Luke's ElderCare</h3>
-                        <p>SLEC was established 19XX and together thet</br>
-                        revolutionized care industry in Singapore</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
+<section class="news-section">
+    <div class="container">
+        <div class="news-grid">
+            <div class="news-item">
+                <img src="assets/public/images/about-slec.png">
+                <div class="news-content">
+                    <h3>About St Luke's ElderCare</h3>
+                    <p>SLEC was established 19XX and together thet<br>
+                    revolutionized care industry in Singapore</p>
+                    <a href="#" class="read-more">Read More</a>
                 </div>
+            </div>
 
-                <!-- Kolom 2 -->
-                <div class="news-item">
-                    <img src="assets/public/images/about-nafa.png">
-                    <div class="news-content">
-                        <h3>About Nanyang Academy</h3>
-                        <p>NAFA is Singapore pioner arts institutions and</br>
-                        a founding member of the University of the Arts Singapore(UAS)
-                       </p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
+            <div class="news-item">
+                <img src="assets/public/images/about-nafa.png">
+                <div class="news-content">
+                    <h3>About Nanyang Academy</h3>
+                    <p>NAFA is Singapore pioner arts institutions and<br>
+                    a founding member of the University of the Arts Singapore(UAS)
+                   </p>
+                    <a href="#" class="read-more">Read More</a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 <!-- end file application/views/public/about.php -->
 
 <!-- file application/controllers/Home.php -->
@@ -3054,10 +3127,15 @@ class Home extends CI_Controller {
     .matters-title { font-size: 48px; color: #5156B8; margin-bottom: 20px; }
     .matters-mic { position: absolute; right: 15%; top: 50px; max-width: 200px; }
     
-    /* Carousel Styling */
-    .carousel-inner { border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-    .carousel-item img { height: 600px; object-fit: cover; }
-    .carousel-indicators [data-bs-target] { width: 12px; height: 12px; border-radius: 50%; background-color: rgba(255,255,255,0.7); border: none; margin: 0 5px; }
+    /* Carousel Styling (UPDATED TO MATCH ABOUT.PHP LANDSCAPE) */
+    .carousel-inner { border-radius: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+    .carousel-item img { 
+        height: 400px; /* Diubah dari 600px menjadi 400px agar landscape */
+        object-fit: cover; 
+        border-radius: 30px; /* Mengikuti lekukan inner */
+    }
+    .carousel-indicators { bottom: 10px; }
+    .carousel-indicators [data-bs-target] { width: 10px; height: 10px; border-radius: 50%; background-color: rgba(255,255,255,0.6); border: none; margin: 0 5px; }
     .carousel-indicators .active { background-color: white; }
 
     /* REIMAGINING SECTION (PILLARS) */
@@ -3215,6 +3293,13 @@ class Home extends CI_Controller {
         align-items: center;
         gap: 8px;
         margin: 0 10px 10px 0;
+    }
+
+    /* MEDIA QUERY UNTUK MOBILE */
+    @media (max-width: 768px) {
+        .carousel-item img {
+            height: 250px; /* Menyesuaikan proporsi landscape di layar kecil */
+        }
     }
 </style>
 
@@ -3416,7 +3501,7 @@ class Home extends CI_Controller {
 </div>
 
 <?php 
-// Memanggil model secara dinamis di dalam view (SAYA BIARKAN UTUH)
+// Memanggil model secara dinamis di dalam view 
 $CI =& get_instance();
 $CI->load->model('Tag_model');
 $CI->load->model('Workshop_model');
