@@ -152,7 +152,7 @@
         width: 513px;
         height: 121px;
         position: relative;
-        font-size: 105px;
+        font-size: 92px;
         letter-spacing: -0.02em;
         line-height: 115%;
         display: inline-block;
@@ -162,7 +162,7 @@
 }
 
     .intro-vision {
-        font-size: 32px;
+        font-size: 28px;
         color: #000;
         font-family: 'DM Sans';
 
@@ -183,7 +183,7 @@
         width: 849px;
         height: 90px;
         position: relative;
-        font-size: 78px;
+        font-size: 92px;
         letter-spacing: -0.02em;
         line-height: 115%;
         display: inline-block;
@@ -193,7 +193,7 @@
     }
 
     .intro-conference {
-        font-size: 32px;
+        font-size: 28px;
         color: #000;
         font-family: 'DM Sans';
 
@@ -216,7 +216,8 @@
 
     .obj-card {
         border-radius: 25px; 
-        padding: 40px 25px; 
+        padding: 10px 25px;
+        margin-bottom: 10%; 
         height: 100%; 
         text-align: center;
         color: #5156B8;
@@ -254,8 +255,8 @@
 }
 
 .icon-brain {
-    width: 100px; /* Ukuran icon */
-    height: 100px;
+    width: 150px; /* Ukuran icon */
+    height: 150px;
 }
 
 
@@ -271,8 +272,8 @@
 }
 
 .icon-deepen {
-    width: 100px; /* Ukuran icon */
-    height: 100px;
+    width: 150px; /* Ukuran icon */
+    height: 150px;
 }
 
 .rectangle-inspire {
@@ -286,8 +287,8 @@
 }
 
 .icon-inspire {
-    width: 100px; /* Ukuran icon */
-    height: 100px;
+    width: 150px; /* Ukuran icon */
+    height: 150px;
 }
 
 .rectangle-elevate {
@@ -301,8 +302,8 @@
 }
 
 .icon-elevate {
-    width: 100px; /* Ukuran icon */
-    height: 100px;
+    width: 150px; /* Ukuran icon */
+    height: 150px;
 }
 
 
@@ -527,11 +528,9 @@
 <section class="programme-hero">
     
     <div class="slider-thumb">
-        <img src="<?= base_url('assets/public/images/bg-pen.png') ?>" alt="Shape">
+        <img src="<?= base_url('assets/public/images/icon-pen-about.png') ?>" alt="" class"shape-1">
+
     </div>
-
-
-
 
     <div class="container">
         <p class="small fw-bold mb-3">> SLEC x NAFA Ageing Artfully Conference 2026</p>
@@ -637,7 +636,7 @@
             <div class="col-md-6 col-lg-3">
                 <div class="obj-card obj-card-1">
                     <div class="rectangle-brain">
-                        <img src="<?= base_url('assets/public/images/brain.png') ?>" alt="" class="icon-brain">
+                        <img src="<?= base_url('assets/public/images/brain-research.png') ?>" alt="" class="icon-brain">
                     </div>
                     <h4 style="color: #000;">
                         Shift the narrative
@@ -652,7 +651,7 @@
             <div class="col-md-6 col-lg-3">
                 <div class="obj-card obj-card-2">
                     <div class="rectangle-deepen">
-                           <img src="<?= base_url('assets/public/images/brain.png') ?>" alt="" class="icon-deepen">
+                           <img src="<?= base_url('assets/public/images/brush.png') ?>" alt="" class="icon-deepen">
                     </div>
                     <h4 style="color: #000;">
                         Deepen dignity
@@ -666,7 +665,7 @@
             <div class="col-md-6 col-lg-3">
                 <div class="obj-card obj-card-3">
                     <div class="rectangle-inspire">
-                           <img src="<?= base_url('assets/public/images/brain.png') ?>" alt="" class="icon-inspire">
+                           <img src="<?= base_url('assets/public/images/idea-01.png') ?>" alt="" class="icon-inspire">
                     </div>
                     <h4 style="color: #000;">
                         Inspire sustainable
@@ -679,7 +678,7 @@
             <div class="col-md-6 col-lg-3">
                 <div class="obj-card obj-card-4">
                     <div class="rectangle-elevate">
-                        <img src="<?= base_url('assets/public/images/brain.png') ?>" alt="" class="icon-elevate">
+                        <img src="<?= base_url('assets/public/images/arrow.png') ?>" alt="" class="icon-elevate">
                     </div>  
                     <h4 style="color: #000;">
                         Elevate older adults
