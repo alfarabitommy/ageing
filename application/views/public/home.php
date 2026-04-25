@@ -23,7 +23,7 @@
     
     /* Hero Ornaments */
     .hero-shape { position: absolute; right: 0%; top: 500%; max-width: 550px; opacity: 0.8; z-index: 0; }
-    .hero-ballet { position: absolute; right: -10%; bottom: 10%; max-width: 550px; z-index: 1; }
+    .hero-ballet { position: absolute; right: -14%; bottom: 5%; max-width: 750px; z-index: 1; }
 
     /* INTRO SECTION */
     .intro-section {
@@ -40,7 +40,7 @@
     /* MATTERS & CAROUSEL SECTION */
     .matters-section { padding: 100px 0; background-color: #FAFAFA; position: relative; }
     .matters-title { font-size: 48px; color: #5156B8; margin-bottom: 20px; }
-    .matters-mic { position: absolute; right: 0%; top: -190px; max-width: 550px; }
+    .matters-mic { position: absolute; right: 0%; top: -250px; max-width: 700px; }
     
     /* Carousel Styling (UPDATED TO MATCH ABOUT.PHP LANDSCAPE) */
     .carousel-inner { border-radius: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
@@ -56,7 +56,7 @@
     /* REIMAGINING SECTION (PILLARS) */
     .reimagining-section { background-color: #5156B8; padding: 100px 0; position: relative; color: white; }
     .reimagining-title { font-size: 48px; line-height: 1.2; margin-bottom: 60px; }
-    .reimagining-layer { position: absolute; left: 0%; top: 0%; max-width: 550px; }
+    .reimagining-layer { position: absolute; left: 0%; top: -20%; max-width: 750px; }
 
     .pillar-card { border-radius: 20px; padding: 40px; height: 100%; color: #111; display: flex; flex-direction: column; align-items: flex-start; }
     .pillar-card i { font-size: 32px; margin-bottom: 20px; }
@@ -129,7 +129,17 @@
     .tag-pill { border: 1px solid #5156B8; color: #5156B8; border-radius: 20px; padding: 5px 15px; font-size: 13px; display: inline-block; margin: 0 5px 10px 0; text-decoration: none; transition: 0.2s; background-color: transparent; }
     .tag-pill:hover, .tag-pill.active { background-color: #5156B8; color: white; }
     
-    .workshop-card { border: 1px solid #E0E0E0; border-radius: 15px; padding: 25px; text-align: center; height: 100%; background-color: white; display: flex; flex-direction: column; }
+    .workshop-card { width: 90%; /* BARU: Mengecilkan ukuran sekitar 10% dari lebar kolom */
+        margin: 0 auto; /* BARU: Memastikan card berada di tengah kolom */
+        border: 1px solid #E0E0E0;
+        border-radius: 15px;
+        padding: 25px;
+        text-align: center;
+        height: 100%;
+        background-color: white;
+        display: flex;
+        flex-direction: column; 
+    }
     .workshop-img { width: 100px; height: 100px; object-fit: cover; border-radius: 15px; margin: 0 auto 20px; }
     .workshop-title { color: #5156B8; font-weight: 700; font-size: 18px; margin-bottom: 10px; }
     .workshop-subtitle { font-size: 13px; color: #555; margin-bottom: 20px; flex-grow: 1; }
@@ -213,11 +223,25 @@
         gap: 8px;
         margin: 0 10px 10px 0;
     }
+    .tags-grid-container {
+        display: grid;
+        grid-template-columns: repeat(7, max-content); /* Kunci utamanya: Memaksa persis 7 kolom yang lebarnya menyesuaikan konten teks masing-masing */
+        gap: 10px 10px; /* Jarak baris (atas-bawah) dan kolom (kiri-kanan) */
+        justify-content: start; /* Memastikan grup tags merapat ke sebelah kiri */
+    }
 
     /* MEDIA QUERY UNTUK MOBILE */
     @media (max-width: 768px) {
         .carousel-item img {
             height: 250px; /* Menyesuaikan proporsi landscape di layar kecil */
+        }
+        .workshop-card {
+            width: 85%; /* Dikecilkan ekstra untuk mobile */
+        }
+        .tags-grid-container {
+            display: flex; /* Kembalikan ke flexbox untuk mobile */
+            flex-wrap: wrap; /* Biarkan turun baris secara natural */
+            gap: 8px; /* Jarak antar tag di mobile */
         }
     }
 </style>
@@ -286,7 +310,10 @@
         <div class="row g-4">
             <div class="col-md-4">
                 <div class="pillar-card card-yellow">
-                    <i class="fas fa-leaf"></i>
+                    <img src="<?= base_url('assets/public/images/quill.png') ?>" alt="" class="" style="width: 50px;">
+                    <br>
+                    <br>
+                    <br>
                     <h3>Creation</h3>
                     <p>Creation in later life is an affirmation of identity. Through storytelling, artistic practice, and everyday creativity, individuals continue to express who they are and who they are becoming.</p>
                     <button class="btn-more" data-bs-toggle="modal" data-bs-target="#modalCreation">Read More</button>
@@ -294,7 +321,10 @@
             </div>
             <div class="col-md-4">
                 <div class="pillar-card card-blue">
-                    <i class="fas fa-project-diagram"></i>
+                    <img src="<?= base_url('assets/public/images/affiliate.png') ?>" alt="" class="" style="width: 50px;">
+                    <br>
+                    <br>
+                    <br>
                     <h3>Connection</h3>
                     <p>The arts foster relationships across individuals, generations, and communities—creating shared spaces for belonging and mutual understanding.</p>
                     <button class="btn-more" data-bs-toggle="modal" data-bs-target="#modalConnection">Read More</button>
@@ -302,7 +332,10 @@
             </div>
             <div class="col-md-4">
                 <div class="pillar-card card-pink">
-                    <i class="fas fa-hands-helping"></i>
+                    <img src="<?= base_url('assets/public/images/atom.png') ?>" alt="" class="" style="width: 50px;">
+                    <br>
+                    <br>
+                    <br>
                     <h3>Contribution</h3>
                     <p>Older adults are not passive participants, but active contributors—mentors, collaborators, and cultural bearers whose creative engagement enriches society.</p>
                     <button class="btn-more" data-bs-toggle="modal" data-bs-target="#modalContribution">Read More</button>
@@ -324,7 +357,7 @@
         </div>
         <p class="mb-4" style="font-size: 18px; max-width: 700px;">Participants are invited to choose up to 4 workshops based on their interests and the needs of the seniors they work with.</p>
         
-        <div class="mb-5">
+        <div class="tags-grid-container mb-5">
             <?php foreach($tags as $t): ?>
                 <a href="javascript:void(0)" class="tag-pill" data-tag="<?= htmlspecialchars($t->tag_name) ?>">
                     <?= htmlspecialchars($t->tag_name) ?> <i class="fas fa-tag ms-1 opacity-50"></i>
@@ -361,7 +394,7 @@
             <div class="header-card header-card-yellow">
                 <i class="fas fa-paint-brush header-bg-icon d-none d-md-block"></i>
                 <button type="button" class="btn btn-go-back" data-bs-dismiss="modal">Go Back</button>
-                <h2 class="header-title">Creation <i class="fas fa-feather-alt header-icon"></i></h2>
+                <h2 class="header-title">Creation <img src="<?= base_url('assets/public/images/quill.png') ?>" alt="" class="" style="width: 50px;"></h2>
                 <h3 class="header-subtitle">Affirming Identity and<br>Lifelong Creative Practice</h3>
             </div>
             <div class="desc-card">
@@ -383,7 +416,7 @@
             <div class="header-card header-card-blue">
                 <i class="fas fa-hands-helping header-bg-icon d-none d-md-block"></i>
                 <button type="button" class="btn btn-go-back" data-bs-dismiss="modal">Go Back</button>
-                <h2 class="header-title">Connection <i class="fas fa-link header-icon"></i></h2>
+                <h2 class="header-title">Connection <img src="<?= base_url('assets/public/images/affiliate.png') ?>" alt="" class="" style="width: 50px;"></h2>
                 <h3 class="header-subtitle">Strengthening Relationships<br>and Belonging</h3>
             </div>
             <div class="desc-card">
@@ -405,7 +438,7 @@
             <div class="header-card header-card-pink">
                 <i class="fas fa-pen-nib header-bg-icon d-none d-md-block" style="transform: translateY(-50%) rotate(-45deg);"></i>
                 <button type="button" class="btn btn-go-back" data-bs-dismiss="modal">Go Back</button>
-                <h2 class="header-title">Contribution <i class="fas fa-sun header-icon"></i></h2>
+                <h2 class="header-title">Contribution <img src="<?= base_url('assets/public/images/atom.png') ?>" alt="" class="" style="width: 50px;"></i></h2>
                 <h3 class="header-subtitle">Elders as Co-creators and<br>Collaborators</h3>
             </div>
             <div class="desc-card">

@@ -59,13 +59,16 @@
     .slider-thumb {
         position: absolute;
         bottom: 0;
-        right: 0; 
+        right: -10%; 
         z-index: 0;
-    }
+        margin-bottom: 5%;
+   }
+
     .slider-thumb img {
-        max-width: 300px;
+        max-width: 800px;
         transition: all 0.3s ease;
     }
+/* 
 
     .programme-hero .container {
         position: relative;
@@ -118,18 +121,84 @@
         padding: 60px 0 20px;
         text-align: center;
     }
-    .profile-text { 
-        font-size: 18px; 
-        color: #444; 
-        line-height: 1.8; 
-        max-width: 800px; 
-        margin: 0 auto;
-        font-weight: 500;
+
+/*     
+    /* INTRO SECTION */
+    .intro-section {
+        font-size :32px;
+        font-family: 'DM Sans';
+        background-color: #fff; 
+        padding: 100px 0;
+        position: relative;
+        overflow: hidden;
+        line-height: 130%;
+
     }
+    .intro-title { font-size: 52px; color: #111; line-height: 1.1; margin-bottom: 30px; }
+    .intro-text { font-size: 32px; color: #333; margin-bottom: 20px; font-weight: 500; }
+    .intro-brush { position: absolute; top: -30%; left: -10%; width: 851px;241; }
+        
+/* =========================================
+       Our Vision Mision
+    ========================================= */
+     /* Our Vision Mision */
+    .vision-section {
+        padding: 100px;
+        background-color: #FFCCF3;
+        position: relative;
+    }
+
+   .our-vision {
+        width: 513px;
+        height: 121px;
+        position: relative;
+        font-size: 105px;
+        letter-spacing: -0.02em;
+        line-height: 115%;
+        display: inline-block;
+        font-family: 'DM Sans';
+        color: #000;
+        text-align: left;
+}
+
+    .intro-vision {
+        font-size: 32px;
+        color: #000;
+        font-family: 'DM Sans';
+
+    }
+
+     .matters-mask {
+        position: absolute; 
+        right: 0%;
+        top: -5%;
+        max-width: 750px;
+     }
+    
 
     /* =========================================
        3. CONFERENCE OBJECTIVES
        ========================================= */
+    .conference-objectives {
+        width: 849px;
+        height: 90px;
+        position: relative;
+        font-size: 78px;
+        letter-spacing: -0.02em;
+        line-height: 115%;
+        display: inline-block;
+        font-family: 'DM Sans';
+        color: #fff;
+        text-align: left;
+    }
+
+    .intro-conference {
+        font-size: 32px;
+        color: #000;
+        font-family: 'DM Sans';
+
+    }
+
     .objectives-section { 
         background-color: #998CFF; 
         padding: 80px 0; 
@@ -142,6 +211,7 @@
         text-align: center;
         max-width: 900px;
         margin: 0 auto 50px auto;
+        left: 20%;
     }
 
     .obj-card {
@@ -167,6 +237,80 @@
     .obj-card i { font-size: 36px; margin-bottom: 20px; display: block; opacity: 0.9; }
     .obj-card h4 { font-size: 20px; font-weight: 800; margin-bottom: 10px; line-height: 1.3; }
     .obj-card p { font-size: 15px; margin: 0; opacity: 0.85; font-weight: 500; }
+
+
+/* =========================================
+       Icon Retangel
+       ========================================= */
+
+.rectangle-brain {
+    width: 200px; /* Lebar rectangle */
+    height: 100px; /* Tinggi rectangle */
+    /* Mengatur posisi konten (ikon) agar di tengah */
+    display: flex;
+    justify-content: center; /* Tengah horizontal */
+    align-items: center; /* Tengah vertikal */
+    margin: 50px auto; /* Memberi jarak di luar kotak */
+}
+
+.icon-brain {
+    width: 100px; /* Ukuran icon */
+    height: 100px;
+}
+
+
+
+.rectangle-deepen {
+    width: 200px; /* Lebar rectangle */
+    height: 100px; /* Tinggi rectangle */
+    /* Mengatur posisi konten (ikon) agar di tengah */
+    display: flex;
+    justify-content: center; /* Tengah horizontal */
+    align-items: center; /* Tengah vertikal */
+    margin: 50px auto; /* Memberi jarak di luar kotak */
+}
+
+.icon-deepen {
+    width: 100px; /* Ukuran icon */
+    height: 100px;
+}
+
+.rectangle-inspire {
+    width: 200px; /* Lebar rectangle */
+    height: 100px; /* Tinggi rectangle */
+    /* Mengatur posisi konten (ikon) agar di tengah */
+    display: flex;
+    justify-content: center; /* Tengah horizontal */
+    align-items: center; /* Tengah vertikal */
+    margin: 50px auto; /* Memberi jarak di luar kotak */
+}
+
+.icon-inspire {
+    width: 100px; /* Ukuran icon */
+    height: 100px;
+}
+
+.rectangle-elevate {
+    width: 200px; /* Lebar rectangle */
+    height: 100px; /* Tinggi rectangle */
+    /* Mengatur posisi konten (ikon) agar di tengah */
+    display: flex;
+    justify-content: center; /* Tengah horizontal */
+    align-items: center; /* Tengah vertikal */
+    margin: 50px auto; /* Memberi jarak di luar kotak */
+}
+
+.icon-elevate {
+    width: 100px; /* Ukuran icon */
+    height: 100px;
+}
+
+
+
+
+
+
+
 
     /* =========================================
        4. NEWS / ABOUT ORGANISATIONS SECTION
@@ -381,9 +525,13 @@
 </style>
 
 <section class="programme-hero">
+    
     <div class="slider-thumb">
-        <img src="<?= base_url('assets/public/images/bg-shape-1.png') ?>" alt="Shape">
+        <img src="<?= base_url('assets/public/images/bg-pen.png') ?>" alt="Shape">
     </div>
+
+
+
 
     <div class="container">
         <p class="small fw-bold mb-3">> SLEC x NAFA Ageing Artfully Conference 2026</p>
@@ -434,58 +582,119 @@
     </div>
 </div>
 
-<section class="transition-text-section bg-white">
+
+<section id="intro" class="intro-section">
+    <img src="<?= base_url('assets/public/images/icon-brush.png') ?>" alt="" class="intro-brush d-none d-lg-block">
     <div class="container">
-        <p class="profile-text text-center">
-            The two Organisations formalised their partnership with the 
-            signing of Memorandum of Understanding in August 2025, 
-            and the Ageing Artfully Conference is one of the 
-            partnership highlights.
-        </p>
+        <div class="row justify-content-end">
+            <div class="col-lg-6 position-relative" style="z-index: 2;">
+                <p class="intro-vision">The two organization formalised 
+                    their partnership with the signing of Memorandum of 
+                    understanding in August 2025,and the Ageing Artfully 
+                    Conference is one of the partnership highlights.
+                </p>
+            </div>
+        </div>
+
     </div>
 </section>
 
+<section class="vision-section">
+    <img src="<?= base_url('assets/public/images/icon-mask-about.png') ?>" alt="" class="matters-mask d-none d-md-block">
+<div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-7">
+                <div class="our-vision">Our Vision</div>
+                <p class="intro-vision">
+                    Art its heart.Ageing Artfully reimagines ageing as a stage
+                    rich,with potential-for creation that affirms identity,
+                    connection that nurtures belonging, and contribution that
+                    sustains purpose.</br></br>
+                </p>
+                <p class="intro-vision">
+                    We move toward a vision of ageing that honours not only
+                    well-being, but the enduring human desire to create, relate,
+                    and celebrated.
+                </p>
+            </div>
+        </div>
+</section>
+
+
 <section class="objectives-section">
     <div class="container">
-        <h2 class="section-title mb-3">Conference Objectives</h2>
-        <p class="objectives-subtitle">
-            Through interdisciplinary dialogue among artists, academics, 
-            eldercare professionals, community partners, and older adults themselves, 
-            the conference aims to:
-        </p>
-        
+        <div class="row mb-5">
+            <div class="col-lg-7">
+                <div class="conference-objectives">Conference Object</div>
+                <p class="intro-conference">
+                    Through interdisciplinary dialogue among artists, academics, 
+                    eldercare professionals, community partners, and older adults themselves, 
+                    the conference aims to:
+                </P>
+            </div>
+        </div>
         <div class="row g-4">
             <div class="col-md-6 col-lg-3">
                 <div class="obj-card obj-card-1">
-                    <i class="fas fa-sync-alt"></i>
-                    <h4>Shift the narrative</h4>
-                    <p>from arts as therapy to arts<br>as living practice</p>
+                    <div class="rectangle-brain">
+                        <img src="<?= base_url('assets/public/images/brain.png') ?>" alt="" class="icon-brain">
+                    </div>
+                    <h4 style="color: #000;">
+                        Shift the narrative
+                    </h4>
+                    <p style="color: #000;">
+                        from arts as therapy to arts<br>as living practice
+                    </p>
                 </div>
             </div>
+
+
             <div class="col-md-6 col-lg-3">
                 <div class="obj-card obj-card-2">
-                    <i class="fas fa-heart"></i>
-                    <h4>Deepen dignity</h4>
-                    <p>and agency-centered<br>approaches in ageing</p>
+                    <div class="rectangle-deepen">
+                           <img src="<?= base_url('assets/public/images/brain.png') ?>" alt="" class="icon-deepen">
+                    </div>
+                    <h4 style="color: #000;">
+                        Deepen dignity
+                    </h4>
+                    <p style="color: #000;">
+                        and agency-centered<br>approaches in ageing
+                    </p>
                 </div>
             </div>
+
             <div class="col-md-6 col-lg-3">
                 <div class="obj-card obj-card-3">
-                    <i class="fas fa-seedling"></i>
-                    <h4>Inspire sustainable</h4>
-                    <p>community-integrated<br>creative ecosystem</p>
+                    <div class="rectangle-inspire">
+                           <img src="<?= base_url('assets/public/images/brain.png') ?>" alt="" class="icon-inspire">
+                    </div>
+                    <h4 style="color: #000;">
+                        Inspire sustainable
+                    </h4>
+                    <p style="color: #000;">
+                        community-integrated<br>creative ecosystem
+                    </p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
                 <div class="obj-card obj-card-4">
-                    <i class="fas fa-level-up-alt"></i>
-                    <h4>Elevate older adults</h4>
-                    <p>as active contributors<br>to cultural life</p>
+                    <div class="rectangle-elevate">
+                        <img src="<?= base_url('assets/public/images/brain.png') ?>" alt="" class="icon-elevate">
+                    </div>  
+                    <h4 style="color: #000;">
+                        Elevate older adults
+                    </h4>
+                    <p style="color: #000;">
+                        as active contributors<br>to cultural life
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+
+
 
 <section class="news-section">
     <div class="container">
