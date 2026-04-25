@@ -21,6 +21,10 @@
         color: var(--accent-lime);
         background: transparent;
     }
+    .form-control-color {
+        height: 38px;
+        padding: 0.375rem;
+    }
 </style>
 
 <div class="card card-ceria bg-white">
@@ -38,15 +42,21 @@
                     <div class="form-text small">URLs automatically adjust the title (SEO-friendly).</div>
                 </div>
                 
-                <div class="col-md-8 mb-3">
+                <div class="col-md-6 mb-3">
                     <label class="form-label fw-bold small text-muted">Sub-title (Optional)</label>
                     <input type="text" class="form-control" name="subtitle" value="<?= $workshop ? $workshop->subtitle : '' ?>" placeholder="Ex: Supporting Identity, Memory and Well-being...">
                 </div>
 
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3 mb-3">
                     <label class="form-label fw-bold small text-muted">Sort Order <span class="text-danger">*</span></label>
                     <input type="number" class="form-control" name="sort_order" value="<?= $workshop ? $workshop->sort_order : '0' ?>" required placeholder="Ex: 1">
                     <div class="form-text small">Angka urutan tampil (1, 2, 3...)</div>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <label class="form-label fw-bold small text-muted">Header Color <span class="text-danger">*</span></label>
+                    <input type="color" class="form-control form-control-color w-100" name="header_color" value="<?= $workshop ? $workshop->header_color : '#FDBA74' ?>" required title="Choose header color">
+                    <div class="form-text small">Warna background pop-up</div>
                 </div>
 
                 <div class="col-md-6 mb-3">

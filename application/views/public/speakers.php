@@ -530,12 +530,9 @@ $CI =& get_instance();
 $CI->load->model('Tag_model');
 $CI->load->model('Workshop_model');
 
-// Array palet warna pastel
-$header_colors = ['#FDBA74', '#FCA5A5', '#A7F3D0', '#BAE6FD', '#C4B5FD', '#FBCFE8', '#FDE047', '#D9F99D'];
-
 foreach($workshops as $w): 
-    // Ambil warna header secara acak untuk setiap iterasi pop-up
-    $active_bg = $header_colors[array_rand($header_colors)];
+    // MODIFIKASI: Mengambil warna dari database, hapus array random. Fallback ke warna default jika kosong.
+    $active_bg = (isset($w->header_color) && !empty($w->header_color)) ? htmlspecialchars($w->header_color) : '#FDBA74';
 
     // Ambil tag spesifik untuk workshop ini
     $related_tag_ids = $CI->Workshop_model->get_related_tags($w->id);

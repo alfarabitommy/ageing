@@ -28,6 +28,7 @@
                 <thead class="table-light">
                     <tr>
                         <th width="5%" class="text-center">Order</th>
+                        <th width="5%" class="text-center">Color</th>
                         <th>Workshop Title</th>
                         <th>Venue Location</th>
                         <th>Best Suited For?</th>
@@ -38,6 +39,9 @@
                     <?php foreach($workshops as $w): ?>
                     <tr>
                         <td class="text-center fw-bold text-primary">#<?= $w->sort_order ?></td>
+                        <td class="text-center">
+                            <div style="width: 25px; height: 25px; border-radius: 50%; background-color: <?= isset($w->header_color) ? $w->header_color : '#FDBA74' ?>; margin: 0 auto; border: 1px solid #ddd;" title="<?= isset($w->header_color) ? $w->header_color : '#FDBA74' ?>"></div>
+                        </td>
                         <td>
                             <div class="fw-bold"><?= $w->title ?></div>
                             <small class="text-muted">Slug: /workshop/<?= $w->slug ?></small>
