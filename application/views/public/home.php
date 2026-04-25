@@ -47,7 +47,12 @@
     /* MATTERS & CAROUSEL SECTION */
     .matters-section { padding: 100px 0; background-color: #FAFAFA; position: relative; }
     .matters-title { font-size: 48px; color: #5156B8; margin-bottom: 20px; }
-    .matters-mic { position: absolute; right: 0%; top: -250px; max-width: 700px; }
+    .matters-mic { 
+        position: absolute;
+        right: 0%;
+        top: -250px;
+        max-width: 650px; 
+    }
     
     /* Carousel Styling */
     .carousel-inner { border-radius: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
