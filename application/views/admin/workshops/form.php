@@ -1,6 +1,5 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <style>
-    /* Styling Select2 agar membaur dengan tema Bootstrap 5 Ceria kita */
     .select2-container .select2-selection--multiple {
         min-height: 38px;
         border: 1px solid #ced4da;
@@ -39,9 +38,15 @@
                     <div class="form-text small">URLs automatically adjust the title (SEO-friendly).</div>
                 </div>
                 
-                <div class="col-md-12 mb-3">
+                <div class="col-md-8 mb-3">
                     <label class="form-label fw-bold small text-muted">Sub-title (Optional)</label>
                     <input type="text" class="form-control" name="subtitle" value="<?= $workshop ? $workshop->subtitle : '' ?>" placeholder="Ex: Supporting Identity, Memory and Well-being...">
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label class="form-label fw-bold small text-muted">Sort Order <span class="text-danger">*</span></label>
+                    <input type="number" class="form-control" name="sort_order" value="<?= $workshop ? $workshop->sort_order : '0' ?>" required placeholder="Ex: 1">
+                    <div class="form-text small">Angka urutan tampil (1, 2, 3...)</div>
                 </div>
 
                 <div class="col-md-6 mb-3">

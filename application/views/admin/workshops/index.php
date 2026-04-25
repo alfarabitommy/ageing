@@ -27,7 +27,7 @@
             <table id="wsTable" class="table table-hover align-middle">
                 <thead class="table-light">
                     <tr>
-                        <th width="5%">No</th>
+                        <th width="5%" class="text-center">Order</th>
                         <th>Workshop Title</th>
                         <th>Venue Location</th>
                         <th>Best Suited For?</th>
@@ -35,9 +35,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $no=1; foreach($workshops as $w): ?>
+                    <?php foreach($workshops as $w): ?>
                     <tr>
-                        <td><?= $no++ ?></td>
+                        <td class="text-center fw-bold text-primary">#<?= $w->sort_order ?></td>
                         <td>
                             <div class="fw-bold"><?= $w->title ?></div>
                             <small class="text-muted">Slug: /workshop/<?= $w->slug ?></small>

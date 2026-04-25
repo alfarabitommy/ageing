@@ -53,7 +53,8 @@ class Workshops extends MY_Controller {
             'synopsis' => $this->input->post('synopsis', TRUE),
             'location_venue' => $this->input->post('location_venue', TRUE),
             'location_room' => $this->input->post('location_room', TRUE),
-            'best_suited_for' => $this->input->post('best_suited_for', TRUE)
+            'best_suited_for' => $this->input->post('best_suited_for', TRUE),
+            'sort_order' => $this->input->post('sort_order', TRUE) // MODIFIKASI: Input urutan
         ];
 
         // Mengambil array dari input Select2
@@ -104,7 +105,8 @@ class Workshops extends MY_Controller {
             'synopsis' => $this->input->post('synopsis', TRUE),
             'location_venue' => $this->input->post('location_venue', TRUE),
             'location_room' => $this->input->post('location_room', TRUE),
-            'best_suited_for' => $this->input->post('best_suited_for', TRUE)
+            'best_suited_for' => $this->input->post('best_suited_for', TRUE),
+            'sort_order' => $this->input->post('sort_order', TRUE) // MODIFIKASI: Input urutan
         ];
 
         $tag_ids = $this->input->post('tags'); 

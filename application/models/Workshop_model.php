@@ -5,7 +5,8 @@ class Workshop_model extends CI_Model {
 
     public function get_all()
     {
-        $this->db->order_by('id', 'DESC');
+        // MODIFIKASI: Mengubah dari order by id menjadi sort_order ASC
+        $this->db->order_by('sort_order', 'ASC');
         return $this->db->get('workshops')->result();
     }
 
