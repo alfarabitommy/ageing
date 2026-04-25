@@ -22,7 +22,14 @@
     .btn-outline-white:hover {position: relative left: -21%; background-color: white; color: #5156B8; }
     
     /* Hero Ornaments */
-    .hero-shape { position: absolute; right: 0%; top: 500%; max-width: 550px; opacity: 0.8; z-index: 0; }
+    .hero-shape { 
+        position: absolute;
+        right: 0%;
+        top: 520%;
+        max-width: 575px;
+        opacity: 0.8;
+        z-index: 0; 
+    }
     .hero-ballet { position: absolute; right: -14%; bottom: 5%; max-width: 750px; z-index: 1; }
 
     /* INTRO SECTION */
@@ -42,12 +49,12 @@
     .matters-title { font-size: 48px; color: #5156B8; margin-bottom: 20px; }
     .matters-mic { position: absolute; right: 0%; top: -250px; max-width: 700px; }
     
-    /* Carousel Styling (UPDATED TO MATCH ABOUT.PHP LANDSCAPE) */
+    /* Carousel Styling */
     .carousel-inner { border-radius: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-    .carousel-item img { .reimagining-layer
-        height: 400px; /* Diubah dari 600px menjadi 400px agar landscape */
+    .carousel-item img {
+        height: 400px;
         object-fit: cover; 
-        border-radius: 30px; /* Mengikuti lekukan inner */
+        border-radius: 30px;
     }
     .carousel-indicators { bottom: 10px; }
     .carousel-indicators [data-bs-target] { width: 10px; height: 10px; border-radius: 50%; background-color: rgba(255,255,255,0.6); border: none; margin: 0 5px; }
@@ -112,19 +119,17 @@
     .modal-kustom .list-unstyled { padding: 0; margin: 0; }
     .modal-kustom .list-item-card { background-color: #EFEFEF; border-radius: 12px; padding: 22px 30px; margin-bottom: 15px; font-weight: 700; font-size: 16px; color: #111; }
 
-    /* CLASS BARU UNTUK GAMBAR HEADER MODAL */
     .modal-kustom .header-bg-img {
         position: absolute;
-        right: 0%; /* Menyesuaikan jarak dari kanan agar seimbang */
+        right: 0%;
         top: 50%;
         transform: translateY(-50%);
-        width: 400px; /* Ukuran ini proporsional dengan tinggi header dan teks */
+        width: 400px;
         height: auto;
-        pointer-events: none; /* Agar tidak menghalangi interaksi klik pengguna */
+        pointer-events: none;
         z-index: 0;
     }
 
-    /* Memastikan teks dan tombol tetap berada di atas gambar jika layar dikecilkan */
     .modal-kustom .header-card .btn-go-back,
     .modal-kustom .header-card .header-title,
     .modal-kustom .header-card .header-subtitle {
@@ -138,19 +143,50 @@
     .home-workshops { padding: 80px 0; }
     .matters-workhsop { position: absolute; right: 0%; top: 0px; max-width: 80px; }
 
-    
-    
     .hw-title { font-size: 52px; color: #5156B8; line-height: 1.1; margin-bottom: 30px; }
     .stat-box { border-radius: 15px; padding: 25px; height: 100%; display: flex; flex-direction: column; justify-content: center; }
     .stat-box .display-4 { font-weight: 800; color: #111; }
     .stat-box h5 { color: #111; font-weight: 600; margin: 0; }
     
+    /* MODIFIKASI LAYOUT CONTAINER TAGS (FIX STRETCHING & ROW WRAPPING) */
+    .tags-grid-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .tags-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
     /* MODIFIKASI FILTER TAGS */
-    .tag-pill { border: 1px solid #5156B8; color: #5156B8; border-radius: 20px; padding: 5px 15px; font-size: 13px; display: inline-block; margin: 0 5px 10px 0; text-decoration: none; transition: 0.2s; background-color: transparent; }
+    .tag-pill { 
+        border: 1px solid #5156B8; 
+        color: #5156B8; 
+        border-radius: 20px; 
+        padding: 5px 15px; 
+        font-size: 13px; 
+        display: inline-flex; 
+        align-items: center; 
+        justify-content: center;
+        margin: 0; 
+        text-decoration: none; 
+        transition: 0.2s; 
+        background-color: transparent; 
+    }
     .tag-pill:hover, .tag-pill.active { background-color: #5156B8; color: white; }
     
-    .workshop-card { width: 90%; /* BARU: Mengecilkan ukuran sekitar 10% dari lebar kolom */
-        margin: 0 auto; /* BARU: Memastikan card berada di tengah kolom */
+    /* ATURAN DUAL ICON CSS PADA TAG PILL */
+    .tag-pill .icon-default { display: inline-block; width: 16px; height: auto; margin-left: 6px; }
+    .tag-pill .icon-active { display: none; width: 16px; height: auto; margin-left: 6px; }
+    
+    /* TRIGGER CSS KETIKA HOVER ATAU ACTIVE (Klik) */
+    .tag-pill:hover .icon-default, .tag-pill.active .icon-default { display: none; }
+    .tag-pill:hover .icon-active, .tag-pill.active .icon-active { display: inline-block; }
+
+    .workshop-card { width: 90%; 
+        margin: 0 auto; 
         border: 1px solid #E0E0E0;
         border-radius: 15px;
         padding: 25px;
@@ -168,7 +204,6 @@
     .btn-read-more { background-color: #7C83DB; color: white; border-radius: 20px; padding: 6px 25px; font-size: 13px; font-weight: 600; border: none; align-self: center; text-decoration: none; transition: 0.3s; }
     .btn-read-more:hover { background-color: #5156B8; color: white; }
 
-    /* PENAMBAHAN CSS ANIMASI JS */
     .workshop-wrapper { transition: opacity 0.4s ease, transform 0.4s ease; opacity: 1; transform: scale(1); }
     .workshop-wrapper.fade-out { opacity: 0; transform: scale(0.95); }
 
@@ -243,25 +278,20 @@
         gap: 8px;
         margin: 0 10px 10px 0;
     }
-    .tags-grid-container {
-        display: grid;
-        grid-template-columns: repeat(7, max-content); /* Kunci utamanya: Memaksa persis 7 kolom yang lebarnya menyesuaikan konten teks masing-masing */
-        gap: 10px 10px; /* Jarak baris (atas-bawah) dan kolom (kiri-kanan) */
-        justify-content: start; /* Memastikan grup tags merapat ke sebelah kiri */
-    }
 
     /* MEDIA QUERY UNTUK MOBILE */
     @media (max-width: 768px) {
         .carousel-item img {
-            height: 250px; /* Menyesuaikan proporsi landscape di layar kecil */
+            height: 250px; 
         }
         .workshop-card {
-            width: 85%; /* Dikecilkan ekstra untuk mobile */
+            width: 85%; 
         }
         .tags-grid-container {
-            display: flex; /* Kembalikan ke flexbox untuk mobile */
-            flex-wrap: wrap; /* Biarkan turun baris secara natural */
-            gap: 8px; /* Jarak antar tag di mobile */
+            gap: 8px; 
+        }
+        .tags-row {
+            gap: 8px;
         }
     }
 </style>
@@ -378,10 +408,25 @@
         <p class="mb-4" style="font-size: 18px; max-width: 700px;">Participants are invited to choose up to 4 workshops based on their interests and the needs of the seniors they work with.</p>
         
         <div class="tags-grid-container mb-5">
-            <?php foreach($tags as $t): ?>
-                <a href="javascript:void(0)" class="tag-pill" data-tag="<?= htmlspecialchars($t->tag_name) ?>">
-                    <?= htmlspecialchars($t->tag_name) ?> <i class="fas fa-tag ms-1 opacity-50"></i>
-                </a>
+            <?php 
+            // IMPLEMENTASI ARRAY_CHUNK UNTUK MAKSIMAL 6 ITEM PER BARIS
+            $tag_chunks = array_chunk($tags, 6);
+            foreach($tag_chunks as $chunk): 
+            ?>
+                <div class="tags-row">
+                    <?php foreach($chunk as $t): ?>
+                        <a href="javascript:void(0)" class="tag-pill" data-tag="<?= htmlspecialchars($t->tag_name) ?>">
+                            <span><?= htmlspecialchars($t->tag_name) ?></span>
+                            <?php if(!empty($t->icon_default) && !empty($t->icon_active)): ?>
+                                <img src="<?= base_url('uploads/tags/'.$t->icon_default) ?>" class="icon-default" alt="">
+                                <img src="<?= base_url('uploads/tags/'.$t->icon_active) ?>" class="icon-active" alt="">
+                            <?php else: ?>
+                                <i class="fas fa-tag opacity-50 icon-default"></i>
+                                <i class="fas fa-tag opacity-50 icon-active"></i>
+                            <?php endif; ?>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
             <?php endforeach; ?>
         </div>
         

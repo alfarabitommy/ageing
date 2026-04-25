@@ -85,18 +85,22 @@
     }
     .shape-2 {
         position: absolute;
-        top: 0;
+        top: -100px;
         right: 0;
-        max-width: 300px;
+        max-width: 500px;
         z-index: -1;
     }
     
-    /* CSS BARU UNTUK CONTAINER TAGS */
+    /* MODIFIKASI LAYOUT CONTAINER TAGS (FIX STRETCHING & ROW WRAPPING) */
     .tags-grid-container {
-        display: grid;
-        grid-template-columns: repeat(7, max-content); /* Kunci utamanya: Memaksa persis 7 kolom yang lebarnya menyesuaikan konten teks masing-masing */
-        gap: 10px 10px; /* Jarak baris (atas-bawah) dan kolom (kiri-kanan) */
-        justify-content: start; /* Memastikan grup tags merapat ke sebelah kiri */
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .tags-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
     }
 
     /* MODIFIKASI FILTER TAGS */
@@ -106,9 +110,10 @@
         border-radius: 20px;
         padding: 5px 15px;
         font-size: 13px;
-        text-align: center;
-        /* margin: 0 5px 10px 0; <-- HAPUS BARIS INI, diganti oleh 'gap' di atas */
-        margin: 0; /* Pastikan margin 0 */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0; 
         background: transparent;
         text-decoration: none;
         transition: all 0.2s;
@@ -118,13 +123,42 @@
         color: white;
     }
     
+    /* ATURAN DUAL ICON CSS PADA TAG PILL */
+    .tag-pill .icon-default { 
+        display: inline-block; 
+        width: 16px; 
+        height: auto; 
+        margin-left: 6px; 
+    }
+    .tag-pill .icon-active { 
+        display: none; 
+        width: 16px; 
+        height: auto; 
+        margin-left: 6px; 
+    }
+    
+    /* TRIGGER CSS KETIKA HOVER ATAU ACTIVE (Klik) */
+    .tag-pill:hover .icon-default, .tag-pill.active .icon-default { 
+        display: none; 
+    }
+    .tag-pill:hover .icon-active, .tag-pill.active .icon-active { 
+        display: inline-block; 
+    }
+    
     /* PENAMBAHAN CSS ANIMASI JS */
-    .workshop-wrapper { transition: opacity 0.4s ease, transform 0.4s ease; opacity: 1; transform: scale(1); }
-    .workshop-wrapper.fade-out { opacity: 0; transform: scale(0.95); }
+    .workshop-wrapper { 
+        transition: opacity 0.4s ease, transform 0.4s ease; 
+        opacity: 1; 
+        transform: scale(1); 
+    }
+    .workshop-wrapper.fade-out { 
+        opacity: 0; 
+        transform: scale(0.95); 
+    }
 
     .workshop-card {
-        width: 90%; /* BARU: Mengecilkan ukuran sekitar 10% dari lebar kolom */
-        margin: 0 auto; /* BARU: Memastikan card berada di tengah kolom */
+        width: 90%; 
+        margin: 0 auto; 
         border: 1px solid #E0E0E0;
         border-radius: 15px;
         padding: 25px;
@@ -182,82 +216,164 @@
     }
 
     /* =========================================
-       MODAL WORKSHOP DETAIL (FROM HOME.PHP)
+       MODAL WORKSHOP DETAIL (RESTORED FULL LINES)
        ========================================= */
-    .modal-workshop-detail .modal-content { border-radius: 30px; border: none; background-color: #FFFFFF; padding: 30px; }
-    .modal-workshop-detail .modal-header-custom { padding: 40px; color: #111; border-radius: 20px; margin-bottom: 30px; }
-    .modal-workshop-detail .btn-go-back { color: #111; font-weight: 600; text-decoration: none; padding: 0; background: none; border: none; margin-bottom: 20px; font-size: 16px; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
-    .modal-workshop-detail .ws-title { font-size: 42px; font-weight: 800; line-height: 1.2; margin-bottom: 10px; color: #111; }
-    .modal-workshop-detail .ws-subtitle { font-size: 20px; color: #111; font-weight: 500; margin-bottom: 0; }
-    .modal-workshop-detail .modal-body-custom { padding: 0; }
-    .modal-workshop-detail .info-card { background-color: #F4F4F6; border-radius: 20px; padding: 40px; height: 100%; }
-    .modal-workshop-detail .ws-heading { color: #111; font-size: 18px; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-    .modal-workshop-detail .ws-heading i { color: #5156B8; font-size: 20px; }
-    .modal-workshop-detail .ws-text { font-size: 16px; color: #111; line-height: 1.6; margin-bottom: 30px; }
-    .modal-workshop-detail .fac-header-row { display: flex; align-items: center; gap: 20px; margin-bottom: 20px; }
-    .modal-workshop-detail .fac-img { width: 100px; height: 100px; border-radius: 12px; object-fit: cover; }
-    .modal-workshop-detail .fac-name { font-size: 20px; font-weight: 800; color: #111; margin-bottom: 5px; }
-    .modal-workshop-detail .fac-role { font-size: 16px; color: #444; font-weight: 500; }
-    .modal-workshop-detail .ws-tag-pill { border: 1px solid #5156B8; color: #5156B8; background-color: transparent; padding: 8px 20px; border-radius: 30px; font-size: 14px; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; margin: 0 10px 10px 0; }
+    .modal-workshop-detail .modal-content { 
+        border-radius: 30px; 
+        border: none; 
+        background-color: #FFFFFF; 
+        padding: 30px; 
+    }
+    .modal-workshop-detail .modal-header-custom { 
+        padding: 40px; 
+        color: #111; 
+        border-radius: 20px; 
+        margin-bottom: 30px; 
+    }
+    .modal-workshop-detail .btn-go-back { 
+        color: #111; 
+        font-weight: 600; 
+        text-decoration: none; 
+        padding: 0; 
+        background: none; 
+        border: none; 
+        margin-bottom: 20px; 
+        font-size: 16px; 
+        transition: 0.3s; 
+        display: inline-flex; 
+        align-items: center; 
+        gap: 8px; 
+    }
+    .modal-workshop-detail .ws-title { 
+        font-size: 42px; 
+        font-weight: 800; 
+        line-height: 1.2; 
+        margin-bottom: 10px; 
+        color: #111; 
+    }
+    .modal-workshop-detail .ws-subtitle { 
+        font-size: 20px; 
+        color: #111; 
+        font-weight: 500; 
+        margin-bottom: 0; 
+    }
+    .modal-workshop-detail .modal-body-custom { 
+        padding: 0; 
+    }
+    .modal-workshop-detail .info-card { 
+        background-color: #F4F4F6; 
+        border-radius: 20px; 
+        padding: 40px; 
+        height: 100%; 
+    }
+    .modal-workshop-detail .ws-heading { 
+        color: #111; 
+        font-size: 18px; 
+        font-weight: 800; 
+        margin-bottom: 15px; 
+        display: flex; 
+        align-items: center; 
+        gap: 10px; 
+    }
+    .modal-workshop-detail .ws-heading i { 
+        color: #5156B8; 
+        font-size: 20px; 
+    }
+    .modal-workshop-detail .ws-text { 
+        font-size: 16px; 
+        color: #111; 
+        line-height: 1.6; 
+        margin-bottom: 30px; 
+    }
+    .modal-workshop-detail .fac-header-row { 
+        display: flex; 
+        align-items: center; 
+        gap: 20px; 
+        margin-bottom: 20px; 
+    }
+    .modal-workshop-detail .fac-img { 
+        width: 100px; 
+        height: 100px; 
+        border-radius: 12px; 
+        object-fit: cover; 
+    }
+    .modal-workshop-detail .fac-name { 
+        font-size: 20px; 
+        font-weight: 800; 
+        color: #111; 
+        margin-bottom: 5px; 
+    }
+    .modal-workshop-detail .fac-role { 
+        font-size: 16px; 
+        color: #444; 
+        font-weight: 500; 
+    }
+    .modal-workshop-detail .ws-tag-pill { 
+        border: 1px solid #5156B8; 
+        color: #5156B8; 
+        background-color: transparent; 
+        padding: 8px 20px; 
+        border-radius: 30px; 
+        font-size: 14px; 
+        font-weight: 500; 
+        display: inline-flex; 
+        align-items: center; 
+        gap: 8px; 
+        margin: 0 10px 10px 0; 
+    }
 
     /* =========================================
        RESPONSIVE MOBILE ADJUSTMENTS (NEW)
        ========================================= */
     @media (max-width: 768px) {
-        /* 1. Pengecilan Gambar Hiasan (Shapes) */
         .shape-1 { 
-            max-width: 150px; /* Dikecilkan drastis dari 400px */
-            opacity: 0.4; /* Sedikit diredupkan agar teks tetap terbaca jelas */
-        }
-        .shape-2 { 
-            max-width: 120px; /* Dikecilkan dari 300px */
+            max-width: 150px; 
             opacity: 0.4; 
         }
-
-        /* 2. Penyesuaian Ruang & Teks Hero Section */
+        .shape-2 { 
+            max-width: 120px; 
+            opacity: 0.4; 
+        }
         .programme-hero { 
-            padding: 40px 0 60px; /* Mengurangi ruang kosong atas/bawah */
+            padding: 40px 0 60px; 
         }
         .programme-hero .display-3 { 
-            font-size: 2.2rem; /* Mengecilkan teks "The Programme" */
+            font-size: 2.2rem; 
         }
-        
-        /* 3. Penyesuaian Judul Section Global */
         .section-title { 
-            font-size: 30px; /* Mengecilkan teks "The Speakers" dll */
+            font-size: 30px; 
         }
         .workshops-section {
             padding: 40px 0;
         }
-        
-        /* 4. Penyesuaian Pop-up Modal Detail Workshop */
         .modal-workshop-detail .modal-header-custom { 
-            padding: 25px 20px; /* Merapatkan header modal */
+            padding: 25px 20px; 
         }
         .modal-workshop-detail .ws-title { 
-            font-size: 26px; /* Mengecilkan judul di dalam modal */
+            font-size: 26px; 
         }
         .modal-workshop-detail .info-card { 
-            padding: 25px 20px; /* Merapatkan konten dalam modal */
+            padding: 25px 20px; 
         }
         .modal-workshop-detail .fac-header-row { 
-            flex-direction: column; /* Membuat foto dan nama fasilitator turun ke bawah */
+            flex-direction: column; 
             text-align: center; 
         }
         .modal-workshop-detail .fac-img { 
-            margin: 0 auto; /* Menengahkan foto fasilitator */
+            margin: 0 auto; 
         }
         .speaker-card {
-            margin: 0 auto; /* Menengahkan foto fasilitator */
-            width: 90%; /* Dikecilkan ekstra untuk mobile */
+            margin: 0 auto; 
+            width: 90%; 
         }
         .workshop-card {
-            width: 85%; /* Dikecilkan ekstra untuk mobile */
+            width: 85%; 
         }
         .tags-grid-container {
-            display: flex; /* Kembalikan ke flexbox untuk mobile */
-            flex-wrap: wrap; /* Biarkan turun baris secara natural */
-            gap: 8px; /* Jarak antar tag di mobile */
+            gap: 8px; 
+        }
+        .tags-row {
+            gap: 8px;
         }
     }
 </style>
@@ -331,8 +447,25 @@
         </p>
 
         <div class="tags-grid-container mb-5">
-            <?php foreach($tags as $t): ?>
-                <a href="javascript:void(0)" class="tag-pill" data-tag="<?= htmlspecialchars($t->tag_name) ?>"><?= htmlspecialchars($t->tag_name) ?></a>
+            <?php 
+            // IMPLEMENTASI ARRAY_CHUNK UNTUK MAKSIMAL 6 ITEM PER BARIS
+            $tag_chunks = array_chunk($tags, 6);
+            foreach($tag_chunks as $chunk): 
+            ?>
+                <div class="tags-row">
+                    <?php foreach($chunk as $t): ?>
+                        <a href="javascript:void(0)" class="tag-pill" data-tag="<?= htmlspecialchars($t->tag_name) ?>">
+                            <span><?= htmlspecialchars($t->tag_name) ?></span>
+                            <?php if(!empty($t->icon_default) && !empty($t->icon_active)): ?>
+                                <img src="<?= base_url('uploads/tags/'.$t->icon_default) ?>" class="icon-default" alt="">
+                                <img src="<?= base_url('uploads/tags/'.$t->icon_active) ?>" class="icon-active" alt="">
+                            <?php else: ?>
+                                <i class="fas fa-tag ms-1 opacity-50 icon-default"></i>
+                                <i class="fas fa-tag ms-1 opacity-50 icon-active"></i>
+                            <?php endif; ?>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
             <?php endforeach; ?>
         </div>
 

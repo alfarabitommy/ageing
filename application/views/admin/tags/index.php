@@ -21,6 +21,7 @@
                 <thead class="table-light">
                     <tr>
                         <th width="5%">No</th>
+                        <th width="15%">Icons (Def / Act)</th>
                         <th>Tag Name</th>
                         <th width="15%" class="text-center">Action</th>
                     </tr>
@@ -29,7 +30,20 @@
                     <?php $no = 1; foreach($tags as $t): ?>
                     <tr>
                         <td><?= $no++ ?></td>
-                        <td class="fw-bold"><?= $t->tag_name ?></td>
+                        <td>
+                            <?php if(!empty($t->icon_default)): ?>
+                                <img src="<?= base_url('uploads/tags/'.$t->icon_default) ?>" style="height: 25px; background: #f8f9fa; padding: 2px; border-radius: 4px;" alt="Def">
+                            <?php else: ?>
+                                <span class="badge bg-secondary">No Def</span>
+                            <?php endif; ?>
+                            
+                            <?php if(!empty($t->icon_active)): ?>
+                                <img src="<?= base_url('uploads/tags/'.$t->icon_active) ?>" style="height: 25px; background: #5156B8; padding: 2px; border-radius: 4px; margin-left: 5px;" alt="Act">
+                            <?php else: ?>
+                                <span class="badge bg-secondary ms-1">No Act</span>
+                            <?php endif; ?>
+                        </td>
+                        <td class="fw-bold"><?= htmlspecialchars($t->tag_name) ?></td>
                         <td class="text-center">
                             <a href="<?= base_url('admin/tags/edit/'.$t->id) ?>" class="btn btn-sm btn-outline-primary rounded-pill"><i class="fas fa-edit"></i></a>
                             <a href="<?= base_url('admin/tags/delete/'.$t->id) ?>" class="btn btn-sm btn-outline-danger rounded-pill" onclick="return confirm('Are you sure you want to delete this tag?')"><i class="fas fa-trash"></i></a>
