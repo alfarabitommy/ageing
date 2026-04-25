@@ -7,16 +7,24 @@
     <div class="card-body p-4">
         <form action="<?= $action ?>" method="POST" enctype="multipart/form-data">
             <div class="row">
-                <div class="col-md-6 mb-3">
+                <div class="col-md-12 mb-3">
                     <label class="form-label fw-bold small text-muted">Full Name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" name="name" value="<?= $speaker ? $speaker->name : '' ?>" required placeholder="Ex: A/Prof (Dr) Carol Ma">
                 </div>
+                <div class="col-md-12 mb-3">
+                    <label class="form-label fw-bold small text-muted">Main Title/Position <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="designation" value="<?= $speaker ? $speaker->designation : '' ?>" required placeholder="Ex: Head, Gerontology Programmes & Senior Fellow">
+                </div>
                 <div class="col-md-6 mb-3">
-                    <label class="form-label fw-bold small text-muted">Title/Position <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="designation" value="<?= $speaker ? $speaker->designation : '' ?>" required>
+                    <label class="form-label fw-bold small text-muted">Department/Sub-division</label>
+                    <input type="text" class="form-control" name="department" value="<?= $speaker ? $speaker->department ?? '' : '' ?>" placeholder="Ex: Centre for Experiential Learning">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold small text-muted">Organization</label>
+                    <input type="text" class="form-control" name="organization" value="<?= $speaker ? $speaker->organization ?? '' : '' ?>" placeholder="Ex: Singapore University of Social Sciences">
                 </div>
                 <div class="col-md-12 mb-3">
-                    <label class="form-label fw-bold small text-muted">Biographical Summary</label>
+                    <label class="form-label fw-bold small text-muted">Biographical Summary (For Pop-up)</label>
                     <textarea class="form-control" name="bio_summary" rows="3"><?= $speaker ? $speaker->bio_summary : '' ?></textarea>
                 </div>
                 <div class="col-md-12 mb-4">

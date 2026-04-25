@@ -21,8 +21,9 @@
                 <thead class="table-light">
                     <tr>
                         <th width="5%">Photo</th>
-                        <th>Name</th>
-                        <th>Title/Position</th>
+                        <th width="20%">Name</th>
+                        <th width="30%">Title/Position</th>
+                        <th width="30%">Organization</th>
                         <th width="15%" class="text-center">Action</th>
                     </tr>
                 </thead>
@@ -35,6 +36,7 @@
                         </td>
                         <td class="fw-bold"><?= $s->name ?></td>
                         <td class="small text-muted"><?= $s->designation ?></td>
+                        <td class="small text-muted"><?= isset($s->organization) ? $s->organization : '-' ?></td>
                         <td class="text-center">
                             <a href="<?= base_url('admin/speakers/edit/'.$s->id) ?>" class="btn btn-sm btn-outline-primary rounded-pill"><i class="fas fa-edit"></i></a>
                             <a href="<?= base_url('admin/speakers/delete/'.$s->id) ?>" class="btn btn-sm btn-outline-danger rounded-pill" onclick="return confirm('Are you sure you want to delete this speaker?')"><i class="fas fa-trash"></i></a>

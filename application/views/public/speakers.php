@@ -39,6 +39,8 @@
         font-size: 42px;
         margin-bottom: 15px;
     }
+    
+    /* MODIFIKASI: Penambahan Flexbox untuk memastikan tinggi kotak seragam dan rapi */
     .speaker-card {
         border: 1px solid #5156B8;
         border-radius: 15px;
@@ -47,6 +49,9 @@
         height: 100%;
         background-color: white;
         transition: transform 0.3s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     .speaker-card:hover {
         transform: translateY(-5px);
@@ -59,22 +64,35 @@
         border-radius: 15px; 
         margin-bottom: 20px;
     }
+    
+    /* MODIFIKASI: Tipografi hierarki baru sesuai contoh mockup */
     .speaker-name {
         color: #5156B8;
-        font-weight: 700;
-        font-size: 20px;
-        margin-bottom: 10px;
+        font-weight: 800;
+        font-size: 24px;
+        margin-bottom: 12px;
     }
     .speaker-title {
+        font-size: 16px;
+        color: #111;
+        font-weight: 500;
+        margin-bottom: 8px;
+        line-height: 1.3;
+    }
+    .speaker-dept {
         font-size: 14px;
-        color: #333;
+        color: #111;
         font-weight: 400;
         margin-bottom: 15px;
+        line-height: 1.4;
+        flex-grow: 1; /* Mendorong organization ke dasar kartu */
     }
     .speaker-org {
-        font-size: 12px;
+        font-size: 15px;
         color: #5156B8;
-        font-weight: 700;
+        font-weight: 800;
+        margin-top: auto; /* Memastikan teks selalu di bagian terbawah */
+        line-height: 1.3;
     }
 
     /* Section 3: Breakout Workshops */
@@ -389,15 +407,15 @@
         
         <div class="row g-4" style="max-width: 700px;">
             <div class="col-md-4">
-                <div class="card stat-card" style="background-color: #F8E6EC;">
+                <div class="card stat-card" style="background-color: #D1CCFF;">
                     <div class="card-body p-4">
-                        <div class="display-4">4</div>
-                        <h5>Plenary<br>Sessions</h5>
+                        <div class="display-4">14</div>
+                        <h5>Inspiring<br>Practitioners</h5>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card stat-card" style="background-color: #EAE6FB;">
+                <div class="card stat-card" style="background-color: #FFC1F1;">
                     <div class="card-body p-4">
                         <div class="display-4">10</div>
                         <h5>Breakout<br>Workshops</h5>
@@ -405,10 +423,10 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card stat-card" style="background-color: #DDF2F8;">
+                <div class="card stat-card" style="background-color: #94C0FA;">
                     <div class="card-body p-4">
-                        <div class="display-4">1 Day</div>
-                        <h5>Full of<br>Lectures</h5>
+                        <div class="display-4">3</div>
+                        <h5>Plenary<br>Sessions</h5>
                     </div>
                 </div>
             </div>
@@ -431,7 +449,14 @@
                 
                 <h3 class="speaker-name"><?= htmlspecialchars($s->name) ?></h3>
                 <p class="speaker-title"><?= htmlspecialchars($s->designation) ?></p>
-                <p class="speaker-org mb-0"><?= htmlspecialchars(substr($s->bio_summary, 0, 50)) ?>...</p>
+                
+                <?php if(isset($s->department) && !empty($s->department)): ?>
+                    <p class="speaker-dept"><?= htmlspecialchars($s->department) ?></p>
+                <?php endif; ?>
+                
+                <?php if(isset($s->organization) && !empty($s->organization)): ?>
+                    <p class="speaker-org mb-0"><?= htmlspecialchars($s->organization) ?></p>
+                <?php endif; ?>
             </div>
         </div>
         <?php endforeach; ?>

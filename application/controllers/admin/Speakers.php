@@ -37,6 +37,8 @@ class Speakers extends MY_Controller {
         $data = [
             'name' => $this->input->post('name', TRUE),
             'designation' => $this->input->post('designation', TRUE),
+            'department' => $this->input->post('department', TRUE),
+            'organization' => $this->input->post('organization', TRUE),
             'bio_summary' => $this->input->post('bio_summary', TRUE)
         ];
 
@@ -82,6 +84,8 @@ class Speakers extends MY_Controller {
         $data = [
             'name' => $this->input->post('name', TRUE),
             'designation' => $this->input->post('designation', TRUE),
+            'department' => $this->input->post('department', TRUE),
+            'organization' => $this->input->post('organization', TRUE),
             'bio_summary' => $this->input->post('bio_summary', TRUE)
         ];
 
