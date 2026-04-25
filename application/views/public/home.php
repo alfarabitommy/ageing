@@ -112,6 +112,26 @@
     .modal-kustom .list-unstyled { padding: 0; margin: 0; }
     .modal-kustom .list-item-card { background-color: #EFEFEF; border-radius: 12px; padding: 22px 30px; margin-bottom: 15px; font-weight: 700; font-size: 16px; color: #111; }
 
+    /* CLASS BARU UNTUK GAMBAR HEADER MODAL */
+    .modal-kustom .header-bg-img {
+        position: absolute;
+        right: 0%; /* Menyesuaikan jarak dari kanan agar seimbang */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 400px; /* Ukuran ini proporsional dengan tinggi header dan teks */
+        height: auto;
+        pointer-events: none; /* Agar tidak menghalangi interaksi klik pengguna */
+        z-index: 0;
+    }
+
+    /* Memastikan teks dan tombol tetap berada di atas gambar jika layar dikecilkan */
+    .modal-kustom .header-card .btn-go-back,
+    .modal-kustom .header-card .header-title,
+    .modal-kustom .header-card .header-subtitle {
+        position: relative;
+        z-index: 1;
+    }
+
     /* =========================================
        WORKSHOPS SECTION
        ========================================= */
@@ -392,7 +412,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="header-card header-card-yellow">
-                <i class="fas fa-paint-brush header-bg-icon d-none d-md-block"></i>
+                <img src="<?= base_url('assets/public/images/creation-edited.png') ?>" alt="" class="header-bg-img d-none d-md-block">
                 <button type="button" class="btn btn-go-back" data-bs-dismiss="modal">Go Back</button>
                 <h2 class="header-title">Creation <img src="<?= base_url('assets/public/images/quill.png') ?>" alt="" class="" style="width: 50px;"></h2>
                 <h3 class="header-subtitle">Affirming Identity and<br>Lifelong Creative Practice</h3>
@@ -414,7 +434,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="header-card header-card-blue">
-                <i class="fas fa-hands-helping header-bg-icon d-none d-md-block"></i>
+                <img src="<?= base_url('assets/public/images/connection-edited.png') ?>" alt="" class="header-bg-img d-none d-md-block">
                 <button type="button" class="btn btn-go-back" data-bs-dismiss="modal">Go Back</button>
                 <h2 class="header-title">Connection <img src="<?= base_url('assets/public/images/affiliate.png') ?>" alt="" class="" style="width: 50px;"></h2>
                 <h3 class="header-subtitle">Strengthening Relationships<br>and Belonging</h3>
@@ -436,7 +456,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="header-card header-card-pink">
-                <i class="fas fa-pen-nib header-bg-icon d-none d-md-block" style="transform: translateY(-50%) rotate(-45deg);"></i>
+                <img src="<?= base_url('assets/public/images/contribution-edited.png') ?>" alt="" class="header-bg-img d-none d-md-block">
                 <button type="button" class="btn btn-go-back" data-bs-dismiss="modal">Go Back</button>
                 <h2 class="header-title">Contribution <img src="<?= base_url('assets/public/images/atom.png') ?>" alt="" class="" style="width: 50px;"></i></h2>
                 <h3 class="header-subtitle">Elders as Co-creators and<br>Collaborators</h3>
