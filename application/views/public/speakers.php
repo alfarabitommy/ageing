@@ -559,13 +559,13 @@ foreach($workshops as $w):
                     
                     <div class="col-lg-6">
                         <div class="info-card">
-                            <h6 class="ws-heading"><i class="fas fa-clipboard-list"></i> Workshop Synopsis</h6>
+                            <h6 class="ws-heading"><img src="<?= base_url('assets/public/images/clipboard.png') ?>" alt="" class="" style="width: 20px;"> Workshop Synopsis</h6>
                             <p class="ws-text"><?= nl2br(htmlspecialchars($w->synopsis)) ?></p>
                             
-                            <h6 class="ws-heading"><i class="fas fa-map-marker-alt"></i> Workshop Location</h6>
+                            <h6 class="ws-heading"><img src="<?= base_url('assets/public/images/pin.png') ?>" alt="" class="" style="width: 20px;"> Workshop Location</h6>
                             <p class="ws-text"><?= htmlspecialchars($w->location_venue) ?><br><?= htmlspecialchars($w->location_room) ?></p>
                             
-                            <h6 class="ws-heading"><i class="fas fa-check-double"></i> Best Suited for</h6>
+                            <h6 class="ws-heading"><img src="<?= base_url('assets/public/images/tick.png') ?>" alt="" class="" style="width: 20px;"> Best Suited for</h6>
                             <p class="ws-text" style="margin-bottom: 25px;"><?= htmlspecialchars($w->best_suited_for) ?></p>
                             
                             <div>
@@ -580,7 +580,7 @@ foreach($workshops as $w):
 
                     <div class="col-lg-6">
                         <div class="info-card">
-                            <h6 class="ws-heading"><i class="far fa-id-badge"></i> Facilitator Profile</h6>
+                            <h6 class="ws-heading"><img src="<?= base_url('assets/public/images/user.png') ?>" alt="" class="" style="width: 20px;"> Facilitator Profile</h6>
                             
                             <?php if($w->primary_facilitator): ?>
                                 <div class="fac-header-row mt-4">
