@@ -29,6 +29,10 @@ class Workshop_model extends CI_Model {
     {
         $this->db->select('facilitator_id');
         $this->db->where('workshop_id', $workshop_id);
+        
+        // MODIFIKASI: Pastikan data ditarik berdasarkan urutan pilihan di CMS
+        $this->db->order_by('sort_order', 'ASC'); 
+        
         $result = $this->db->get('workshop_facilitators')->result_array();
         return array_column($result, 'facilitator_id');
     }
@@ -56,10 +60,12 @@ class Workshop_model extends CI_Model {
         // 3. Insert ke pivot tabel workshop_facilitators
         if (!empty($facilitator_ids)) {
             $fac_data = [];
-            foreach ($facilitator_ids as $f_id) {
+            // MODIFIKASI: Menyimpan index array sebagai sort_order
+            foreach ($facilitator_ids as $index => $f_id) {
                 $fac_data[] = [
                     'workshop_id' => $workshop_id,
-                    'facilitator_id' => $f_id
+                    'facilitator_id' => $f_id,
+                    'sort_order' => $index 
                 ];
             }
             $this->db->insert_batch('workshop_facilitators', $fac_data);
@@ -94,10 +100,12 @@ class Workshop_model extends CI_Model {
         $this->db->where('workshop_id', $id)->delete('workshop_facilitators');
         if (!empty($facilitator_ids)) {
             $fac_data = [];
-            foreach ($facilitator_ids as $f_id) {
+            // MODIFIKASI: Menyimpan index array sebagai sort_order
+            foreach ($facilitator_ids as $index => $f_id) {
                 $fac_data[] = [
                     'workshop_id' => $id,
-                    'facilitator_id' => $f_id
+                    'facilitator_id' => $f_id,
+                    'sort_order' => $index
                 ];
             }
             $this->db->insert_batch('workshop_facilitators', $fac_data);

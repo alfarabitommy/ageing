@@ -40,7 +40,6 @@
         margin-bottom: 15px;
     }
     
-    /* MODIFIKASI: Penambahan Flexbox untuk memastikan tinggi kotak seragam dan rapi */
     .speaker-card {
         border: 1px solid #5156B8;
         border-radius: 15px;
@@ -65,7 +64,6 @@
         margin-bottom: 20px;
     }
     
-    /* MODIFIKASI: Tipografi hierarki baru sesuai contoh mockup */
     .speaker-name {
         color: #5156B8;
         font-weight: 800;
@@ -85,13 +83,13 @@
         font-weight: 400;
         margin-bottom: 15px;
         line-height: 1.4;
-        flex-grow: 1; /* Mendorong organization ke dasar kartu */
+        flex-grow: 1;
     }
     .speaker-org {
         font-size: 15px;
         color: #5156B8;
         font-weight: 800;
-        margin-top: auto; /* Memastikan teks selalu di bagian terbawah */
+        margin-top: auto; 
         line-height: 1.3;
     }
 
@@ -109,7 +107,6 @@
         z-index: -1;
     }
     
-    /* MODIFIKASI LAYOUT CONTAINER TAGS (FIX STRETCHING & ROW WRAPPING) */
     .tags-grid-container {
         display: flex;
         flex-direction: column;
@@ -121,7 +118,6 @@
         gap: 10px;
     }
 
-    /* MODIFIKASI FILTER TAGS */
     .tag-pill {
         border: 1px solid #5156B8;
         color: #5156B8;
@@ -141,7 +137,6 @@
         color: white;
     }
     
-    /* ATURAN DUAL ICON CSS PADA TAG PILL */
     .tag-pill .icon-default { 
         display: inline-block; 
         width: 16px; 
@@ -155,7 +150,6 @@
         margin-left: 6px; 
     }
     
-    /* TRIGGER CSS KETIKA HOVER ATAU ACTIVE (Klik) */
     .tag-pill:hover .icon-default, .tag-pill.active .icon-default { 
         display: none; 
     }
@@ -163,7 +157,6 @@
         display: inline-block; 
     }
     
-    /* PENAMBAHAN CSS ANIMASI JS */
     .workshop-wrapper { 
         transition: opacity 0.4s ease, transform 0.4s ease; 
         opacity: 1; 
@@ -233,9 +226,6 @@
         color: white;
     }
 
-    /* =========================================
-       MODAL WORKSHOP DETAIL (RESTORED FULL LINES)
-       ========================================= */
     .modal-workshop-detail .modal-content { 
         border-radius: 30px; 
         border: none; 
@@ -293,10 +283,6 @@
         align-items: center; 
         gap: 10px; 
     }
-    .modal-workshop-detail .ws-heading i { 
-        color: #5156B8; 
-        font-size: 20px; 
-    }
     .modal-workshop-detail .ws-text { 
         font-size: 16px; 
         color: #111; 
@@ -307,7 +293,7 @@
         display: flex; 
         align-items: center; 
         gap: 20px; 
-        margin-bottom: 20px; 
+        margin-bottom: 15px; 
     }
     .modal-workshop-detail .fac-img { 
         width: 100px; 
@@ -340,59 +326,22 @@
         margin: 0 10px 10px 0; 
     }
 
-    /* =========================================
-       RESPONSIVE MOBILE ADJUSTMENTS (NEW)
-       ========================================= */
     @media (max-width: 768px) {
-        .shape-1 { 
-            max-width: 150px; 
-            opacity: 0.4; 
-        }
-        .shape-2 { 
-            max-width: 120px; 
-            opacity: 0.4; 
-        }
-        .programme-hero { 
-            padding: 40px 0 60px; 
-        }
-        .programme-hero .display-3 { 
-            font-size: 2.2rem; 
-        }
-        .section-title { 
-            font-size: 30px; 
-        }
-        .workshops-section {
-            padding: 40px 0;
-        }
-        .modal-workshop-detail .modal-header-custom { 
-            padding: 25px 20px; 
-        }
-        .modal-workshop-detail .ws-title { 
-            font-size: 26px; 
-        }
-        .modal-workshop-detail .info-card { 
-            padding: 25px 20px; 
-        }
-        .modal-workshop-detail .fac-header-row { 
-            flex-direction: column; 
-            text-align: center; 
-        }
-        .modal-workshop-detail .fac-img { 
-            margin: 0 auto; 
-        }
-        .speaker-card {
-            margin: 0 auto; 
-            width: 90%; 
-        }
-        .workshop-card {
-            width: 85%; 
-        }
-        .tags-grid-container {
-            gap: 8px; 
-        }
-        .tags-row {
-            gap: 8px;
-        }
+        .shape-1 { max-width: 150px; opacity: 0.4; }
+        .shape-2 { max-width: 120px; opacity: 0.4; }
+        .programme-hero { padding: 40px 0 60px; }
+        .programme-hero .display-3 { font-size: 2.2rem; }
+        .section-title { font-size: 30px; }
+        .workshops-section { padding: 40px 0; }
+        .modal-workshop-detail .modal-header-custom { padding: 25px 20px; }
+        .modal-workshop-detail .ws-title { font-size: 26px; }
+        .modal-workshop-detail .info-card { padding: 25px 20px; }
+        .modal-workshop-detail .fac-header-row { flex-direction: column; text-align: center; }
+        .modal-workshop-detail .fac-img { margin: 0 auto; }
+        .speaker-card { margin: 0 auto; width: 90%; }
+        .workshop-card { width: 85%; }
+        .tags-grid-container { gap: 8px; }
+        .tags-row { gap: 8px; }
     }
 </style>
 
@@ -473,7 +422,6 @@
 
         <div class="tags-grid-container mb-5">
             <?php 
-            // IMPLEMENTASI ARRAY_CHUNK UNTUK MAKSIMAL 6 ITEM PER BARIS
             $tag_chunks = array_chunk($tags, 6);
             foreach($tag_chunks as $chunk): 
             ?>
@@ -525,21 +473,19 @@
 </section>
 
 <?php 
-// Memanggil model secara dinamis di dalam view 
 $CI =& get_instance();
 $CI->load->model('Tag_model');
 $CI->load->model('Workshop_model');
 
 foreach($workshops as $w): 
-    // MODIFIKASI: Mengambil warna dari database, hapus array random. Fallback ke warna default jika kosong.
     $active_bg = (isset($w->header_color) && !empty($w->header_color)) ? htmlspecialchars($w->header_color) : '#FDBA74';
 
-    // Ambil tag spesifik untuk workshop ini
     $related_tag_ids = $CI->Workshop_model->get_related_tags($w->id);
     $workshop_specific_tags = [];
     foreach($related_tag_ids as $tid) {
         $tag_obj = $CI->Tag_model->get_by_id($tid);
-        if($tag_obj) $workshop_specific_tags[] = $tag_obj->tag_name;
+        // MODIFIKASI: Menyimpan seluruh objek tag ke dalam array, bukan hanya string nama
+        if($tag_obj) $workshop_specific_tags[] = $tag_obj; 
     }
 ?>
 <div class="modal fade modal-workshop-detail" id="modalWorkshop<?= $w->id ?>" tabindex="-1" aria-hidden="true">
@@ -569,9 +515,14 @@ foreach($workshops as $w):
                             <p class="ws-text" style="margin-bottom: 25px;"><?= htmlspecialchars($w->best_suited_for) ?></p>
                             
                             <div>
-                                <?php foreach($workshop_specific_tags as $tag_name): ?>
+                                <?php foreach($workshop_specific_tags as $t_obj): ?>
                                     <span class="ws-tag-pill">
-                                        <?= htmlspecialchars($tag_name) ?> <i class="fas fa-star" style="font-size: 12px; opacity: 0.7;"></i>
+                                        <?= htmlspecialchars($t_obj->tag_name) ?> 
+                                        <?php if(!empty($t_obj->icon_default)): ?>
+                                            <img src="<?= base_url('uploads/tags/'.$t_obj->icon_default) ?>" style="width: 14px; height: auto;" alt="icon">
+                                        <?php else: ?>
+                                            <i class="fas fa-star" style="font-size: 12px; opacity: 0.7;"></i>
+                                        <?php endif; ?>
                                     </span>
                                 <?php endforeach; ?>
                             </div>
@@ -582,28 +533,30 @@ foreach($workshops as $w):
                         <div class="info-card">
                             <h6 class="ws-heading"><img src="<?= base_url('assets/public/images/user.png') ?>" alt="" class="" style="width: 20px;"> Facilitator Profile</h6>
                             
-                            <?php if($w->primary_facilitator): ?>
-                                <div class="fac-header-row mt-4">
-                                    <?php 
-                                        if($w->primary_facilitator && $w->primary_facilitator->image_path != 'default.png') { 
-                                            $fac_img_detail = base_url('uploads/facilitators/'.$w->primary_facilitator->image_path); 
-                                        } else { 
-                                            $fac_name_detail = $w->primary_facilitator ? $w->primary_facilitator->name : 'Facilitator'; 
-                                            $fac_img_detail = 'https://ui-avatars.com/api/?name='.urlencode($fac_name_detail).'&background=random&size=200'; 
-                                        }
-                                    ?>
-                                    <img src="<?= $fac_img_detail ?>" alt="Facilitator" class="fac-img shadow-sm">
-                                    
-                                    <div>
-                                        <div class="fac-name"><?= htmlspecialchars($w->primary_facilitator->name) ?></div>
-                                        <div class="fac-role">
-                                            <?= htmlspecialchars($w->primary_facilitator->designation) ?><br>
-                                            <?= htmlspecialchars($w->primary_facilitator->organization) ?>
+                            <?php if(!empty($w->all_facilitators)): ?>
+                                <?php foreach($w->all_facilitators as $fac): ?>
+                                    <div class="fac-header-row mt-4">
+                                        <?php 
+                                            if($fac->image_path != 'default.png' && !empty($fac->image_path)) { 
+                                                $fac_img_detail = base_url('uploads/facilitators/'.$fac->image_path); 
+                                            } else { 
+                                                $fac_img_detail = 'https://ui-avatars.com/api/?name='.urlencode($fac->name).'&background=random&size=200'; 
+                                            }
+                                        ?>
+                                        <img src="<?= $fac_img_detail ?>" alt="<?= htmlspecialchars($fac->name) ?>" class="fac-img shadow-sm">
+                                        
+                                        <div>
+                                            <div class="fac-name"><?= htmlspecialchars($fac->name) ?></div>
+                                            <div class="fac-role">
+                                                <?= htmlspecialchars($fac->designation) ?><br>
+                                                <?= htmlspecialchars($fac->organization) ?>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <p class="ws-text mt-3" style="margin-bottom: 0;">
-                                    <?= nl2br(htmlspecialchars($w->primary_facilitator->bio)) ?>
+                                <?php endforeach; ?>
+                                
+                                <p class="ws-text mt-4" style="margin-bottom: 30px;">
+                                    <?= nl2br(htmlspecialchars($w->all_facilitators[0]->bio)) ?>
                                 </p>
                             <?php endif; ?>
                         </div>

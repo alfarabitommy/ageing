@@ -35,7 +35,7 @@
             transition: all 0.3s ease;
         }
         .navbar-brand img {
-            max-height: 35px; /* DIKECILKAN DARI 45px */
+            max-height: 50px; /* DIKECILKAN DARI 45px */
             transition: all 0.3s ease;
         }
         .nav-link {
@@ -134,7 +134,7 @@
         }
         .navbar-dark-theme .nav-link { color: #FFFFFF; }
         .navbar-dark-theme .nav-link:hover, 
-        .navbar-dark-theme .nav-link.active { color: #1B2A47; }
+        .navbar-dark-theme .nav-link.active { color: #94C0FA; }
         
         .navbar-dark-theme .navbar-brand img {
             filter: brightness(0) invert(1);

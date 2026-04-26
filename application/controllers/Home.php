@@ -29,10 +29,22 @@ class Home extends CI_Controller {
         foreach ($data['workshops'] as $w) {
             // 1. Ambil Fasilitator
             $fac_ids = $this->Workshop_model->get_related_facilitators($w->id);
+            
+            // MODIFIKASI: Menyiapkan array untuk menampung BANYAK fasilitator
+            $w->all_facilitators = [];
+            $w->primary_facilitator = null; // Tetap dipertahankan untuk thumbnail card depan
+
             if (!empty($fac_ids)) {
+                // Set primary untuk card depan
                 $w->primary_facilitator = $this->Facilitator_model->get_by_id($fac_ids[0]);
-            } else {
-                $w->primary_facilitator = null;
+                
+                // Looping untuk mengambil SEMUA detail fasilitator untuk pop-up modal
+                foreach ($fac_ids as $fid) {
+                    $fac_obj = $this->Facilitator_model->get_by_id($fid);
+                    if ($fac_obj) {
+                        $w->all_facilitators[] = $fac_obj;
+                    }
+                }
             }
 
             // 2. Ambil Nama Tag (Hanya ditambahkan untuk kebutuhan filter JS Client-side)

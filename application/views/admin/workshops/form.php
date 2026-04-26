@@ -88,12 +88,33 @@
                 <div class="col-md-6 mb-4">
                     <label class="form-label fw-bold small text-muted">Choose Facilitator <span class="text-danger">*</span></label>
                     <select name="facilitators[]" class="form-control select2" multiple="multiple" required data-placeholder="Select one or more facilitators...">
-                        <?php foreach($all_facilitators as $f): ?>
-                            <option value="<?= $f->id ?>" <?= in_array($f->id, $selected_facilitators) ? 'selected' : '' ?>>
+                        <?php 
+                        // MODIFIKASI: Render opsi yang terpilih lebih dulu untuk menjaga urutan saat edit
+                        foreach($selected_facilitators as $sel_id): 
+                            foreach($all_facilitators as $f):
+                                if($f->id == $sel_id):
+                        ?>
+                            <option value="<?= $f->id ?>" selected>
                                 <?= $f->name ?> (<?= $f->organization ?>)
                             </option>
-                        <?php endforeach; ?>
+                        <?php 
+                                endif;
+                            endforeach;
+                        endforeach; 
+                        
+                        // Kemudian render sisa opsi yang belum dipilih
+                        foreach($all_facilitators as $f): 
+                            if(!in_array($f->id, $selected_facilitators)):
+                        ?>
+                            <option value="<?= $f->id ?>">
+                                <?= $f->name ?> (<?= $f->organization ?>)
+                            </option>
+                        <?php 
+                            endif;
+                        endforeach; 
+                        ?>
                     </select>
+                    <div class="form-text small">Urutan klik Anda menentukan urutan tampil di website.</div>
                 </div>
 
                 <div class="col-md-12 mb-4">
@@ -119,6 +140,17 @@
         $('.select2').select2({
             width: '100%',
             allowClear: true
+        });
+
+        // MODIFIKASI JS: Memaksa Select2 menyimpan pilihan berdasarkan urutan klik user
+        $("select[name='facilitators[]']").on("select2:select", function (evt) {
+            var element = evt.params.data.element;
+            var $element = $(element);
+            
+            // Pindahkan opsi yang baru diklik ke posisi terbawah di dalam elemen <select>
+            $element.detach();
+            $(this).append($element);
+            $(this).trigger("change");
         });
     });
 </script>

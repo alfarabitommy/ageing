@@ -96,7 +96,7 @@
         border-radius: 30px; 
     }
     .vision-overlay-box .carousel-item img {
-        height: 450px; 
+        height: 600px; 
         object-fit: cover;
         border-radius: 30px;
     }
@@ -150,9 +150,9 @@
 
    .our-vision {
         width: 513px;
-        height: 121px;
+        height: 70px;
         position: relative;
-        font-size: 92px;
+        font-size: 3.5rem;
         letter-spacing: -0.02em;
         line-height: 115%;
         display: inline-block;
@@ -162,7 +162,7 @@
 }
 
     .intro-vision {
-        font-size: 28px;
+        font-size: 25px;
         color: #000;
         font-family: 'DM Sans';
 
@@ -172,7 +172,7 @@
         position: absolute; 
         right: 0%;
         top: -5%;
-        max-width: 750px;
+        max-width: 650px;
      }
     
 
@@ -181,20 +181,21 @@
        ========================================= */
     .conference-objectives {
         width: 849px;
-        height: 90px;
+        height: 20px;
         position: relative;
-        font-size: 92px;
+        font-size: 3.2rem;
         letter-spacing: -0.02em;
         line-height: 115%;
         display: inline-block;
         font-family: 'DM Sans';
         color: #fff;
         text-align: left;
+        bottom: 10%;
     }
 
     .intro-conference {
         font-size: 28px;
-        color: #000;
+        color: #fff;
         font-family: 'DM Sans';
 
     }
@@ -624,7 +625,7 @@
     <div class="container">
         <div class="row mb-5">
             <div class="col-lg-7">
-                <div class="conference-objectives">Conference Object</div>
+                <div class="conference-objectives">Conference Objectives</div>
                 <p class="intro-conference">
                     Through interdisciplinary dialogue among artists, academics, 
                     eldercare professionals, community partners, and older adults themselves, 
@@ -699,10 +700,12 @@
     <div class="container">
         <div class="news-grid">
             <div class="news-item">
-                <img src="<?= base_url('assets/public/images/about-slec.png') ?>" alt="About SLEC">
+                <img src="<?= base_url('assets/public/images/slec.png') ?>" alt="About SLEC">
                 <div class="news-content">
                     <h3>About St Luke’s ElderCare<br>(SLEC)</h3>
-                    <p>SLEC was established in 19XX and together they revolutionized care industry in Singapore.</p>
+                    <p>For over 26 years, SLEC has been using art to bring
+                       meaning, joy and connection to seniors across 31 locations.
+                    </p>
                     <button type="button" class="read-more-outline" data-bs-toggle="modal" data-bs-target="#modalSLEC">Read More</button>
                 </div>
             </div>
