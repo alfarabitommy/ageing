@@ -73,19 +73,19 @@
                             <div class="col-6">
                                 <small class="d-block mb-2 text-white-50">@stlukeseldercare</small>
                                 <div class="social-icons-container">
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://www.instagram.com/stlukeseldercare/?hl=en"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://www.facebook.com/StLukesElderCare/"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="https://www.tiktok.com/@stlukeseldercare"><i class="fab fa-tiktok"></i></a>
+                                    <a href="https://www.linkedin.com/company/st-lukes-eldercare/"><i class="fab fa-linkedin-in"></i></a>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <small class="d-block mb-2 text-white-50">@nafa_sg</small>
                                 <div class="social-icons-container">
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://www.instagram.com/nafa_sg/"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://www.facebook.com/NAFA"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="https://www.tiktok.com/@nafa_sg"><i class="fab fa-tiktok"></i></a>
+                                    <a href="https://www.linkedin.com/school/nafasg/"><i class="fab fa-linkedin-in"></i></a>
                                 </div>
                             </div>
                         </div>

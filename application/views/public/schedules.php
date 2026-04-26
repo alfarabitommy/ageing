@@ -177,7 +177,8 @@
             <div class="event-info">
                 <h3 class="event-title"><?= htmlspecialchars($s->activity_title) ?></h3>
                 <div class="event-location">
-                    <i class="far fa-circle"></i> <?= htmlspecialchars($s->location) ?>
+                  <i class="fa-solid fa-location-dot"></i><?= htmlspecialchars($s->location) ?>
+
                 </div>
             </div>
             <div class="event-time">

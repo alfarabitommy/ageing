@@ -1,50 +1,64 @@
 <style>
-    /* TYPOGRAPHY OVERRIDES */
+    /* =========================================
+       GLOBAL & TYPOGRAPHY OVERRIDES
+       ========================================= */
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    body {
+        font-family: 'DM Sans', sans-serif;
+        /* KUNCI PERBAIKAN: Mencegah horizontal scroll global tanpa memotong gambar secara vertikal */
+        overflow-x: hidden; 
+    }
     h1, h2, h3, h4, h5, h6 { font-weight: 800; letter-spacing: -0.5px; }
     p { font-weight: 400; line-height: 1.7; }
 
-    /* HERO SECTION */
+    /* =========================================
+       HERO SECTION
+       ========================================= */
     .home-hero {
         background-color: #5156B8;
         color: white;
         padding: 80px 0 120px;
         position: relative;
         text-align: center;
-        overflow: hidden;
     }
     .hero-pretitle { position: relative; center: 0%; font-weight: 700; text-transform: uppercase; font-size: 14px; margin-bottom: 20px; letter-spacing: 1px; }
     .hero-title-img { position: relative; center: 0%; max-width: 600px; width: 100%; margin-bottom: 20px; }
     .hero-subtitle { position: relative; center: 0%; font-size: 24px; font-weight: 600; margin-bottom: 30px; }
     .hero-date { position: relative; center: 0%; font-size: 18px; font-weight: 500; margin-bottom: 40px; }
     .btn-outline-white {
-        position: relative; center: 0%; border: 2px solid white; color: white; border-radius: 30px; padding: 10px 30px; font-weight: 700; transition: 0.3s; text-decoration: none;
+        position: relative; border: 2px solid white; color: white; border-radius: 30px; padding: 10px 30px; font-weight: 700; transition: 0.3s; text-decoration: none; display: inline-block; z-index: 2;
     }
-    .btn-outline-white:hover {position: relative left: -21%; background-color: white; color: #5156B8; }
+    .btn-outline-white:hover { background-color: white; color: #5156B8; transform: translateX(5px); }
     
     /* Hero Ornaments */
-    .hero-shape { position: absolute; right: 0%; top: 450%; max-width: 600px; z-index: 1; }
-    .hero-ballet { position: absolute; right: -14%; bottom: 5%; max-width: 750px; z-index: 1; }
-    .hero-saxophone { position: absolute; left: -7%; bottom: 2%; max-width: 600px; z-index: 1; }
+    .hero-ballet { position: absolute; right: -14%; bottom: 5%; max-width: 750px; z-index: 1; pointer-events: none; }
+    .hero-saxophone { position: absolute; left: -7%; bottom: 2%; max-width: 600px; z-index: 1; pointer-events: none; }
     
-    /* INTRO SECTION */
+    /* =========================================
+       INTRO SECTION
+       ========================================= */
     .intro-section {
         background-color: #FFDEB3; 
         padding: 100px 0;
         position: relative;
-        overflow: hidden;
     }
     .intro-title { font-size: 52px; color: #111; line-height: 1.1; margin-bottom: 30px; }
     .intro-text { font-size: 18px; color: #333; margin-bottom: 20px; font-weight: 500; }
-    .intro-brush { position: absolute; top: -12%; left: -5%; max-width: 550px; }
-    .intro-mask { position: absolute; bottom: 87%; left: -5%; max-width: 550px; }
+    .intro-brush { position: absolute; top: -12%; left: -5%; max-width: 550px; z-index: 1; pointer-events: none; }
+    .intro-mask { position: absolute; bottom: 87%; left: -5%; max-width: 550px; z-index: 1; pointer-events: none; }
 
-    /* MATTERS & CAROUSEL SECTION */
+    /* =========================================
+       MATTERS & CAROUSEL SECTION
+       ========================================= */
     .matters-section { padding: 100px 0; background-color: #FAFAFA; position: relative; }
-    .matters-title { font-size: 48px; color: #5156B8; margin-bottom: 20px; }
-    .matters-mic { position: absolute; right: 0%; top: -250px; max-width: 650px;}
+    .matters-title { font-size: 48px; color: #5156B8; margin-bottom: 20px; position: relative; z-index: 2; }
+    .matters-mic { position: absolute; right: 0%; top: -250px; max-width: 650px; z-index: 1; pointer-events: none; }
     
     /* Carousel Styling */
-    .carousel-inner { border-radius: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+    .carousel-inner { border-radius: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); position: relative; z-index: 2; }
     .carousel-item img {
         height: 600px;
         object-fit: cover; 
@@ -54,12 +68,14 @@
     .carousel-indicators [data-bs-target] { width: 10px; height: 10px; border-radius: 50%; background-color: rgba(255,255,255,0.6); border: none; margin: 0 5px; }
     .carousel-indicators .active { background-color: white; }
 
-    /* REIMAGINING SECTION (PILLARS) */
+    /* =========================================
+       REIMAGINING SECTION (PILLARS)
+       ========================================= */
     .reimagining-section { background-color: #5156B8; padding: 100px 0; position: relative; color: white; }
-    .reimagining-title { font-size: 48px; line-height: 1.2; margin-bottom: 60px; }
-    .reimagining-layer { position: absolute; left: 0%; top: -20%; max-width: 750px; }
+    .reimagining-title { font-size: 48px; line-height: 1.2; margin-bottom: 60px; position: relative; z-index: 2; }
+    .reimagining-layer { position: absolute; left: 0%; top: -20%; max-width: 750px; z-index: 1; pointer-events: none; }
 
-    .pillar-card { border-radius: 20px; padding: 40px; height: 100%; color: #111; display: flex; flex-direction: column; align-items: flex-start; }
+    .pillar-card { border-radius: 20px; padding: 40px; height: 100%; color: #111; display: flex; flex-direction: column; align-items: flex-start; position: relative; z-index: 2; }
     .pillar-card i { font-size: 32px; margin-bottom: 20px; }
     .pillar-card h3 { font-size: 28px; margin-bottom: 15px; }
     .pillar-card p { font-size: 15px; flex-grow: 1; }
@@ -134,15 +150,17 @@
     /* =========================================
        WORKSHOPS SECTION
        ========================================= */
-    .home-workshops { padding: 80px 0; }
-    .matters-workhsop { position: absolute; right: 0%; top: 0px; max-width: 80px; }
+    .home-workshops { padding: 80px 0; position: relative; }
+    
+    /* PERBAIKAN: Posisi Desktop Ornamen Topeng (Reset dari top: 450%) */
+    .hero-shape { position: absolute; right: 0%; top: 0%; max-width: 600px; z-index: 0; pointer-events: none; }
 
-    .hw-title { font-size: 52px; color: #5156B8; line-height: 1.1; margin-bottom: 30px; }
-    .stat-box { border-radius: 15px; padding: 25px; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+    .hw-title { font-size: 52px; color: #5156B8; line-height: 1.1; margin-bottom: 30px; position: relative; z-index: 2; }
+    .stat-box { border-radius: 15px; padding: 25px; height: 100%; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; }
     .stat-box .display-4 { font-weight: 800; color: #111; }
     .stat-box h5 { color: #111; font-weight: 600; margin: 0; }
     
-    .tags-grid-container { display: flex; flex-direction: column; gap: 10px; }
+    .tags-grid-container { display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 2; }
     .tags-row { display: flex; flex-wrap: wrap; gap: 10px; }
 
     .tag-pill { 
@@ -175,7 +193,9 @@
         height: 100%;
         background-color: white;
         display: flex;
-        flex-direction: column; 
+        flex-direction: column;
+        position: relative;
+        z-index: 2;
     }
     .workshop-img { width: 100px; height: 100px; object-fit: cover; border-radius: 15px; margin: 0 auto 20px; }
     .workshop-title { color: #5156B8; font-weight: 700; font-size: 18px; margin-bottom: 10px; }
@@ -259,26 +279,92 @@
         margin: 0 10px 10px 0;
     }
 
-    /* MEDIA QUERY UNTUK MOBILE */
+    /* =========================================
+       RESPONSIVE MOBILE (Penyempurnaan Utama)
+       ========================================= */
+    @media (max-width: 991px) {
+        .intro-title { font-size: 40px; }
+        .matters-title { font-size: 38px; }
+        .reimagining-title { font-size: 38px; margin-bottom: 40px; }
+        .hw-title { font-size: 40px; }
+    }
+
     @media (max-width: 768px) {
-        .carousel-item img {
-            height: 250px; 
-        }
-        .workshop-card {
-            width: 85%; 
-        }
-        .tags-grid-container {
-            gap: 8px; 
-        }
-        .tags-row {
-            gap: 8px;
-        }
+        /* Section Spacing */
+        .home-hero { padding: 60px 0 80px; }
+        .intro-section, .matters-section, .reimagining-section, .home-workshops { padding: 50px 0; }
+
+        /* Typography & Images Adjustments */
+        .hero-subtitle { font-size: 18px; margin-bottom: 20px; }
+        .hero-date { font-size: 15px; margin-bottom: 30px; }
+        .hero-title-img { max-width: 80%; }
+        
+        .intro-title { font-size: 32px; margin-bottom: 20px; }
+        .intro-text { font-size: 16px; }
+
+        .matters-title { font-size: 32px; }
+        .matters-section p { font-size: 16px !important; }
+        .carousel-item img { height: 250px; }
+
+        .reimagining-title { font-size: 28px; margin-bottom: 30px; text-align: left; }
+        .pillar-card { padding: 25px; }
+        .pillar-card h3 { font-size: 22px; }
+        .pillar-card i, .pillar-card img { width: 40px !important; margin-bottom: 15px; }
+
+        .hw-title { font-size: 32px; }
+        
+        /* Stat Cards Horizontal Override */
+        .stat-box { padding: 15px !important; }
+        .stat-box .display-4 { font-size: 28px; }
+        .stat-box h5 { font-size: 12px; line-height: 1.2; }
+        
+        /* Tags & Cards */
+        .workshop-card { width: 100%; padding: 20px; }
+        .tags-grid-container { gap: 8px; }
+        .tags-row { gap: 8px; justify-content: flex-start; }
+
+        /* Modals Adjustments */
+        .modal-kustom .modal-content { padding: 15px; }
+        .modal-kustom .header-card { padding: 25px 20px; margin-bottom: 20px; }
+        .modal-kustom .header-title { font-size: 28px; }
+        .modal-kustom .header-subtitle { font-size: 18px; }
+        .modal-kustom .desc-card { padding: 20px; font-size: 15px; }
+        .modal-kustom .list-item-card { padding: 15px; font-size: 14px; }
+        
+        .modal-workshop-detail .modal-content { padding: 15px; }
+        .modal-workshop-detail .modal-header-custom { padding: 25px 20px; margin-bottom: 20px; }
+        .modal-workshop-detail .ws-title { font-size: 26px; }
+        .modal-workshop-detail .ws-subtitle { font-size: 16px; }
+        .modal-workshop-detail .info-card { padding: 25px 20px; }
+        .modal-workshop-detail .ws-heading { font-size: 16px; }
+        .modal-workshop-detail .ws-text { font-size: 15px; }
+        
+        /* Profile Facilitator di HP */
+        .modal-workshop-detail .fac-header-row { flex-direction: column; align-items: flex-start; gap: 15px; }
+        .modal-workshop-detail .fac-img { width: 80px; height: 80px; }
+        .modal-workshop-detail .fac-name { font-size: 18px; }
+        .modal-workshop-detail .fac-role { font-size: 14px; }
+
+        /* =========================================
+           ORNAMENTS MOBILE ADJUSTMENTS (TIDAK BERUBAH)
+           ========================================= */
+        .hero-ballet { max-width: 200px; right: -5%; top: 5%; bottom: auto; opacity: 0.4; z-index: 0; pointer-events: none; }
+        .hero-saxophone { max-width: 200px; left: -5%; bottom: 12%; opacity: 0.4; z-index: 0; pointer-events: none; }
+        
+        .intro-brush { max-width: 260px; top: -5%; right: -5%; left: auto; opacity: 0.4; z-index: 0; pointer-events: none; transform: scaleX(-1); }
+        .intro-mask { max-width: 150px; bottom: 5%; left: auto; right: -5%; opacity: 0.15; z-index: 0; top: auto; pointer-events: none; }
+        
+        .matters-mic { max-width: 220px; right: -5%; top: 0; opacity: 0.4; z-index: 0; pointer-events: none; }
+        
+        .reimagining-layer { max-width: 260px; top: 0; right: -5%; left: auto; opacity: 0.4; z-index: 0; pointer-events: none; transform: scaleX(-1); }
+        
+        .hero-shape { max-width: 150px; right: -5%; top: 5%; opacity: 0.15; z-index: 0; pointer-events: none; }
     }
 </style>
 
 <section class="home-hero">
-        <img src="<?= base_url('assets/public/images/icon-ballet-white.png') ?>" alt="" class="hero-ballet d-none d-md-block">
-        <img src="<?= base_url('assets/public/images/home-saxophone.png') ?>" alt="" class="hero-saxophone d-none d-md-block">
+        <img src="<?= base_url('assets/public/images/icon-ballet-white.png') ?>" alt="" class="hero-ballet">
+        <img src="<?= base_url('assets/public/images/home-saxophone.png') ?>" alt="" class="hero-saxophone">
         
         <div class="container position-relative" style="z-index: 2;">
         <div class="hero-pretitle">SLEC × NAFA Present</div>
@@ -291,7 +377,7 @@
 </section>
 
 <section id="intro" class="intro-section">
-    <img src="<?= base_url('assets/public/images/icon-brush.png') ?>" alt="" class="intro-brush d-none d-lg-block">
+    <img src="<?= base_url('assets/public/images/icon-brush.png') ?>" alt="" class="intro-brush">
     <div class="container">
         <div class="row justify-content-end">
             <div class="col-lg-6 position-relative" style="z-index: 2;">
@@ -305,9 +391,9 @@
 </section>
 
 <section class="matters-section">
-    <img src="<?= base_url('assets/public/images/icon-mask.png') ?>" alt="" class="intro-mask d-none d-lg-block">
-    <img src="<?= base_url('assets/public/images/icon-mic.png') ?>" alt="" class="matters-mic d-none d-md-block">
-    <div class="container">
+    <img src="<?= base_url('assets/public/images/icon-mask.png') ?>" alt="" class="intro-mask">
+    <img src="<?= base_url('assets/public/images/icon-mic.png') ?>" alt="" class="matters-mic">
+    <div class="container position-relative" style="z-index: 2;">
         <div class="row mb-5">
             <div class="col-lg-7">
                 <h2 class="matters-title">Why it Matters</h2>
@@ -332,8 +418,8 @@
 </section>
 
 <section class="reimagining-section">
-    <img src="<?= base_url('assets/public/images/icon-layer.png') ?>" alt="" class="reimagining-layer d-none d-lg-block">
-    <div class="container">
+    <img src="<?= base_url('assets/public/images/icon-layer.png') ?>" alt="" class="reimagining-layer">
+    <div class="container position-relative" style="z-index: 2;">
         <div class="row justify-content-end mb-4">
             <div class="col-lg-8 text-lg-end">
                 <h2 class="reimagining-title">Reimagining ageing<br>through <span style="color: #92B9FA;">creation</span>,<br><span style="color: #92B9FA;">connection</span> and<br><span style="color: #92B9FA;">contribution</span></h2>
@@ -378,11 +464,11 @@
 </section>
 
 <section class="home-workshops">
-    <img src="<?= base_url('assets/public/images/home-hero-shape.png') ?>" alt="" class="hero-shape d-none d-md-block">
-    <div class="container">
+    <img src="<?= base_url('assets/public/images/home-hero-shape.png') ?>" alt="" class="hero-shape">
+    <div class="container position-relative" style="z-index: 2;">
         <p class="small text-muted fw-bold mb-2">SLEC x NAFA Ageing Artfully Conference 2026</p>
         <h2 class="hw-title">More Workshops<br>More Learning</h2>
-        <div class="row g-3 mb-5" style="max-width: 600px;">
+        <div class="row g-2 g-md-4 mb-5" style="max-width: 600px;">
             <div class="col-4"><div class="stat-box" style="background-color: #D1CCFF;"><div class="display-4">14</div><h5>Inspiring<br>Practioners</h5></div></div>
             <div class="col-4"><div class="stat-box" style="background-color: #FFC1F1;"><div class="display-4">10</div><h5>Breakout<br>Workshops</h5></div></div>
             <div class="col-4"><div class="stat-box" style="background-color: #94C0FA;"><div class="display-4">1 Day</div><h5>Pleanary<br>Sessions</h5></div></div>
@@ -506,14 +592,12 @@ $CI->load->model('Tag_model');
 $CI->load->model('Workshop_model');
 
 foreach($workshops as $w): 
-    // MODIFIKASI 1: Panggil warna dinamis dari database, default ke '#FDBA74' jika belum diisi
     $active_bg = (isset($w->header_color) && !empty($w->header_color)) ? htmlspecialchars($w->header_color) : '#FDBA74';
 
     $related_tag_ids = $CI->Workshop_model->get_related_tags($w->id);
     $workshop_specific_tags = [];
     foreach($related_tag_ids as $tid) {
         $tag_obj = $CI->Tag_model->get_by_id($tid);
-        // MODIFIKASI 2: Simpan seluruh obyek tag agar kita bisa akses field 'icon_default'
         if($tag_obj) $workshop_specific_tags[] = $tag_obj; 
     }
 ?>

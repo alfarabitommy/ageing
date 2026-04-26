@@ -6,10 +6,10 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: 'DM Sans', sans-serif;
     }
 
     body {
+        font-family: 'DM Sans', sans-serif;
         background-color: #f4f7f6;
         color: #333;
         line-height: 1.6;
@@ -68,7 +68,6 @@
         max-width: 800px;
         transition: all 0.3s ease;
     }
-/* 
 
     .programme-hero .container {
         position: relative;
@@ -121,12 +120,11 @@
         padding: 60px 0 20px;
         text-align: center;
     }
-
-/*     
+    
     /* INTRO SECTION */
     .intro-section {
         font-size :32px;
-        font-family: 'DM Sans';
+        font-family: 'DM Sans', sans-serif;
         background-color: #fff; 
         padding: 100px 0;
         position: relative;
@@ -136,16 +134,16 @@
     }
     .intro-title { font-size: 52px; color: #111; line-height: 1.1; margin-bottom: 30px; }
     .intro-text { font-size: 32px; color: #333; margin-bottom: 20px; font-weight: 500; }
-    .intro-brush { position: absolute; top: -30%; left: -10%; width: 851px;241; }
+    .intro-brush { position: absolute; top: -30%; left: -10%; width: 850px; z-index: 1;}
         
-/* =========================================
+    /* =========================================
        Our Vision Mision
     ========================================= */
-     /* Our Vision Mision */
     .vision-section {
         padding: 100px;
         background-color: #FFCCF3;
         position: relative;
+        overflow: hidden;
     }
 
    .our-vision {
@@ -156,16 +154,17 @@
         letter-spacing: -0.02em;
         line-height: 115%;
         display: inline-block;
-        font-family: 'DM Sans';
+        font-weight: 800;
         color: #000;
         text-align: left;
-}
+        z-index: 2;
+    }
 
     .intro-vision {
         font-size: 25px;
         color: #000;
-        font-family: 'DM Sans';
-
+        position: relative;
+        z-index: 2;
     }
 
      .matters-mask {
@@ -173,31 +172,29 @@
         right: 0%;
         top: -5%;
         max-width: 650px;
+        z-index: 1;
      }
     
-
     /* =========================================
        3. CONFERENCE OBJECTIVES
        ========================================= */
     .conference-objectives {
         width: 849px;
-        height: 20px;
+        height: auto;
         position: relative;
         font-size: 3.2rem;
         letter-spacing: -0.02em;
         line-height: 115%;
         display: inline-block;
-        font-family: 'DM Sans';
+        font-weight: 800;
         color: #fff;
         text-align: left;
-        bottom: 10%;
+        margin-bottom: 20px;
     }
 
     .intro-conference {
         font-size: 28px;
         color: #fff;
-        font-family: 'DM Sans';
-
     }
 
     .objectives-section { 
@@ -236,83 +233,26 @@
     .obj-card-3 { background: #94c0fa; animation-delay: 0.3s; }
     .obj-card-4 { background: #ffc184; animation-delay: 0.4s; }
 
-    .obj-card i { font-size: 36px; margin-bottom: 20px; display: block; opacity: 0.9; }
     .obj-card h4 { font-size: 20px; font-weight: 800; margin-bottom: 10px; line-height: 1.3; }
     .obj-card p { font-size: 15px; margin: 0; opacity: 0.85; font-weight: 500; }
 
-
-/* =========================================
-       Icon Retangel
+    /* =========================================
+       Icon Rectangle
        ========================================= */
+    .rectangle-brain, .rectangle-deepen, .rectangle-inspire, .rectangle-elevate {
+        width: 100%; 
+        height: auto; 
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        margin: 30px auto; 
+    }
 
-.rectangle-brain {
-    width: 200px; /* Lebar rectangle */
-    height: 100px; /* Tinggi rectangle */
-    /* Mengatur posisi konten (ikon) agar di tengah */
-    display: flex;
-    justify-content: center; /* Tengah horizontal */
-    align-items: center; /* Tengah vertikal */
-    margin: 50px auto; /* Memberi jarak di luar kotak */
-}
-
-.icon-brain {
-    width: 150px; /* Ukuran icon */
-    height: 150px;
-}
-
-
-
-.rectangle-deepen {
-    width: 200px; /* Lebar rectangle */
-    height: 100px; /* Tinggi rectangle */
-    /* Mengatur posisi konten (ikon) agar di tengah */
-    display: flex;
-    justify-content: center; /* Tengah horizontal */
-    align-items: center; /* Tengah vertikal */
-    margin: 50px auto; /* Memberi jarak di luar kotak */
-}
-
-.icon-deepen {
-    width: 150px; /* Ukuran icon */
-    height: 150px;
-}
-
-.rectangle-inspire {
-    width: 200px; /* Lebar rectangle */
-    height: 100px; /* Tinggi rectangle */
-    /* Mengatur posisi konten (ikon) agar di tengah */
-    display: flex;
-    justify-content: center; /* Tengah horizontal */
-    align-items: center; /* Tengah vertikal */
-    margin: 50px auto; /* Memberi jarak di luar kotak */
-}
-
-.icon-inspire {
-    width: 150px; /* Ukuran icon */
-    height: 150px;
-}
-
-.rectangle-elevate {
-    width: 200px; /* Lebar rectangle */
-    height: 100px; /* Tinggi rectangle */
-    /* Mengatur posisi konten (ikon) agar di tengah */
-    display: flex;
-    justify-content: center; /* Tengah horizontal */
-    align-items: center; /* Tengah vertikal */
-    margin: 50px auto; /* Memberi jarak di luar kotak */
-}
-
-.icon-elevate {
-    width: 150px; /* Ukuran icon */
-    height: 150px;
-}
-
-
-
-
-
-
-
+    .icon-brain, .icon-deepen, .icon-inspire, .icon-elevate {
+        width: 120px; 
+        height: 120px;
+        object-fit: contain;
+    }
 
     /* =========================================
        4. NEWS / ABOUT ORGANISATIONS SECTION
@@ -365,7 +305,7 @@
     .news-content h3 {
         margin: 0 0 15px 0;
         color: #5156B8; 
-        font-weight: 700;
+        font-weight: 800;
         font-size: 26px;
         line-height: 1.3;
     }
@@ -383,11 +323,11 @@
         text-decoration: none;
         color: #5156B8;
         background-color: transparent;
-        font-weight: 500;
+        font-weight: 700;
         font-size: 15px;
         padding: 8px 24px;
-        border: 1px solid #5156B8;
-        border-radius: 10px; 
+        border: 2px solid #5156B8;
+        border-radius: 30px; 
         transition: all 0.3s ease;
         cursor: pointer;
     }
@@ -432,7 +372,7 @@
     .about-modal .modal-title-custom {
         font-size: 42px;
         font-weight: 800;
-        color: #4B4CB0; /* Warna ungu navy persis seperti di desain */
+        color: #4B4CB0; 
         line-height: 1.2;
         letter-spacing: -1px;
         margin: 0;
@@ -457,7 +397,7 @@
     }
 
     .about-modal .info-box {
-        background-color: #F4F4F6; /* Warna abu-abu halus dari referensi */
+        background-color: #F4F4F6; 
         border-radius: 25px;
         padding: 40px;
         height: 100%;
@@ -487,7 +427,7 @@
     .about-modal .contact-group { margin-bottom: 30px; }
     .about-modal .contact-group:last-child { margin-bottom: 0; }
     .about-modal .contact-title { font-weight: 700; color: #111; margin-bottom: 5px; }
-    .about-modal .contact-link { color: #5156B8; text-decoration: none; display: block; margin-bottom: 8px; }
+    .about-modal .contact-link { color: #5156B8; text-decoration: none; display: block; margin-bottom: 8px; font-weight: 600; }
     .about-modal .contact-link:hover { text-decoration: underline; }
 
     /* =========================================
@@ -500,16 +440,28 @@
         .hero-title { font-size: 2.2rem; }
         .programme-hero p.lead { font-size: 16px; margin-bottom: 30px !important; }
         
-        .slider-thumb img { max-width: 150px; opacity: 0.4; }
         .vision-container { margin-top: -60px; }
         .vision-overlay-box .carousel-item img { height: 250px; }
         .transition-text-section { padding: 40px 0 10px; }
-        .profile-text { font-size: 16px; padding: 0 15px; }
+        
+        /* Typography overrides fixed fixed-width elements */
+        .intro-section { padding: 60px 0; font-size: 20px; }
+        .intro-vision { font-size: 18px; }
+        
+        .vision-section { padding: 60px 20px; }
+        .our-vision { width: 100%; height: auto; font-size: 2.5rem; margin-bottom: 15px; }
+        
         .objectives-section { padding: 60px 0; }
+        .conference-objectives { width: 100%; height: auto; font-size: 2.2rem; bottom: auto; }
+        .intro-conference { font-size: 18px; }
+
         .section-title { font-size: 32px; }
         .objectives-subtitle { font-size: 18px; padding: 0 15px; margin-bottom: 30px; }
-        .obj-card { padding: 30px 20px; }
+        
+        .obj-card { padding: 30px 20px; margin-bottom: 15px; }
         .obj-card h4 { font-size: 18px; }
+        .icon-brain, .icon-deepen, .icon-inspire, .icon-elevate { width: 80px; height: 80px; }
+        
         .news-grid { flex-direction: column; gap: 20px; }
         .news-item { padding: 15px; }
         .news-item img { height: 220px; }
@@ -523,14 +475,25 @@
         .about-modal .modal-logos img { max-height: 40px; }
         .about-modal .hero-img { height: 250px; border-radius: 15px; margin-bottom: 25px; }
         .about-modal .info-box { padding: 25px; }
+
+        /* =========================================
+           ORNAMENTS MOBILE ADJUSTMENTS (WATERMARK FINAL)
+           ========================================= */
+        /* 1. Hero Pen Ornamen: Dipertebal & Diperbesar */
+        .slider-thumb img { max-width: 250px; opacity: 0.4; pointer-events: none; z-index: 0; }
+        
+        /* 2. Intro Brush: Dinaikkan ke atas (-10%), dipertebal & diperbesar */
+        .intro-brush { max-width: 280px; top: -10%; left: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
+        
+        /* 3. Vision Mask: Dipertebal & diperbesar membingkai teks Our Vision */
+        .matters-mask { max-width: 220px; top: -5%; right: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
     }
 </style>
 
 <section class="programme-hero">
     
     <div class="slider-thumb">
-        <img src="<?= base_url('assets/public/images/icon-pen-about.png') ?>" alt="" class"shape-1">
-
+        <img src="<?= base_url('assets/public/images/icon-pen-about.png') ?>" alt="" class="shape-1">
     </div>
 
     <div class="container">
@@ -584,7 +547,7 @@
 
 
 <section id="intro" class="intro-section">
-    <img src="<?= base_url('assets/public/images/icon-brush.png') ?>" alt="" class="intro-brush d-none d-lg-block">
+    <img src="<?= base_url('assets/public/images/icon-brush.png') ?>" alt="" class="intro-brush">
     <div class="container">
         <div class="row justify-content-end">
             <div class="col-lg-6 position-relative" style="z-index: 2;">
@@ -600,7 +563,7 @@
 </section>
 
 <section class="vision-section">
-    <img src="<?= base_url('assets/public/images/icon-mask-about.png') ?>" alt="" class="matters-mask d-none d-md-block">
+    <img src="<?= base_url('assets/public/images/icon-mask-about.png') ?>" alt="" class="matters-mask">
 <div class="container">
         <div class="row mb-5">
             <div class="col-lg-7">
@@ -609,7 +572,7 @@
                     Art its heart.Ageing Artfully reimagines ageing as a stage
                     rich,with potential-for creation that affirms identity,
                     connection that nurtures belonging, and contribution that
-                    sustains purpose.</br></br>
+                    sustains purpose.<br><br>
                 </p>
                 <p class="intro-vision">
                     We move toward a vision of ageing that honours not only

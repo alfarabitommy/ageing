@@ -1,11 +1,26 @@
 <style>
-    /* Section 1: The Programme Hero */
+    /* =========================================
+       GLOBAL & TYPOGRAPHY
+       ========================================= */
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    body {
+        font-family: 'DM Sans', sans-serif;
+        /* KUNCI PERBAIKAN: Mencegah horizontal scroll global tanpa memotong gambar vertikal */
+        overflow-x: hidden;
+    }
+
+    /* =========================================
+       SECTION 1: THE PROGRAMME HERO
+       ========================================= */
     .programme-hero {
         background-color: #5156B8; /* Navy Blue */
         color: white;
         padding: 80px 0 100px;
         position: relative;
-        overflow: hidden;
+        /* overflow: hidden; DIHAPUS agar ornamen tidak terpotong */
     }
     .shape-1 {
         position: absolute;
@@ -16,12 +31,17 @@
     }
     .programme-hero .container {
         position: relative;
-        z-index: 1;
+        z-index: 2;
     }
     .stat-card {
         border-radius: 15px;
         border: none;
         height: 100%;
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     .stat-card .display-4 {
         font-weight: 800;
@@ -30,9 +50,12 @@
     .stat-card h5 {
         color: #1B2A47;
         font-weight: 600;
+        margin: 0;
     }
 
-    /* Section 2: Plenary Speakers */
+    /* =========================================
+       SECTION 2: PLENARY SPEAKERS
+       ========================================= */
     .section-title {
         color: #5156B8;
         font-weight: 800;
@@ -93,24 +116,29 @@
         line-height: 1.3;
     }
 
-    /* Section 3: Breakout Workshops */
+    /* =========================================
+       SECTION 3: BREAKOUT WORKSHOPS
+       ========================================= */
     .workshops-section {
         position: relative;
         padding: 60px 0;
         scroll-margin-top: 80px; 
+        /* overflow: hidden; DIHAPUS agar ornamen .shape-2 bebas menembus ke atas */
     }
     .shape-2 {
         position: absolute;
         top: -100px;
         right: 0;
         max-width: 500px;
-        z-index: -1;
+        z-index: 1;
     }
     
     .tags-grid-container {
         display: flex;
         flex-direction: column;
         gap: 10px;
+        position: relative;
+        z-index: 2;
     }
     .tags-row {
         display: flex;
@@ -161,6 +189,8 @@
         transition: opacity 0.4s ease, transform 0.4s ease; 
         opacity: 1; 
         transform: scale(1); 
+        position: relative;
+        z-index: 2;
     }
     .workshop-wrapper.fade-out { 
         opacity: 0; 
@@ -226,6 +256,9 @@
         color: white;
     }
 
+    /* =========================================
+       MODAL WORKSHOP DETAIL
+       ========================================= */
     .modal-workshop-detail .modal-content { 
         border-radius: 30px; 
         border: none; 
@@ -326,22 +359,41 @@
         margin: 0 10px 10px 0; 
     }
 
+    /* =========================================
+       RESPONSIVE MOBILE ADJUSTMENTS
+       ========================================= */
     @media (max-width: 768px) {
-        .shape-1 { max-width: 150px; opacity: 0.4; }
-        .shape-2 { max-width: 120px; opacity: 0.4; }
+        /* Layout & Spacing */
         .programme-hero { padding: 40px 0 60px; }
         .programme-hero .display-3 { font-size: 2.2rem; }
         .section-title { font-size: 30px; }
         .workshops-section { padding: 40px 0; }
-        .modal-workshop-detail .modal-header-custom { padding: 25px 20px; }
-        .modal-workshop-detail .ws-title { font-size: 26px; }
-        .modal-workshop-detail .info-card { padding: 25px 20px; }
-        .modal-workshop-detail .fac-header-row { flex-direction: column; text-align: center; }
-        .modal-workshop-detail .fac-img { margin: 0 auto; }
-        .speaker-card { margin: 0 auto; width: 90%; }
-        .workshop-card { width: 85%; }
+        
+        /* Stat Cards Horizontal Override */
+        .stat-card .card-body { padding: 15px !important; }
+        .stat-card .display-4 { font-size: 28px; }
+        .stat-card h5 { font-size: 12px; line-height: 1.2; }
+
+        /* Stats & Cards */
+        .speaker-card { margin: 0 auto; width: 100%; }
+        .workshop-card { width: 100%; padding: 20px; }
         .tags-grid-container { gap: 8px; }
-        .tags-row { gap: 8px; }
+        .tags-row { gap: 8px; justify-content: flex-start; }
+
+        /* Modal Adjustments */
+        .modal-workshop-detail .modal-content { padding: 15px; }
+        .modal-workshop-detail .modal-header-custom { padding: 25px 20px; margin-bottom: 20px; }
+        .modal-workshop-detail .ws-title { font-size: 26px; }
+        .modal-workshop-detail .ws-subtitle { font-size: 16px; }
+        .modal-workshop-detail .info-card { padding: 25px 20px; }
+        .modal-workshop-detail .fac-header-row { flex-direction: column; align-items: flex-start; text-align: left; gap: 15px; }
+        .modal-workshop-detail .fac-img { width: 80px; height: 80px; }
+
+        /* =========================================
+           ORNAMENTS MOBILE ADJUSTMENTS (WATERMARK FINAL)
+           ========================================= */
+        .shape-1 { max-width: 250px; top: 5%; right: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
+        .shape-2 { max-width: 250px; top: 10px; right: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
     }
 </style>
 
@@ -354,26 +406,26 @@
             At the heart of the conference is the belief that the arts are not just activities, but everyday practices that support connection, identity, and well-being.
         </p>
         
-        <div class="row g-4" style="max-width: 700px;">
-            <div class="col-md-4">
+        <div class="row g-2 g-md-4" style="max-width: 700px;">
+            <div class="col-4">
                 <div class="card stat-card" style="background-color: #D1CCFF;">
-                    <div class="card-body p-4">
+                    <div class="card-body p-3 p-md-4">
                         <div class="display-4">14</div>
                         <h5>Inspiring<br>Practitioners</h5>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-4">
                 <div class="card stat-card" style="background-color: #FFC1F1;">
-                    <div class="card-body p-4">
+                    <div class="card-body p-3 p-md-4">
                         <div class="display-4">10</div>
                         <h5>Breakout<br>Workshops</h5>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-4">
                 <div class="card stat-card" style="background-color: #94C0FA;">
-                    <div class="card-body p-4">
+                    <div class="card-body p-3 p-md-4">
                         <div class="display-4">3</div>
                         <h5>Plenary<br>Sessions</h5>
                     </div>
@@ -484,7 +536,6 @@ foreach($workshops as $w):
     $workshop_specific_tags = [];
     foreach($related_tag_ids as $tid) {
         $tag_obj = $CI->Tag_model->get_by_id($tid);
-        // MODIFIKASI: Menyimpan seluruh objek tag ke dalam array, bukan hanya string nama
         if($tag_obj) $workshop_specific_tags[] = $tag_obj; 
     }
 ?>
