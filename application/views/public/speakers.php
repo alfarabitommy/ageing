@@ -586,7 +586,10 @@ foreach($workshops as $w):
                                 <?php foreach($w->all_facilitators as $fac): ?>
                                     <div class="fac-header-row mt-4">
                                         <?php 
-                                            if($fac->image_path != 'default.png' && !empty($fac->image_path)) { 
+                                            // LOGIKA PEMILIHAN FOTO POPUP
+                                            if(isset($fac->image_path_popup) && $fac->image_path_popup != 'default.png' && !empty($fac->image_path_popup)) { 
+                                                $fac_img_detail = base_url('uploads/facilitators/'.$fac->image_path_popup); 
+                                            } else if($fac->image_path != 'default.png' && !empty($fac->image_path)) { 
                                                 $fac_img_detail = base_url('uploads/facilitators/'.$fac->image_path); 
                                             } else { 
                                                 $fac_img_detail = 'https://ui-avatars.com/api/?name='.urlencode($fac->name).'&background=random&size=200'; 

@@ -23,14 +23,27 @@
                     <label class="form-label fw-bold small text-muted">Biography <span class="text-danger">*</span></label>
                     <textarea class="form-control" name="bio" rows="4" required><?= $facilitator ? $facilitator->bio : '' ?></textarea>
                 </div>
-                <div class="col-md-12 mb-4">
-                    <label class="form-label fw-bold small text-muted">Profile Photo</label>
+                
+                <div class="col-md-6 mb-4">
+                    <label class="form-label fw-bold small text-muted">Primary Profile Photo (For List)</label>
                     <input type="file" class="form-control" name="image_path" accept="image/*">
-                    <div class="form-text small">Upload if you want to add or replace a photo (Max 2MB. Format: JPG, PNG, WEBP).</div>
+                    <div class="form-text small">Upload if you want to add or replace photo (Max 2MB).</div>
                     <?php if($facilitator && $facilitator->image_path != 'default.png' && $facilitator->image_path != ''): ?>
                         <div class="mt-2">
-                            <span class="small text-muted d-block mb-1">Current Photo:</span>
+                            <span class="small text-muted d-block mb-1">Current Primary Photo:</span>
                             <img src="<?= base_url('uploads/facilitators/'.$facilitator->image_path) ?>" alt="Current Image" width="80" class="rounded shadow-sm">
+                        </div>
+                    <?php endif; ?>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <label class="form-label fw-bold small text-muted">Pop-up Profile Photo (Optional)</label>
+                    <input type="file" class="form-control" name="image_path_popup" accept="image/*">
+                    <div class="form-text small">Special image for modal detail. If empty, the system will use the Primary Photo.</div>
+                    <?php if($facilitator && isset($facilitator->image_path_popup) && $facilitator->image_path_popup != 'default.png' && $facilitator->image_path_popup != ''): ?>
+                        <div class="mt-2">
+                            <span class="small text-muted d-block mb-1">Current Pop-up Photo:</span>
+                            <img src="<?= base_url('uploads/facilitators/'.$facilitator->image_path_popup) ?>" alt="Current Popup Image" width="80" class="rounded shadow-sm">
                         </div>
                     <?php endif; ?>
                 </div>
