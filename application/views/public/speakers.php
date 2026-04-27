@@ -70,15 +70,13 @@
         text-align: center;
         height: 100%;
         background-color: white;
-        transition: transform 0.3s;
+        /* PERBAIKAN: transition: transform 0.3s; dihapus karena efek hover dihilangkan */
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    .speaker-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(81, 86, 184, 0.1);
-    }
+    /* PERBAIKAN: Seluruh block .speaker-card:hover telah dihapus untuk mematikan efek hover */
+
     .speaker-img {
         width: 120px;
         height: 120px;

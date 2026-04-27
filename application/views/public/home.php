@@ -371,8 +371,8 @@
         <img src="<?= base_url('assets/public/images/footer-logo.png') ?>" alt="Ageing Artfully Conference 2026" class="hero-title-img">
         
         <h2 class="hero-subtitle">Living Everyday Joys Through the Arts</h2>
-        <div class="hero-date">Wednesday, 22 July 2026<br>9 AM - 5 PM</div>
-        <a href="#intro" class="btn-outline-white">Explore More ></a>
+        <div class="hero-date">Wednesday, 22 July 2026<br>9:00 AM - 5:00 PM</div>
+        <a href="<?= base_url('speakers#breakout-workshops') ?>" class="btn-outline-white">Explore More ></a>
     </div>
 </section>
 
@@ -469,9 +469,9 @@
         <p class="small text-muted fw-bold mb-2">SLEC x NAFA Ageing Artfully Conference 2026</p>
         <h2 class="hw-title">More Workshops<br>More Learning</h2>
         <div class="row g-2 g-md-4 mb-5" style="max-width: 600px;">
-            <div class="col-4"><div class="stat-box" style="background-color: #D1CCFF;"><div class="display-4">14</div><h5>Inspiring<br>Practioners</h5></div></div>
+            <div class="col-4"><div class="stat-box" style="background-color: #D1CCFF;"><div class="display-4">14</div><h5>Inspiring<br>Practitioners</h5></div></div>
             <div class="col-4"><div class="stat-box" style="background-color: #FFC1F1;"><div class="display-4">10</div><h5>Breakout<br>Workshops</h5></div></div>
-            <div class="col-4"><div class="stat-box" style="background-color: #94C0FA;"><div class="display-4">1 Day</div><h5>Pleanary<br>Sessions</h5></div></div>
+            <div class="col-4"><div class="stat-box" style="background-color: #94C0FA;"><div class="display-4">3</div><h5>Plenary<br>Sessions</h5></div></div>
         </div>
         <p class="mb-4" style="font-size: 18px; max-width: 700px;">Participants are invited to choose <strong>up to 4 workshops</strong> based on their interests and the needs of the seniors they work with.</p>
         
