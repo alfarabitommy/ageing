@@ -13,11 +13,11 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label class="form-label fw-bold small text-muted">Position/Profession <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="designation" value="<?= $facilitator ? $facilitator->designation : '' ?>" placeholder="Contoh: Art Therapist" required>
+                    <input type="text" class="form-control" name="designation" value="<?= $facilitator ? $facilitator->designation : '' ?>" placeholder="Contoh: Art Therapist">
                 </div>
                 <div class="col-md-12 mb-3">
                     <label class="form-label fw-bold small text-muted">Organization/Affiliation <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="organization" value="<?= $facilitator ? $facilitator->organization : '' ?>" placeholder="Contoh: Art for Good" required>
+                    <input type="text" class="form-control" name="organization" value="<?= $facilitator ? $facilitator->organization : '' ?>" placeholder="Contoh: Art for Good">
                 </div>
                 <div class="col-md-12 mb-3">
                     <label class="form-label fw-bold small text-muted">Biography <span class="text-danger">*</span></label>

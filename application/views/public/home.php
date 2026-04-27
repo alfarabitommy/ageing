@@ -687,19 +687,28 @@ foreach($workshops as $w):
 document.addEventListener("DOMContentLoaded", function() {
     const tagPills = document.querySelectorAll('.tag-pill');
     const workshopWrappers = document.querySelectorAll('.workshop-wrapper');
-    let activeTags = new Set();
+    // PERUBAHAN: Ubah dari new Set() menjadi variable null untuk menampung 1 tag aktif saja.
+    let activeTag = null; 
 
     tagPills.forEach(pill => {
         pill.addEventListener('click', function(e) {
             e.preventDefault();
             const tag = this.getAttribute('data-tag');
-            if (activeTags.has(tag)) {
-                activeTags.delete(tag);
+            
+            // PERUBAHAN: Logika Toggle Single-Select
+            if (activeTag === tag) {
+                // Jika tag yang sama diklik lagi, matikan tag tersebut (kembali tampilkan semua)
+                activeTag = null;
                 this.classList.remove('active');
             } else {
-                activeTags.add(tag);
+                // Jika tag baru diklik, matikan semua tag lain terlebih dahulu
+                tagPills.forEach(p => p.classList.remove('active'));
+                
+                // Lalu hidupkan tag yang baru diklik
+                activeTag = tag;
                 this.classList.add('active');
             }
+            
             filterContent();
         });
     });
@@ -710,10 +719,9 @@ document.addEventListener("DOMContentLoaded", function() {
             const cardTags = tagsAttr ? tagsAttr.split(',').map(t => t.trim()) : [];
             let isMatch = true;
 
-            if (activeTags.size > 0) {
-                activeTags.forEach(t => { 
-                    if (!cardTags.includes(t)) isMatch = false; 
-                });
+            // PERUBAHAN: Cek hanya 1 tag aktif saja
+            if (activeTag !== null) {
+                isMatch = cardTags.includes(activeTag);
             }
 
             if (isMatch) {
