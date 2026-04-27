@@ -672,7 +672,7 @@ foreach($workshops as $w):
                                 <?php endforeach; ?>
                                 
                                 <p class="ws-text mt-4" style="margin-bottom: 30px;">
-                                    <?= nl2br(htmlspecialchars($w->all_facilitators[0]->bio)) ?>
+                                    <?= nl2br(htmlspecialchars($w->team_bio)) ?>
                                 </p>
                             <?php endif; ?>
                         </div>

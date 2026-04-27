@@ -6,7 +6,6 @@ class Home extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        // Memuat model untuk section "More Workshops" di bagian bawah Homepage
         $this->load->model('Workshop_model');
         $this->load->model('Tag_model');
         $this->load->model('Facilitator_model');
@@ -14,40 +13,47 @@ class Home extends CI_Controller {
 
     public function index()
     {
-        // Setup SEO Meta & Theme
         $data['title'] = 'Home | Ageing Artfully Conference 2026';
         $data['meta_desc'] = 'Reimagining Ageing Through the Power of the Arts Together. Join the SLEC x NAFA Conference on 22 July 2026.';
-        
-        // TRIGGER HEADER GELAP (Karena hero section Home berwarna Navy)
         $data['is_dark_header'] = TRUE; 
         
-        // Mengambil Master Data untuk Section Workshop
         $data['tags'] = $this->Tag_model->get_all();
-        $data['workshops'] = $this->Workshop_model->get_all(); // Akan kita limit di View jika perlu
+        $data['workshops'] = $this->Workshop_model->get_all(); 
 
-        // Looping untuk menyisipkan data fasilitator utama dan data tags (untuk filter JS)
         foreach ($data['workshops'] as $w) {
-            // 1. Ambil Fasilitator
             $fac_ids = $this->Workshop_model->get_related_facilitators($w->id);
             
-            // MODIFIKASI: Menyiapkan array untuk menampung BANYAK fasilitator
             $w->all_facilitators = [];
-            $w->primary_facilitator = null; // Tetap dipertahankan untuk thumbnail card depan
+            $w->primary_facilitator = null; 
+            $w->team_bio = '';
 
             if (!empty($fac_ids)) {
-                // Set primary untuk card depan
-                $w->primary_facilitator = $this->Facilitator_model->get_by_id($fac_ids[0]);
+                $primary = $this->Facilitator_model->get_by_id($fac_ids[0]);
+                $w->primary_facilitator = $primary;
                 
-                // Looping untuk mengambil SEMUA detail fasilitator untuk pop-up modal
-                foreach ($fac_ids as $fid) {
-                    $fac_obj = $this->Facilitator_model->get_by_id($fid);
-                    if ($fac_obj) {
-                        $w->all_facilitators[] = $fac_obj;
+                if($primary) {
+                    $w->team_bio = $primary->bio;
+                }
+                
+                // LOGIKA TEAM BREAKDOWN
+                if (isset($primary->is_team) && $primary->is_team == 1 && !empty($primary->team_members)) {
+                    $member_ids = explode(',', $primary->team_members);
+                    foreach ($member_ids as $m_id) {
+                        $member_obj = $this->Facilitator_model->get_by_id(trim($m_id));
+                        if ($member_obj) {
+                            $w->all_facilitators[] = $member_obj;
+                        }
+                    }
+                } else {
+                    foreach ($fac_ids as $fid) {
+                        $fac_obj = $this->Facilitator_model->get_by_id($fid);
+                        if ($fac_obj) {
+                            $w->all_facilitators[] = $fac_obj;
+                        }
                     }
                 }
             }
 
-            // 2. Ambil Nama Tag (Hanya ditambahkan untuk kebutuhan filter JS Client-side)
             $w->tag_names = [];
             $related_tag_ids = $this->Workshop_model->get_related_tags($w->id);
             foreach ($related_tag_ids as $tid) {
@@ -58,7 +64,6 @@ class Home extends CI_Controller {
             }
         }
 
-        // Render Views
         $this->load->view('public/layout/header', $data);
         $this->load->view('public/home', $data);
         $this->load->view('public/layout/footer');

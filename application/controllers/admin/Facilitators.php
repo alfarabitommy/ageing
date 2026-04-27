@@ -26,6 +26,7 @@ class Facilitators extends MY_Controller {
         $data['admin_username'] = $this->session->userdata('admin_username');
         $data['action'] = base_url('admin/facilitators/store');
         $data['facilitator'] = null;
+        $data['all_facilitators'] = $this->Facilitator_model->get_all(); // Tambahan untuk select member
 
         $this->load->view('admin/layout/header', $data);
         $this->load->view('admin/facilitators/form', $data);
@@ -34,22 +35,26 @@ class Facilitators extends MY_Controller {
 
     public function store()
     {
+        $is_team = $this->input->post('is_team') ? 1 : 0;
+        $team_members = $this->input->post('team_members'); 
+        $team_members_str = !empty($team_members) ? implode(',', $team_members) : NULL;
+
         $data = [
             'name' => $this->input->post('name', TRUE),
             'designation' => $this->input->post('designation', TRUE),
             'organization' => $this->input->post('organization', TRUE),
-            'bio' => $this->input->post('bio', TRUE)
+            'bio' => $this->input->post('bio', TRUE),
+            'is_team' => $is_team,
+            'team_members' => $team_members_str
         ];
 
-        // Konfigurasi Upload Gambar
         $config['upload_path'] = './uploads/facilitators/';
         $config['allowed_types'] = 'gif|jpg|png|jpeg|webp';
-        $config['max_size'] = 2048; // 2MB
-        $config['encrypt_name'] = TRUE; // Rename file random
+        $config['max_size'] = 2048; 
+        $config['encrypt_name'] = TRUE; 
 
         $this->load->library('upload');
 
-        // 1. Eksekusi Upload Foto Utama (List Workshop)
         $this->upload->initialize($config);
         if ($this->upload->do_upload('image_path')) {
             $uploadData = $this->upload->data();
@@ -58,7 +63,6 @@ class Facilitators extends MY_Controller {
             $data['image_path'] = 'default.png'; 
         }
 
-        // 2. Eksekusi Upload Foto Pop-up (Detail Workshop)
         $this->upload->initialize($config);
         if ($this->upload->do_upload('image_path_popup')) {
             $uploadDataPopup = $this->upload->data();
@@ -77,6 +81,7 @@ class Facilitators extends MY_Controller {
         $data['title'] = 'Edit Fasilitator | Micro-CMS Ageing Artfully';
         $data['admin_username'] = $this->session->userdata('admin_username');
         $data['facilitator'] = $this->Facilitator_model->get_by_id($id);
+        $data['all_facilitators'] = $this->Facilitator_model->get_all(); // Tambahan untuk select member
         
         if(!$data['facilitator']) show_404();
 
@@ -91,11 +96,17 @@ class Facilitators extends MY_Controller {
     {
         $facilitator = $this->Facilitator_model->get_by_id($id);
         
+        $is_team = $this->input->post('is_team') ? 1 : 0;
+        $team_members = $this->input->post('team_members'); 
+        $team_members_str = !empty($team_members) ? implode(',', $team_members) : NULL;
+
         $data = [
             'name' => $this->input->post('name', TRUE),
             'designation' => $this->input->post('designation', TRUE),
             'organization' => $this->input->post('organization', TRUE),
-            'bio' => $this->input->post('bio', TRUE)
+            'bio' => $this->input->post('bio', TRUE),
+            'is_team' => $is_team,
+            'team_members' => $team_members_str
         ];
 
         $config['upload_path'] = './uploads/facilitators/';
@@ -104,11 +115,9 @@ class Facilitators extends MY_Controller {
         $config['encrypt_name'] = TRUE;
         $this->load->library('upload');
 
-        // 1. Handle Update Foto Utama
         if (!empty($_FILES['image_path']['name'])) {
             $this->upload->initialize($config);
             if ($this->upload->do_upload('image_path')) {
-                // Hapus foto lama
                 if ($facilitator->image_path != 'default.png' && file_exists('./uploads/facilitators/'.$facilitator->image_path)) {
                     unlink('./uploads/facilitators/'.$facilitator->image_path);
                 }
@@ -117,11 +126,9 @@ class Facilitators extends MY_Controller {
             }
         }
 
-        // 2. Handle Update Foto Pop-up
         if (!empty($_FILES['image_path_popup']['name'])) {
             $this->upload->initialize($config);
             if ($this->upload->do_upload('image_path_popup')) {
-                // Hapus foto lama pop-up
                 if (isset($facilitator->image_path_popup) && $facilitator->image_path_popup != 'default.png' && file_exists('./uploads/facilitators/'.$facilitator->image_path_popup)) {
                     unlink('./uploads/facilitators/'.$facilitator->image_path_popup);
                 }
@@ -139,12 +146,9 @@ class Facilitators extends MY_Controller {
     {
         $facilitator = $this->Facilitator_model->get_by_id($id);
         
-        // Hapus file fisik Foto Utama
         if ($facilitator->image_path != 'default.png' && file_exists('./uploads/facilitators/'.$facilitator->image_path)) {
             unlink('./uploads/facilitators/'.$facilitator->image_path);
         }
-
-        // Hapus file fisik Foto Pop-up
         if (isset($facilitator->image_path_popup) && $facilitator->image_path_popup != 'default.png' && file_exists('./uploads/facilitators/'.$facilitator->image_path_popup)) {
             unlink('./uploads/facilitators/'.$facilitator->image_path_popup);
         }
