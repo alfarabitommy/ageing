@@ -569,7 +569,10 @@
             <div class="col-lg-7">
                 <div class="our-vision">Our Vision</div>
                 <p class="intro-vision">
-                    At its heart, Ageing Artfully reimagines ageing as a stage rich with potential—for creation that affirms <b>identity, connection that nurtures belonging, and contribution that sustains purpose.</b> We move toward a vision of ageing that honours not only well-being, but the enduring human desire to create, relate, and give.<br><br>
+                    At its heart, Ageing Artfully reimagines ageing as a stage rich with potential—for <b>creation that affirms identity, connection that nurtures belonging, and contribution that sustains purpose.</b><br><br>
+                </p>
+                <p class="intro-vision">
+                    We move toward a vision of ageing that honours not only well-being, but the enduring human desire to <b>create, relate, and celebrate.</b>
                 </p>
             </div>
         </div>

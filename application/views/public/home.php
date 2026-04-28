@@ -4,12 +4,11 @@
        ========================================= */
     html, body {
         max-width: 100%;
-        overflow-x: hidden;
+        /* overflow-x: hidden; DIHAPUS AGAR STICKY HEADER BERFUNGSI */
     }
     body {
         font-family: 'DM Sans', sans-serif;
-        /* KUNCI PERBAIKAN: Mencegah horizontal scroll global tanpa memotong gambar secara vertikal */
-        overflow-x: hidden; 
+        /* overflow-x: hidden; DIHAPUS AGAR STICKY HEADER BERFUNGSI */
     }
     h1, h2, h3, h4, h5, h6 { font-weight: 800; letter-spacing: -0.5px; }
     p { font-weight: 400; line-height: 1.7; }
@@ -23,6 +22,7 @@
         padding: 80px 0 120px;
         position: relative;
         text-align: center;
+        overflow: hidden; /* DITAMBAHKAN DI SINI UNTUK MENCEGAH HORIZONTAL SCROLL */
     }
     .hero-pretitle { position: relative; center: 0%; font-weight: 700; text-transform: uppercase; font-size: 14px; margin-bottom: 20px; letter-spacing: 1px; }
     .hero-title-img { position: relative; center: 0%; max-width: 600px; width: 100%; margin-bottom: 20px; }
@@ -35,7 +35,16 @@
     
     /* Hero Ornaments */
     .hero-ballet { position: absolute; right: -14%; bottom: 5%; max-width: 750px; z-index: 1; pointer-events: none; }
-    .hero-saxophone { position: absolute; left: -7%; bottom: 2%; max-width: 600px; z-index: 1; pointer-events: none; }
+    
+    /* PERBAIKAN SAXOPHONE DESKTOP DI SINI */
+    .hero-saxophone { 
+        position: absolute; 
+        left: -7%; 
+        bottom: -5%; /* Diturunkan posisinya menjauhi teks (sebelumnya 2%) */
+        max-width: 540px; /* Dikecilkan 10% agar lebih rapi (sebelumnya 600px) */
+        z-index: 1; 
+        pointer-events: none; 
+    }
     
     /* =========================================
        INTRO SECTION
@@ -44,6 +53,7 @@
         background-color: #FFDEB3; 
         padding: 100px 0;
         position: relative;
+        overflow: hidden; /* DITAMBAHKAN DI SINI */
     }
     .intro-title { font-size: 52px; color: #111; line-height: 1.1; margin-bottom: 30px; }
     .intro-text { font-size: 18px; color: #333; margin-bottom: 20px; font-weight: 500; }
@@ -53,7 +63,12 @@
     /* =========================================
        MATTERS & CAROUSEL SECTION
        ========================================= */
-    .matters-section { padding: 100px 0; background-color: #FAFAFA; position: relative; }
+    .matters-section { 
+        padding: 100px 0; 
+        background-color: #FAFAFA; 
+        position: relative; 
+        overflow: hidden; /* DITAMBAHKAN DI SINI */
+    }
     .matters-title { font-size: 48px; color: #5156B8; margin-bottom: 20px; position: relative; z-index: 2; }
     .matters-mic { position: absolute; right: 0%; top: -250px; max-width: 650px; z-index: 1; pointer-events: none; }
     
@@ -71,7 +86,13 @@
     /* =========================================
        REIMAGINING SECTION (PILLARS)
        ========================================= */
-    .reimagining-section { background-color: #5156B8; padding: 100px 0; position: relative; color: white; }
+    .reimagining-section { 
+        background-color: #5156B8; 
+        padding: 100px 0; 
+        position: relative; 
+        color: white; 
+        overflow: hidden; /* DITAMBAHKAN DI SINI */
+    }
     .reimagining-title { font-size: 48px; line-height: 1.2; margin-bottom: 60px; position: relative; z-index: 2; }
     .reimagining-layer { position: absolute; left: 0%; top: -20%; max-width: 750px; z-index: 1; pointer-events: none; }
 
@@ -150,7 +171,11 @@
     /* =========================================
        WORKSHOPS SECTION
        ========================================= */
-    .home-workshops { padding: 80px 0; position: relative; }
+    .home-workshops { 
+        padding: 80px 0; 
+        position: relative; 
+        overflow: hidden; /* DITAMBAHKAN DI SINI */
+    }
     .hero-shape { position: absolute; right: 0%; top: 0%; max-width: 600px; z-index: 0; pointer-events: none; }
 
     .hw-title { font-size: 52px; color: #5156B8; line-height: 1.1; margin-bottom: 30px; position: relative; z-index: 2; }
@@ -191,7 +216,7 @@
         opacity: 1; 
         transform: scale(1); 
         max-width: 100%;
-        overflow: hidden; /* Menyembunyikan elemen saat menyusut */
+        overflow: hidden; 
     }
 
     .workshop-wrapper.fade-out { 
@@ -205,7 +230,7 @@
 
     .workshop-card { 
         width: 100%; 
-        min-width: 280px; /* Menjaga bentuk card agar tidak gepeng saat animasi menyusut */
+        min-width: 280px; 
         margin: 0 auto; 
         border: 1px solid #E0E0E0;
         border-radius: 15px;
@@ -328,8 +353,11 @@
         .stat-box .display-4 { font-size: 28px; }
         .stat-box h5 { font-size: 12px; line-height: 1.2; }
         .workshop-card { width: 100%; padding: 20px; }
-        .tags-grid-container { gap: 8px; }
-        .tags-row { gap: 8px; justify-content: flex-start; }
+        
+        /* FIX TAGS MOBILE LAYOUT (Tanpa Merusak Desktop) */
+        .tags-grid-container { display: flex; flex-direction: row; flex-wrap: wrap; gap: 8px; }
+        .tags-row { display: contents; } 
+        
         .modal-kustom .modal-content { padding: 15px; }
         .modal-kustom .header-card { padding: 25px 20px; margin-bottom: 20px; }
         .modal-kustom .header-title { font-size: 28px; }
@@ -716,13 +744,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 isMatch = cardTags.includes(activeTag);
             }
 
-            // PERUBAHAN LOGIKA JS: Menggunakan CSS class toggle sepenuhnya tanpa d-none untuk animasi glide
             if (isMatch) {
-                wrapper.classList.remove('d-none'); // Pencegahan agar tidak bentrok dengan cache lama
-                setTimeout(() => wrapper.classList.remove('fade-out'), 20); // Sedikit delay agar browser me-render display-nya dulu
+                wrapper.classList.remove('d-none'); 
+                setTimeout(() => wrapper.classList.remove('fade-out'), 20); 
             } else {
                 wrapper.classList.add('fade-out');
-                // Sembunyikan total setelah animasi mengecil selesai (500ms) agar elemen benar-benar tidak bisa diklik
                 setTimeout(() => { 
                     if(wrapper.classList.contains('fade-out')) wrapper.classList.add('d-none'); 
                 }, 550);

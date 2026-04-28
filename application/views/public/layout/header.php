@@ -29,41 +29,80 @@
             background-color: #FAFAFA;
         }
 
-        /* Navbar Base Styles */
+        /* Navbar Base Styles & Shrink Transition */
         .navbar {
-            padding: 10px 0; /* Diperkecil dari 12px */
-            transition: all 0.3s ease;
+            padding: 15px 0; /* Padding awal sedikit diperbesar agar efek shrink terlihat */
+            transition: all 0.4s ease-in-out; /* Animasi halus untuk shrink */
+            z-index: 1030; /* Memastikan navbar selalu di atas elemen lain */
         }
+        
+        /* State saat di-scroll ke bawah (Shrink Effect) */
+        .navbar.navbar-scrolled {
+            padding: 5px 0; /* Padding mengecil */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Menambah bayangan agar terpisah dari konten */
+        }
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .navbar-brand a {
+            display: flex;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+        .navbar-brand a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Animasi Logo saat Shrink */
         .navbar-brand img {
-            max-height: 50px; /* DIKECILKAN DARI 45px */
-            transition: all 0.3s ease;
+            height: 45px; /* Tinggi normal */
+            width: auto;
+            object-fit: contain;
+            transition: all 0.4s ease-in-out; /* Animasi ikut menyusut */
         }
+        .navbar.navbar-scrolled .navbar-brand img {
+            height: 32px; /* Logo mengecil saat di-scroll */
+        }
+
         .nav-link {
-            font-size: 13px; /* TULISAN DIKECILKAN DARI 14px */
+            font-size: 13px;
             font-weight: 500;
-            padding: 8px 12px !important; /* Jarak antar menu dirapatkan */
+            padding: 8px 12px !important;
             transition: color 0.3s;
         }
         .btn-register {
-            font-size: 13px; /* TULISAN DIKECILKAN */
+            font-size: 13px;
             font-weight: 700;
             border-radius: 25px;
-            padding: 6px 20px; /* Tombol dibuat lebih proporsional */
+            padding: 6px 20px;
             transition: all 0.3s;
         }
 
         /* Responsive Logo & Hamburger Fix */
         @media (max-width: 991px) {
+            .navbar {
+                padding: 10px 0; /* Standar awal mobile */
+            }
             .navbar-brand {
-                width: 75%; /* Sedikit dikurangi agar ikon hamburger aman */
+                width: 75%;
+                gap: 10px;
                 margin-right: 0;
-                display: flex;
-                align-items: center;
             }
             .navbar-brand img {
-                max-width: 90%; /* Logo lebih kecil di mobile */
-                height: auto;
+                height: 35px; /* Standar mobile awal */
+                max-width: 100%;
+                width: auto;
                 object-fit: contain;
+            }
+            /* Shrink di Mobile */
+            .navbar.navbar-scrolled .navbar-brand img {
+                height: 28px; /* Lebih kecil lagi saat scroll di mobile */
+            }
+            .navbar-brand a {
+                max-width: calc(50% - 5px);
             }
             .navbar-toggler {
                 width: 20%;
@@ -73,7 +112,6 @@
                 padding: 0;
             }
             
-            /* Styling Offcanvas Menu */
             .offcanvas {
                 background-color: #5156B8; 
                 color: white;
@@ -91,7 +129,7 @@
             }
             .offcanvas .nav-link {
                 color: white !important;
-                font-size: 15px; /* Dikecilkan dari 16px untuk mobile */
+                font-size: 15px;
                 padding: 12px 20px !important;
                 border-bottom: 1px solid rgba(255,255,255,0.05);
             }
@@ -112,7 +150,7 @@
         /* THEME 1: LIGHT THEME */
         .navbar-light-theme {
             background-color: #FFFFFF;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            /* Box shadow dipindah ke class .navbar-scrolled agar lebih dinamis */
         }
         .navbar-light-theme .nav-link { color: #4A4A4A; }
         .navbar-light-theme .nav-link:hover, 
@@ -132,13 +170,12 @@
         .navbar-dark-theme {
             background-color: #5156B8;
         }
+        .navbar-dark-theme.navbar-scrolled {
+            background-color: #4348A0; /* Saat dark theme discroll, warna sedikit lebih pekat */
+        }
         .navbar-dark-theme .nav-link { color: #FFFFFF; }
         .navbar-dark-theme .nav-link:hover, 
         .navbar-dark-theme .nav-link.active { color: #94C0FA; }
-        
-        .navbar-dark-theme .navbar-brand img {
-            filter: brightness(0) invert(1);
-        }
         
         .navbar-dark-theme .btn-register {
             background-color: transparent;
@@ -155,12 +192,26 @@
 
 <?php $theme_class = (isset($is_dark_header) && $is_dark_header) ? 'navbar-dark-theme' : 'navbar-light-theme'; ?>
 
-<nav class="navbar navbar-expand-lg sticky-top <?= $theme_class ?>">
+<nav id="mainNavbar" class="navbar navbar-expand-lg sticky-top <?= $theme_class ?>">
     <div class="container-fluid px-3 px-lg-5 d-flex justify-content-between align-items-center">
         
-        <a class="navbar-brand" href="<?= base_url() ?>">
-            <img src="<?= base_url('assets/public/images/logos.png') ?>" alt="SLEC, NAFA, UAS Logos">
-        </a>
+        <div class="navbar-brand">
+            <?php if (isset($is_dark_header) && $is_dark_header): ?>
+                <a href="https://slec.org.sg/" target="_blank">
+                    <img src="<?= base_url('assets/public/images/SLEC-Logo_high-res--white-.png') ?>" alt="SLEC Logo">
+                </a>
+                <a href="https://www.nafa.edu.sg/" target="_blank">
+                    <img src="<?= base_url('assets/public/images/nafa_uas_white.png') ?>" alt="NAFA UAS Logo">
+                </a>
+            <?php else: ?>
+                <a href="https://slec.org.sg/" target="_blank">
+                    <img src="<?= base_url('assets/public/images/slec-logo.png') ?>" alt="SLEC Logo">
+                </a>
+                <a href="https://www.nafa.edu.sg/" target="_blank">
+                    <img src="<?= base_url('assets/public/images/nafa_uas_color.png') ?>" alt="NAFA UAS Logo">
+                </a>
+            <?php endif; ?>
+        </div>
         
         <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="<?= (isset($is_dark_header) && $is_dark_header) ? '#FFFFFF' : '#1B2A47' ?>" viewBox="0 0 16 16">
@@ -191,5 +242,26 @@
         </div>
     </div>
 </nav>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const navbar = document.getElementById("mainNavbar");
+        
+        // Fungsi untuk mengecek posisi scroll
+        function checkScroll() {
+            if (window.scrollY > 50) {
+                navbar.classList.add("navbar-scrolled");
+            } else {
+                navbar.classList.remove("navbar-scrolled");
+            }
+        }
+        
+        // Panggil saat pertama load (berjaga jika di-refresh di tengah halaman)
+        checkScroll();
+        
+        // Pasang event listener saat di-scroll
+        window.addEventListener("scroll", checkScroll);
+    });
+</script>
 
 <main class="min-vh-100">

@@ -4,12 +4,11 @@
        ========================================= */
     html, body {
         max-width: 100%;
-        overflow-x: hidden;
+        /* overflow-x: hidden; DIHAPUS AGAR STICKY HEADER BERFUNGSI */
     }
     body {
         font-family: 'DM Sans', sans-serif;
-        /* KUNCI PERBAIKAN: Mencegah horizontal scroll global tanpa memotong gambar vertikal */
-        overflow-x: hidden;
+        /* overflow-x: hidden; DIHAPUS AGAR STICKY HEADER BERFUNGSI */
     }
 
     /* =========================================
@@ -20,6 +19,7 @@
         color: white;
         padding: 80px 0 100px;
         position: relative;
+        overflow: hidden; /* DITAMBAHKAN DI SINI MENCEGAH HORIZONTAL SCROLL */
     }
     .shape-1 {
         position: absolute;
@@ -118,6 +118,7 @@
         position: relative;
         padding: 60px 0;
         scroll-margin-top: 80px; 
+        overflow: hidden; /* DITAMBAHKAN DI SINI MENCEGAH HORIZONTAL SCROLL */
     }
     .shape-2 {
         position: absolute;
@@ -173,7 +174,7 @@
         opacity: 1; 
         transform: scale(1); 
         max-width: 100%;
-        overflow: hidden; /* Menyembunyikan elemen saat menyusut */
+        overflow: hidden; 
     }
 
     .workshop-wrapper.fade-out { 
@@ -187,7 +188,7 @@
 
     .workshop-card {
         width: 100%; 
-        min-width: 280px; /* Menjaga bentuk card agar tidak gepeng saat animasi menyusut */
+        min-width: 280px; 
         margin: 0 auto; 
         border: 1px solid #E0E0E0;
         border-radius: 15px;
@@ -362,8 +363,11 @@
         .stat-card h5 { font-size: 12px; line-height: 1.2; }
         .speaker-card { margin: 0 auto; width: 100%; }
         .workshop-card { width: 100%; padding: 20px; }
-        .tags-grid-container { gap: 8px; }
-        .tags-row { gap: 8px; justify-content: flex-start; }
+        
+        /* FIX TAGS MOBILE LAYOUT (Tanpa Merusak Desktop) */
+        .tags-grid-container { display: flex; flex-direction: row; flex-wrap: wrap; gap: 8px; }
+        .tags-row { display: contents; }
+        
         .modal-workshop-detail .modal-content { padding: 15px; }
         .modal-workshop-detail .modal-header-custom { padding: 25px 20px; margin-bottom: 20px; }
         .modal-workshop-detail .ws-title { font-size: 26px; }
@@ -638,13 +642,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 isMatch = cardTags.includes(activeTag);
             }
 
-            // PERUBAHAN LOGIKA JS: Menggunakan CSS class toggle sepenuhnya tanpa d-none untuk animasi glide
             if (isMatch) {
-                wrapper.classList.remove('d-none'); // Pencegahan agar tidak bentrok dengan cache lama
-                setTimeout(() => wrapper.classList.remove('fade-out'), 20); // Sedikit delay agar browser me-render display-nya dulu
+                wrapper.classList.remove('d-none'); 
+                setTimeout(() => wrapper.classList.remove('fade-out'), 20); 
             } else {
                 wrapper.classList.add('fade-out');
-                // Sembunyikan total setelah animasi mengecil selesai (500ms) agar elemen benar-benar tidak bisa diklik
                 setTimeout(() => { 
                     if(wrapper.classList.contains('fade-out')) wrapper.classList.add('d-none'); 
                 }, 550);
