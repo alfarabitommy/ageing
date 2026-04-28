@@ -20,7 +20,6 @@
         color: white;
         padding: 80px 0 100px;
         position: relative;
-        /* overflow: hidden; DIHAPUS agar ornamen tidak terpotong */
     }
     .shape-1 {
         position: absolute;
@@ -70,12 +69,10 @@
         text-align: center;
         height: 100%;
         background-color: white;
-        /* PERBAIKAN: transition: transform 0.3s; dihapus karena efek hover dihilangkan */
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    /* PERBAIKAN: Seluruh block .speaker-card:hover telah dihapus untuk mematikan efek hover */
 
     .speaker-img {
         width: 120px;
@@ -121,7 +118,6 @@
         position: relative;
         padding: 60px 0;
         scroll-margin-top: 80px; 
-        /* overflow: hidden; DIHAPUS agar ornamen .shape-2 bebas menembus ke atas */
     }
     .shape-2 {
         position: absolute;
@@ -163,40 +159,35 @@
         color: white;
     }
     
-    .tag-pill .icon-default { 
-        display: inline-block; 
-        width: 16px; 
-        height: auto; 
-        margin-left: 6px; 
-    }
-    .tag-pill .icon-active { 
-        display: none; 
-        width: 16px; 
-        height: auto; 
-        margin-left: 6px; 
-    }
+    .tag-pill .icon-default { display: inline-block; width: 16px; height: auto; margin-left: 6px; }
+    .tag-pill .icon-active { display: none; width: 16px; height: auto; margin-left: 6px; }
+    .tag-pill:hover .icon-default, .tag-pill.active .icon-default { display: none; }
+    .tag-pill:hover .icon-active, .tag-pill.active .icon-active { display: inline-block; }
     
-    .tag-pill:hover .icon-default, .tag-pill.active .icon-default { 
-        display: none; 
-    }
-    .tag-pill:hover .icon-active, .tag-pill.active .icon-active { 
-        display: inline-block; 
-    }
-    
+    /* PERBAIKAN ANIMASI GLIDE ELEGAN */
     .workshop-wrapper { 
-        transition: opacity 0.4s ease, transform 0.4s ease; 
+        transition: max-width 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+                    padding 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+                    opacity 0.4s ease, 
+                    transform 0.4s ease; 
         opacity: 1; 
         transform: scale(1); 
-        position: relative;
-        z-index: 2;
+        max-width: 100%;
+        overflow: hidden; /* Menyembunyikan elemen saat menyusut */
     }
+
     .workshop-wrapper.fade-out { 
         opacity: 0; 
-        transform: scale(0.95); 
+        transform: scale(0.8); 
+        max-width: 0 !important; 
+        padding-left: 0 !important; 
+        padding-right: 0 !important; 
+        border: none !important; 
     }
 
     .workshop-card {
-        width: 90%; 
+        width: 100%; 
+        min-width: 280px; /* Menjaga bentuk card agar tidak gepeng saat animasi menyusut */
         margin: 0 auto; 
         border: 1px solid #E0E0E0;
         border-radius: 15px;
@@ -207,6 +198,7 @@
         display: flex;
         flex-direction: column;
     }
+    
     .workshop-img {
         width: 100px;
         height: 100px;
@@ -233,7 +225,7 @@
         margin-bottom: 2px;
     }
     .workshop-fac-org {
-        font-size: 11px;
+        font-size: 13px;
         color: #777;
         margin-bottom: 20px;
     }
@@ -361,24 +353,17 @@
        RESPONSIVE MOBILE ADJUSTMENTS
        ========================================= */
     @media (max-width: 768px) {
-        /* Layout & Spacing */
         .programme-hero { padding: 40px 0 60px; }
         .programme-hero .display-3 { font-size: 2.2rem; }
         .section-title { font-size: 30px; }
         .workshops-section { padding: 40px 0; }
-        
-        /* Stat Cards Horizontal Override */
         .stat-card .card-body { padding: 15px !important; }
         .stat-card .display-4 { font-size: 28px; }
         .stat-card h5 { font-size: 12px; line-height: 1.2; }
-
-        /* Stats & Cards */
         .speaker-card { margin: 0 auto; width: 100%; }
         .workshop-card { width: 100%; padding: 20px; }
         .tags-grid-container { gap: 8px; }
         .tags-row { gap: 8px; justify-content: flex-start; }
-
-        /* Modal Adjustments */
         .modal-workshop-detail .modal-content { padding: 15px; }
         .modal-workshop-detail .modal-header-custom { padding: 25px 20px; margin-bottom: 20px; }
         .modal-workshop-detail .ws-title { font-size: 26px; }
@@ -387,9 +372,6 @@
         .modal-workshop-detail .fac-header-row { flex-direction: column; align-items: flex-start; text-align: left; gap: 15px; }
         .modal-workshop-detail .fac-img { width: 80px; height: 80px; }
 
-        /* =========================================
-           ORNAMENTS MOBILE ADJUSTMENTS (WATERMARK FINAL)
-           ========================================= */
         .shape-1 { max-width: 250px; top: 5%; right: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
         .shape-2 { max-width: 250px; top: 10px; right: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
     }
@@ -492,7 +474,7 @@
             <?php endforeach; ?>
         </div>
 
-        <div class="row g-4">
+        <div class="row g-4 justify-content-center">
             <?php foreach($workshops as $w): ?>
             <div class="col-md-6 col-lg-4 workshop-wrapper" data-tags="<?= htmlspecialchars(implode(',', $w->tag_names)) ?>">
                 <div class="workshop-card">
@@ -626,7 +608,6 @@ foreach($workshops as $w):
 document.addEventListener("DOMContentLoaded", function() {
     const tagPills = document.querySelectorAll('.tag-pill');
     const workshopWrappers = document.querySelectorAll('.workshop-wrapper');
-    // PERUBAHAN: Ubah dari new Set() menjadi variable null untuk menampung 1 tag aktif saja.
     let activeTag = null; 
 
     tagPills.forEach(pill => {
@@ -634,16 +615,11 @@ document.addEventListener("DOMContentLoaded", function() {
             e.preventDefault();
             const tag = this.getAttribute('data-tag');
             
-            // PERUBAHAN: Logika Toggle Single-Select
             if (activeTag === tag) {
-                // Jika tag yang sama diklik lagi, matikan tag tersebut (kembali tampilkan semua)
                 activeTag = null;
                 this.classList.remove('active');
             } else {
-                // Jika tag baru diklik, matikan semua tag lain terlebih dahulu
                 tagPills.forEach(p => p.classList.remove('active'));
-                
-                // Lalu hidupkan tag yang baru diklik
                 activeTag = tag;
                 this.classList.add('active');
             }
@@ -658,19 +634,20 @@ document.addEventListener("DOMContentLoaded", function() {
             const cardTags = tagsAttr ? tagsAttr.split(',').map(t => t.trim()) : [];
             let isMatch = true;
 
-            // PERUBAHAN: Cek hanya 1 tag aktif saja
             if (activeTag !== null) {
                 isMatch = cardTags.includes(activeTag);
             }
 
+            // PERUBAHAN LOGIKA JS: Menggunakan CSS class toggle sepenuhnya tanpa d-none untuk animasi glide
             if (isMatch) {
-                wrapper.classList.remove('d-none');
-                setTimeout(() => wrapper.classList.remove('fade-out'), 10);
+                wrapper.classList.remove('d-none'); // Pencegahan agar tidak bentrok dengan cache lama
+                setTimeout(() => wrapper.classList.remove('fade-out'), 20); // Sedikit delay agar browser me-render display-nya dulu
             } else {
                 wrapper.classList.add('fade-out');
+                // Sembunyikan total setelah animasi mengecil selesai (500ms) agar elemen benar-benar tidak bisa diklik
                 setTimeout(() => { 
                     if(wrapper.classList.contains('fade-out')) wrapper.classList.add('d-none'); 
-                }, 400);
+                }, 550);
             }
         });
     }
