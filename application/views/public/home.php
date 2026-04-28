@@ -4,12 +4,15 @@
        ========================================= */
     html, body {
         max-width: 100%;
-        /* overflow-x: hidden; DIHAPUS AGAR STICKY HEADER BERFUNGSI */
     }
     body {
         font-family: 'DM Sans', sans-serif;
-        /* overflow-x: hidden; DIHAPUS AGAR STICKY HEADER BERFUNGSI */
     }
+    
+    main {
+        overflow-x: hidden;
+    }
+
     h1, h2, h3, h4, h5, h6 { font-weight: 800; letter-spacing: -0.5px; }
     p { font-weight: 400; line-height: 1.7; }
 
@@ -22,7 +25,6 @@
         padding: 80px 0 120px;
         position: relative;
         text-align: center;
-        overflow: hidden; /* DITAMBAHKAN DI SINI UNTUK MENCEGAH HORIZONTAL SCROLL */
     }
     .hero-pretitle { position: relative; center: 0%; font-weight: 700; text-transform: uppercase; font-size: 14px; margin-bottom: 20px; letter-spacing: 1px; }
     .hero-title-img { position: relative; center: 0%; max-width: 600px; width: 100%; margin-bottom: 20px; }
@@ -35,16 +37,7 @@
     
     /* Hero Ornaments */
     .hero-ballet { position: absolute; right: -14%; bottom: 5%; max-width: 750px; z-index: 1; pointer-events: none; }
-    
-    /* PERBAIKAN SAXOPHONE DESKTOP DI SINI */
-    .hero-saxophone { 
-        position: absolute; 
-        left: -7%; 
-        bottom: -5%; /* Diturunkan posisinya menjauhi teks (sebelumnya 2%) */
-        max-width: 540px; /* Dikecilkan 10% agar lebih rapi (sebelumnya 600px) */
-        z-index: 1; 
-        pointer-events: none; 
-    }
+    .hero-saxophone { position: absolute; left: -7%; bottom: -5%; max-width: 540px; z-index: 1; pointer-events: none; }
     
     /* =========================================
        INTRO SECTION
@@ -53,7 +46,6 @@
         background-color: #FFDEB3; 
         padding: 100px 0;
         position: relative;
-        overflow: hidden; /* DITAMBAHKAN DI SINI */
     }
     .intro-title { font-size: 52px; color: #111; line-height: 1.1; margin-bottom: 30px; }
     .intro-text { font-size: 18px; color: #333; margin-bottom: 20px; font-weight: 500; }
@@ -67,18 +59,13 @@
         padding: 100px 0; 
         background-color: #FAFAFA; 
         position: relative; 
-        overflow: hidden; /* DITAMBAHKAN DI SINI */
     }
     .matters-title { font-size: 48px; color: #5156B8; margin-bottom: 20px; position: relative; z-index: 2; }
     .matters-mic { position: absolute; right: 0%; top: -250px; max-width: 650px; z-index: 1; pointer-events: none; }
     
     /* Carousel Styling */
     .carousel-inner { border-radius: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); position: relative; z-index: 2; }
-    .carousel-item img {
-        height: 600px;
-        object-fit: cover; 
-        border-radius: 30px;
-    }
+    .carousel-item img { height: 600px; object-fit: cover; border-radius: 30px; }
     .carousel-indicators { bottom: 10px; }
     .carousel-indicators [data-bs-target] { width: 10px; height: 10px; border-radius: 50%; background-color: rgba(255,255,255,0.6); border: none; margin: 0 5px; }
     .carousel-indicators .active { background-color: white; }
@@ -91,13 +78,15 @@
         padding: 100px 0; 
         position: relative; 
         color: white; 
-        overflow: hidden; /* DITAMBAHKAN DI SINI */
     }
     .reimagining-title { font-size: 48px; line-height: 1.2; margin-bottom: 60px; position: relative; z-index: 2; }
     .reimagining-layer { position: absolute; left: 0%; top: -20%; max-width: 750px; z-index: 1; pointer-events: none; }
 
     .pillar-card { border-radius: 20px; padding: 40px; height: 100%; color: #111; display: flex; flex-direction: column; align-items: flex-start; position: relative; z-index: 2; }
+    
+    .pillar-card img { width: 50px; margin-bottom: 60px; } 
     .pillar-card i { font-size: 32px; margin-bottom: 20px; }
+    
     .pillar-card h3 { font-size: 28px; margin-bottom: 15px; }
     .pillar-card p { font-size: 15px; flex-grow: 1; }
     .pillar-card .btn-more { border: 1px solid #111; border-radius: 20px; padding: 5px 20px; font-weight: 700; font-size: 14px; background: transparent; color: #111; text-decoration: none; cursor: pointer; transition: 0.3s; }
@@ -111,71 +100,38 @@
     /* =========================================
        MODAL POP-UP CUSTOM (PILLARS)
        ========================================= */
-    .modal-kustom .modal-content { 
-        border-radius: 24px; 
-        border: none; 
-        background-color: #FFFFFF;
-        padding: 20px;
-    }
-    
-    .modal-kustom .header-card {
-        border-radius: 20px;
-        padding: 40px;
-        position: relative;
-        overflow: hidden;
-        margin-bottom: 25px;
-    }
+    .modal-kustom .modal-content { border-radius: 24px; border: none; background-color: #FFFFFF; padding: 20px; }
+    .modal-kustom .header-card { border-radius: 20px; padding: 40px; position: relative; overflow: hidden; margin-bottom: 25px; }
     .modal-kustom .header-card-yellow { background-color: #F6E498; }
     .modal-kustom .header-card-blue { background-color: #94C0FA; }
     .modal-kustom .header-card-pink { background-color: #FFCCF3; }
 
-    .modal-kustom .btn-go-back {
-        border: 1px solid #111;
-        border-radius: 20px;
-        padding: 5px 20px;
-        font-size: 12px;
-        font-weight: 500;
-        background: transparent;
-        color: #111;
-        margin-bottom: 30px;
-        transition: 0.3s;
-    }
+    .modal-kustom .btn-go-back { border: 1px solid #111; border-radius: 20px; padding: 5px 20px; font-size: 12px; font-weight: 500; background: transparent; color: #111; margin-bottom: 30px; transition: 0.3s; }
     .modal-kustom .btn-go-back:hover { background: #111; color: white; }
 
+    /* CSS BARU UNTUK IKON HEADER MODAL */
+    .modal-kustom .modal-header-icon {
+        width: 50px;
+        display: block; /* Memaksa ikon memiliki barisnya sendiri (di atas judul) */
+        margin-bottom: 15px;
+        position: relative;
+        z-index: 1;
+    }
+
     .modal-kustom .header-title { font-size: 42px; font-weight: 800; color: #111; margin-bottom: 5px; line-height: 1.1; }
-    .modal-kustom .header-icon { font-size: 24px; vertical-align: middle; margin-left: 10px; opacity: 0.8; }
     .modal-kustom .header-subtitle { font-size: 26px; font-weight: 400; color: #111; line-height: 1.3; margin-bottom: 0; }
     .modal-kustom .header-bg-icon { position: absolute; right: 8%; top: 50%; transform: translateY(-50%); font-size: 150px; color: #000; opacity: 0.05; pointer-events: none; }
     .modal-kustom .desc-card { background: #FFFFFF; border: 1px solid #D9D9D9; border-radius: 16px; padding: 30px 35px; margin-bottom: 25px; font-size: 18px; color: #111; line-height: 1.5; }
     .modal-kustom .list-unstyled { padding: 0; margin: 0; }
     .modal-kustom .list-item-card { background-color: #EFEFEF; border-radius: 12px; padding: 22px 30px; margin-bottom: 15px; font-weight: 700; font-size: 16px; color: #111; }
 
-    .modal-kustom .header-bg-img {
-        position: absolute;
-        right: 0%;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 400px;
-        height: auto;
-        pointer-events: none;
-        z-index: 0;
-    }
-
-    .modal-kustom .header-card .btn-go-back,
-    .modal-kustom .header-card .header-title,
-    .modal-kustom .header-card .header-subtitle {
-        position: relative;
-        z-index: 1;
-    }
+    .modal-kustom .header-bg-img { position: absolute; right: 0%; top: 50%; transform: translateY(-50%); width: 400px; height: auto; pointer-events: none; z-index: 0; }
+    .modal-kustom .header-card .btn-go-back, .modal-kustom .header-card .header-title, .modal-kustom .header-card .header-subtitle { position: relative; z-index: 1; }
 
     /* =========================================
        WORKSHOPS SECTION
        ========================================= */
-    .home-workshops { 
-        padding: 80px 0; 
-        position: relative; 
-        overflow: hidden; /* DITAMBAHKAN DI SINI */
-    }
+    .home-workshops { padding: 80px 0; position: relative; }
     .hero-shape { position: absolute; right: 0%; top: 0%; max-width: 600px; z-index: 0; pointer-events: none; }
 
     .hw-title { font-size: 52px; color: #5156B8; line-height: 1.1; margin-bottom: 30px; position: relative; z-index: 2; }
@@ -183,8 +139,13 @@
     .stat-box .display-4 { font-weight: 800; color: #111; }
     .stat-box h5 { color: #111; font-weight: 600; margin: 0; }
     
-    .tags-grid-container { display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 2; }
-    .tags-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tags-grid-container { position: relative; z-index: 2; }
+    .tags-row { 
+        display: flex; 
+        flex-wrap: wrap; 
+        justify-content: left; 
+        gap: 10px; 
+    }
 
     .tag-pill { 
         border: 1px solid #5156B8; 
@@ -207,42 +168,10 @@
     .tag-pill:hover .icon-default, .tag-pill.active .icon-default { display: none; }
     .tag-pill:hover .icon-active, .tag-pill.active .icon-active { display: inline-block; }
 
-    /* PERBAIKAN ANIMASI GLIDE ELEGAN */
-    .workshop-wrapper { 
-        transition: max-width 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
-                    padding 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
-                    opacity 0.4s ease, 
-                    transform 0.4s ease; 
-        opacity: 1; 
-        transform: scale(1); 
-        max-width: 100%;
-        overflow: hidden; 
-    }
+    .workshop-wrapper { transition: max-width 0.5s cubic-bezier(0.25, 1, 0.5, 1), padding 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease, transform 0.4s ease; opacity: 1; transform: scale(1); max-width: 100%; overflow: hidden; }
+    .workshop-wrapper.fade-out { opacity: 0; transform: scale(0.8); max-width: 0 !important; padding-left: 0 !important; padding-right: 0 !important; border: none !important; }
 
-    .workshop-wrapper.fade-out { 
-        opacity: 0; 
-        transform: scale(0.8); 
-        max-width: 0 !important; 
-        padding-left: 0 !important; 
-        padding-right: 0 !important; 
-        border: none !important; 
-    }
-
-    .workshop-card { 
-        width: 100%; 
-        min-width: 280px; 
-        margin: 0 auto; 
-        border: 1px solid #E0E0E0;
-        border-radius: 15px;
-        padding: 25px;
-        text-align: center;
-        height: 100%;
-        background-color: white;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        z-index: 2;
-    }
+    .workshop-card { width: 100%; min-width: 280px; margin: 0 auto; border: 1px solid #E0E0E0; border-radius: 15px; padding: 25px; text-align: center; height: 100%; background-color: white; display: flex; flex-direction: column; position: relative; z-index: 2; }
     
     .workshop-img { width: 100px; height: 100px; object-fit: cover; border-radius: 15px; margin: 0 auto 20px; }
     .workshop-title { color: #5156B8; font-weight: 700; font-size: 18px; margin-bottom: 10px; }
@@ -255,49 +184,11 @@
     /* =========================================
        MODAL WORKSHOP DETAIL
        ========================================= */
-    .modal-workshop-detail .modal-content {
-        border-radius: 30px; 
-        border: none;
-        background-color: #FFFFFF;
-        padding: 30px; 
-    }
-    
-    .modal-workshop-detail .modal-header-custom {
-        padding: 40px;
-        color: #111;
-        border-radius: 20px; 
-        margin-bottom: 30px; 
-    }
-    
-    .modal-workshop-detail .btn-go-back {
-        color: #111;
-        font-weight: 600;
-        text-decoration: none;
-        padding: 0;
-        background: none;
-        border: none;
-        margin-bottom: 20px;
-        font-size: 16px;
-        transition: 0.3s;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-    }
-    
-    .modal-workshop-detail .ws-title {
-        font-size: 42px;
-        font-weight: 800;
-        line-height: 1.2;
-        margin-bottom: 10px;
-        color: #111;
-    }
-    
-    .modal-workshop-detail .ws-subtitle {
-        font-size: 20px;
-        color: #111;
-        font-weight: 500;
-        margin-bottom: 0;
-    }
+    .modal-workshop-detail .modal-content { border-radius: 30px; border: none; background-color: #FFFFFF; padding: 30px; }
+    .modal-workshop-detail .modal-header-custom { padding: 40px; color: #111; border-radius: 20px; margin-bottom: 30px; }
+    .modal-workshop-detail .btn-go-back { color: #111; font-weight: 600; text-decoration: none; padding: 0; background: none; border: none; margin-bottom: 20px; font-size: 16px; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+    .modal-workshop-detail .ws-title { font-size: 42px; font-weight: 800; line-height: 1.2; margin-bottom: 10px; color: #111; }
+    .modal-workshop-detail .ws-subtitle { font-size: 20px; color: #111; font-weight: 500; margin-bottom: 0; }
 
     .modal-workshop-detail .modal-body-custom { padding: 0; }
     .modal-workshop-detail .info-card { background-color: #F4F4F6; border-radius: 20px; padding: 40px; height: 100%; }
@@ -308,23 +199,10 @@
     .modal-workshop-detail .fac-img { width: 100px; height: 100px; border-radius: 12px; object-fit: cover; }
     .modal-workshop-detail .fac-name { font-size: 20px; font-weight: 800; color: #111; margin-bottom: 5px; }
     .modal-workshop-detail .fac-role { font-size: 16px; color: #444; font-weight: 500; }
-
-    .modal-workshop-detail .ws-tag-pill {
-        border: 1px solid #5156B8;
-        color: #5156B8;
-        background-color: transparent;
-        padding: 8px 20px;
-        border-radius: 30px;
-        font-size: 14px;
-        font-weight: 500;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        margin: 0 10px 10px 0;
-    }
+    .modal-workshop-detail .ws-tag-pill { border: 1px solid #5156B8; color: #5156B8; background-color: transparent; padding: 8px 20px; border-radius: 30px; font-size: 14px; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; margin: 0 10px 10px 0; }
 
     /* =========================================
-       RESPONSIVE MOBILE (Penyempurnaan Utama)
+       RESPONSIVE MOBILE 
        ========================================= */
     @media (max-width: 991px) {
         .intro-title { font-size: 40px; }
@@ -345,21 +223,30 @@
         .matters-section p { font-size: 16px !important; }
         .carousel-item img { height: 250px; }
         .reimagining-title { font-size: 28px; margin-bottom: 30px; text-align: left; }
+        
         .pillar-card { padding: 25px; }
         .pillar-card h3 { font-size: 22px; }
-        .pillar-card i, .pillar-card img { width: 40px !important; margin-bottom: 15px; }
+        .pillar-card i, .pillar-card img { width: 40px !important; margin-bottom: 20px !important; }
+        
         .hw-title { font-size: 32px; }
         .stat-box { padding: 15px !important; }
         .stat-box .display-4 { font-size: 28px; }
         .stat-box h5 { font-size: 12px; line-height: 1.2; }
         .workshop-card { width: 100%; padding: 20px; }
         
-        /* FIX TAGS MOBILE LAYOUT (Tanpa Merusak Desktop) */
-        .tags-grid-container { display: flex; flex-direction: row; flex-wrap: wrap; gap: 8px; }
-        .tags-row { display: contents; } 
+        .tags-row { gap: 8px; justify-content: flex-start; } 
         
         .modal-kustom .modal-content { padding: 15px; }
         .modal-kustom .header-card { padding: 25px 20px; margin-bottom: 20px; }
+        
+        /* PENYESUAIAN UKURAN GAMBAR BACKGROUND HEADER MOBILE & ICON */
+        .modal-kustom .modal-header-icon { width: 35px; margin-bottom: 12px; }
+        .modal-kustom .header-bg-img {
+            width: 180px; /* Diperkecil proporsional untuk mobile */
+            right: -5%; /* Digeser ke kanan agar estetik dan tidak menimpa teks utama berlebihan */
+            top: 40%;
+        }
+
         .modal-kustom .header-title { font-size: 28px; }
         .modal-kustom .header-subtitle { font-size: 18px; }
         .modal-kustom .desc-card { padding: 20px; font-size: 15px; }
@@ -452,10 +339,7 @@
         <div class="row g-4">
             <div class="col-md-4">
                 <div class="pillar-card card-yellow">
-                    <img src="<?= base_url('assets/public/images/quill.png') ?>" alt="" class="" style="width: 50px;">
-                    <br>
-                    <br>
-                    <br>
+                    <img src="<?= base_url('assets/public/images/quill.png') ?>" alt="">
                     <h3>Creation</h3>
                     <p>Creation in later life is an affirmation of identity. Through storytelling, artistic practice, and everyday creativity, individuals continue to express who they are and who they are becoming.</p>
                     <button class="btn-more" data-bs-toggle="modal" data-bs-target="#modalCreation">Read More</button>
@@ -463,10 +347,7 @@
             </div>
             <div class="col-md-4">
                 <div class="pillar-card card-blue">
-                    <img src="<?= base_url('assets/public/images/affiliate.png') ?>" alt="" class="" style="width: 50px;">
-                    <br>
-                    <br>
-                    <br>
+                    <img src="<?= base_url('assets/public/images/affiliate.png') ?>" alt="">
                     <h3>Connection</h3>
                     <p>The arts foster relationships across individuals, generations, and communities—creating shared spaces for belonging and mutual understanding.</p>
                     <button class="btn-more" data-bs-toggle="modal" data-bs-target="#modalConnection">Read More</button>
@@ -474,10 +355,7 @@
             </div>
             <div class="col-md-4">
                 <div class="pillar-card card-pink">
-                    <img src="<?= base_url('assets/public/images/atom.png') ?>" alt="" class="" style="width: 50px;">
-                    <br>
-                    <br>
-                    <br>
+                    <img src="<?= base_url('assets/public/images/atom.png') ?>" alt="">
                     <h3>Contribution</h3>
                     <p>Older adults are not passive participants, but active contributors—mentors, collaborators, and cultural bearers whose creative engagement enriches society.</p>
                     <button class="btn-more" data-bs-toggle="modal" data-bs-target="#modalContribution">Read More</button>
@@ -500,25 +378,20 @@
         <p class="mb-4" style="font-size: 18px; max-width: 700px;">Participants are invited to choose <strong>up to 4 workshops</strong> based on their interests and the needs of the seniors they work with.</p>
         
         <div class="tags-grid-container mb-5">
-            <?php 
-            $tag_chunks = array_chunk($tags, 6);
-            foreach($tag_chunks as $chunk): 
-            ?>
-                <div class="tags-row">
-                    <?php foreach($chunk as $t): ?>
-                        <a href="javascript:void(0)" class="tag-pill" data-tag="<?= htmlspecialchars($t->tag_name) ?>">
-                            <span><?= htmlspecialchars($t->tag_name) ?></span>
-                            <?php if(!empty($t->icon_default) && !empty($t->icon_active)): ?>
-                                <img src="<?= base_url('uploads/tags/'.$t->icon_default) ?>" class="icon-default" alt="">
-                                <img src="<?= base_url('uploads/tags/'.$t->icon_active) ?>" class="icon-active" alt="">
-                            <?php else: ?>
-                                <i class="fas fa-tag opacity-50 icon-default"></i>
-                                <i class="fas fa-tag opacity-50 icon-active"></i>
-                            <?php endif; ?>
-                        </a>
-                    <?php endforeach; ?>
-                </div>
-            <?php endforeach; ?>
+            <div class="tags-row">
+                <?php foreach($tags as $t): ?>
+                    <a href="javascript:void(0)" class="tag-pill" data-tag="<?= htmlspecialchars($t->tag_name) ?>">
+                        <span><?= htmlspecialchars($t->tag_name) ?></span>
+                        <?php if(!empty($t->icon_default) && !empty($t->icon_active)): ?>
+                            <img src="<?= base_url('uploads/tags/'.$t->icon_default) ?>" class="icon-default" alt="">
+                            <img src="<?= base_url('uploads/tags/'.$t->icon_active) ?>" class="icon-active" alt="">
+                        <?php else: ?>
+                            <i class="fas fa-tag opacity-50 icon-default"></i>
+                            <i class="fas fa-tag opacity-50 icon-active"></i>
+                        <?php endif; ?>
+                    </a>
+                <?php endforeach; ?>
+            </div>
         </div>
         
         <div class="row g-4 justify-content-center">
@@ -548,9 +421,10 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="header-card header-card-yellow">
-                <img src="<?= base_url('assets/public/images/creation-edited.png') ?>" alt="" class="header-bg-img d-none d-md-block">
+                <img src="<?= base_url('assets/public/images/creation-edited.png') ?>" alt="" class="header-bg-img">
                 <button type="button" class="btn btn-go-back" data-bs-dismiss="modal">Go Back</button>
-                <h2 class="header-title">Creation <img src="<?= base_url('assets/public/images/quill.png') ?>" alt="" class="" style="width: 50px;"></h2>
+                <img src="<?= base_url('assets/public/images/quill.png') ?>" alt="" class="modal-header-icon">
+                <h2 class="header-title">Creation</h2>
                 <h3 class="header-subtitle">Affirming Identity and<br>Lifelong Creative Practice</h3>
             </div>
             <div class="desc-card">
@@ -570,9 +444,10 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="header-card header-card-blue">
-                <img src="<?= base_url('assets/public/images/connection-edited.png') ?>" alt="" class="header-bg-img d-none d-md-block">
+                <img src="<?= base_url('assets/public/images/connection-edited.png') ?>" alt="" class="header-bg-img">
                 <button type="button" class="btn btn-go-back" data-bs-dismiss="modal">Go Back</button>
-                <h2 class="header-title">Connection <img src="<?= base_url('assets/public/images/affiliate.png') ?>" alt="" class="" style="width: 50px;"></h2>
+                <img src="<?= base_url('assets/public/images/affiliate.png') ?>" alt="" class="modal-header-icon">
+                <h2 class="header-title">Connection</h2>
                 <h3 class="header-subtitle">Strengthening Relationships<br>and Belonging</h3>
             </div>
             <div class="desc-card">
@@ -592,9 +467,10 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="header-card header-card-pink">
-                <img src="<?= base_url('assets/public/images/contribution-edited.png') ?>" alt="" class="header-bg-img d-none d-md-block">
+                <img src="<?= base_url('assets/public/images/contribution-edited.png') ?>" alt="" class="header-bg-img">
                 <button type="button" class="btn btn-go-back" data-bs-dismiss="modal">Go Back</button>
-                <h2 class="header-title">Contribution <img src="<?= base_url('assets/public/images/atom.png') ?>" alt="" class="" style="width: 50px;"></i></h2>
+                <img src="<?= base_url('assets/public/images/atom.png') ?>" alt="" class="modal-header-icon">
+                <h2 class="header-title">Contribution</h2>
                 <h3 class="header-subtitle">Strengthening Relationship</br>and Belonging</h3>
             </div>
             <div class="desc-card">

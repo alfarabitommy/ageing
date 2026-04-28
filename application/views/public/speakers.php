@@ -4,11 +4,9 @@
        ========================================= */
     html, body {
         max-width: 100%;
-        /* overflow-x: hidden; DIHAPUS AGAR STICKY HEADER BERFUNGSI */
     }
     body {
         font-family: 'DM Sans', sans-serif;
-        /* overflow-x: hidden; DIHAPUS AGAR STICKY HEADER BERFUNGSI */
     }
 
     /* =========================================
@@ -128,17 +126,13 @@
         z-index: 1;
     }
     
-    .tags-grid-container {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        position: relative;
-        z-index: 2;
-    }
-    .tags-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
+    /* PERBAIKAN TAGS: Dibuat Fluid dan Center */
+    .tags-grid-container { position: relative; z-index: 2; }
+    .tags-row { 
+        display: flex; 
+        flex-wrap: wrap; 
+        justify-content: left; /* Kunci menengahkan tag sisa */
+        gap: 10px; 
     }
 
     .tag-pill {
@@ -165,190 +159,36 @@
     .tag-pill:hover .icon-default, .tag-pill.active .icon-default { display: none; }
     .tag-pill:hover .icon-active, .tag-pill.active .icon-active { display: inline-block; }
     
-    /* PERBAIKAN ANIMASI GLIDE ELEGAN */
-    .workshop-wrapper { 
-        transition: max-width 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
-                    padding 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
-                    opacity 0.4s ease, 
-                    transform 0.4s ease; 
-        opacity: 1; 
-        transform: scale(1); 
-        max-width: 100%;
-        overflow: hidden; 
-    }
+    .workshop-wrapper { transition: max-width 0.5s cubic-bezier(0.25, 1, 0.5, 1), padding 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease, transform 0.4s ease; opacity: 1; transform: scale(1); max-width: 100%; overflow: hidden; }
+    .workshop-wrapper.fade-out { opacity: 0; transform: scale(0.8); max-width: 0 !important; padding-left: 0 !important; padding-right: 0 !important; border: none !important; }
 
-    .workshop-wrapper.fade-out { 
-        opacity: 0; 
-        transform: scale(0.8); 
-        max-width: 0 !important; 
-        padding-left: 0 !important; 
-        padding-right: 0 !important; 
-        border: none !important; 
-    }
-
-    .workshop-card {
-        width: 100%; 
-        min-width: 280px; 
-        margin: 0 auto; 
-        border: 1px solid #E0E0E0;
-        border-radius: 15px;
-        padding: 25px;
-        text-align: center;
-        height: 100%;
-        background-color: white;
-        display: flex;
-        flex-direction: column;
-    }
+    .workshop-card { width: 100%; min-width: 280px; margin: 0 auto; border: 1px solid #E0E0E0; border-radius: 15px; padding: 25px; text-align: center; height: 100%; background-color: white; display: flex; flex-direction: column; }
     
-    .workshop-img {
-        width: 100px;
-        height: 100px;
-        object-fit: cover;
-        border-radius: 15px;
-        margin: 0 auto 20px;
-    }
-    .workshop-title {
-        color: #5156B8;
-        font-weight: 700;
-        font-size: 18px;
-        margin-bottom: 10px;
-    }
-    .workshop-subtitle {
-        font-size: 13px;
-        color: #555;
-        margin-bottom: 20px;
-        flex-grow: 1;
-    }
-    .workshop-fac-name {
-        color: #5156B8;
-        font-weight: 600;
-        font-size: 14px;
-        margin-bottom: 2px;
-    }
-    .workshop-fac-org {
-        font-size: 13px;
-        color: #777;
-        margin-bottom: 20px;
-    }
-    .btn-read-more {
-        background-color: #7C83DB;
-        color: white;
-        border-radius: 20px;
-        padding: 6px 25px;
-        font-size: 13px;
-        font-weight: 600;
-        border: none;
-        align-self: center;
-        text-decoration: none;
-        transition: 0.3s;
-    }
-    .btn-read-more:hover {
-        background-color: #5156B8;
-        color: white;
-    }
+    .workshop-img { width: 100px; height: 100px; object-fit: cover; border-radius: 15px; margin: 0 auto 20px; }
+    .workshop-title { color: #5156B8; font-weight: 700; font-size: 18px; margin-bottom: 10px; }
+    .workshop-subtitle { font-size: 13px; color: #555; margin-bottom: 20px; flex-grow: 1; }
+    .workshop-fac-name { color: #5156B8; font-weight: 600; font-size: 14px; margin-bottom: 2px; }
+    .workshop-fac-org { font-size: 13px; color: #777; margin-bottom: 20px; }
+    .btn-read-more { background-color: #7C83DB; color: white; border-radius: 20px; padding: 6px 25px; font-size: 13px; font-weight: 600; border: none; align-self: center; text-decoration: none; transition: 0.3s; }
+    .btn-read-more:hover { background-color: #5156B8; color: white; }
 
     /* =========================================
        MODAL WORKSHOP DETAIL
        ========================================= */
-    .modal-workshop-detail .modal-content { 
-        border-radius: 30px; 
-        border: none; 
-        background-color: #FFFFFF; 
-        padding: 30px; 
-    }
-    .modal-workshop-detail .modal-header-custom { 
-        padding: 40px; 
-        color: #111; 
-        border-radius: 20px; 
-        margin-bottom: 30px; 
-    }
-    .modal-workshop-detail .btn-go-back { 
-        color: #111; 
-        font-weight: 600; 
-        text-decoration: none; 
-        padding: 0; 
-        background: none; 
-        border: none; 
-        margin-bottom: 20px; 
-        font-size: 16px; 
-        transition: 0.3s; 
-        display: inline-flex; 
-        align-items: center; 
-        gap: 8px; 
-    }
-    .modal-workshop-detail .ws-title { 
-        font-size: 42px; 
-        font-weight: 800; 
-        line-height: 1.2; 
-        margin-bottom: 10px; 
-        color: #111; 
-    }
-    .modal-workshop-detail .ws-subtitle { 
-        font-size: 20px; 
-        color: #111; 
-        font-weight: 500; 
-        margin-bottom: 0; 
-    }
-    .modal-workshop-detail .modal-body-custom { 
-        padding: 0; 
-    }
-    .modal-workshop-detail .info-card { 
-        background-color: #F4F4F6; 
-        border-radius: 20px; 
-        padding: 40px; 
-        height: 100%; 
-    }
-    .modal-workshop-detail .ws-heading { 
-        color: #111; 
-        font-size: 18px; 
-        font-weight: 800; 
-        margin-bottom: 15px; 
-        display: flex; 
-        align-items: center; 
-        gap: 10px; 
-    }
-    .modal-workshop-detail .ws-text { 
-        font-size: 16px; 
-        color: #111; 
-        line-height: 1.6; 
-        margin-bottom: 30px; 
-    }
-    .modal-workshop-detail .fac-header-row { 
-        display: flex; 
-        align-items: center; 
-        gap: 20px; 
-        margin-bottom: 15px; 
-    }
-    .modal-workshop-detail .fac-img { 
-        width: 100px; 
-        height: 100px; 
-        border-radius: 12px; 
-        object-fit: cover; 
-    }
-    .modal-workshop-detail .fac-name { 
-        font-size: 20px; 
-        font-weight: 800; 
-        color: #111; 
-        margin-bottom: 5px; 
-    }
-    .modal-workshop-detail .fac-role { 
-        font-size: 16px; 
-        color: #444; 
-        font-weight: 500; 
-    }
-    .modal-workshop-detail .ws-tag-pill { 
-        border: 1px solid #5156B8; 
-        color: #5156B8; 
-        background-color: transparent; 
-        padding: 8px 20px; 
-        border-radius: 30px; 
-        font-size: 14px; 
-        font-weight: 500; 
-        display: inline-flex; 
-        align-items: center; 
-        gap: 8px; 
-        margin: 0 10px 10px 0; 
-    }
+    .modal-workshop-detail .modal-content { border-radius: 30px; border: none; background-color: #FFFFFF; padding: 30px; }
+    .modal-workshop-detail .modal-header-custom { padding: 40px; color: #111; border-radius: 20px; margin-bottom: 30px; }
+    .modal-workshop-detail .btn-go-back { color: #111; font-weight: 600; text-decoration: none; padding: 0; background: none; border: none; margin-bottom: 20px; font-size: 16px; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+    .modal-workshop-detail .ws-title { font-size: 42px; font-weight: 800; line-height: 1.2; margin-bottom: 10px; color: #111; }
+    .modal-workshop-detail .ws-subtitle { font-size: 20px; color: #111; font-weight: 500; margin-bottom: 0; }
+    .modal-workshop-detail .modal-body-custom { padding: 0; }
+    .modal-workshop-detail .info-card { background-color: #F4F4F6; border-radius: 20px; padding: 40px; height: 100%; }
+    .modal-workshop-detail .ws-heading { color: #111; font-size: 18px; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+    .modal-workshop-detail .ws-text { font-size: 16px; color: #111; line-height: 1.6; margin-bottom: 30px; }
+    .modal-workshop-detail .fac-header-row { display: flex; align-items: center; gap: 20px; margin-bottom: 15px; }
+    .modal-workshop-detail .fac-img { width: 100px; height: 100px; border-radius: 12px; object-fit: cover; }
+    .modal-workshop-detail .fac-name { font-size: 20px; font-weight: 800; color: #111; margin-bottom: 5px; }
+    .modal-workshop-detail .fac-role { font-size: 16px; color: #444; font-weight: 500; }
+    .modal-workshop-detail .ws-tag-pill { border: 1px solid #5156B8; color: #5156B8; background-color: transparent; padding: 8px 20px; border-radius: 30px; font-size: 14px; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; margin: 0 10px 10px 0; }
 
     /* =========================================
        RESPONSIVE MOBILE ADJUSTMENTS
@@ -364,9 +204,7 @@
         .speaker-card { margin: 0 auto; width: 100%; }
         .workshop-card { width: 100%; padding: 20px; }
         
-        /* FIX TAGS MOBILE LAYOUT (Tanpa Merusak Desktop) */
-        .tags-grid-container { display: flex; flex-direction: row; flex-wrap: wrap; gap: 8px; }
-        .tags-row { display: contents; }
+        .tags-row { gap: 8px; justify-content: flex-start; }
         
         .modal-workshop-detail .modal-content { padding: 15px; }
         .modal-workshop-detail .modal-header-custom { padding: 25px 20px; margin-bottom: 20px; }
@@ -457,25 +295,20 @@
         </p>
 
         <div class="tags-grid-container mb-5">
-            <?php 
-            $tag_chunks = array_chunk($tags, 6);
-            foreach($tag_chunks as $chunk): 
-            ?>
-                <div class="tags-row">
-                    <?php foreach($chunk as $t): ?>
-                        <a href="javascript:void(0)" class="tag-pill" data-tag="<?= htmlspecialchars($t->tag_name) ?>">
-                            <span><?= htmlspecialchars($t->tag_name) ?></span>
-                            <?php if(!empty($t->icon_default) && !empty($t->icon_active)): ?>
-                                <img src="<?= base_url('uploads/tags/'.$t->icon_default) ?>" class="icon-default" alt="">
-                                <img src="<?= base_url('uploads/tags/'.$t->icon_active) ?>" class="icon-active" alt="">
-                            <?php else: ?>
-                                <i class="fas fa-tag ms-1 opacity-50 icon-default"></i>
-                                <i class="fas fa-tag ms-1 opacity-50 icon-active"></i>
-                            <?php endif; ?>
-                        </a>
-                    <?php endforeach; ?>
-                </div>
-            <?php endforeach; ?>
+            <div class="tags-row">
+                <?php foreach($tags as $t): ?>
+                    <a href="javascript:void(0)" class="tag-pill" data-tag="<?= htmlspecialchars($t->tag_name) ?>">
+                        <span><?= htmlspecialchars($t->tag_name) ?></span>
+                        <?php if(!empty($t->icon_default) && !empty($t->icon_active)): ?>
+                            <img src="<?= base_url('uploads/tags/'.$t->icon_default) ?>" class="icon-default" alt="">
+                            <img src="<?= base_url('uploads/tags/'.$t->icon_active) ?>" class="icon-active" alt="">
+                        <?php else: ?>
+                            <i class="fas fa-tag ms-1 opacity-50 icon-default"></i>
+                            <i class="fas fa-tag ms-1 opacity-50 icon-active"></i>
+                        <?php endif; ?>
+                    </a>
+                <?php endforeach; ?>
+            </div>
         </div>
 
         <div class="row g-4 justify-content-center">

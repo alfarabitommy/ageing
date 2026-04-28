@@ -134,7 +134,7 @@
     }
     .intro-title { font-size: 52px; color: #111; line-height: 1.1; margin-bottom: 30px; }
     .intro-text { font-size: 32px; color: #333; margin-bottom: 20px; font-weight: 500; }
-    .intro-brush { position: absolute; top: -30%; left: -10%; width: 850px; z-index: 1;}
+    .intro-brush { position: absolute; top: -30%; left: -10%; width: 750px; z-index: 1;}
         
     /* =========================================
        Our Vision Mision
@@ -610,7 +610,7 @@
             <div class="col-md-6 col-lg-3">
                 <div class="obj-card obj-card-2">
                     <div class="rectangle-deepen">
-                           <img src="<?= base_url('assets/public/images/brush.png') ?>" alt="" class="icon-deepen">
+                           <img src="<?= base_url('assets/public/images/heart.png') ?>" alt="" class="icon-deepen">
                     </div>
                     <h4 style="color: #000;">
                         Deepen dignity
