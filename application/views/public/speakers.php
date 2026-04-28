@@ -8,6 +8,11 @@
     body {
         font-family: 'DM Sans', sans-serif;
     }
+    
+    /* KUNCI PERBAIKAN: Memindah pengunci horizontal ke tag <main> */
+    main {
+        overflow-x: hidden;
+    }
 
     /* =========================================
        SECTION 1: THE PROGRAMME HERO
@@ -17,7 +22,7 @@
         color: white;
         padding: 80px 0 100px;
         position: relative;
-        overflow: hidden; /* DITAMBAHKAN DI SINI MENCEGAH HORIZONTAL SCROLL */
+        /* overflow: hidden; -> DIHAPUS AGAR ORNAMEN BISA MENEMBUS */
     }
     .shape-1 {
         position: absolute;
@@ -116,7 +121,7 @@
         position: relative;
         padding: 60px 0;
         scroll-margin-top: 80px; 
-        overflow: hidden; /* DITAMBAHKAN DI SINI MENCEGAH HORIZONTAL SCROLL */
+        /* overflow: hidden; -> DIHAPUS AGAR ORNAMEN BISA MENEMBUS */
     }
     .shape-2 {
         position: absolute;
@@ -214,8 +219,8 @@
         .modal-workshop-detail .fac-header-row { flex-direction: column; align-items: flex-start; text-align: left; gap: 15px; }
         .modal-workshop-detail .fac-img { width: 80px; height: 80px; }
 
-        .shape-1 { max-width: 250px; top: 5%; right: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
-        .shape-2 { max-width: 250px; top: 10px; right: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
+        .shape-1 { max-width: 250px; top: 5%; right: -5%; opacity: 0.2; z-index: 0; pointer-events: none; }
+        .shape-2 { max-width: 250px; top: -2%; right: -5%; opacity: 0.2; z-index: 0; pointer-events: none; }
     }
 </style>
 

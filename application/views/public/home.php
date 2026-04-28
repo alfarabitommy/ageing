@@ -265,10 +265,10 @@
 
         .hero-ballet { max-width: 200px; right: -5%; top: 5%; bottom: auto; opacity: 0.4; z-index: 0; pointer-events: none; }
         .hero-saxophone { max-width: 200px; left: -5%; bottom: 12%; opacity: 0.4; z-index: 0; pointer-events: none; }
-        .intro-brush { max-width: 260px; top: -5%; right: -5%; left: auto; opacity: 0.4; z-index: 0; pointer-events: none; transform: scaleX(-1); }
+        .intro-brush { max-width: 160px; top: 6%; right: -5%; left: auto; opacity: 0.4; z-index: 0; pointer-events: none; transform: scaleX(-1); }
         .intro-mask { max-width: 150px; bottom: 5%; left: auto; right: -5%; opacity: 0.15; z-index: 0; top: auto; pointer-events: none; }
-        .matters-mic { max-width: 220px; right: -5%; top: 0; opacity: 0.4; z-index: 0; pointer-events: none; }
-        .reimagining-layer { max-width: 260px; top: 0; right: -5%; left: auto; opacity: 0.4; z-index: 0; pointer-events: none; transform: scaleX(-1); }
+        .matters-mic { max-width: 180px; right: -5%; top: -10%; opacity: 0.4; z-index: 0; pointer-events: none; }
+        .reimagining-layer { max-width: 160px; top: 5%; right: -5%; left: auto; opacity: 0.4; z-index: 0; pointer-events: none; transform: scaleX(-1); }
         .hero-shape { max-width: 150px; right: -5%; top: 5%; opacity: 0.15; z-index: 0; pointer-events: none; }
     }
 </style>

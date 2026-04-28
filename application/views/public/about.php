@@ -483,10 +483,10 @@
         .slider-thumb img { max-width: 250px; opacity: 0.4; pointer-events: none; z-index: 0; }
         
         /* 2. Intro Brush: Dinaikkan ke atas (-10%), dipertebal & diperbesar */
-        .intro-brush { max-width: 280px; top: -10%; left: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
+        .intro-brush { max-width: 280px; top: -25%; left: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
         
         /* 3. Vision Mask: Dipertebal & diperbesar membingkai teks Our Vision */
-        .matters-mask { max-width: 220px; top: -5%; right: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
+        .matters-mask { max-width: 220px; top: -7%; right: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
     }
 </style>
 
