@@ -101,7 +101,6 @@
         line-height: 1.3;
     }
     
-    /* PERBAIKAN SPACING: margin-bottom diturunkan untuk menjaga konsistensi jika ada/tidaknya departemen */
     .speaker-dept {
         font-size: 14px;
         color: #111;
@@ -110,7 +109,6 @@
         line-height: 1.4;
     }
     
-    /* PERBAIKAN SPACING: mt-auto akan selalu mendorong teks organisasi ke bagian paling bawah kartu */
     .speaker-org {
         font-size: 15px;
         color: #5156B8;
@@ -127,12 +125,23 @@
         padding: 60px 0;
         scroll-margin-top: 80px; 
     }
+    
+    /* PERBAIKAN 2: z-index container diangkat ke 2 agar kotak workshop ada di atas mic */
+    .workshops-section .container {
+        position: relative;
+        z-index: 2;
+    }
+    
     .shape-2 {
         position: absolute;
         top: -220px;
         right: 0;
         max-width: 500px;
-        z-index: 1;
+        
+        /* PERBAIKAN 2: Mic diturunkan ke lapisan terbawah dan opacity dikurangi jadi transparan */
+        z-index: 0; 
+        opacity: 0.2; 
+        pointer-events: none; /* Mencegah mic menghalangi fungsi klik */
     }
     
     .tags-grid-container { position: relative; z-index: 2; }
@@ -178,10 +187,8 @@
     .workshop-subtitle { font-size: 16px; color: #111; font-weight: 500; margin-bottom: 20px; flex-grow: 1; line-height: 1.4; }
     .workshop-fac-name { color: #5156B8; font-weight: 800; font-size: 16px; margin-bottom: 4px; }
     
-    /* PERBAIKAN SPACING: margin-bottom diturunkan/dijaga konsistensinya */
     .workshop-fac-org { font-size: 14px; color: #111; font-weight: 400; margin-bottom: 20px; line-height: 1.4; }
     
-    /* PERBAIKAN SPACING: mt-auto akan selalu mendorong tombol ini ke bagian paling bawah kartu */
     .btn-read-more { background-color: #7C83DB; color: white; border-radius: 20px; padding: 6px 25px; font-size: 13px; font-weight: 600; border: none; align-self: center; text-decoration: none; transition: 0.3s; margin-top: auto; }
     .btn-read-more:hover { background-color: #5156B8; color: white; }
 
@@ -228,6 +235,8 @@
         .modal-workshop-detail .fac-img { width: 80px; height: 80px; }
 
         .shape-1 { max-width: 250px; top: 5%; right: -5%; opacity: 0.2; z-index: 0; pointer-events: none; }
+        
+        /* KHUSUS MOBILE: opacity tetap sesuai instruksi lama agar tidak merusak layout sebelumnya */
         .shape-2 { max-width: 250px; top: -2%; right: -5%; opacity: 0.2; z-index: 0; pointer-events: none; }
     }
 </style>
@@ -286,12 +295,10 @@
                 <h3 class="speaker-name"><?= htmlspecialchars($s->name) ?></h3>
                 <p class="speaker-title"><?= htmlspecialchars($s->designation) ?></p>
                 
-                <!-- PERBAIKAN STRUKTURAL: Hanya tampilkan paragraf jika ada datanya -->
                 <?php if(isset($s->department) && !empty($s->department)): ?>
                     <p class="speaker-dept"><?= htmlspecialchars($s->department) ?></p>
                 <?php endif; ?>
                 
-                <!-- PERBAIKAN STRUKTURAL: Tampilkan organisasi jika ada datanya. Class 'mt-auto' di CSS akan menjaganya tetap di bawah -->
                 <?php if(isset($s->organization) && !empty($s->organization)): ?>
                     <p class="speaker-org mb-0"><?= htmlspecialchars($s->organization) ?></p>
                 <?php endif; ?>
@@ -346,7 +353,6 @@
                     <?php if($w->primary_facilitator): ?>
                         <p class="workshop-fac-name"><?= htmlspecialchars($w->primary_facilitator->name) ?></p>
                         
-                        <!-- PERBAIKAN STRUKTURAL: Hanya tampilkan paragraf organisasi jika memang ada isinya -->
                         <?php if(!empty($w->primary_facilitator->designation) || !empty($w->primary_facilitator->organization)): ?>
                             <p class="workshop-fac-org">
                                 <?= !empty($w->primary_facilitator->designation) ? htmlspecialchars($w->primary_facilitator->designation) . '<br>' : '' ?>

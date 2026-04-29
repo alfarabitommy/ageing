@@ -10,7 +10,8 @@
 
     body {
         font-family: 'DM Sans', sans-serif;
-        background-color: #f4f7f6;
+        /* PERBAIKAN 1: Background dasar dijadikan putih murni agar area carousel tidak memiliki list abu-abu */
+        background-color: #ffffff;
         color: #333;
         line-height: 1.6;
     }
@@ -58,14 +59,14 @@
 
     .slider-thumb {
         position: absolute;
-        bottom: 20%;
-        right: -10%; 
+        top: 15%; 
+        right: -5%; 
         z-index: 0;
-        margin-bottom: 5%;
    }
 
     .slider-thumb img {
-        max-width: 700px;
+        max-width: 700px; 
+        width: 100%;
         transition: all 0.3s ease;
     }
 
@@ -84,10 +85,11 @@
         padding: 0 15px;
     }
     .vision-overlay-box {
+        /* PERBAIKAN 1: Background diatur putih, dan box-shadow dihilangkan atau ditipiskan jika itu yang membuat kesan abu-abu */
         background-color: #ffffff;
         border-radius: 30px;
         position: relative;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); 
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); 
         overflow: hidden;
         animation: slideUpFade 0.6s ease forwards;
     }
@@ -125,7 +127,8 @@
     .intro-section {
         font-size :32px;
         font-family: 'DM Sans', sans-serif;
-        background-color: #fff; 
+        /* PERBAIKAN 1: Dipastikan putih bersih */
+        background-color: #ffffff; 
         padding: 100px 0;
         position: relative;
         overflow: hidden;
@@ -259,7 +262,8 @@
        ========================================= */
     .news-section {
         padding: 80px 0;
-        background-color: #f4f7f6; 
+        /* PERBAIKAN 1: Jadikan putih murni agar seragam dengan sisa halaman */
+        background-color: #ffffff; 
     }
     .news-grid {
         display: flex;
@@ -410,9 +414,6 @@
     }
     .about-modal .info-box p:last-child { margin-bottom: 0; }
     
-    /* Contact group classes (info-heading, contact-group, dll) tetap saya pertahankan 
-       di CSS karena bisa jadi dibutuhkan jika ada pengembangan ke depannya,
-       namun secara visual tag HTML-nya telah saya hapus di bawah. */
     .about-modal .info-heading {
         font-size: 18px;
         font-weight: 800;
@@ -474,10 +475,10 @@
         .about-modal .info-box { padding: 25px; }
 
         /* ORNAMENTS MOBILE ADJUSTMENTS */
+        .slider-thumb { top: 5%; right: -15%; }
         .slider-thumb img { max-width: 250px; opacity: 0.4; pointer-events: none; z-index: 0; }
         .intro-brush { max-width: 280px; top: -25%; left: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
         .matters-mask { max-width: 220px; top: -7%; right: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
-        .slider-thumb { position: absolute; bottom: 10%; right: -10%;  z-index: 0; margin-bottom: 5%;}
     }
 </style>
 
@@ -692,7 +693,6 @@
             <img src="<?= base_url('assets/public/images/slec.png') ?>" alt="SLEC Hero" class="hero-img">
 
             <div class="row g-4">
-                <!-- PERBAIKAN: Diperlebar menjadi col-lg-12 karena kotak kontak dihilangkan -->
                 <div class="col-lg-12">
                     <div class="info-box">
                         <p>SLEC is a Christian healthcare provider dedicated to enriching the lives of seniors in Singapore, regardless of race, language and religion. Guided by our GRACE philosophy of care, we are committed to providing compassionate and holistic care that fosters autonomy and choice.</p>
@@ -701,7 +701,6 @@
                         <p>Through innovation, collaboration and education, we seek to elevate the community care sector, where seniors thrive in their golden years and age with dignity, independence and joy.</p>
                     </div>
                 </div>
-                <!-- BLOK CONTACT INFO DIHAPUS -->
             </div>
 
         </div>
@@ -727,14 +726,12 @@
             <img src="<?= base_url('assets/public/images/nafa.png') ?>" alt="NAFA Hero" class="hero-img">
 
             <div class="row g-4">
-                <!-- PERBAIKAN: Diperlebar menjadi col-lg-12 karena kotak kontak dihilangkan -->
                 <div class="col-lg-12">
                     <div class="info-box">
                         <p>Established in 1938, NAFA is Singapore's pioneer arts institution and a founding member of the University of the Arts Singapore (UAS). Renowned for its strength in Southeast Asian arts, NAFA is also recognised for its rigorous, practice-led curriculum, interdisciplinary approach, and strong engagement with the creative community. This commitment is reflected in initiatives such as the Institute of Southeast Asian Arts (ISEAA), which advances artistic practice and research in the region.</p>
                         <p>With 16 Cultural Medallion and 15 Young Artist Award alumni, NAFA has nurtured some of the nation's most celebrated artists and creative practitioners. Supporting learners at various stages of learning, from early arts education to diploma, degree, postgraduate, and continuing education programmes, NAFA offers educational pathways across art, design, performing arts, and interdisciplinary practices, guided by its mission of "inspiring learning and growth through the arts".</p>
                     </div>
                 </div>
-                <!-- BLOK CONTACT INFO DIHAPUS -->
             </div>
 
         </div>
