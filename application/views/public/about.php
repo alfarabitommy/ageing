@@ -436,21 +436,28 @@
     @media (max-width: 991px) {
         section { padding: 50px 0; }
         
-        .programme-hero { padding: 40px 0 160px; }
+        .programme-hero { padding-top: 0px; padding-right: 0px; padding-bottom: 160px;
+        padding-left: 0px; }
         .hero-title { font-size: 2.2rem; }
         .programme-hero p.lead { font-size: 16px; margin-bottom: 30px !important; }
         
-        .vision-container { margin-top: -125px; } 
+        .vision-container { margin-top: -175px; } 
         .vision-overlay-box .carousel-item img { height: 250px; }
         .transition-text-section { padding: 40px 0 10px; }
         
-        .intro-section { padding: 60px 0; font-size: 20px; }
+        .intro-section { padding-top: 60px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 20px; }
         .intro-vision { font-size: 18px; }
         
-        .vision-section { padding: 60px 20px; }
+        .vision-section { padding-top: 60px;
+        padding-right: 20px;
+        padding-bottom: 0px;
+        padding-left: 20px; }
         .our-vision { width: 100%; height: auto; font-size: 2.5rem; margin-bottom: 15px; }
         
-        .objectives-section { padding: 60px 0; }
+        .objectives-section { padding-top: 10px;
+        padding-right: 0px;
+        padding-bottom: 10px;
+        padding-left: 0px; }
         .conference-objectives { width: 100%; height: auto; font-size: 2.2rem; bottom: auto; }
         .intro-conference { font-size: 18px; }
 
@@ -460,7 +467,10 @@
         .obj-card { padding: 30px 20px; margin-bottom: 15px; }
         .obj-card h4 { font-size: 18px; }
         .icon-brain, .icon-deepen, .icon-inspire, .icon-elevate { width: 80px; height: 80px; }
-        
+        .news-section { padding-top: 10px;
+        padding-right: 0px;
+        padding-bottom: 10px;
+        padding-left: 0px; }
         .news-grid { flex-direction: column; gap: 20px; }
         .news-item { padding: 15px; }
         .news-item img { height: 220px; }
@@ -476,7 +486,7 @@
 
         /* ORNAMENTS MOBILE ADJUSTMENTS */
         .slider-thumb { top: 5%; right: -15%; }
-        .slider-thumb img { max-width: 250px; opacity: 0.4; pointer-events: none; z-index: 0; }
+        .slider-thumb img { max-width: 200px; opacity: 0.4; pointer-events: none; z-index: 0; }
         .intro-brush { max-width: 280px; top: -25%; left: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
         .matters-mask { max-width: 220px; top: -7%; right: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
     }
