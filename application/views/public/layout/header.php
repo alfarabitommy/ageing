@@ -11,7 +11,6 @@
     <meta property="og:description" content="<?= isset($meta_desc) ? $meta_desc : 'Reimagining Ageing Through the Power of the Arts Together.' ?>">
     <meta property="og:type" content="website">
 
-    <!-- PERBAIKAN: Kode pemanggilan Favicon ditambahkan di sini -->
     <link rel="icon" type="image/png" href="<?= base_url('assets/public/images/favicon.png') ?>">
     <link rel="apple-touch-icon" href="<?= base_url('assets/public/images/favicon.png') ?>">
 
@@ -194,7 +193,8 @@
                     <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == '') ? 'active' : '' ?>" href="<?= base_url() ?>">Home</a></li>
                     <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == 'about') ? 'active' : '' ?>" href="<?= base_url('about') ?>">About Us</a></li>
                     
-                    <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == 'speakers') ? 'active' : '' ?>" href="<?= base_url('speakers') ?>" id="navItemSpeakers">Speakers</a></li>
+                    <!-- PERBAIKAN: Menambahkan anchor #plenary-speakers ke link url -->
+                    <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == 'speakers') ? 'active' : '' ?>" href="<?= base_url('speakers#plenary-speakers') ?>" id="navItemSpeakers">Speakers</a></li>
                     
                     <li class="nav-item"><a class="nav-link" href="<?= base_url('speakers#breakout-workshops') ?>" id="navItemWorkshops">Breakout Workshops</a></li>
                     
@@ -234,7 +234,14 @@
                 // Cek apakah user sedang berada di halaman speakers
                 if (window.location.pathname.includes("speakers")) {
                     e.preventDefault(); 
-                    window.scrollTo({ top: 0, behavior: 'smooth' }); 
+                    
+                    // PERBAIKAN: Gulung layar mulus ke arah ID #plenary-speakers, bukan ke top:0
+                    const targetSection = document.getElementById('plenary-speakers');
+                    if(targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    } else {
+                        window.scrollTo({ top: 0, behavior: 'smooth' }); 
+                    }
                     
                     // Tutup menu offcanvas secara otomatis jika sedang di mobile
                     const offcanvasElement = document.getElementById('offcanvasNavbar');
@@ -248,7 +255,7 @@
                     if (navItemWorkshops) navItemWorkshops.classList.remove("active");
                     navItemSpeakers.classList.add("active");
                     
-                    history.pushState(null, null, window.location.pathname);
+                    history.pushState(null, null, window.location.pathname + '#plenary-speakers');
                 }
             });
         }
@@ -270,8 +277,6 @@
                     }
                 });
             }, { 
-                // Threshold dikecilkan menjadi 0.01 (1%) dengan rootMargin.
-                // Logika: Akan tetap terdeteksi meski section ditarik sangat panjang ke bawah di HP.
                 rootMargin: "-80px 0px -20% 0px", 
                 threshold: 0.01 
             }); 

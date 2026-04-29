@@ -56,6 +56,11 @@
     /* =========================================
        SECTION 2: PLENARY SPEAKERS
        ========================================= */
+    /* PERBAIKAN: Menambahkan scroll-margin-top agar saat dilompat ke ID ini, tidak tertutup navbar */
+    #plenary-speakers {
+        scroll-margin-top: 90px;
+    }
+
     .section-title {
         color: #5156B8;
         font-weight: 800;
@@ -167,7 +172,6 @@
     
     .workshop-img { width: 100px; height: 100px; object-fit: cover; border-radius: 15px; margin: 0 auto 20px; }
     
-    /* PERBAIKAN UKURAN FONT WORKSHOP SESUAI DENGAN SPEAKER CARD */
     .workshop-title { color: #5156B8; font-weight: 800; font-size: 24px; margin-bottom: 12px; line-height: 1.2; }
     .workshop-subtitle { font-size: 16px; color: #111; font-weight: 500; margin-bottom: 20px; flex-grow: 1; line-height: 1.4; }
     .workshop-fac-name { color: #5156B8; font-weight: 800; font-size: 16px; margin-bottom: 4px; }
@@ -261,7 +265,8 @@
     </div>
 </section>
 
-<section class="container py-5 mt-4">
+<!-- PERBAIKAN: Menambahkan ID plenary-speakers -->
+<section class="container py-5 mt-4" id="plenary-speakers">
     <h2 class="section-title">The Speakers</h2>
     <p class="mb-5" style="max-width: 800px; color: #333; font-size: 18px;">
         This year's conference features speakers from across a wide range of fields, bringing together diverse perspectives to offer a multidisciplinary look at the future of ageing. These plenary sessions are designed to inspire and widen your horizons through innovative approaches to senior well-being.
@@ -409,7 +414,6 @@ foreach($workshops as $w):
                                 <?php foreach($w->all_facilitators as $fac): ?>
                                     <div class="fac-header-row mt-4">
                                         <?php 
-                                            // LOGIKA PEMILIHAN FOTO POPUP
                                             if(isset($fac->image_path_popup) && $fac->image_path_popup != 'default.png' && !empty($fac->image_path_popup)) { 
                                                 $fac_img_detail = base_url('uploads/facilitators/'.$fac->image_path_popup); 
                                             } else if($fac->image_path != 'default.png' && !empty($fac->image_path)) { 
