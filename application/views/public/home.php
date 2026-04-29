@@ -80,7 +80,7 @@
         color: white; 
     }
     .reimagining-title { font-size: 48px; line-height: 1.2; margin-bottom: 60px; position: relative; z-index: 2; }
-    .reimagining-layer { position: absolute; left: 0%; top: -20%; max-width: 750px; z-index: 1; pointer-events: none; }
+    .reimagining-layer { position: absolute; left: 0%; top: -20%; max-width: 600px; z-index: 1; pointer-events: none; }
 
     .pillar-card { border-radius: 20px; padding: 40px; height: 100%; color: #111; display: flex; flex-direction: column; align-items: flex-start; position: relative; z-index: 2; }
     
@@ -168,13 +168,16 @@
     
     .workshop-img { width: 100px; height: 100px; object-fit: cover; border-radius: 15px; margin: 0 auto 20px; }
     
-    /* PERBAIKAN UKURAN FONT WORKSHOP SESUAI DENGAN SPEAKER CARD */
     .workshop-title { color: #5156B8; font-weight: 800; font-size: 24px; margin-bottom: 12px; line-height: 1.2; }
     .workshop-subtitle { font-size: 16px; color: #111; font-weight: 500; margin-bottom: 20px; flex-grow: 1; line-height: 1.4; }
     .workshop-fac-name { color: #5156B8; font-weight: 800; font-size: 16px; margin-bottom: 4px; }
+    
+    /* PERBAIKAN SPACING: margin-bottom diturunkan/dijaga konsistensinya */
     .workshop-fac-org { font-size: 14px; color: #111; font-weight: 400; margin-bottom: 20px; line-height: 1.4; }
     
-    .btn-read-more { background-color: #4F47B2; color: white; border-radius: 20px; padding: 6px 25px; font-size: 13px; font-weight: 600; border: none; align-self: center; text-decoration: none; transition: 0.3s; }
+    /* PERBAIKAN SPACING: mt-auto akan selalu mendorong tombol ini ke bagian paling bawah kartu 
+       terlepas dari apakah teks fasilitator/organisasi ada isinya atau kosong (null) */
+    .btn-read-more { background-color: #4F47B2; color: white; border-radius: 20px; padding: 6px 25px; font-size: 13px; font-weight: 600; border: none; align-self: center; text-decoration: none; transition: 0.3s; margin-top: auto; }
     .btn-read-more:hover { background-color: #5156B8; color: white; }
 
     /* =========================================
@@ -400,10 +403,21 @@
                     <img src="<?= $fac_img ?>" alt="" class="workshop-img shadow-sm">
                     <h3 class="workshop-title"><?= htmlspecialchars($w->title) ?></h3>
                     <p class="workshop-subtitle"><?= htmlspecialchars($w->subtitle) ?></p>
+                    
                     <?php if($w->primary_facilitator): ?>
                         <p class="workshop-fac-name"><?= htmlspecialchars($w->primary_facilitator->name) ?></p>
-                        <p class="workshop-fac-org"><?= htmlspecialchars($w->primary_facilitator->designation) ?><br><?= htmlspecialchars($w->primary_facilitator->organization) ?></p>
+                        
+                        <!-- PERBAIKAN STRUKTURAL: Hanya tampilkan paragraf organisasi jika memang ada isinya -->
+                        <?php if(!empty($w->primary_facilitator->designation) || !empty($w->primary_facilitator->organization)): ?>
+                            <p class="workshop-fac-org">
+                                <?= !empty($w->primary_facilitator->designation) ? htmlspecialchars($w->primary_facilitator->designation) . '<br>' : '' ?>
+                                <?= htmlspecialchars($w->primary_facilitator->organization) ?>
+                            </p>
+                        <?php endif; ?>
+                        
                     <?php endif; ?>
+                    
+                    <!-- PERBAIKAN SPACING: mt-auto menjamin posisi tombol selalu menempel ke bawah -->
                     <button type="button" class="btn-read-more mt-auto" data-bs-toggle="modal" data-bs-target="#modalWorkshop<?= $w->id ?>">Read More</button>
                 </div>
             </div>

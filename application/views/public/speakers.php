@@ -56,7 +56,6 @@
     /* =========================================
        SECTION 2: PLENARY SPEAKERS
        ========================================= */
-    /* PERBAIKAN: Menambahkan scroll-margin-top agar saat dilompat ke ID ini, tidak tertutup navbar */
     #plenary-speakers {
         scroll-margin-top: 90px;
     }
@@ -101,14 +100,17 @@
         margin-bottom: 8px;
         line-height: 1.3;
     }
+    
+    /* PERBAIKAN SPACING: margin-bottom diturunkan untuk menjaga konsistensi jika ada/tidaknya departemen */
     .speaker-dept {
         font-size: 14px;
         color: #111;
         font-weight: 400;
         margin-bottom: 15px;
         line-height: 1.4;
-        flex-grow: 1;
     }
+    
+    /* PERBAIKAN SPACING: mt-auto akan selalu mendorong teks organisasi ke bagian paling bawah kartu */
     .speaker-org {
         font-size: 15px;
         color: #5156B8;
@@ -175,9 +177,12 @@
     .workshop-title { color: #5156B8; font-weight: 800; font-size: 24px; margin-bottom: 12px; line-height: 1.2; }
     .workshop-subtitle { font-size: 16px; color: #111; font-weight: 500; margin-bottom: 20px; flex-grow: 1; line-height: 1.4; }
     .workshop-fac-name { color: #5156B8; font-weight: 800; font-size: 16px; margin-bottom: 4px; }
+    
+    /* PERBAIKAN SPACING: margin-bottom diturunkan/dijaga konsistensinya */
     .workshop-fac-org { font-size: 14px; color: #111; font-weight: 400; margin-bottom: 20px; line-height: 1.4; }
     
-    .btn-read-more { background-color: #7C83DB; color: white; border-radius: 20px; padding: 6px 25px; font-size: 13px; font-weight: 600; border: none; align-self: center; text-decoration: none; transition: 0.3s; }
+    /* PERBAIKAN SPACING: mt-auto akan selalu mendorong tombol ini ke bagian paling bawah kartu */
+    .btn-read-more { background-color: #7C83DB; color: white; border-radius: 20px; padding: 6px 25px; font-size: 13px; font-weight: 600; border: none; align-self: center; text-decoration: none; transition: 0.3s; margin-top: auto; }
     .btn-read-more:hover { background-color: #5156B8; color: white; }
 
     /* =========================================
@@ -265,7 +270,6 @@
     </div>
 </section>
 
-<!-- PERBAIKAN: Menambahkan ID plenary-speakers -->
 <section class="container py-5 mt-4" id="plenary-speakers">
     <h2 class="section-title">The Speakers</h2>
     <p class="mb-5" style="max-width: 800px; color: #333; font-size: 18px;">
@@ -282,10 +286,12 @@
                 <h3 class="speaker-name"><?= htmlspecialchars($s->name) ?></h3>
                 <p class="speaker-title"><?= htmlspecialchars($s->designation) ?></p>
                 
+                <!-- PERBAIKAN STRUKTURAL: Hanya tampilkan paragraf jika ada datanya -->
                 <?php if(isset($s->department) && !empty($s->department)): ?>
                     <p class="speaker-dept"><?= htmlspecialchars($s->department) ?></p>
                 <?php endif; ?>
                 
+                <!-- PERBAIKAN STRUKTURAL: Tampilkan organisasi jika ada datanya. Class 'mt-auto' di CSS akan menjaganya tetap di bawah -->
                 <?php if(isset($s->organization) && !empty($s->organization)): ?>
                     <p class="speaker-org mb-0"><?= htmlspecialchars($s->organization) ?></p>
                 <?php endif; ?>
@@ -339,7 +345,15 @@
                     
                     <?php if($w->primary_facilitator): ?>
                         <p class="workshop-fac-name"><?= htmlspecialchars($w->primary_facilitator->name) ?></p>
-                        <p class="workshop-fac-org"><?= htmlspecialchars($w->primary_facilitator->designation) ?><br><?= htmlspecialchars($w->primary_facilitator->organization) ?></p>
+                        
+                        <!-- PERBAIKAN STRUKTURAL: Hanya tampilkan paragraf organisasi jika memang ada isinya -->
+                        <?php if(!empty($w->primary_facilitator->designation) || !empty($w->primary_facilitator->organization)): ?>
+                            <p class="workshop-fac-org">
+                                <?= !empty($w->primary_facilitator->designation) ? htmlspecialchars($w->primary_facilitator->designation) . '<br>' : '' ?>
+                                <?= htmlspecialchars($w->primary_facilitator->organization) ?>
+                            </p>
+                        <?php endif; ?>
+                        
                     <?php endif; ?>
 
                     <button type="button" class="btn-read-more mt-auto" data-bs-toggle="modal" data-bs-target="#modalWorkshop<?= $w->id ?>">Read More</button>
