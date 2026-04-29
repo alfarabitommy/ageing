@@ -109,14 +109,7 @@
     .modal-kustom .btn-go-back { border: 1px solid #111; border-radius: 20px; padding: 5px 20px; font-size: 12px; font-weight: 500; background: transparent; color: #111; margin-bottom: 30px; transition: 0.3s; }
     .modal-kustom .btn-go-back:hover { background: #111; color: white; }
 
-    /* CSS BARU UNTUK IKON HEADER MODAL */
-    .modal-kustom .modal-header-icon {
-        width: 50px;
-        display: block; /* Memaksa ikon memiliki barisnya sendiri (di atas judul) */
-        margin-bottom: 15px;
-        position: relative;
-        z-index: 1;
-    }
+    .modal-kustom .modal-header-icon { width: 50px; display: block; margin-bottom: 15px; position: relative; z-index: 1; }
 
     .modal-kustom .header-title { font-size: 42px; font-weight: 800; color: #111; margin-bottom: 5px; line-height: 1.1; }
     .modal-kustom .header-subtitle { font-size: 26px; font-weight: 400; color: #111; line-height: 1.3; margin-bottom: 0; }
@@ -174,10 +167,13 @@
     .workshop-card { width: 100%; min-width: 280px; margin: 0 auto; border: 1px solid #E0E0E0; border-radius: 15px; padding: 25px; text-align: center; height: 100%; background-color: white; display: flex; flex-direction: column; position: relative; z-index: 2; }
     
     .workshop-img { width: 100px; height: 100px; object-fit: cover; border-radius: 15px; margin: 0 auto 20px; }
-    .workshop-title { color: #5156B8; font-weight: 700; font-size: 18px; margin-bottom: 10px; }
-    .workshop-subtitle { font-size: 13px; color: #555; margin-bottom: 20px; flex-grow: 1; }
-    .workshop-fac-name { color: #5156B8; font-weight: 600; font-size: 14px; margin-bottom: 2px; }
-    .workshop-fac-org { font-size: 13px; color: #777; margin-bottom: 20px; }
+    
+    /* PERBAIKAN UKURAN FONT WORKSHOP SESUAI DENGAN SPEAKER CARD */
+    .workshop-title { color: #5156B8; font-weight: 800; font-size: 24px; margin-bottom: 12px; line-height: 1.2; }
+    .workshop-subtitle { font-size: 16px; color: #111; font-weight: 500; margin-bottom: 20px; flex-grow: 1; line-height: 1.4; }
+    .workshop-fac-name { color: #5156B8; font-weight: 800; font-size: 16px; margin-bottom: 4px; }
+    .workshop-fac-org { font-size: 14px; color: #111; font-weight: 400; margin-bottom: 20px; line-height: 1.4; }
+    
     .btn-read-more { background-color: #4F47B2; color: white; border-radius: 20px; padding: 6px 25px; font-size: 13px; font-weight: 600; border: none; align-self: center; text-decoration: none; transition: 0.3s; }
     .btn-read-more:hover { background-color: #5156B8; color: white; }
 
@@ -239,11 +235,10 @@
         .modal-kustom .modal-content { padding: 15px; }
         .modal-kustom .header-card { padding: 25px 20px; margin-bottom: 20px; }
         
-        /* PENYESUAIAN UKURAN GAMBAR BACKGROUND HEADER MOBILE & ICON */
         .modal-kustom .modal-header-icon { width: 35px; margin-bottom: 12px; }
         .modal-kustom .header-bg-img {
-            width: 180px; /* Diperkecil proporsional untuk mobile */
-            right: -5%; /* Digeser ke kanan agar estetik dan tidak menimpa teks utama berlebihan */
+            width: 180px; 
+            right: -5%; 
             top: 40%;
         }
 

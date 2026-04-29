@@ -9,7 +9,6 @@
         font-family: 'DM Sans', sans-serif;
     }
     
-    /* KUNCI PERBAIKAN: Memindah pengunci horizontal ke tag <main> */
     main {
         overflow-x: hidden;
     }
@@ -22,7 +21,6 @@
         color: white;
         padding: 80px 0 100px;
         position: relative;
-        /* overflow: hidden; -> DIHAPUS AGAR ORNAMEN BISA MENEMBUS */
     }
     .shape-1 {
         position: absolute;
@@ -121,7 +119,6 @@
         position: relative;
         padding: 60px 0;
         scroll-margin-top: 80px; 
-        /* overflow: hidden; -> DIHAPUS AGAR ORNAMEN BISA MENEMBUS */
     }
     .shape-2 {
         position: absolute;
@@ -131,12 +128,11 @@
         z-index: 1;
     }
     
-    /* PERBAIKAN TAGS: Dibuat Fluid dan Center */
     .tags-grid-container { position: relative; z-index: 2; }
     .tags-row { 
         display: flex; 
         flex-wrap: wrap; 
-        justify-content: left; /* Kunci menengahkan tag sisa */
+        justify-content: left; 
         gap: 10px; 
     }
 
@@ -170,10 +166,13 @@
     .workshop-card { width: 100%; min-width: 280px; margin: 0 auto; border: 1px solid #E0E0E0; border-radius: 15px; padding: 25px; text-align: center; height: 100%; background-color: white; display: flex; flex-direction: column; }
     
     .workshop-img { width: 100px; height: 100px; object-fit: cover; border-radius: 15px; margin: 0 auto 20px; }
-    .workshop-title { color: #5156B8; font-weight: 700; font-size: 18px; margin-bottom: 10px; }
-    .workshop-subtitle { font-size: 13px; color: #555; margin-bottom: 20px; flex-grow: 1; }
-    .workshop-fac-name { color: #5156B8; font-weight: 600; font-size: 14px; margin-bottom: 2px; }
-    .workshop-fac-org { font-size: 13px; color: #777; margin-bottom: 20px; }
+    
+    /* PERBAIKAN UKURAN FONT WORKSHOP SESUAI DENGAN SPEAKER CARD */
+    .workshop-title { color: #5156B8; font-weight: 800; font-size: 24px; margin-bottom: 12px; line-height: 1.2; }
+    .workshop-subtitle { font-size: 16px; color: #111; font-weight: 500; margin-bottom: 20px; flex-grow: 1; line-height: 1.4; }
+    .workshop-fac-name { color: #5156B8; font-weight: 800; font-size: 16px; margin-bottom: 4px; }
+    .workshop-fac-org { font-size: 14px; color: #111; font-weight: 400; margin-bottom: 20px; line-height: 1.4; }
+    
     .btn-read-more { background-color: #7C83DB; color: white; border-radius: 20px; padding: 6px 25px; font-size: 13px; font-weight: 600; border: none; align-self: center; text-decoration: none; transition: 0.3s; }
     .btn-read-more:hover { background-color: #5156B8; color: white; }
 

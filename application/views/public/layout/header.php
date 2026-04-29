@@ -58,13 +58,13 @@
         
         /* Animasi Logo saat Shrink */
         .navbar-brand img {
-            height: 45px; /* Tinggi normal */
+            height: 55px; /* Tinggi normal */
             width: auto;
             object-fit: contain;
             transition: all 0.4s ease-in-out; /* Animasi ikut menyusut */
         }
         .navbar.navbar-scrolled .navbar-brand img {
-            height: 32px; /* Logo mengecil saat di-scroll */
+            height: 37px; /* Logo mengecil saat di-scroll */
         }
 
         .nav-link {
@@ -235,7 +235,7 @@
                     <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == 'schedules') ? 'active' : '' ?>" href="<?= base_url('schedules') ?>">Event Schedule</a></li>
                     <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == 'getting-here') ? 'active' : '' ?>" href="<?= base_url('getting-here') ?>">Getting Here</a></li>
                     <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
-                        <a class="btn btn-register" href="https://www.eventbrite.com/" target="_blank">Register Now</a>
+                        <a class="btn btn-register" href="https://www.eventbrite.sg/e/ageing-artfully-conference-healing-expressions-through-the-arts-tickets-1687058570599?aff=oddtdtcreator" target="_blank">Register Now</a>
                     </li>
                 </ul>
             </div>

@@ -497,14 +497,16 @@
     </div>
 
     <div class="container">
-        <p class="small fw-bold mb-3">> SLEC x NAFA Ageing Artfully Conference 2026</p>
+        <p class="small mb-3" style="font-weight: 400;">> SLEC x NAFA Ageing Artfully Conference 2026</p>
+        
         <h1 class="hero-title">Reimagining Ageing<br>
         through the Power of<br>
         the Arts Together
         </h1>
-        <p class="lead mb-5" style="max-width: 600px;">
-             St Luke's ElderCare (SLEC) and Nanyang Academy of Fine Arts
-             (NAFA), University of the Arts Singapore (UAS) have been
+        
+        <p class="lead mb-5" style="max-width: 600px; font-weight: 400;">
+             <span style="font-weight: 800;">St Luke’s ElderCare (SLEC) and Nanyang Academy of Fine Arts
+             (NAFA), University of the Arts Singapore (UAS)</span> have been
              collaborating to bring together arts education and community care
              to promote innovative approaches in engaging seniors and
              supporting their well-being.
@@ -551,10 +553,10 @@
     <div class="container">
         <div class="row justify-content-end">
             <div class="col-lg-6 position-relative" style="z-index: 2;">
-                <p class="intro-vision">The two organization formalised 
-                    their partnership with the signing of Memorandum of 
-                    understanding in August 2025,and the Ageing Artfully 
-                    Conference is one of the partnership highlights.
+                <p class="intro-vision" style="font-weight: 400;">The two organisations formalised 
+                    their partnership with the signing of a Memorandum of 
+                    Understanding in August 2025, and the <span style="font-weight: 800;">Ageing Artfully 
+                    Conference is one of the partnership highlights.</span>
                 </p>
             </div>
         </div>
@@ -568,11 +570,11 @@
         <div class="row mb-5">
             <div class="col-lg-7">
                 <div class="our-vision">Our Vision</div>
-                <p class="intro-vision">
-                    At its heart, Ageing Artfully reimagines ageing as a stage rich with potential—for <b>creation that affirms identity, connection that nurtures belonging, and contribution that sustains purpose.</b><br><br>
+                <p class="intro-vision" style="font-weight: 400;">
+                    At its heart, Ageing Artfully reimagines ageing as a stage rich with potential—for <span style="font-weight: 800;">creation that affirms identity, connection that nurtures belonging, and contribution that sustains purpose.</span><br><br>
                 </p>
-                <p class="intro-vision">
-                    We move toward a vision of ageing that honours not only well-being, but the enduring human desire to <b>create, relate, and celebrate.</b>
+                <p class="intro-vision" style="font-weight: 400;">
+                    We move toward a vision of ageing that honours not only well-being, but the enduring human desire to <span style="font-weight: 800;">create, relate, and celebrate.</span>
                 </p>
             </div>
         </div>
@@ -584,11 +586,11 @@
         <div class="row mb-5">
             <div class="col-lg-7">
                 <div class="conference-objectives">Conference Objectives</div>
-                <p class="intro-conference">
+                <p class="intro-conference" style="font-weight: 400;">
                     Through interdisciplinary dialogue among artists, academics, 
                     eldercare professionals, community partners, and older adults themselves, 
                     the conference aims to:
-                </P>
+                </p>
             </div>
         </div>
         <div class="row g-4">
