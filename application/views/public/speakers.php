@@ -134,13 +134,13 @@
     
     .shape-2 {
         position: absolute;
-        top: -220px;
+        top: -120px;
         right: 0;
-        max-width: 500px;
+        max-width: 400px;
         
         /* PERBAIKAN 2: Mic diturunkan ke lapisan terbawah dan opacity dikurangi jadi transparan */
         z-index: 0; 
-        opacity: 0.2; 
+        opacity: 0.8; 
         pointer-events: none; /* Mencegah mic menghalangi fungsi klik */
     }
     
