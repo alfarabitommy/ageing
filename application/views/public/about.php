@@ -58,14 +58,14 @@
 
     .slider-thumb {
         position: absolute;
-        bottom: 0;
+        bottom: 20%;
         right: -10%; 
         z-index: 0;
         margin-bottom: 5%;
    }
 
     .slider-thumb img {
-        max-width: 800px;
+        max-width: 700px;
         transition: all 0.3s ease;
     }
 
@@ -134,7 +134,7 @@
     }
     .intro-title { font-size: 52px; color: #111; line-height: 1.1; margin-bottom: 30px; }
     .intro-text { font-size: 32px; color: #333; margin-bottom: 20px; font-weight: 500; }
-    .intro-brush { position: absolute; top: -30%; left: -10%; width: 750px; z-index: 1;}
+    .intro-brush { position: absolute; top: -30%; left: -10%; width: 650px; z-index: 1;}
         
     /* =========================================
        Our Vision Mision
@@ -171,7 +171,7 @@
         position: absolute; 
         right: 0%;
         top: -5%;
-        max-width: 650px;
+        max-width: 550px;
         z-index: 1;
      }
     
@@ -384,7 +384,7 @@
         gap: 20px;
     }
     .about-modal .modal-logos img {
-        max-height: 60px;
+        max-height: 100px;
         object-fit: contain;
     }
 

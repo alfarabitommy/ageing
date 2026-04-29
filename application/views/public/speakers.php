@@ -129,7 +129,7 @@
     }
     .shape-2 {
         position: absolute;
-        top: -100px;
+        top: -220px;
         right: 0;
         max-width: 500px;
         z-index: 1;
