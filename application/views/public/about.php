@@ -43,7 +43,7 @@
     .programme-hero {
         background-color: #5156B8; 
         color: white;
-        padding: 80px 0 160px; 
+        padding: 80px 0 280px; 
         position: relative;
         overflow: hidden;
     }
@@ -80,7 +80,7 @@
     .vision-container {
         position: relative;
         z-index: 10;
-        margin-top: -120px; 
+        margin-top: -300px; 
         padding: 0 15px;
     }
     .vision-overlay-box {
@@ -147,8 +147,8 @@
     }
 
    .our-vision {
-        width: 513px;
-        height: 70px;
+        max-width: 100%;
+        height: auto;
         position: relative;
         font-size: 3.5rem;
         letter-spacing: -0.02em;
@@ -179,7 +179,7 @@
        3. CONFERENCE OBJECTIVES
        ========================================= */
     .conference-objectives {
-        width: 849px;
+        max-width: 100%;
         height: auto;
         position: relative;
         font-size: 3.2rem;
@@ -436,15 +436,14 @@
     @media (max-width: 991px) {
         section { padding: 50px 0; }
         
-        .programme-hero { padding: 40px 0 100px; }
+        .programme-hero { padding: 40px 0 160px; }
         .hero-title { font-size: 2.2rem; }
         .programme-hero p.lead { font-size: 16px; margin-bottom: 30px !important; }
         
-        .vision-container { margin-top: -60px; }
+        .vision-container { margin-top: -125px; } 
         .vision-overlay-box .carousel-item img { height: 250px; }
         .transition-text-section { padding: 40px 0 10px; }
         
-        /* Typography overrides fixed fixed-width elements */
         .intro-section { padding: 60px 0; font-size: 20px; }
         .intro-vision { font-size: 18px; }
         
@@ -468,7 +467,6 @@
         .news-content { padding: 20px 5px 5px 5px; }
         .news-content h3 { font-size: 22px; }
 
-        /* MODAL RESPONSIVE */
         .about-modal .modal-content { padding: 30px 20px; }
         .about-modal .modal-header-row { flex-direction: column; gap: 20px; margin-bottom: 20px; }
         .about-modal .modal-title-custom { font-size: 32px; }
@@ -476,16 +474,9 @@
         .about-modal .hero-img { height: 250px; border-radius: 15px; margin-bottom: 25px; }
         .about-modal .info-box { padding: 25px; }
 
-        /* =========================================
-           ORNAMENTS MOBILE ADJUSTMENTS (WATERMARK FINAL)
-           ========================================= */
-        /* 1. Hero Pen Ornamen: Dipertebal & Diperbesar */
+        /* ORNAMENTS MOBILE ADJUSTMENTS */
         .slider-thumb img { max-width: 250px; opacity: 0.4; pointer-events: none; z-index: 0; }
-        
-        /* 2. Intro Brush: Dinaikkan ke atas (-10%), dipertebal & diperbesar */
         .intro-brush { max-width: 280px; top: -25%; left: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
-        
-        /* 3. Vision Mask: Dipertebal & diperbesar membingkai teks Our Vision */
         .matters-mask { max-width: 220px; top: -7%; right: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
     }
 </style>
@@ -504,7 +495,8 @@
         the Arts Together
         </h1>
         
-        <p class="lead mb-5" style="max-width: 600px; font-weight: 400;">
+        <!-- PERBAIKAN LEBAR 70% (Hero Text): Mengubah max-width menjadi 850px -->
+        <p class="lead mb-5" style="max-width: 850px; font-weight: 400;">
              <span style="font-weight: 800;">St Luke’s ElderCare (SLEC) and Nanyang Academy of Fine Arts
              (NAFA), University of the Arts Singapore (UAS)</span> have been
              collaborating to bring together arts education and community care
@@ -552,7 +544,8 @@
     <img src="<?= base_url('assets/public/images/icon-brush.png') ?>" alt="" class="intro-brush">
     <div class="container">
         <div class="row justify-content-end">
-            <div class="col-lg-6 position-relative" style="z-index: 2;">
+            <!-- PERBAIKAN LEBAR 70% (Intro Text): Menggunakan col-lg-9 (75%) dengan max-width presisi 850px -->
+            <div class="col-lg-9 position-relative" style="z-index: 2; max-width: 850px;">
                 <p class="intro-vision" style="font-weight: 400;">The two organisations formalised 
                     their partnership with the signing of a Memorandum of 
                     Understanding in August 2025, and the <span style="font-weight: 800;">Ageing Artfully 
@@ -568,7 +561,8 @@
     <img src="<?= base_url('assets/public/images/icon-mask-about.png') ?>" alt="" class="matters-mask">
 <div class="container">
         <div class="row mb-5">
-            <div class="col-lg-7">
+            <!-- PERBAIKAN LEBAR 70% (Vision Text): Menggunakan col-lg-9 dengan max-width presisi 850px -->
+            <div class="col-lg-9" style="max-width: 850px;">
                 <div class="our-vision">Our Vision</div>
                 <p class="intro-vision" style="font-weight: 400;">
                     At its heart, Ageing Artfully reimagines ageing as a stage rich with potential—for <span style="font-weight: 800;">creation that affirms identity, connection that nurtures belonging, and contribution that sustains purpose.</span><br><br>
@@ -584,7 +578,7 @@
 <section class="objectives-section">
     <div class="container">
         <div class="row mb-5">
-            <div class="col-lg-7">
+            <div class="col-lg-8">
                 <div class="conference-objectives">Conference Objectives</div>
                 <p class="intro-conference" style="font-weight: 400;">
                     Through interdisciplinary dialogue among artists, academics, 

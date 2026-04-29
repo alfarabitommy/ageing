@@ -84,7 +84,7 @@
 
     .pillar-card { border-radius: 20px; padding: 40px; height: 100%; color: #111; display: flex; flex-direction: column; align-items: flex-start; position: relative; z-index: 2; }
     
-    .pillar-card img { width: 50px; margin-bottom: 60px; } 
+    .pillar-card img { width: 50px; margin-bottom: 10px; } 
     .pillar-card i { font-size: 32px; margin-bottom: 20px; }
     
     .pillar-card h3 { font-size: 28px; margin-bottom: 15px; }
@@ -328,7 +328,7 @@
     <div class="container position-relative" style="z-index: 2;">
         <div class="row justify-content-end mb-4">
             <div class="col-lg-8 text-lg-end">
-                <h2 class="reimagining-title">Reimagining ageing<br>through <span style="color: #92B9FA;">creation</span>,<br><span style="color: #92B9FA;">connection</span> and<br><span style="color: #92B9FA;">contribution</span></h2>
+                <h2 class="reimagining-title">Reimagining ageing through <span style="color: #92B9FA;">creation</span>,<br><span style="color: #92B9FA;">connection</span> and <span style="color: #92B9FA;">contribution</span></h2>
             </div>
         </div>
         <div class="row g-4">
