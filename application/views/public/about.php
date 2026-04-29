@@ -477,6 +477,7 @@
         .slider-thumb img { max-width: 250px; opacity: 0.4; pointer-events: none; z-index: 0; }
         .intro-brush { max-width: 280px; top: -25%; left: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
         .matters-mask { max-width: 220px; top: -7%; right: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
+        .slider-thumb { position: absolute; bottom: 10%; right: -10%;  z-index: 0; margin-bottom: 5%;}
     }
 </style>
 

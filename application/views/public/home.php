@@ -172,11 +172,8 @@
     .workshop-subtitle { font-size: 16px; color: #111; font-weight: 500; margin-bottom: 20px; flex-grow: 1; line-height: 1.4; }
     .workshop-fac-name { color: #5156B8; font-weight: 800; font-size: 16px; margin-bottom: 4px; }
     
-    /* PERBAIKAN SPACING: margin-bottom diturunkan/dijaga konsistensinya */
     .workshop-fac-org { font-size: 14px; color: #111; font-weight: 400; margin-bottom: 20px; line-height: 1.4; }
     
-    /* PERBAIKAN SPACING: mt-auto akan selalu mendorong tombol ini ke bagian paling bawah kartu 
-       terlepas dari apakah teks fasilitator/organisasi ada isinya atau kosong (null) */
     .btn-read-more { background-color: #4F47B2; color: white; border-radius: 20px; padding: 6px 25px; font-size: 13px; font-weight: 600; border: none; align-self: center; text-decoration: none; transition: 0.3s; margin-top: auto; }
     .btn-read-more:hover { background-color: #5156B8; color: white; }
 
@@ -221,7 +218,9 @@
         .matters-title { font-size: 32px; }
         .matters-section p { font-size: 16px !important; }
         .carousel-item img { height: 250px; }
-        .reimagining-title { font-size: 28px; margin-bottom: 30px; text-align: left; }
+        
+        /* Penyesuaian title Reimagining untuk mobile */
+        .reimagining-title { font-size: 32px; margin-bottom: 30px; text-align: left; }
         
         .pillar-card { padding: 25px; }
         .pillar-card h3 { font-size: 22px; }
@@ -331,7 +330,8 @@
     <div class="container position-relative" style="z-index: 2;">
         <div class="row justify-content-end mb-4">
             <div class="col-lg-8 text-lg-end">
-                <h2 class="reimagining-title">Reimagining ageing through <span style="color: #92B9FA;">creation</span>,<br><span style="color: #92B9FA;">connection</span> and <span style="color: #92B9FA;">contribution</span></h2>
+                <!-- PERBAIKAN RESPONSIVE BR: <br> untuk desktop ditaruh setelah creation, <br> untuk mobile setelah connection -->
+                <h2 class="reimagining-title">Reimagining ageing through <span style="color: #92B9FA;">creation</span>,<br class="d-none d-lg-block"> <span style="color: #92B9FA;">connection</span> <br class="d-block d-lg-none">and <span style="color: #92B9FA;">contribution</span></h2>
             </div>
         </div>
         <div class="row g-4">
@@ -407,7 +407,6 @@
                     <?php if($w->primary_facilitator): ?>
                         <p class="workshop-fac-name"><?= htmlspecialchars($w->primary_facilitator->name) ?></p>
                         
-                        <!-- PERBAIKAN STRUKTURAL: Hanya tampilkan paragraf organisasi jika memang ada isinya -->
                         <?php if(!empty($w->primary_facilitator->designation) || !empty($w->primary_facilitator->organization)): ?>
                             <p class="workshop-fac-org">
                                 <?= !empty($w->primary_facilitator->designation) ? htmlspecialchars($w->primary_facilitator->designation) . '<br>' : '' ?>
@@ -417,7 +416,6 @@
                         
                     <?php endif; ?>
                     
-                    <!-- PERBAIKAN SPACING: mt-auto menjamin posisi tombol selalu menempel ke bawah -->
                     <button type="button" class="btn-read-more mt-auto" data-bs-toggle="modal" data-bs-target="#modalWorkshop<?= $w->id ?>">Read More</button>
                 </div>
             </div>
