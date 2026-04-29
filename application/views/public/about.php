@@ -410,6 +410,9 @@
     }
     .about-modal .info-box p:last-child { margin-bottom: 0; }
     
+    /* Contact group classes (info-heading, contact-group, dll) tetap saya pertahankan 
+       di CSS karena bisa jadi dibutuhkan jika ada pengembangan ke depannya,
+       namun secara visual tag HTML-nya telah saya hapus di bawah. */
     .about-modal .info-heading {
         font-size: 18px;
         font-weight: 800;
@@ -419,11 +422,7 @@
         align-items: center;
         gap: 10px;
     }
-    .about-modal .info-heading i {
-        color: #5156B8;
-        font-size: 20px;
-    }
-    
+    .about-modal .info-heading i { color: #5156B8; font-size: 20px; }
     .about-modal .contact-group { margin-bottom: 30px; }
     .about-modal .contact-group:last-child { margin-bottom: 0; }
     .about-modal .contact-title { font-weight: 700; color: #111; margin-bottom: 5px; }
@@ -495,7 +494,6 @@
         the Arts Together
         </h1>
         
-        <!-- PERBAIKAN LEBAR 70% (Hero Text): Mengubah max-width menjadi 850px -->
         <p class="lead mb-5" style="max-width: 850px; font-weight: 400;">
              <span style="font-weight: 800;">St Luke’s ElderCare (SLEC) and Nanyang Academy of Fine Arts
              (NAFA), University of the Arts Singapore (UAS)</span> have been
@@ -544,7 +542,6 @@
     <img src="<?= base_url('assets/public/images/icon-brush.png') ?>" alt="" class="intro-brush">
     <div class="container">
         <div class="row justify-content-end">
-            <!-- PERBAIKAN LEBAR 70% (Intro Text): Menggunakan col-lg-9 (75%) dengan max-width presisi 850px -->
             <div class="col-lg-9 position-relative" style="z-index: 2; max-width: 850px;">
                 <p class="intro-vision" style="font-weight: 400;">The two organisations formalised 
                     their partnership with the signing of a Memorandum of 
@@ -561,7 +558,6 @@
     <img src="<?= base_url('assets/public/images/icon-mask-about.png') ?>" alt="" class="matters-mask">
 <div class="container">
         <div class="row mb-5">
-            <!-- PERBAIKAN LEBAR 70% (Vision Text): Menggunakan col-lg-9 dengan max-width presisi 850px -->
             <div class="col-lg-9" style="max-width: 850px;">
                 <div class="our-vision">Our Vision</div>
                 <p class="intro-vision" style="font-weight: 400;">
@@ -676,6 +672,7 @@
     </div>
 </section>
 
+<!-- MODAL SLEC -->
 <div class="modal fade about-modal" id="modalSLEC" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content shadow-lg">
@@ -694,7 +691,8 @@
             <img src="<?= base_url('assets/public/images/slec.png') ?>" alt="SLEC Hero" class="hero-img">
 
             <div class="row g-4">
-                <div class="col-lg-7">
+                <!-- PERBAIKAN: Diperlebar menjadi col-lg-12 karena kotak kontak dihilangkan -->
+                <div class="col-lg-12">
                     <div class="info-box">
                         <p>SLEC is a Christian healthcare provider dedicated to enriching the lives of seniors in Singapore, regardless of race, language and religion. Guided by our GRACE philosophy of care, we are committed to providing compassionate and holistic care that fosters autonomy and choice.</p>
                         <p>To empower seniors of varying needs, from the fit to the frail, we offer a comprehensive suite of services island wide. These include community-based programmes that promote active ageing; centre-based offerings such as day care, rehabilitation and nursing; residential (nursing home) services for long-term care; and home-based services covering medical, nursing and therapy needs.</p>
@@ -702,30 +700,14 @@
                         <p>Through innovation, collaboration and education, we seek to elevate the community care sector, where seniors thrive in their golden years and age with dignity, independence and joy.</p>
                     </div>
                 </div>
-                <div class="col-lg-5">
-                    <div class="info-box">
-                        <div class="contact-group">
-                            <h5 class="info-heading"><i class="far fa-building"></i> Office Location</h5>
-                            <div class="contact-title mt-3">St Luke's ElderCare<br>(SLEC) Headquarters</div>
-                            <p style="margin-top: 10px;">461 Clementi Road #04-11,<br>Block A, SIM Headquarters,<br>Singapore 599491</p>
-                        </div>
-                        
-                        <div class="contact-group mt-4 pt-2">
-                            <h5 class="info-heading"><i class="far fa-address-book"></i> Contact Us</h5>
-                            <div class="mt-3">
-                                <a href="mailto:secretariat.ageingartfully@slec.org.sg" class="contact-link">secretariat.ageingartfully@slec.org.sg</a>
-                                <a href="mailto:hq@slec.org.sg" class="contact-link">hq@slec.org.sg</a>
-                                <a href="tel:+6567172777" class="contact-link" style="margin-top: 15px;">6717 2777</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- BLOK CONTACT INFO DIHAPUS -->
             </div>
 
         </div>
     </div>
 </div>
 
+<!-- MODAL NAFA -->
 <div class="modal fade about-modal" id="modalNAFA" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content shadow-lg">
@@ -744,29 +726,14 @@
             <img src="<?= base_url('assets/public/images/nafa.png') ?>" alt="NAFA Hero" class="hero-img">
 
             <div class="row g-4">
-                <div class="col-lg-7">
+                <!-- PERBAIKAN: Diperlebar menjadi col-lg-12 karena kotak kontak dihilangkan -->
+                <div class="col-lg-12">
                     <div class="info-box">
                         <p>Established in 1938, NAFA is Singapore's pioneer arts institution and a founding member of the University of the Arts Singapore (UAS). Renowned for its strength in Southeast Asian arts, NAFA is also recognised for its rigorous, practice-led curriculum, interdisciplinary approach, and strong engagement with the creative community. This commitment is reflected in initiatives such as the Institute of Southeast Asian Arts (ISEAA), which advances artistic practice and research in the region.</p>
                         <p>With 16 Cultural Medallion and 15 Young Artist Award alumni, NAFA has nurtured some of the nation's most celebrated artists and creative practitioners. Supporting learners at various stages of learning, from early arts education to diploma, degree, postgraduate, and continuing education programmes, NAFA offers educational pathways across art, design, performing arts, and interdisciplinary practices, guided by its mission of "inspiring learning and growth through the arts".</p>
                     </div>
                 </div>
-                <div class="col-lg-5">
-                    <div class="info-box">
-                        <div class="contact-group">
-                            <h5 class="info-heading"><i class="far fa-building"></i> Office Location</h5>
-                            <div class="contact-title mt-3">Nanyang Academy<br>of Fine Arts</div>
-                            <p style="margin-top: 10px;">80 Bencoolen Street<br>Singapore 189655</p>
-                        </div>
-                        
-                        <div class="contact-group mt-4 pt-2">
-                            <h5 class="info-heading"><i class="far fa-address-book"></i> Contact Us</h5>
-                            <div class="mt-3">
-                                <a href="mailto:cle@nafa.edu.sg" class="contact-link">cle@nafa.edu.sg</a>
-                                <a href="tel:+6565121388" class="contact-link" style="margin-top: 15px;">6512 1388</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- BLOK CONTACT INFO DIHAPUS -->
             </div>
 
         </div>

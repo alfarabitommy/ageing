@@ -1,6 +1,6 @@
 </main>
 <style>
-    /* Footer Styles based on Event Schedule.png */
+    /* Footer Styles based on Event Schedule.png & Client Feedback */
     .site-footer {
         background-color: #5156B8; /* Navy/Purple color from design */
         color: white;
@@ -11,23 +11,33 @@
         max-width: 250px;
         margin-bottom: 20px;
     }
+    
     .footer-heading {
-        font-size: 16px;
+        font-size: 18px; 
         font-weight: 700;
-        margin-bottom: 15px;
+        margin-bottom: 8px; 
     }
+    
     .footer-link {
         color: white;
         text-decoration: none;
-        font-size: 14px;
+        font-size: 16px; 
         display: block;
         margin-bottom: 8px;
+        /* Tambahan agar email panjang bisa turun ke bawah di layar sempit/tablet */
+        word-break: break-word; 
     }
     .footer-link:hover {
         text-decoration: underline;
     }
     
-    /* CATATAN FIX: Menambahkan display flex dan gap agar icon membungkus rapi ke bawah jika layar sempit */
+    .social-handle {
+        font-size: 16px; 
+        display: block;
+        margin-bottom: 8px; 
+        color: rgba(255,255,255,0.7);
+    }
+    
     .social-icons-container {
         display: flex;
         flex-wrap: wrap;
@@ -35,11 +45,11 @@
     }
     .social-icons-container a {
         color: white;
-        font-size: 16px; /* Dikecilkan dari 20px agar lebih elegan */
+        font-size: 18px; 
         text-decoration: none;
         border: 1px solid rgba(255,255,255,0.5);
         border-radius: 8px;
-        padding: 6px 10px; /* Dikecilkan menyesuaikan font */
+        padding: 8px 12px; 
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -53,25 +63,31 @@
 
 <footer class="site-footer">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6 mb-4 mb-md-0">
+        <div class="row align-items-start">
+            
+            <!-- Kolom Logo: Diperkecil menjadi col-lg-4 agar area teks lebih luas -->
+            <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
                 <img src="<?= base_url('assets/public/images/footer-logo.png') ?>" alt="Ageing Artfully Conference 2026" class="footer-logo">
             </div>
             
-            <div class="col-md-6">
+            <!-- Kolom Informasi (Enquiries & Sosmed): Diperlebar menjadi col-lg-8 -->
+            <div class="col-lg-8 col-md-12">
                 <div class="row">
-                    <div class="col-12 mb-4">
+                    
+                    <!-- PERBAIKAN: Diubah ke col-md-6 dan ditambah padding (pe-lg-5) untuk jarak aman -->
+                    <div class="col-md-6 mb-4 mb-md-0 pe-lg-5">
                         <div class="footer-heading">Enquiries</div>
                         <a href="mailto:secretariat.ageingartfully@slec.org.sg" class="footer-link" style="text-decoration: underline;">
                             secretariat.ageingartfully@slec.org.sg
                         </a>
                     </div>
                     
-                    <div class="col-12">
+                    <!-- PERBAIKAN: Diubah ke col-md-6 agar seimbang (50/50) dengan Enquiries -->
+                    <div class="col-md-6">
                         <div class="footer-heading">Stay Connected</div>
                         <div class="row">
                             <div class="col-6">
-                                <small class="d-block mb-2 text-white-50">@stlukeseldercare</small>
+                                <span class="social-handle">@stlukeseldercare</span>
                                 <div class="social-icons-container">
                                     <a href="https://www.instagram.com/stlukeseldercare/?hl=en" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                                     <a href="https://www.facebook.com/StLukesElderCare/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
@@ -80,7 +96,7 @@
                                 </div>
                             </div>
                             <div class="col-6">
-                                <small class="d-block mb-2 text-white-50">@nafa_sg</small>
+                                <span class="social-handle">@nafa_sg</span>
                                 <div class="social-icons-container">
                                     <a href="https://www.instagram.com/nafa_sg/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                                     <a href="https://www.facebook.com/NAFA" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
@@ -90,8 +106,10 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
+            
         </div>
     </div>
 </footer>

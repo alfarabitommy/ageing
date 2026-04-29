@@ -206,27 +206,10 @@
                     <h3 class="card-title-text">Car</h3>
                 </div>
                 <p class="mb-0" style="color: #444; font-size: 16px; line-height: 1.6;">
-                    Car parks in NAFA Campus 1 and in proximity are indicated. Click <a href="#" class="link-custom">here</a> to view carpark rates.
+                    Car parks in NAFA Campus 1 and in proximity are indicated. Click <a href="https://www.nafa.edu.sg/campus-facilities" target="_blank" class="link-custom">here</a> to view carpark rates.
                 </p>
             </div>
         </div>
 
-    </div>
-
-    <div class="enquiries-section">
-        <h2 class="enquiries-title">Enquiries</h2>
-        <div class="transport-card" style="max-width: 100%; animation-delay: 0.4s; padding: 30px 35px;">
-            <div class="row align-items-center">
-                <div class="col-md-auto mb-3 mb-md-0 text-center text-md-start">
-                    <div class="card-icon mx-auto mx-md-0" style="width: 60px; height: 60px; font-size: 24px;">
-                        <i class="fas fa-envelope-open-text"></i>
-                    </div>
-                </div>
-                <div class="col-md text-center text-md-start">
-                    <p style="font-weight: 700; color: #111; font-size: 18px; margin-bottom: 5px;">For more enquiries please contact</p>
-                    <a href="mailto:secretariat.ageingartfully@slec.org.sg" class="link-custom" style="font-size: 16px;">secretariat.ageingartfully@slec.org.sg</a>
-                </div>
-            </div>
-        </div>
     </div>
 </div>

@@ -11,6 +11,10 @@
     <meta property="og:description" content="<?= isset($meta_desc) ? $meta_desc : 'Reimagining Ageing Through the Power of the Arts Together.' ?>">
     <meta property="og:type" content="website">
 
+    <!-- PERBAIKAN: Kode pemanggilan Favicon ditambahkan di sini -->
+    <link rel="icon" type="image/png" href="<?= base_url('assets/public/images/favicon.png') ?>">
+    <link rel="apple-touch-icon" href="<?= base_url('assets/public/images/favicon.png') ?>">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -29,17 +33,16 @@
             background-color: #FAFAFA;
         }
 
-        /* Navbar Base Styles & Shrink Transition */
+        /* Navbar Base Styles */
         .navbar {
-            padding: 15px 0; /* Padding awal sedikit diperbesar agar efek shrink terlihat */
-            transition: all 0.4s ease-in-out; /* Animasi halus untuk shrink */
-            z-index: 1030; /* Memastikan navbar selalu di atas elemen lain */
+            padding: 15px 0; 
+            transition: box-shadow 0.4s ease-in-out; 
+            z-index: 1030; 
         }
         
-        /* State saat di-scroll ke bawah (Shrink Effect) */
-        .navbar.navbar-scrolled {
-            padding: 5px 0; /* Padding mengecil */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Menambah bayangan agar terpisah dari konten */
+        /* State saat di-scroll ke bawah */
+        .navbar.navbar-shadow {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15); 
         }
         
         .navbar-brand {
@@ -56,15 +59,11 @@
             opacity: 0.8;
         }
         
-        /* Animasi Logo saat Shrink */
+        /* Logo Size Fix */
         .navbar-brand img {
-            height: 55px; /* Tinggi normal */
+            height: 55px; 
             width: auto;
             object-fit: contain;
-            transition: all 0.4s ease-in-out; /* Animasi ikut menyusut */
-        }
-        .navbar.navbar-scrolled .navbar-brand img {
-            height: 37px; /* Logo mengecil saat di-scroll */
         }
 
         .nav-link {
@@ -84,7 +83,7 @@
         /* Responsive Logo & Hamburger Fix */
         @media (max-width: 991px) {
             .navbar {
-                padding: 10px 0; /* Standar awal mobile */
+                padding: 10px 0; 
             }
             .navbar-brand {
                 width: 75%;
@@ -92,14 +91,10 @@
                 margin-right: 0;
             }
             .navbar-brand img {
-                height: 35px; /* Standar mobile awal */
+                height: 35px; 
                 max-width: 100%;
                 width: auto;
                 object-fit: contain;
-            }
-            /* Shrink di Mobile */
-            .navbar.navbar-scrolled .navbar-brand img {
-                height: 28px; /* Lebih kecil lagi saat scroll di mobile */
             }
             .navbar-brand a {
                 max-width: calc(50% - 5px);
@@ -147,31 +142,12 @@
             }
         }
 
-        /* THEME 1: LIGHT THEME */
-        .navbar-light-theme {
-            background-color: #FFFFFF;
-            /* Box shadow dipindah ke class .navbar-scrolled agar lebih dinamis */
-        }
-        .navbar-light-theme .nav-link { color: #4A4A4A; }
-        .navbar-light-theme .nav-link:hover, 
-        .navbar-light-theme .nav-link.active { color: #5156B8; }
-        .navbar-light-theme .btn-register {
-            background-color: #8C94FF;
-            color: white;
-            border: 1px solid #8C94FF;
-        }
-        .navbar-light-theme .btn-register:hover {
-            background-color: #5156B8;
-            border-color: #5156B8;
-            color: white;
-        }
-
-        /* THEME 2: DARK THEME */
+        /* THEME: DARK THEME GLOBAL */
         .navbar-dark-theme {
             background-color: #5156B8;
         }
-        .navbar-dark-theme.navbar-scrolled {
-            background-color: #4348A0; /* Saat dark theme discroll, warna sedikit lebih pekat */
+        .navbar-dark-theme.navbar-shadow {
+            background-color: #4348A0; 
         }
         .navbar-dark-theme .nav-link { color: #FFFFFF; }
         .navbar-dark-theme .nav-link:hover, 
@@ -190,31 +166,20 @@
 </head>
 <body>
 
-<?php $theme_class = (isset($is_dark_header) && $is_dark_header) ? 'navbar-dark-theme' : 'navbar-light-theme'; ?>
-
-<nav id="mainNavbar" class="navbar navbar-expand-lg sticky-top <?= $theme_class ?>">
+<nav id="mainNavbar" class="navbar navbar-expand-lg sticky-top navbar-dark-theme">
     <div class="container-fluid px-3 px-lg-5 d-flex justify-content-between align-items-center">
         
         <div class="navbar-brand">
-            <?php if (isset($is_dark_header) && $is_dark_header): ?>
-                <a href="https://slec.org.sg/" target="_blank">
-                    <img src="<?= base_url('assets/public/images/SLEC-Logo_high-res--white-.png') ?>" alt="SLEC Logo">
-                </a>
-                <a href="https://www.nafa.edu.sg/" target="_blank">
-                    <img src="<?= base_url('assets/public/images/nafa_uas_white.png') ?>" alt="NAFA UAS Logo">
-                </a>
-            <?php else: ?>
-                <a href="https://slec.org.sg/" target="_blank">
-                    <img src="<?= base_url('assets/public/images/slec-logo.png') ?>" alt="SLEC Logo">
-                </a>
-                <a href="https://www.nafa.edu.sg/" target="_blank">
-                    <img src="<?= base_url('assets/public/images/nafa_uas_color.png') ?>" alt="NAFA UAS Logo">
-                </a>
-            <?php endif; ?>
+            <a href="https://slec.org.sg/" target="_blank">
+                <img src="<?= base_url('assets/public/images/SLEC-Logo_high-res--white-.png') ?>" alt="SLEC Logo">
+            </a>
+            <a href="https://www.nafa.edu.sg/" target="_blank">
+                <img src="<?= base_url('assets/public/images/nafa_uas_white.png') ?>" alt="NAFA UAS Logo">
+            </a>
         </div>
         
         <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="<?= (isset($is_dark_header) && $is_dark_header) ? '#FFFFFF' : '#1B2A47' ?>" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#FFFFFF" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
             </svg>
         </button>
@@ -226,11 +191,12 @@
             </div>
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 align-items-lg-center">
-                    <li class="nav-item"><a class="nav-link" href="<?= base_url() ?>">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= base_url('about') ?>">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == 'speakers') ? 'active' : '' ?>" href="<?= base_url('speakers') ?>">Speakers</a></li>
+                    <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == '') ? 'active' : '' ?>" href="<?= base_url() ?>">Home</a></li>
+                    <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == 'about') ? 'active' : '' ?>" href="<?= base_url('about') ?>">About Us</a></li>
                     
-                    <li class="nav-item"><a class="nav-link" href="<?= base_url('speakers#breakout-workshops') ?>">Breakout Workshops</a></li>
+                    <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == 'speakers') ? 'active' : '' ?>" href="<?= base_url('speakers') ?>" id="navItemSpeakers">Speakers</a></li>
+                    
+                    <li class="nav-item"><a class="nav-link" href="<?= base_url('speakers#breakout-workshops') ?>" id="navItemWorkshops">Breakout Workshops</a></li>
                     
                     <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == 'schedules') ? 'active' : '' ?>" href="<?= base_url('schedules') ?>">Event Schedule</a></li>
                     <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == 'getting-here') ? 'active' : '' ?>" href="<?= base_url('getting-here') ?>">Getting Here</a></li>
@@ -247,20 +213,82 @@
     document.addEventListener("DOMContentLoaded", function() {
         const navbar = document.getElementById("mainNavbar");
         
-        // Fungsi untuk mengecek posisi scroll
+        // 1. Fungsi untuk mengecek posisi scroll (Hanya memicu shadow)
         function checkScroll() {
             if (window.scrollY > 50) {
-                navbar.classList.add("navbar-scrolled");
+                navbar.classList.add("navbar-shadow");
             } else {
-                navbar.classList.remove("navbar-scrolled");
+                navbar.classList.remove("navbar-shadow");
             }
         }
         
-        // Panggil saat pertama load (berjaga jika di-refresh di tengah halaman)
         checkScroll();
-        
-        // Pasang event listener saat di-scroll
         window.addEventListener("scroll", checkScroll);
+
+        // 2. Navigasi Cerdas: Smooth Scroll ke Atas untuk Menu Speakers
+        const navItemSpeakers = document.getElementById("navItemSpeakers");
+        const navItemWorkshops = document.getElementById("navItemWorkshops");
+        
+        if (navItemSpeakers) {
+            navItemSpeakers.addEventListener("click", function(e) {
+                // Cek apakah user sedang berada di halaman speakers
+                if (window.location.pathname.includes("speakers")) {
+                    e.preventDefault(); 
+                    window.scrollTo({ top: 0, behavior: 'smooth' }); 
+                    
+                    // Tutup menu offcanvas secara otomatis jika sedang di mobile
+                    const offcanvasElement = document.getElementById('offcanvasNavbar');
+                    if (offcanvasElement) {
+                        if (typeof bootstrap !== 'undefined') {
+                            const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
+                            if (bsOffcanvas) bsOffcanvas.hide();
+                        }
+                    }
+                    
+                    if (navItemWorkshops) navItemWorkshops.classList.remove("active");
+                    navItemSpeakers.classList.add("active");
+                    
+                    history.pushState(null, null, window.location.pathname);
+                }
+            });
+        }
+
+        // 3. Fungsi Observer untuk memanipulasi Active State pada area Breakout Workshops
+        const workshopSection = document.getElementById("breakout-workshops");
+
+        if (workshopSection && navItemSpeakers && navItemWorkshops) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navItemSpeakers.classList.remove("active");
+                        navItemWorkshops.classList.add("active");
+                    } else {
+                        navItemWorkshops.classList.remove("active");
+                        if (window.location.pathname.includes("speakers")) {
+                            navItemSpeakers.classList.add("active");
+                        }
+                    }
+                });
+            }, { 
+                // Threshold dikecilkan menjadi 0.01 (1%) dengan rootMargin.
+                // Logika: Akan tetap terdeteksi meski section ditarik sangat panjang ke bawah di HP.
+                rootMargin: "-80px 0px -20% 0px", 
+                threshold: 0.01 
+            }); 
+            
+            observer.observe(workshopSection);
+        }
+        
+        // 4. Tambahan khusus mobile: Tutup offcanvas saat menu Breakout Workshops diklik
+        if (navItemWorkshops) {
+            navItemWorkshops.addEventListener("click", function() {
+                const offcanvasElement = document.getElementById('offcanvasNavbar');
+                if (offcanvasElement && typeof bootstrap !== 'undefined') {
+                    const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
+                    if (bsOffcanvas) bsOffcanvas.hide();
+                }
+            });
+        }
     });
 </script>
 
