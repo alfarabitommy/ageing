@@ -60,23 +60,28 @@
         
         /* Logo Size Fix */
         .navbar-brand img {
-            height: 55px; 
+            /* PERBAIKAN: Dikurangi dari 55px ke 45px untuk menghemat ruang horizontal di desktop */
+            height: 45px; 
             width: auto;
             object-fit: contain;
         }
 
         .nav-link {
-            font-size: 13px;
+            /* PERBAIKAN: Font dikecilkan sedikit dan padding dirampingkan untuk desktop */
+            font-size: 11.5px;
             font-weight: 500;
-            padding: 8px 12px !important;
+            padding: 8px 8px !important;
             transition: color 0.3s;
+            white-space: nowrap; 
         }
         .btn-register {
-            font-size: 13px;
+            /* PERBAIKAN: Font dikecilkan sedikit dan padding dirampingkan untuk desktop */
+            font-size: 11.5px;
             font-weight: 700;
             border-radius: 25px;
-            padding: 6px 20px;
+            padding: 6px 15px;
             transition: all 0.3s;
+            white-space: nowrap;
         }
 
         /* Responsive Logo & Hamburger Fix */
@@ -123,9 +128,11 @@
             }
             .offcanvas .nav-link {
                 color: white !important;
+                /* PENGAMANAN: Font size menu mobile tetap besar */
                 font-size: 15px;
                 padding: 12px 20px !important;
                 border-bottom: 1px solid rgba(255,255,255,0.05);
+                white-space: normal; /* Kembalikan sifat text normal khusus di menu mobile */
             }
             .offcanvas .nav-link:hover, 
             .offcanvas .nav-link.active {
@@ -133,6 +140,8 @@
                 color: #FCE170 !important; 
             }
             .offcanvas .btn-register {
+                /* PENGAMANAN: Font size tombol register mobile dikembalikan jadi besar */
+                font-size: 14px;
                 width: 100%;
                 margin-top: 20px;
                 background-color: #FCE170;
@@ -193,7 +202,6 @@
                     <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == '') ? 'active' : '' ?>" href="<?= base_url() ?>">Home</a></li>
                     <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == 'about') ? 'active' : '' ?>" href="<?= base_url('about') ?>">About Us</a></li>
                     
-                    <!-- PERBAIKAN: Menambahkan anchor #plenary-speakers ke link url -->
                     <li class="nav-item"><a class="nav-link <?= ($this->uri->segment(1) == 'speakers') ? 'active' : '' ?>" href="<?= base_url('speakers#plenary-speakers') ?>" id="navItemSpeakers">Speakers</a></li>
                     
                     <li class="nav-item"><a class="nav-link" href="<?= base_url('speakers#breakout-workshops') ?>" id="navItemWorkshops">Breakout Workshops</a></li>
@@ -213,7 +221,6 @@
     document.addEventListener("DOMContentLoaded", function() {
         const navbar = document.getElementById("mainNavbar");
         
-        // 1. Fungsi untuk mengecek posisi scroll (Hanya memicu shadow)
         function checkScroll() {
             if (window.scrollY > 50) {
                 navbar.classList.add("navbar-shadow");
@@ -225,17 +232,14 @@
         checkScroll();
         window.addEventListener("scroll", checkScroll);
 
-        // 2. Navigasi Cerdas: Smooth Scroll ke Atas untuk Menu Speakers
         const navItemSpeakers = document.getElementById("navItemSpeakers");
         const navItemWorkshops = document.getElementById("navItemWorkshops");
         
         if (navItemSpeakers) {
             navItemSpeakers.addEventListener("click", function(e) {
-                // Cek apakah user sedang berada di halaman speakers
                 if (window.location.pathname.includes("speakers")) {
                     e.preventDefault(); 
                     
-                    // PERBAIKAN: Gulung layar mulus ke arah ID #plenary-speakers, bukan ke top:0
                     const targetSection = document.getElementById('plenary-speakers');
                     if(targetSection) {
                         targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -243,7 +247,6 @@
                         window.scrollTo({ top: 0, behavior: 'smooth' }); 
                     }
                     
-                    // Tutup menu offcanvas secara otomatis jika sedang di mobile
                     const offcanvasElement = document.getElementById('offcanvasNavbar');
                     if (offcanvasElement) {
                         if (typeof bootstrap !== 'undefined') {
@@ -260,7 +263,6 @@
             });
         }
 
-        // 3. Fungsi Observer untuk memanipulasi Active State pada area Breakout Workshops
         const workshopSection = document.getElementById("breakout-workshops");
 
         if (workshopSection && navItemSpeakers && navItemWorkshops) {
@@ -284,7 +286,6 @@
             observer.observe(workshopSection);
         }
         
-        // 4. Tambahan khusus mobile: Tutup offcanvas saat menu Breakout Workshops diklik
         if (navItemWorkshops) {
             navItemWorkshops.addEventListener("click", function() {
                 const offcanvasElement = document.getElementById('offcanvasNavbar');

@@ -24,7 +24,6 @@
         font-size: 16px; 
         display: block;
         margin-bottom: 8px;
-        /* Tambahan agar email panjang bisa turun ke bawah di layar sempit/tablet */
         word-break: break-word; 
     }
     .footer-link:hover {
@@ -40,16 +39,19 @@
     
     .social-icons-container {
         display: flex;
-        flex-wrap: wrap; /* Tetap wrap untuk mobile agar aman */
-        gap: 5px; /* PERBAIKAN: Jarak dikurangi dari 10px ke 5px */
+        /* PERBAIKAN: Memaksa element mendatar di desktop agar tak melorot */
+        flex-wrap: nowrap; 
+        /* PERBAIKAN: Gap dipersempit */
+        gap: 4px; 
     }
     .social-icons-container a {
         color: white;
-        font-size: 18px; /* PERBAIKAN: Font size DIJAGA tetap 18px (tidak dikecilkan) */
+        font-size: 18px; /* TDK DIUBAH: Ukuran tetap */
         text-decoration: none;
         border: 1px solid rgba(255,255,255,0.5);
         border-radius: 8px;
-        padding: 6px 10px; /* PERBAIKAN: Padding dalam dikecilkan agar box lebih ramping */
+        /* PERBAIKAN: Padding horizontal dikurangi sedikit agar box lebih muat dideretkan */
+        padding: 6px 8px; 
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -59,22 +61,26 @@
         background-color: white;
         color: #5156B8;
     }
+
+    /* PENGAMANAN MOBILE: Kembalikan sifat melorot (wrap) ke mobile agar layar sempit tidak terpotong */
+    @media (max-width: 768px) {
+        .social-icons-container {
+            flex-wrap: wrap; 
+        }
+    }
 </style>
 
 <footer class="site-footer">
     <div class="container">
         <div class="row align-items-start">
             
-            <!-- Kolom Logo: Diperkecil menjadi col-lg-4 agar area teks lebih luas -->
             <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
                 <img src="<?= base_url('assets/public/images/footer-logo.png') ?>" alt="Ageing Artfully Conference 2026" class="footer-logo">
             </div>
             
-            <!-- Kolom Informasi (Enquiries & Sosmed): Diperlebar menjadi col-lg-8 -->
             <div class="col-lg-8 col-md-12">
                 <div class="row">
                     
-                    <!-- PERBAIKAN: Diubah ke col-lg-5 col-md-6 agar membagi proporsi yang lebih baik ke Stay Connected (porsi 5 banding 7) -->
                     <div class="col-lg-5 col-md-6 mb-4 mb-md-0 pe-lg-3">
                         <div class="footer-heading">Enquiries</div>
                         <a href="mailto:secretariat.ageingartfully@slec.org.sg" class="footer-link" style="text-decoration: underline;">
@@ -82,7 +88,6 @@
                         </a>
                     </div>
                     
-                    <!-- PERBAIKAN: Diubah ke col-lg-7 col-md-6 agar area icon sosmed cukup luas untuk 4 icon berjejer -->
                     <div class="col-lg-7 col-md-6">
                         <div class="footer-heading">Stay Connected</div>
                         <div class="row">
