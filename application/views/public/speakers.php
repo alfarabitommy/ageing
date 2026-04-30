@@ -244,7 +244,7 @@
 <section class="programme-hero">
     <img src="<?= base_url('assets/public/images/bg-shape-1.png') ?>" alt="" class="shape-1">
     <div class="container">
-        <p class="small fw-bold mb-3">> SLEC x NAFA Ageing Artfully Conference 2026</p>
+        <!-- <p class="small fw-bold mb-3">> SLEC x NAFA Ageing Artfully Conference 2026</p> -->
         <h1 class="display-3 fw-bold mb-4">The Programme</h1>
         <p class="lead mb-5" style="max-width: 600px;">
             At the heart of the conference is the belief that the arts are not just activities, but everyday practices that support connection, identity, and well-being.

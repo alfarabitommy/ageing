@@ -8,12 +8,15 @@
         box-sizing: border-box;
     }
 
-    body {
+    html, body {
         font-family: 'DM Sans', sans-serif;
-        /* PERBAIKAN 1: Background dasar dijadikan putih murni agar area carousel tidak memiliki list abu-abu */
         background-color: #ffffff;
         color: #333;
         line-height: 1.6;
+        
+        /* PERBAIKAN: Kunci sumbu X agar layar tidak melar (Horizontal Scroll Fix) */
+        max-width: 100%;
+        overflow-x: hidden; 
     }
 
     section { padding: 80px 0; }
@@ -59,14 +62,15 @@
 
     .slider-thumb {
         position: absolute;
-        top: 15%; 
+        top: 2%; 
         right: -5%; 
         z-index: 0;
+        pointer-events: none;
    }
 
     .slider-thumb img {
-        max-width: 700px; 
-        width: 100%;
+        width: 36vw; 
+        max-width: 600px; 
         transition: all 0.3s ease;
     }
 
@@ -85,7 +89,6 @@
         padding: 0 15px;
     }
     .vision-overlay-box {
-        /* PERBAIKAN 1: Background diatur putih, dan box-shadow dihilangkan atau ditipiskan jika itu yang membuat kesan abu-abu */
         background-color: #ffffff;
         border-radius: 30px;
         position: relative;
@@ -127,7 +130,6 @@
     .intro-section {
         font-size :32px;
         font-family: 'DM Sans', sans-serif;
-        /* PERBAIKAN 1: Dipastikan putih bersih */
         background-color: #ffffff; 
         padding: 100px 0;
         position: relative;
@@ -137,7 +139,17 @@
     }
     .intro-title { font-size: 52px; color: #111; line-height: 1.1; margin-bottom: 30px; }
     .intro-text { font-size: 32px; color: #333; margin-bottom: 20px; font-weight: 500; }
-    .intro-brush { position: absolute; top: -30%; left: -10%; width: 650px; z-index: 1;}
+    
+    /* PERBAIKAN: Ukuran ornamen brush dikurangi, menggunakan skala vw, dan diturunkan z-indexnya */
+    .intro-brush { 
+        position: absolute; 
+        top: -30%; 
+        left: -10%; 
+        width: 40vw; /* Skala elastis */
+        max-width: 580px; /* Dikurangi ~10% dari 650px */
+        z-index: 0; /* Diubah agar berada di belakang teks */
+        pointer-events: none;
+    }
         
     /* =========================================
        Our Vision Mision
@@ -146,7 +158,7 @@
         padding: 100px;
         background-color: #FFCCF3;
         position: relative;
-        overflow: hidden;
+        overflow: hidden; 
     }
 
    .our-vision {
@@ -172,10 +184,12 @@
 
      .matters-mask {
         position: absolute; 
-        right: 0%;
+        right: -5%;
         top: -5%;
-        max-width: 550px;
+        width: 40vw; 
+        max-width: 480px; 
         z-index: 1;
+        pointer-events: none;
      }
     
     /* =========================================
@@ -262,7 +276,6 @@
        ========================================= */
     .news-section {
         padding: 80px 0;
-        /* PERBAIKAN 1: Jadikan putih murni agar seragam dengan sisa halaman */
         background-color: #ffffff; 
     }
     .news-grid {
@@ -436,8 +449,7 @@
     @media (max-width: 991px) {
         section { padding: 50px 0; }
         
-        .programme-hero { padding-top: 0px; padding-right: 0px; padding-bottom: 160px;
-        padding-left: 0px; }
+        .programme-hero { padding-top: 0px; padding-right: 0px; padding-bottom: 160px; padding-left: 0px; }
         .hero-title { font-size: 2.2rem; }
         .programme-hero p.lead { font-size: 16px; margin-bottom: 30px !important; }
         
@@ -448,16 +460,10 @@
         .intro-section { padding-top: 60px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 20px; }
         .intro-vision { font-size: 18px; }
         
-        .vision-section { padding-top: 60px;
-        padding-right: 20px;
-        padding-bottom: 0px;
-        padding-left: 20px; }
+        .vision-section { padding-top: 60px; padding-right: 20px; padding-bottom: 0px; padding-left: 20px; }
         .our-vision { width: 100%; height: auto; font-size: 2.5rem; margin-bottom: 15px; }
         
-        .objectives-section { padding-top: 10px;
-        padding-right: 0px;
-        padding-bottom: 10px;
-        padding-left: 0px; }
+        .objectives-section { padding-top: 10px; padding-right: 0px; padding-bottom: 10px; padding-left: 0px; }
         .conference-objectives { width: 100%; height: auto; font-size: 2.2rem; bottom: auto; }
         .intro-conference { font-size: 18px; }
 
@@ -467,10 +473,7 @@
         .obj-card { padding: 30px 20px; margin-bottom: 15px; }
         .obj-card h4 { font-size: 18px; }
         .icon-brain, .icon-deepen, .icon-inspire, .icon-elevate { width: 80px; height: 80px; }
-        .news-section { padding-top: 10px;
-        padding-right: 0px;
-        padding-bottom: 10px;
-        padding-left: 0px; }
+        .news-section { padding-top: 10px; padding-right: 0px; padding-bottom: 10px; padding-left: 0px; }
         .news-grid { flex-direction: column; gap: 20px; }
         .news-item { padding: 15px; }
         .news-item img { height: 220px; }
@@ -486,9 +489,9 @@
 
         /* ORNAMENTS MOBILE ADJUSTMENTS */
         .slider-thumb { top: 5%; right: -15%; }
-        .slider-thumb img { max-width: 200px; opacity: 0.4; pointer-events: none; z-index: 0; }
-        .intro-brush { max-width: 280px; top: -25%; left: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
-        .matters-mask { max-width: 220px; top: -7%; right: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
+        .slider-thumb img { width: auto; max-width: 200px; opacity: 0.4; pointer-events: none; z-index: 0; }
+        .intro-brush { width: auto; max-width: 280px; top: -25%; left: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
+        .matters-mask { width: auto; max-width: 220px; top: -7%; right: -5%; opacity: 0.4; z-index: 0; pointer-events: none; }
     }
 </style>
 
@@ -499,7 +502,7 @@
     </div>
 
     <div class="container">
-        <p class="small mb-3" style="font-weight: 400;">> SLEC x NAFA Ageing Artfully Conference 2026</p>
+        <!-- <p class="small mb-3" style="font-weight: 400;">> SLEC x NAFA Ageing Artfully Conference 2026</p> -->
         
         <h1 class="hero-title">Reimagining Ageing<br>
         through the Power of<br>

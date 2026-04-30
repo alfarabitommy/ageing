@@ -367,7 +367,7 @@
     <img src="<?= base_url('assets/public/images/home-hero-shape.png') ?>" alt="" class="hero-shape">
     <div class="container position-relative" style="z-index: 2;">
         <p class="small text-muted fw-bold mb-2">SLEC x NAFA Ageing Artfully Conference 2026</p>
-        <h2 class="hw-title">More Workshops<br>More Learning</h2>
+        <h2 class="hw-title">More Workshops<br>More Inspiration</h2>
         <div class="row g-2 g-md-4 mb-5" style="max-width: 600px;">
             <div class="col-4"><div class="stat-box" style="background-color: #D1CCFF;"><div class="display-4">14</div><h5>Inspiring<br>Practitioners</h5></div></div>
             <div class="col-4"><div class="stat-box" style="background-color: #FFC1F1;"><div class="display-4">10</div><h5>Breakout<br>Workshops</h5></div></div>
@@ -478,7 +478,7 @@
                 <button type="button" class="btn btn-go-back" data-bs-dismiss="modal">Go Back</button>
                 <img src="<?= base_url('assets/public/images/atom.png') ?>" alt="" class="modal-header-icon">
                 <h2 class="header-title">Contribution</h2>
-                <h3 class="header-subtitle">Strengthening Relationship</br>and Belonging</h3>
+                <h3 class="header-subtitle">Sharing Stories</br>Knowledge And Culture</h3>
             </div>
             <div class="desc-card">
                 Beyond participation lies contribution. We reframe older adults not as passive recipients of care, but as creators, mentors, and knowledge holders whose artistic engagement enriches society.
