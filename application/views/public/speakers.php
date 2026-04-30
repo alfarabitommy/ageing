@@ -27,6 +27,7 @@
         top: 0;
         right: 0;
         max-width: 400px;
+        opacity: 0.9;
         z-index: 0;
     }
     .programme-hero .container {
@@ -134,13 +135,13 @@
     
     .shape-2 {
         position: absolute;
-        top: -120px;
+        top: -75px;
         right: 0;
+        width: 25vw;
         max-width: 400px;
-        
         /* PERBAIKAN 2: Mic diturunkan ke lapisan terbawah dan opacity dikurangi jadi transparan */
         z-index: 0; 
-        opacity: 0.8; 
+        opacity: 0.9; 
         pointer-events: none; /* Mencegah mic menghalangi fungsi klik */
     }
     
