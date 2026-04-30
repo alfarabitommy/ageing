@@ -69,6 +69,7 @@
     .slider-thumb img {
         width: 35vw; 
         max-width: 600px; 
+        opacity: 0.8;
         transition: all 0.3s ease;
     }
 
@@ -144,6 +145,7 @@
         width: 40vw; 
         max-width: 580px; 
         z-index: 0; 
+        opacity: 0.8;
         pointer-events: none;
     }
         
@@ -185,6 +187,7 @@
         width: 35vw; 
         max-width: 480px; 
         z-index: 1;
+        opacity: 0.8;
         pointer-events: none;
      }
     

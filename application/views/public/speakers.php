@@ -27,7 +27,7 @@
         top: 0;
         right: 0;
         max-width: 400px;
-        opacity: 0.9;
+        opacity: 0.8;
         z-index: 0;
     }
     .programme-hero .container {
@@ -141,7 +141,7 @@
         max-width: 400px;
         /* PERBAIKAN 2: Mic diturunkan ke lapisan terbawah dan opacity dikurangi jadi transparan */
         z-index: 0; 
-        opacity: 0.9; 
+        opacity: 0.8; 
         pointer-events: none; /* Mencegah mic menghalangi fungsi klik */
     }
     

@@ -36,8 +36,8 @@
     .btn-outline-white:hover { background-color: white; color: #5156B8; transform: translateX(5px); }
     
     /* Hero Ornaments */
-    .hero-ballet { position: absolute; right: -14%; bottom: 5%; width: 50vw; max-width: 750px; opacity: 0.9; z-index: 1; pointer-events: none; }
-    .hero-saxophone { position: absolute; left: -7%; bottom: -5%; width: 50vw; max-width: 540px; opacity: 0.9; z-index: 1; pointer-events: none; }
+    .hero-ballet { position: absolute; right: -14%; bottom: 5%; width: 45vw; max-width: 750px; opacity: 0.8; z-index: 1; pointer-events: none; }
+    .hero-saxophone { position: absolute; left: -7%; bottom: -5%; width: 45vw; max-width: 540px; opacity: 0.8; z-index: 1; pointer-events: none; }
     
     /* =========================================
        INTRO SECTION
@@ -49,8 +49,8 @@
     }
     .intro-title { font-size: 52px; color: #111; line-height: 1.1; margin-bottom: 30px; }
     .intro-text { font-size: 18px; color: #333; margin-bottom: 20px; font-weight: 500; }
-    .intro-brush { position: absolute; top: -12%; left: -5%; max-width: 550px; z-index: 1; pointer-events: none; }
-    .intro-mask { position: absolute; bottom: 87%; left: -5%; max-width: 550px; z-index: 1; pointer-events: none; }
+    .intro-brush { position: absolute; top: -12%; left: -5%; max-width: 550px; opacity: 0.8; z-index: 1; pointer-events: none; }
+    .intro-mask { position: absolute; bottom: 87%; left: -5%; max-width: 550px; opacity: 0.8; z-index: 1; pointer-events: none; }
 
     /* =========================================
        MATTERS & CAROUSEL SECTION
@@ -61,7 +61,7 @@
         position: relative; 
     }
     .matters-title { font-size: 48px; color: #5156B8; margin-bottom: 20px; position: relative; z-index: 2; }
-    .matters-mic { position: absolute; right: 0%; top: -250px; width: 55vw; max-width: 650px; opacity: 0.9; z-index: 1; pointer-events: none; }
+    .matters-mic { position: absolute; right: 0%; top: -250px; width: 55vw; max-width: 650px; opacity: 0.8; z-index: 1; pointer-events: none; }
     
     /* Carousel Styling */
     .carousel-inner { border-radius: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); position: relative; z-index: 2; }
@@ -80,7 +80,7 @@
         color: white; 
     }
     .reimagining-title { font-size: 48px; line-height: 1.2; margin-bottom: 60px; position: relative; z-index: 2; }
-    .reimagining-layer { position: absolute; left: 0%; top: -20%; width: 45vw; max-width: 600px; opacity: 0.9; z-index: 1; pointer-events: none; }
+    .reimagining-layer { position: absolute; left: 0%; top: -20%; width: 45vw; max-width: 600px; opacity: 0.8; z-index: 1; pointer-events: none; }
 
     .pillar-card { border-radius: 20px; padding: 40px; height: 100%; color: #111; display: flex; flex-direction: column; align-items: flex-start; position: relative; z-index: 2; }
     
@@ -125,7 +125,7 @@
        WORKSHOPS SECTION
        ========================================= */
     .home-workshops { padding: 80px 0; position: relative; }
-    .hero-shape { position: absolute; right: 0%; top: 0%; width: 40vw; max-width: 600px; opacity: 0.9; z-index: 0; pointer-events: none; }
+    .hero-shape { position: absolute; right: 0%; top: 0%; width: 40vw; max-width: 600px; opacity: 0.8; z-index: 0; pointer-events: none; }
 
     .hw-title { font-size: 52px; color: #5156B8; line-height: 1.1; margin-bottom: 30px; position: relative; z-index: 2; }
     .stat-box { border-radius: 15px; padding: 25px; height: 100%; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; }
@@ -366,7 +366,7 @@
 <section class="home-workshops">
     <img src="<?= base_url('assets/public/images/home-hero-shape.png') ?>" alt="" class="hero-shape">
     <div class="container position-relative" style="z-index: 2;">
-        <p class="small text-muted fw-bold mb-2">SLEC x NAFA Ageing Artfully Conference 2026</p>
+        <!-- <p class="small text-muted fw-bold mb-2">SLEC x NAFA Ageing Artfully Conference 2026</p> -->
         <h2 class="hw-title">More Workshops<br>More Inspiration</h2>
         <div class="row g-2 g-md-4 mb-5" style="max-width: 600px;">
             <div class="col-4"><div class="stat-box" style="background-color: #D1CCFF;"><div class="display-4">14</div><h5>Inspiring<br>Practitioners</h5></div></div>
