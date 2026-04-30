@@ -14,9 +14,7 @@
         color: #333;
         line-height: 1.6;
         
-        /* PERBAIKAN: Kunci sumbu X agar layar tidak melar (Horizontal Scroll Fix) */
-        max-width: 100%;
-        overflow-x: hidden; 
+        /* PERBAIKAN: overflow-x dan max-width dihapus agar Sticky Header bekerja kembali */
     }
 
     section { padding: 80px 0; }
@@ -49,7 +47,7 @@
         color: white;
         padding: 80px 0 280px; 
         position: relative;
-        overflow: hidden;
+        overflow: hidden; /* Ornamen sudah dipotong dengan aman di batas section ini */
     }
     
     .hero-title {
@@ -69,7 +67,7 @@
    }
 
     .slider-thumb img {
-        width: 36vw; 
+        width: 35vw; 
         max-width: 600px; 
         transition: all 0.3s ease;
     }
@@ -133,21 +131,19 @@
         background-color: #ffffff; 
         padding: 100px 0;
         position: relative;
-        overflow: hidden;
+        overflow: hidden; /* Ornamen sudah dipotong dengan aman di batas section ini */
         line-height: 130%;
 
     }
     .intro-title { font-size: 52px; color: #111; line-height: 1.1; margin-bottom: 30px; }
     .intro-text { font-size: 32px; color: #333; margin-bottom: 20px; font-weight: 500; }
-    
-    /* PERBAIKAN: Ukuran ornamen brush dikurangi, menggunakan skala vw, dan diturunkan z-indexnya */
     .intro-brush { 
         position: absolute; 
         top: -30%; 
         left: -10%; 
-        width: 40vw; /* Skala elastis */
-        max-width: 580px; /* Dikurangi ~10% dari 650px */
-        z-index: 0; /* Diubah agar berada di belakang teks */
+        width: 40vw; 
+        max-width: 580px; 
+        z-index: 0; 
         pointer-events: none;
     }
         
@@ -158,7 +154,7 @@
         padding: 100px;
         background-color: #FFCCF3;
         position: relative;
-        overflow: hidden; 
+        overflow: hidden; /* Ornamen sudah dipotong dengan aman di batas section ini */
     }
 
    .our-vision {
@@ -186,7 +182,7 @@
         position: absolute; 
         right: -5%;
         top: -5%;
-        width: 40vw; 
+        width: 35vw; 
         max-width: 480px; 
         z-index: 1;
         pointer-events: none;

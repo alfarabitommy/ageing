@@ -40,16 +40,16 @@
     
     .social-icons-container {
         display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
+        flex-wrap: wrap; /* Tetap wrap untuk mobile agar aman */
+        gap: 5px; /* PERBAIKAN: Jarak dikurangi dari 10px ke 5px */
     }
     .social-icons-container a {
         color: white;
-        font-size: 18px; 
+        font-size: 18px; /* PERBAIKAN: Font size DIJAGA tetap 18px (tidak dikecilkan) */
         text-decoration: none;
         border: 1px solid rgba(255,255,255,0.5);
         border-radius: 8px;
-        padding: 8px 12px; 
+        padding: 6px 10px; /* PERBAIKAN: Padding dalam dikecilkan agar box lebih ramping */
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -74,16 +74,16 @@
             <div class="col-lg-8 col-md-12">
                 <div class="row">
                     
-                    <!-- PERBAIKAN: Diubah ke col-md-6 dan ditambah padding (pe-lg-5) untuk jarak aman -->
-                    <div class="col-md-6 mb-4 mb-md-0 pe-lg-5">
+                    <!-- PERBAIKAN: Diubah ke col-lg-5 col-md-6 agar membagi proporsi yang lebih baik ke Stay Connected (porsi 5 banding 7) -->
+                    <div class="col-lg-5 col-md-6 mb-4 mb-md-0 pe-lg-3">
                         <div class="footer-heading">Enquiries</div>
                         <a href="mailto:secretariat.ageingartfully@slec.org.sg" class="footer-link" style="text-decoration: underline;">
                             secretariat.ageingartfully@slec.org.sg
                         </a>
                     </div>
                     
-                    <!-- PERBAIKAN: Diubah ke col-md-6 agar seimbang (50/50) dengan Enquiries -->
-                    <div class="col-md-6">
+                    <!-- PERBAIKAN: Diubah ke col-lg-7 col-md-6 agar area icon sosmed cukup luas untuk 4 icon berjejer -->
+                    <div class="col-lg-7 col-md-6">
                         <div class="footer-heading">Stay Connected</div>
                         <div class="row">
                             <div class="col-6">
